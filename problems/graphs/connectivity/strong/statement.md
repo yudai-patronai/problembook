@@ -1,8 +1,11 @@
 ---
 id: f47e0efe-913c-4f1c-acc2-7c4ca0297acf
-shortname: strong_connectivity
 longname: Сильно связный ли орграф?
 tags: [graphs, connectivity, dfs]
+checker: cmp_yesno
+time_limit: 1
+real_time_limit: 4
+max_vm_size: 64M
 ---
 
 Ориентированный граф задан в формате списка рёбер. Проверить, является ли он сильно связным.

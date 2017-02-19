@@ -1,8 +1,11 @@
 ---
 id: 1f149524-be56-4cfb-82f1-acdae2be34aa
-shortname: check_connectivity
 longname: Проверить связность графа
 tags: [graphs, connectivity, dfs]
+checker: cmp_yesno
+time_limit: 1
+real_time_limit: 1
+max_vm_size: 64M
 ---
 
 Неориентированный граф задан в виде списка рёбер. При помощи обхода в глубину проверить, являетcя ли он связным.
