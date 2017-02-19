@@ -1,0 +1,10 @@
+name: {{  name }}
+problems:
+    {% for p in problems %}
+    # {{ p.longname }}
+    - {{ p.id }}:
+        score: 1
+        {% if p.time_limit is defined %}time_limit: {{ p.time_limit }}{% endif %}
+        {% if p.real_time_limit is defined %}real_time_limit: {{ p.real_time_limit }}{% endif %}
+        {% if p.max_vm_size is defined %}max_vm_size: {{ p.max_vm_size }}{% endif %}
+    {% endfor %}

@@ -1,0 +1,94 @@
+# -*- coding: utf-8 -*-
+# $Id$
+
+contest_time = 0
+contest_finish_time = "2999/12/09 00:00:00"
+score_system = kirov
+board_fog_time = 0
+board_unfog_time = 0
+standings_locale = "Russian"
+
+compile_dir = "../../compile/var/compile"
+
+team_enable_src_view
+team_enable_rep_view
+team_enable_ce_view
+disable_submit_after_ok
+problem_navigation
+
+compile_max_vm_size = 512M
+compile_max_file_size = 32M
+
+stand_fancy_style
+stand_extra_format = "%UMp1s %UMp1f"
+
+cr_serialization_key = 22723
+secure_run
+detect_violations
+advanced_layout
+enable_max_stack_size
+enable_l10n
+team_download_time = 0
+
+[language]
+id = 23
+short_name = "python3"
+long_name = "Python 3.3.2"
+arch = "linux-shared"
+src_sfx = ".py"
+
+[problem]
+abstract
+short_name = "Generic"
+use_stdin
+use_stdout
+xml_file = "statement.html"
+test_dir = "%Ps"
+test_pat = "%02d"
+use_corr
+corr_dir = "%Ps"
+corr_sfx = ".a"
+corr_pat = "%02d.a"
+time_limit = 1
+real_time_limit = 5
+max_vm_size = 64M
+max_stack_size = 64M
+max_file_size = 64M
+max_open_file_count = 32
+max_process_count = 32
+check_cmd = "check"
+disable_user_submit = 0
+disable_submit_after_ok
+disable_security = 0
+enable_text_form
+normalization = "nl"
+
+{% for p in problems %}
+[problem]
+id = {{ loop.index }}
+super = "Generic"
+short_name = "{{ p.shortname }}"
+long_name = "{{ p.longname }}"
+type = "standard"
+standard_checker = "{{ p.checker }}"
+{% endfor %}
+
+
+[tester]
+name = Linux-shared
+arch = "linux-shared"
+abstract
+no_core_dump
+enable_memory_limit_error
+kill_signal = KILL
+memory_limit_type = "default"
+secure_exec_type = "dll"
+clear_env
+start_env = "PATH=/usr/local/bin:/usr/bin:/bin"
+start_env = "HOME"
+check_dir = "work-disk/work"
+
+[tester]
+any
+super = Linux-shared
+arch = linux-shared
