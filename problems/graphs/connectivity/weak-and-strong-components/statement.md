@@ -1,6 +1,6 @@
 ---
-id: ???
-longname: Weak and Strong Components
+id: de2efbda-7f5f-4d9f-b59a-1284d7b949f6
+longname: Сильные и слабые компоненты связности
 tags: [graphs, connectivity, dfs]
 checker: cmp_int_seq
 time_limit: 4

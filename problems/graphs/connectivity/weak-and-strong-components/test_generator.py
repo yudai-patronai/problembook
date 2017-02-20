@@ -3,6 +3,7 @@
 import os
 import subprocess as sp
 import random
+import shutil
 
 
 def get_graph_size(graph):
@@ -108,6 +109,8 @@ def generate_big_graph(n, p, seed):
 
 if __name__ == "__main__":
     test_folder = "tests"
+    shutil.rmtree(test_folder, ignore_errors=True)
+    os.mkdir(test_folder)
     test = 0
     for d in simple_tests:
         test += 1
