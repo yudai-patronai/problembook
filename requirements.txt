@@ -3,4 +3,4 @@ jinja2
 markdown
 beautifulsoup4
 tabulate
-yaml
+PyYAML
