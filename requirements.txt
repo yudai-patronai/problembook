@@ -4,3 +4,4 @@ markdown
 beautifulsoup4
 tabulate
 PyYAML
+lxml
