@@ -2,7 +2,7 @@
 id: ???
 longname: Weak and Strong Components
 tags: [graphs, connectivity, dfs]
-checker: ???
+checker: cmp_int_seq
 time_limit: 4
 real_time_limit: 10
 max_vm_size: 256M
@@ -39,6 +39,7 @@ max_vm_size: 256M
 | 1 2  |       |
 | 2 3  |       |
 | 1 0  |       |
+
 
 | Ввод | Вывод |
 |------|-------|
