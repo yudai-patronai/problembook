@@ -2,7 +2,7 @@
 # $Id$
 
 contest_time = 0
-contest_finish_time = "2999/12/09 00:00:00"
+contest_finish_time = "2017/12/09 00:00:00"
 score_system = kirov
 board_fog_time = 0
 board_unfog_time = 0
@@ -42,7 +42,6 @@ abstract
 short_name = "Generic"
 use_stdin
 use_stdout
-xml_file = "statement.html"
 test_dir = "%Ps"
 test_pat = "%02d"
 use_corr
@@ -62,6 +61,7 @@ disable_submit_after_ok
 disable_security = 0
 enable_text_form
 normalization = "nl"
+statement_file = "%Ps.html"
 
 {% for p in problems %}
 [problem]
@@ -70,9 +70,14 @@ super = "Generic"
 short_name = "{{ p.shortname }}"
 long_name = "{{ p.longname }}"
 type = "standard"
+full_score = {{ p.score }}
+open_tests = "1-3:full"
 standard_checker = "{{ p.checker }}"
-{% endfor %}
+{% if p.time_limit is defined %}time_limit = {{ p.time_limit }}{% endif %}
+{% if p.real_time_limit is defined %}real_time_limit = {{ p.real_time_limit }}{% endif %}
+{% if p.max_vm_size is defined %}max_vm_size = {{ p.max_vm_size }}{% endif %}
 
+{% endfor %}
 
 [tester]
 name = Linux-shared

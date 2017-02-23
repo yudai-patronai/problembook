@@ -93,21 +93,29 @@ def generate_ejudge_config(params):
     with open(params.contest) as f:
         desc = yaml.load(f)
 
-    root_dir = os.path.join(params.output_dir, desc['name'])
+    problem_overrides = dict(next(iter(p.items())) for p in desc['problems'])
+
+    root_dir = os.path.join(params.output_dir, str(desc['name']))
     if os.path.isdir(root_dir):
-        sys.stderr.write('Директория {} уже существует.'.format(root_dir))
-        sys.exit(-1)
+        if not params.force_overwrite:
+            sys.stderr.write('Директория {} уже существует.'.format(root_dir))
+            sys.exit(-1)
+        else:
+            shutil.rmtree(root_dir)
 
     conf_dir = os.path.join(root_dir, 'conf')
     problems_dir = os.path.join(root_dir, 'problems')
+    statements_dir = os.path.join(root_dir, 'statements')
 
     os.makedirs(conf_dir, exist_ok=True)
     os.makedirs(problems_dir, exist_ok=True)
+    os.makedirs(statements_dir, exist_ok=True)
 
     ids = set(list(p.keys())[0] for p in desc['problems'])
     problems = __find_problems(lambda p: p['id'] in ids)
     for k, p in enumerate(problems):
         p.metadata['shortname'] = chr(ord('A') + k)
+        p.metadata.update(problem_overrides.get(p.metadata['id']))
 
     template = env.get_template(params.template)
 
@@ -117,7 +125,7 @@ def generate_ejudge_config(params):
     for p in problems:
         problem_dir = os.path.join(problems_dir, p.metadata['shortname'])
         os.makedirs(problem_dir, exist_ok=True)
-        with open(os.path.join(problem_dir, 'statement.html'), 'w') as f:
+        with open(os.path.join(statements_dir, p.metadata['shortname'] + ".html"), 'w') as f:
             html = markdown.markdown(p.content, extensions = ['markdown.extensions.tables'])
             f.write(bs4.BeautifulSoup(html, 'lxml').prettify())
         generate_tests_for_problem(p)
@@ -170,6 +178,7 @@ generate_ejudge_config_parser.set_defaults(_action=generate_ejudge_config)
 generate_ejudge_config_parser.add_argument('contest', help='Файл с описание контеста')
 generate_ejudge_config_parser.add_argument('-t', '--template', required=True, help='Шаблон конфига')
 generate_ejudge_config_parser.add_argument('-o', '--output-dir', required=True, help='Выходной путь')
+generate_ejudge_config_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие конфиги ejudge')
 
 generate_tests_parser = subparsers.add_parser('generate-tests', help='Сгенерировать тесты')
 generate_tests_parser.set_defaults(_action=generate_tests)
