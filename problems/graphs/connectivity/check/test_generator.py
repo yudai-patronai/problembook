@@ -2,11 +2,13 @@
 
 import os
 import random
+import shutil
 
 N_TESTS = 50
 N_VERTS = 50
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
+shutil.rmtree(tests_dir, ignore_errors=True)
 os.makedirs(tests_dir)
 
 random.seed(42)

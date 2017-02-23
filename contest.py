@@ -3,6 +3,9 @@
 import argparse
 import os
 import sys
+import functools
+import multiprocessing
+import subprocess
 import shutil
 import uuid
 import jinja2
@@ -17,10 +20,13 @@ ALLOWED_MD_LANGS = ['md']
 SCRIPT_DIR = os.path.dirname(__file__)
 PROBLEMS_DIR = os.path.join(SCRIPT_DIR, 'problems')
 CONTESTS_DIR = os.path.join(SCRIPT_DIR, 'contests')
+TESTS_FOLDER = 'tests'
+TEST_GENERATOR = 'test_generator.py'
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
 )
+
 
 def create_problem(params):
     lng = params.markdown_language
@@ -114,8 +120,31 @@ def generate_ejudge_config(params):
         with open(os.path.join(problem_dir, 'statement.html'), 'w') as f:
             html = markdown.markdown(p.content, extensions = ['markdown.extensions.tables'])
             f.write(bs4.BeautifulSoup(html, 'lxml').prettify())
-        shutil.copytree(os.path.join(p.metadata['path'], 'tests'), os.path.join(problem_dir, 'tests'))
+        generate_tests_for_problem(p)
+        shutil.copytree(os.path.join(p.metadata['path'], TESTS_FOLDER), os.path.join(problem_dir, TESTS_FOLDER))
 
+
+def generate_tests_for_problem(prob, force=False):
+    path = os.path.abspath(prob if isinstance(prob, str) else prob.metadata['path'])
+
+    tests_dir = os.path.join(path, TESTS_FOLDER)
+    generator = os.path.abspath(os.path.join(path, TEST_GENERATOR))
+    if os.path.isdir(tests_dir) and not force:
+        print('Пропускаю генерацию тестов для ' + path)
+        return
+
+    print('Генерирую тесты для ' + path)
+
+    try:
+        subprocess.check_output(generator, cwd=path)
+    except subprocess.CalledProcessError as e:
+        print("Ошибка при генерации тестов для {}: {}".format(path, e.output))
+
+
+def generate_tests(params):
+
+    with multiprocessing.Pool(params.jobs) as p:
+        p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), __find_problems())
 
 parser = argparse.ArgumentParser(prog='contest')
 subparsers = parser.add_subparsers(dest='cmd')
@@ -142,7 +171,11 @@ generate_ejudge_config_parser.add_argument('contest', help='Файл с опис
 generate_ejudge_config_parser.add_argument('-t', '--template', required=True, help='Шаблон конфига')
 generate_ejudge_config_parser.add_argument('-o', '--output-dir', required=True, help='Выходной путь')
 
+generate_tests_parser = subparsers.add_parser('generate-tests', help='Сгенерировать тесты')
+generate_tests_parser.set_defaults(_action=generate_tests)
+generate_tests_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
+generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие тесты')
+
 args = parser.parse_args()
 
 args._action(args)
-
