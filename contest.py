@@ -28,6 +28,64 @@ env = jinja2.Environment(
 )
 
 
+def parse_io_example(block):
+    lines = [l.strip() for l in block.split('\n')]
+
+    _in = []
+    _out = []
+
+    flag = 0
+
+    for l in lines:
+        if flag == 0:
+            if l.startswith('-> '):
+                _in.append(l[3:])
+            elif l == '--':
+                flag = 1
+            else:
+                return None
+        else:
+            if l.startswith('<- '):
+                _out.append(l[3:])
+            else:
+                return None
+
+    return _in, _out
+
+
+class InputOutputExamplesProcessor(markdown.blockprocessors.BlockProcessor):
+
+    def test(self, parent, block):
+        return parse_io_example(block) is not None
+
+    def run(self, parent, blocks):
+        example = parse_io_example(blocks.pop(0))
+
+        etree = markdown.util.etree
+
+        table = etree.SubElement(parent, 'table')
+        thead = etree.SubElement(table, 'thead')
+        tr = etree.SubElement(thead, 'tr')
+
+        for el in ['Ввод', 'Вывод']:
+            etree.SubElement(tr, 'td').text = el
+
+        tbody = etree.SubElement(table, 'tbody')
+        tr = etree.SubElement(tbody, 'tr')
+
+        for el in example:
+            td = etree.SubElement(tr, 'td')
+            etree.SubElement(td, 'pre').text = '\n'.join(el)
+
+        etree.SubElement(parent, 'br')
+
+
+class InputOutputExamplesExtension(markdown.Extension):
+
+    def extendMarkdown(self, md, md_globals):
+        md.parser.blockprocessors.add('ioexample', InputOutputExamplesProcessor(md.parser), '>indent')
+
+
 def create_problem(params):
     lng = params.markdown_language
 
@@ -122,11 +180,12 @@ def generate_ejudge_config(params):
     with open(os.path.join(conf_dir, 'serve.cfg'), 'w') as f:
         f.write(template.render(problems=map(lambda p: p.metadata, problems)))
 
+    md = markdown.Markdown(extensions = ['markdown.extensions.tables', InputOutputExamplesExtension()])
     for p in problems:
         problem_dir = os.path.join(problems_dir, p.metadata['shortname'])
         os.makedirs(problem_dir, exist_ok=True)
         with open(os.path.join(statements_dir, p.metadata['shortname'] + ".html"), 'w') as f:
-            html = markdown.markdown(p.content, extensions = ['markdown.extensions.tables'])
+            html = md.convert(p.content)
             f.write(bs4.BeautifulSoup(html, 'lxml').prettify())
         generate_tests_for_problem(p)
         shutil.copytree(os.path.join(p.metadata['path'], TESTS_FOLDER), os.path.join(problem_dir, TESTS_FOLDER))
