@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./todot.py < $1 | dot -Tsvg
