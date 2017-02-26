@@ -55,13 +55,13 @@ def gen_test(tests_dir, ind, n, graph):
     if start == finish:
         finish = n - 1 - start
     with open(test, 'w') as f:
-        f.write('%d %d\n' % (n, m))
+        f.write('%d %d ' % (n, m))
         f.write('%d %d\n' % (start, finish))
         for e in graph:
             f.write('%d %d %d\n' % e)
 
     with open(ans, 'w') as f:
-        f.write(str(solution.solve(graph_edges_to_list(n, graph), start, finish)))
+        f.write(solution.solve(graph_edges_to_list(n, graph), start, finish))
 
 
 def gen_tests(tests_dir):

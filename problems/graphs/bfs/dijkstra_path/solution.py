@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 def read_graph():
-    n, m = map(int, input().split())
-    s, f = map(int, input().split())
+    n, m, s, f = map(int, input().split())
 
     graph = [[] for i in range(n)]
     for i in range(m):
@@ -40,7 +39,7 @@ def get_shortest_path(G, start, finish):
 
 
 def solve(G, s, f):
-    return ' '.join(map(str, get_shortest_path(G, s, f)))
+    return ' '.join(map(str, get_shortest_path(G, s, f))) + '\n'
 
 if __name__ == "__main__":
-    print(solve(*read_graph()))
+    print(solve(*read_graph()), end='')
