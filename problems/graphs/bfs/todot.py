@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
-n = int(input())
-m = int(input())
+n, m = map(int, input().split())
 
 print('graph x {')
 for _ in range(m):
