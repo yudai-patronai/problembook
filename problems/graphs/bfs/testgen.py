@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import os
+import shutil
 import random
 import solution
 import sys
@@ -80,8 +81,8 @@ def gen_test(tests_dir, ind, n, graph):
         f.write(solution.solve(graph_edges_to_list(n, graph)))
 
 def gen_tests(tests_dir):
-    if not os.path.exists(tests_dir):
-        os.makedirs(tests_dir)
+    shutil.rmtree(tests_dir, ignore_errors=True)
+    os.makedirs(tests_dir)
 
     t = 1
     for i in range(5):
