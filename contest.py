@@ -223,7 +223,7 @@ def generate_tests_for_problem(prob, force=False):
     print('Генерирую тесты для ' + path)
 
     try:
-        subprocess.check_output(generator, cwd=path)
+        subprocess.check_output([sys.executable, generator], cwd=path)
     except subprocess.CalledProcessError as e:
         print("Ошибка при генерации тестов для {}: {}".format(path, e.output))
 
