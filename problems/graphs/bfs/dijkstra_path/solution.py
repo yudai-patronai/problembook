@@ -1,16 +1,10 @@
 #!/usr/bin/env python3
+import bisect
+import os
+import sys
 
-def read_graph():
-    n, m, s, f = map(int, input().split())
-
-    graph = [[] for i in range(n)]
-    for i in range(m):
-        a, b, w = map(int, input().split())
-        graph[a].append((b, w))
-        graph[b].append((a, w))
-
-    return graph, s, f
-
+sys.path.append(os.path.abspath('..'))
+import task
 
 def dijkstra(G, start):
     shortest_path = [float('+inf') for i in range(len(G))]
@@ -42,4 +36,5 @@ def solve(G, s, f):
     return ' '.join(map(str, get_shortest_path(G, s, f))) + '\n'
 
 if __name__ == "__main__":
-    print(solve(*read_graph()), end='')
+    n, m, x, y, g = task.read_task_weight()
+    print(solve(g, x, y), end='')
