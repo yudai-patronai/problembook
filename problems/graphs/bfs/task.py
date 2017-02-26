@@ -5,6 +5,7 @@ import shutil
 import random
 import solution
 import sys
+import bisect
 
 random.seed(100)
 
@@ -158,3 +159,38 @@ def gen_tests_weight_xy(tests_dir):
         n = random.randrange(100, 1000)
         gen_test_weight(tests_dir, t, n, 100)
         t += 1
+
+
+# graph:
+# [
+#   [(v1, dist1), (v2, dist2),,,]
+#   ...
+# ]
+#
+# return (dist, parent)
+# parent[i] - parent of i'th vertex
+def dijkstra(graph, x, y):
+    parent = [-1] * len(graph)
+
+    if x == y:
+        return (0, parent)
+
+    dist = [float('+inf') for _ in graph]
+    queue = [(0, x)]
+    dist[x] = 0
+
+    while queue:
+        vd, v = queue.pop(0)
+        if v == y:
+            return (vd, parent)
+
+        for v2, r in graph[v]:
+            if dist[v2] > dist[v] + r:
+                i = bisect.bisect_left(queue, (dist[v2], v2))
+                if i < len(queue) and queue[i][1] == v2:
+                    del queue[i]
+                dist[v2] = dist[v] + r
+                parent[v2] = v
+                bisect.insort(queue, (dist[v2], v2))
+
+    return (None, None)
