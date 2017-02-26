@@ -8,11 +8,13 @@ import multiprocessing
 import subprocess
 import shutil
 import uuid
+import lxml.etree
 import jinja2
 import frontmatter
 import tabulate
 import yaml
 import markdown
+import html2markdown
 import bs4
 
 #ALLOWED_MD_LANGS = ['md', 'rst']
@@ -87,6 +89,24 @@ class InputOutputExamplesExtension(markdown.Extension):
 
 
 def create_problem(params):
+    _params = params.__dict__.copy()
+
+    if _params['from_xml']:
+        xml = lxml.etree.parse(_params['from_xml'])
+        if 'longname' not in params:
+            params['longname'] = xml.xpath('/problem/statement/title/text()')[0].strip()
+
+        _params['content'] = {'examples': []}
+
+        desc = xml.xpath('/problem/statement/description')[0]
+        html = (desc.text or '') + ''.join(lxml.etree.tostring(x).decode('utf-8') for x in desc.getchildren()) + (desc.tail or '')
+        _params['content']['description'] = html2markdown.convert(html)
+
+        for ex in xml.xpath('/problem/examples/example'):
+            _in = [l.strip() for l in ex.xpath('input/text()')[0].split('\n') if l]
+            _out = [l.strip() for l in ex.xpath('output/text()')[0].split('\n') if l]
+            _params['content']['examples'].append((_in, _out))
+
     lng = params.markdown_language
 
     template = env.get_template('problem.{}.jinja2'.format(lng))
@@ -95,7 +115,7 @@ def create_problem(params):
     os.makedirs(problem_dir, exist_ok=True)
 
     with open(os.path.join(problem_dir, 'statement.' + lng), 'w') as f:
-        f.write(template.render(id=str(uuid.uuid4()), **params.__dict__))
+        f.write(template.render(id=str(uuid.uuid4()), **_params))
 
 
 def create_contest(params):
@@ -223,6 +243,7 @@ create_problem_parser.add_argument('-p', '--path', required=True, help='Путь
 create_problem_parser.add_argument('-t', '--tags', default='', help='Список тегов через запятую')
 create_problem_parser.add_argument('-L', '--markdown-language', default=ALLOWED_MD_LANGS[0], choices=ALLOWED_MD_LANGS, help='Язык разметки')
 create_problem_parser.add_argument('-l', '--longname', help='Длинное название')
+create_problem_parser.add_argument('-F', '--from-xml', help='Описание в задачи в xml для импорта')
 
 create_contest_parser = subparsers.add_parser('create-contest', help='Создать контест')
 create_contest_parser.set_defaults(_action=create_contest)

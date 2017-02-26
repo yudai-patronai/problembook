@@ -5,3 +5,4 @@ beautifulsoup4
 tabulate
 PyYAML
 lxml
+html2markdown
