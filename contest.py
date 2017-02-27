@@ -125,9 +125,7 @@ def create_contest(params):
 
     problems = __find_problems(lambda p: p.metadata['id'] in requested)
 
-    found = set(p.metadata['id'] for p in problems)
-
-    diff = requested.difference(found)
+    diff = requested.difference(problems.keys())
     if diff:
         for p in diff:
             print('Задача не найдена:', p)
@@ -140,7 +138,7 @@ def create_contest(params):
 
     template = env.get_template('contest.yml.jinja2')
     with open(contest_file, 'w') as f:
-        f.write(template.render(name=params.name, problems=problems))
+        f.write(template.render(name=params.name, problems=[problems[k] for k in params.problems]))
 
 
 def find_problems(params):
@@ -149,7 +147,7 @@ def find_problems(params):
         p.metadata['id'],
         p.metadata['longname'],
         ' '.join(p.metadata['tags'])
-    ] for k, p in enumerate(__find_problems())]
+    ] for k, p in enumerate(__find_problems().values())]
 
     print(tabulate.tabulate(
         problems,
@@ -159,7 +157,7 @@ def find_problems(params):
 
 def __find_problems(predicate=None):
 
-    problems = []
+    problems = {}
 
     k = 1
     for root, _, files in os.walk(PROBLEMS_DIR):
@@ -172,7 +170,7 @@ def __find_problems(predicate=None):
                 problem.metadata['statement'] = ppath
                 if predicate and not predicate(problem):
                     continue
-                problems.append(problem)
+                problems[problem.metadata['id']] = problem
                 k += 1
 
     return problems
@@ -201,7 +199,7 @@ def generate_ejudge_config(params):
     os.makedirs(statements_dir, exist_ok=True)
 
     ids = set(list(p.keys())[0] for p in desc['problems'])
-    problems = __find_problems(lambda p: p['id'] in ids)
+    problems = __find_problems(lambda p: p['id'] in ids).values()
     for k, p in enumerate(problems):
         p.metadata['shortname'] = chr(ord('A') + k)
         p.metadata.update(problem_overrides.get(p.metadata['id']))
@@ -244,11 +242,11 @@ def generate_tests_for_problem(prob, force=False):
 def generate_tests(params):
 
     with multiprocessing.Pool(params.jobs) as p:
-        p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), __find_problems())
+        p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), __find_problems().values())
 
 
 def validate(params):
-    problems = __find_problems()
+    problems = __find_problems().values()
 
     ids = set()
 
@@ -285,7 +283,7 @@ def validate(params):
 
 
 def show(params):
-    prob = __find_problems(lambda p: p.metadata['id'] == params.id)[0]
+    prob = __find_problems(lambda p: p.metadata['id'] == params.id).values()[0]
 
     with open(prob.metadata['statement']) as f:
         print(f.read())
