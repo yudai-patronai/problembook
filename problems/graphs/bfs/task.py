@@ -35,15 +35,16 @@ def read_graph_directed(n, m):
 
     return graph
 
-def read_task():
+def read_task_f(read_graph_func):
     args = list(map(int, input().split()))
-    args.append(read_graph(args[0], args[1]))
+    args.append(read_graph_func(args[0], args[1]))
     return args
 
+def read_task():
+    return read_task_f(read_graph)
+
 def read_task_weight():
-    args = list(map(int, input().split()))
-    args.append(read_graph_weight(args[0], args[1]))
-    return args
+    return read_task_f(read_graph_weight)
 
 def read_task_directed():
     return read_task_f(read_graph_directed)
