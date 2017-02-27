@@ -66,6 +66,7 @@ class InputOutputExamplesProcessor(markdown.blockprocessors.BlockProcessor):
         etree = markdown.util.etree
 
         table = etree.SubElement(parent, 'table')
+        table.set('class', 'example')
         thead = etree.SubElement(table, 'thead')
         tr = etree.SubElement(thead, 'tr')
 
