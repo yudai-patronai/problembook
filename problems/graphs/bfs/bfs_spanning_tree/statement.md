@@ -2,7 +2,7 @@
 id: 8120e7d1-ddde-4996-b262-b5c9b3b55098
 longname: Поиск расстояний от заданной вершины до всех остальных
 tags: [graphs,bfs]
-checker: cmp_yesno
+checker: checker.py
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
