@@ -121,7 +121,17 @@ def create_problem(params):
 def create_contest(params):
     os.makedirs(CONTESTS_DIR, exist_ok=True)
 
-    problems = __find_problems(lambda p: p['id'] in params.problems)
+    requested = set(params.problems)
+
+    problems = __find_problems(lambda p: p.metadata['id'] in requested)
+
+    found = set(p.metadata['id'] for p in problems)
+
+    diff = requested.difference(found)
+    if diff:
+        for p in diff:
+            print('Задача не найдена:', p)
+        sys.exit(1)
 
     contest_file = os.path.join(CONTESTS_DIR, "{}.yml".format(params.name))
     if os.path.isfile(contest_file) and not params.force_overwrite:
