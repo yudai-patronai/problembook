@@ -159,6 +159,7 @@ def __find_problems(predicate=None):
                 ppath = os.path.join(root, file)
                 problem = frontmatter.load(ppath)
                 problem.metadata['path'] = os.path.dirname(ppath)
+                problem.metadata['statement'] = ppath
                 if predicate and not predicate(problem):
                     continue
                 problems.append(problem)
@@ -272,6 +273,13 @@ def validate(params):
         if not os.path.isfile(os.path.join(path, 'test_generator.py')):
             print('{}: отсутствует генератор тестов'.format(path))
 
+
+def show(params):
+    prob = __find_problems(lambda p: p.metadata['id'] == params.id)[0]
+
+    with open(prob.metadata['statement']) as f:
+        print(f.read())
+
 parser = argparse.ArgumentParser(prog='contest')
 subparsers = parser.add_subparsers(dest='cmd')
 subparsers.required = True
@@ -308,6 +316,10 @@ generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.set_defaults(_action=validate)
+
+show_parser = subparsers.add_parser('show', help='Показать описание задачи')
+show_parser.set_defaults(_action=show)
+show_parser.add_argument('id', help='Идентификатор задачи')
 
 
 args = parser.parse_args()
