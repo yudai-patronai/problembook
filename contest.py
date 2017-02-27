@@ -124,7 +124,7 @@ def create_contest(params):
     problems = __find_problems(lambda p: p['id'] in params.problems)
 
     contest_file = os.path.join(CONTESTS_DIR, "{}.yml".format(params.name))
-    if os.path.isfile(contest_file):
+    if os.path.isfile(contest_file) and not params.force_overwrite:
         sys.stderr.write('Файл {} уже существует'.format(contest_file))
         sys.exit(-1)
 
@@ -287,6 +287,8 @@ create_problem_parser.add_argument('-F', '--from-xml', help='Описание в
 create_contest_parser = subparsers.add_parser('create-contest', help='Создать контест')
 create_contest_parser.set_defaults(_action=create_contest)
 create_contest_parser.add_argument('-n', '--name', required=True, help='Название контеста')
+create_contest_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие конфиги контестов')
+
 create_contest_parser.add_argument('problems', nargs='+', help='Название контеста')
 
 find_problems_parser = subparsers.add_parser('find-problems', help='Найти задачи')
