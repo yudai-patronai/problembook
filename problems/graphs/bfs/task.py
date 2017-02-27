@@ -73,7 +73,7 @@ def gen_graph_edges(n, m, connective=True):
 
     return g
 
-def edges_to_graph(n, edges):
+def edges_to_graph(n, edges, directed=False):
     res = [[] for i in range(n)]
     if not edges:
         return res
@@ -82,21 +82,24 @@ def edges_to_graph(n, edges):
         for e in edges:
             a, b = e
             res[a].append(b)
-            res[b].append(a)
+            if not directed:
+                res[b].append(a)
     else:
         for e in edges:
             a, b, d = e
             res[a].append((b, d))
-            res[b].append((a, d))
+            if not directed:
+                res[b].append((a, d))
 
     return res
 
 def add_rand_weight(edges):
     return [(a, b, random.randrange(1, 100)) for a, b in edges]
 
-def gen_test(tests_dir, ind, n, edges, *args):
+def gen_test(tests_dir, ind, n, edges, *args, **kwargs):
     m = len(edges)
     params = ' '.join(map(str, (n, m) + args))
+    directed = kwargs.get('directed', False)
     print('test %d ' % ind + params)
 
     test = os.path.join(tests_dir, '%.2d' % ind)
@@ -108,7 +111,7 @@ def gen_test(tests_dir, ind, n, edges, *args):
             f.write(' '.join(map(str, e)) + '\n')
 
     with open(ans, 'w') as f:
-        f.write(solution.solve(edges_to_graph(n, edges), *args))
+        f.write(solution.solve(edges_to_graph(n, edges, directed=directed), *args))
 
 def gen_tests(tests_dir):
     shutil.rmtree(tests_dir, ignore_errors=True)
