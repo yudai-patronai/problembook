@@ -21,25 +21,32 @@ max_vm_size: 64M
 
 ### Примеры
 
+```
 -> 1 2
 --
 <- 3
+```
 
+```
 -> 1 -1
 --
 <- 0
+```
 {% else %}
 {{ content.description }}
 
 ### Примеры
 
 {% for _in,_out  in  content.examples -%}
+```
 {% for l in _in -%}
 -> {{ l }}
 {% endfor -%}
 --
 {% for l in _out -%}
 <- {{ l }}
-{% endfor %}
+{% endfor -%}
+```
+
 {% endfor -%}
 {% endif %}

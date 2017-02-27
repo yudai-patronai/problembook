@@ -38,6 +38,12 @@ def parse_io_example(block):
 
     flag = 0
 
+    if len(lines) < 3:
+        return None
+
+    if lines[0] == lines[-1] == '```':
+        lines = lines[1:-1]
+
     for l in lines:
         if flag == 0:
             if l.startswith('-> '):
