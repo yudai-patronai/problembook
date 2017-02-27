@@ -27,6 +27,14 @@ def read_graph_weight(n, m):
 
     return graph
 
+def read_graph_directed(n, m):
+    graph = [[] for i in range(n)]
+    for i in range(m):
+        a, b = map(int, input().split())
+        graph[a].append(b)
+
+    return graph
+
 def read_task():
     args = list(map(int, input().split()))
     args.append(read_graph(args[0], args[1]))
@@ -36,6 +44,9 @@ def read_task_weight():
     args = list(map(int, input().split()))
     args.append(read_graph_weight(args[0], args[1]))
     return args
+
+def read_task_directed():
+    return read_task_f(read_graph_directed)
 
 def gen_tree_edges(n):
     return [(random.randint(0, k-1), k) for k in range(1, n)]
