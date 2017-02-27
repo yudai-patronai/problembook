@@ -233,6 +233,45 @@ def generate_tests(params):
     with multiprocessing.Pool(params.jobs) as p:
         p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), __find_problems())
 
+
+def validate(params):
+    problems = __find_problems()
+
+    ids = set()
+
+    for p in problems:
+        path = p.metadata['path']
+        if 'id' not in p.metadata:
+            print('{}: не указан id'.format(path))
+        else:
+            if p.metadata['id'] in ids:
+                print('{}: не уникальный id'.format(path))
+            else:
+                ids.add(p.metadata['id'])
+
+        if 'longname' not in p.metadata:
+            print('{}: не указано название задачи'.format(path))
+
+        if 'checker' not in p.metadata:
+            print('{}: не указан чекер'.format(path))
+        else:
+            c = p.metadata['checker']
+            if c.startswith('cmp'):
+                if c not in ['cmp_yesno', 'cmp_int', 'cmp_int_seq']:
+                    print('{}: неизвестный чекер'.format(path))
+            else:
+                if not os.path.isfile(os.path.join(path, 'checker.py')):
+                    print('{}: чекер не найден'.format(path))
+
+        if not os.path.isdir(os.path.join(path, 'tests')):
+            print('{}: тесты не сгенерированы'.format(path))
+
+        if not os.path.isfile(os.path.join(path, 'solution.py')):
+            print('{}: отсутствует решение'.format(path))
+
+        if not os.path.isfile(os.path.join(path, 'test_generator.py')):
+            print('{}: отсутствует генератор тестов'.format(path))
+
 parser = argparse.ArgumentParser(prog='contest')
 subparsers = parser.add_subparsers(dest='cmd')
 subparsers.required = True
@@ -264,6 +303,10 @@ generate_tests_parser = subparsers.add_parser('generate-tests', help='Сгене
 generate_tests_parser.set_defaults(_action=generate_tests)
 generate_tests_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
 generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие тесты')
+
+validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
+validate_parser.set_defaults(_action=validate)
+
 
 args = parser.parse_args()
 
