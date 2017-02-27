@@ -292,6 +292,12 @@ def show(params):
     with open(prob.metadata['statement']) as f:
         print(f.read())
 
+
+def edit(params):
+    problem = next(iter(__find_problems(lambda p: p.metadata['id'] == params.id).values()))
+    editor = subprocess.check_output(['which', os.environ.get('EDITOR', 'vim')]).decode('utf-8').strip()
+    os.execl(editor, editor, problem.metadata['statement'])
+
 parser = argparse.ArgumentParser(prog='contest')
 subparsers = parser.add_subparsers(dest='cmd')
 subparsers.required = True
@@ -332,6 +338,9 @@ show_parser = subparsers.add_parser('show', help='Показать описан�
 show_parser.set_defaults(_action=show)
 show_parser.add_argument('id', help='Идентификатор задачи')
 
+edit_parser = subparsers.add_parser('edit', help='Отредактировать описание задачи')
+edit_parser.set_defaults(_action=edit)
+edit_parser.add_argument('id', help='Идентификатор задачи')
 
 args = parser.parse_args()
 
