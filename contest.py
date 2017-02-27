@@ -286,7 +286,7 @@ def validate(params):
 
 
 def show(params):
-    prob = __find_problems(lambda p: p.metadata['id'] == params.id).values()[0]
+    prob = next(iter(__find_problems(lambda p: p.metadata['id'] == params.id).values()))
 
     with open(prob.metadata['statement']) as f:
         print(f.read())
