@@ -3,7 +3,6 @@ import sys
 import os
 
 sys.path.append(os.path.abspath('../..'))
-import task
 
 class CheckerResult:
     OK = 0  # OK, правильный ответ
