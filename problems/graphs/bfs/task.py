@@ -35,6 +35,15 @@ def read_graph_directed(n, m):
 
     return graph
 
+def read_graph_weighted_to_adj_matrix(n, m):
+    matrix = [[float('+inf') for j in range(n)] for i in range(n)]
+    for i in range(m):
+        a, b, w = map(int, input().split())
+        matrix[a][b] = w
+        matrix[b][a] = w
+
+    return matrix
+
 def read_task_f(read_graph_func):
     args = list(map(int, input().split()))
     args.append(read_graph_func(args[0], args[1]))
@@ -48,6 +57,9 @@ def read_task_weight():
 
 def read_task_directed():
     return read_task_f(read_graph_directed)
+
+def read_task_weight_adj_matrix():
+    return read_task_f(read_graph_weighted_to_adj_matrix)
 
 def gen_tree_edges(n):
     return [(random.randint(0, k-1), k) for k in range(1, n)]
@@ -93,6 +105,26 @@ def edges_to_graph(n, edges, directed=False):
 
     return res
 
+def edges_to_adj_matrix(n, edges, directed=False):
+    m = [[float('+inf') for j in range(n)] for i in range(n)]
+    if not edges:
+        return m
+
+    if len(edges[0]) == 2:
+        for e in edges:
+            a, b = e
+            m[a][b] = 1
+            if not directed:
+                m[b][a] = 1
+    else:
+        for e in edges:
+            a, b, d = e
+            m[a][b] = d
+            if not directed:
+                m[b][a] = d
+
+    return m
+
 def add_rand_weight(edges):
     return [(a, b, random.randrange(1, 100)) for a, b in edges]
 
@@ -111,7 +143,10 @@ def gen_test(tests_dir, ind, n, edges, *args, **kwargs):
             f.write(' '.join(map(str, e)) + '\n')
 
     with open(ans, 'w') as f:
-        f.write(solution.solve(edges_to_graph(n, edges, directed=directed), *args))
+        if kwargs.get('adj_matrix', False):
+            f.write(solution.solve(edges_to_adj_matrix(n, edges, directed=directed), *args))
+        else:
+            f.write(solution.solve(edges_to_graph(n, edges, directed=directed), *args))
 
 def gen_tests(tests_dir):
     shutil.rmtree(tests_dir, ignore_errors=True)
@@ -166,8 +201,11 @@ def gen_test_weight_xy(tests_dir, t, n, e, x, y):
     gen_test(tests_dir, t, n, add_rand_weight(gen_graph_edges(n, e)),
              x, y)
 
-def gen_test_weight(tests_dir, t, n, e):
-    gen_test_weight_xy(tests_dir, t, n, e, random.randrange(n), random.randrange(n))
+def gen_test_weight(tests_dir, t, n, e, add_xy=True, adj_matrix=False):
+    if add_xy:
+        gen_test_weight_xy(tests_dir, t, n, e, random.randrange(n), random.randrange(n))
+    else:
+        gen_test(tests_dir, t, n, add_rand_weight(gen_graph_edges(n, e)), adj_matrix=adj_matrix)
 
 def gen_tests_weight_xy(tests_dir):
     shutil.rmtree(tests_dir, ignore_errors=True)
@@ -199,6 +237,26 @@ def gen_tests_weight_xy(tests_dir):
         gen_test_weight(tests_dir, t, n, 100)
         t += 1
 
+def gen_tests_weight_adj(tests_dir):
+    shutil.rmtree(tests_dir, ignore_errors=True)
+    os.makedirs(tests_dir)
+
+    t = 1
+    for i in range(5):
+        n = 2 + i * 2
+        gen_test_weight(tests_dir, t, n, i, add_xy=False, adj_matrix=True)
+        t += 1
+
+    for i in range(5):
+        n = 2 + i * 2
+        gen_test_weight(tests_dir, t, n, 0, add_xy=False, adj_matrix=True)
+        t += 1
+
+    for i in range(40):
+        n = random.randrange(10, 100)
+        e = random.randrange(10, n * 5)
+        gen_test_weight(tests_dir, t, n, e, add_xy=False, adj_matrix=True)
+        t += 1
 
 # graph:
 # [
