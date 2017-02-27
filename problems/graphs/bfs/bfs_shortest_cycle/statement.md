@@ -2,7 +2,6 @@
 id: c1a67a0b-5b80-4324-add6-76ceb5119474
 longname: Нахождение кратчайшего цикла в ориентированном невзвешенном графе
 tags: [graphs,bfs,cycle]
-checker: checker.py
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

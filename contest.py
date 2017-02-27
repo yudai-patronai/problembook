@@ -208,6 +208,8 @@ def generate_ejudge_config(params):
             html = md.convert(p.content)
             f.write(bs4.BeautifulSoup(html, 'lxml').prettify())
         generate_tests_for_problem(p)
+        if 'checker' not in p.metadata:
+            shutil.copy(os.path.join(p.metadata['path'], 'checker.py'), problem_dir)
         shutil.copytree(os.path.join(p.metadata['path'], TESTS_FOLDER), os.path.join(problem_dir, TESTS_FOLDER))
 
 
@@ -253,15 +255,13 @@ def validate(params):
             print('{}: не указано название задачи'.format(path))
 
         if 'checker' not in p.metadata:
-            print('{}: не указан чекер'.format(path))
+            if not os.path.isfile(os.path.join(path, 'checker.py')):
+                print('{}: чекер не найден'.format(path))
         else:
             c = p.metadata['checker']
             if c.startswith('cmp'):
                 if c not in ['cmp_yesno', 'cmp_int', 'cmp_int_seq']:
                     print('{}: неизвестный чекер'.format(path))
-            else:
-                if not os.path.isfile(os.path.join(path, 'checker.py')):
-                    print('{}: чекер не найден'.format(path))
 
         if not os.path.isdir(os.path.join(path, 'tests')):
             print('{}: тесты не сгенерированы'.format(path))
