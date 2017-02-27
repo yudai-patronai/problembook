@@ -3,7 +3,6 @@ import sys
 import os
 
 sys.path.append(os.path.abspath('../..'))
-import task
 
 class CheckerResult:
     OK = 0  # OK, правильный ответ
@@ -32,6 +31,27 @@ def bfs_is_connective(graph):
                 nb_found += 1
 
     return nb_found == len(graph)
+
+
+def edges_to_graph(n, edges, directed=False):
+    res = [[] for i in range(n)]
+    if not edges:
+        return res
+
+    if len(edges[0]) == 2:
+        for e in edges:
+            a, b = e
+            res[a].append(b)
+            if not directed:
+                res[b].append(a)
+    else:
+        for e in edges:
+            a, b, d = e
+            res[a].append((b, d))
+            if not directed:
+                res[b].append((a, d))
+
+    return res
 
 with open(input_file) as f:
     n, m = map(int, f.readline().split())
@@ -63,7 +83,7 @@ if len(sub) != n - 1:
 vert = set([i for e in sub for i in e])
 
 if len(vert) == n and sub.issubset(edges) and \
-        bfs_is_connective(task.edges_to_graph(n, list(sub))):
+        bfs_is_connective(edges_to_graph(n, list(sub))):
     print('OK')
     sys.exit(CheckerResult.OK)
 else:
