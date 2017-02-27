@@ -1,5 +1,5 @@
 ---
-id: ce63db20-7666-466c-9084-b3cdae761b5b
+id: ab46d419-f4bf-461b-8403-421a45fa6605
 longname: Поиск длины кратчайшего пути при помощи алгоритма Дейкстры
 tags: [graphs,bfs]
 checker: cmp_yesno

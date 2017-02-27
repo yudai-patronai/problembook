@@ -1,5 +1,5 @@
 ---
-id: 8120e7d1-ddde-4996-b262-b5c9b3b55098
+id: b2380a9a-697f-4a43-914d-808be407ead0
 longname: Поиск расстояний от заданной вершины до всех остальных
 tags: [graphs,bfs]
 checker: cmp_yesno

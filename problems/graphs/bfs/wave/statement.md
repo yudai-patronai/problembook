@@ -1,4 +1,5 @@
 ---
+id: 0f2d0de1-1bad-4d4b-a5db-b016df216d28
 longname: Поиск расстояния на прямоугольном поле
 tags: [graphs,bfs]
 checker: cmp_yesno
