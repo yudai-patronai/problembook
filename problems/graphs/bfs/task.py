@@ -52,8 +52,8 @@ def read_task_directed():
 def gen_tree_edges(n):
     return [(random.randint(0, k-1), k) for k in range(1, n)]
 
-def gen_graph_edges(n, m):
-    g = set(gen_tree_edges(n))
+def gen_graph_edges(n, m, connective=True):
+    g = set(gen_tree_edges(n)) if connective else set()
 
     for i in range(m):
         a = random.randrange(n)
