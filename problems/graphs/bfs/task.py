@@ -138,6 +138,30 @@ def gen_tests(tests_dir):
         gen_test(tests_dir, t, n, gen_graph_edges(n, 10000))
         t += 1
 
+def gen_test_directed(tests_dir, t, n, e):
+    gen_test(tests_dir, t, n, gen_graph_edges(n, e, connective=False),
+             directed=True)
+
+def gen_tests_directed(tests_dir):
+    shutil.rmtree(tests_dir, ignore_errors=True)
+    os.makedirs(tests_dir)
+
+    t = 1
+    for i in range(10):
+        n = 2 + i * 2
+        gen_test_directed(tests_dir, t, n, i * i)
+        t += 1
+
+    for i in range(20):
+        n = random.randrange(100, 1000)
+        gen_test_directed(tests_dir, t, n, 500)
+        t += 1
+
+    for i in range(20):
+        n = random.randrange(100, 1000)
+        gen_test_directed(tests_dir, t, n, 1000)
+        t += 1
+
 def gen_test_weight_xy(tests_dir, t, n, e, x, y):
     gen_test(tests_dir, t, n, add_rand_weight(gen_graph_edges(n, e)),
              x, y)
