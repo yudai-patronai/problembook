@@ -198,11 +198,14 @@ def generate_ejudge_config(params):
     os.makedirs(problems_dir, exist_ok=True)
     os.makedirs(statements_dir, exist_ok=True)
 
-    ids = set(list(p.keys())[0] for p in desc['problems'])
-    problems = __find_problems(lambda p: p['id'] in ids).values()
-    for k, p in enumerate(problems):
-        p.metadata['shortname'] = chr(ord('A') + k)
-        p.metadata.update(problem_overrides.get(p.metadata['id']))
+    ids = [list(p.keys())[0] for p in desc['problems']]
+    ids_set = set(ids)
+    problems_dict = __find_problems(lambda p: p['id'] in ids_set)
+    for k, p in enumerate(ids):
+        problems_dict[p].metadata['shortname'] = chr(ord('A') + k)
+        problems_dict[p].metadata.update(problem_overrides.get(problems_dict[p].metadata['id']))
+
+    problems = [problems_dict[p] for p in ids]
 
     template = env.get_template(params.template)
 
