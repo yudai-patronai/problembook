@@ -296,8 +296,7 @@ create_contest_parser = subparsers.add_parser('create-contest', help='Созда
 create_contest_parser.set_defaults(_action=create_contest)
 create_contest_parser.add_argument('-n', '--name', required=True, help='Название контеста')
 create_contest_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие конфиги контестов')
-
-create_contest_parser.add_argument('problems', nargs='+', help='Название контеста')
+create_contest_parser.add_argument('problems', nargs='+', help='Список идентификаторов задач')
 
 find_problems_parser = subparsers.add_parser('find-problems', help='Найти задачи')
 find_problems_parser.set_defaults(_action=find_problems)
