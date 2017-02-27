@@ -1,0 +1,66 @@
+name: 4_bfs_dijkstra
+problems:
+    
+    # Поиск расстояний от заданной вершины до всех остальных
+    - 3caf5ad6-a884-4f5b-8e84-1273ff0ea8fc:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Построить остовное дерево обходом в ширину
+    - 8120e7d1-ddde-4996-b262-b5c9b3b55098:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск кратчайшего пути между двумя узлами невзвешенного графа
+    - b2380a9a-697f-4a43-914d-808be407ead0:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск расстояния на прямоугольном поле
+    - 0f2d0de1-1bad-4d4b-a5db-b016df216d28:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Нахождение кратчайшего цикла в ориентированном невзвешенном графе
+    - c1a67a0b-5b80-4324-add6-76ceb5119474:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик-брокер
+    - c7ae1da3-e9e7-423b-9139-9d3245369aae:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск длины кратчайшего пути при помощи алгоритма Дейкстры
+    - ce63db20-7666-466c-9084-b3cdae761b5b:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Восстановление кратчайшего пути при помощи алгоритма Дейкстры
+    - 08e5d404-e27c-48b1-90f5-e8a4c037fa77:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Нахождение вершины-"столицы"
+    - ab46d419-f4bf-461b-8403-421a45fa6605:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

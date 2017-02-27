@@ -1,0 +1,45 @@
+name: sem2_lab3_euler
+problems:
+    
+    # Существование цикла Эйлера
+    - 66f6680a-f14f-4229-862a-638aec33c804:
+        score: 1
+        time_limit: 1
+        real_time_limit: 4
+        max_vm_size: 64M
+    
+    # Посчитать количество компонент связности
+    - 3c590278-22ba-4856-9374-55d083d6d247:
+        score: 1
+        
+        
+        
+    
+    # Сильно связный ли орграф?
+    - f47e0efe-913c-4f1c-acc2-7c4ca0297acf:
+        score: 1
+        time_limit: 1
+        real_time_limit: 4
+        max_vm_size: 64M
+    
+    # Проверить связность графа
+    - 1f149524-be56-4cfb-82f1-acdae2be34aa:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сильные и слабые компоненты связности
+    - de2efbda-7f5f-4d9f-b59a-1284d7b949f6:
+        score: 1
+        time_limit: 4
+        real_time_limit: 10
+        max_vm_size: 256M
+    
+    # Матрица смежности в список ребер
+    - 9ce1b6ca-c82a-489e-a783-ecf78fa3c8f8:
+        score: 1
+        time_limit: 4
+        real_time_limit: 10
+        max_vm_size: 256M
+    
