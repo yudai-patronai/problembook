@@ -2,7 +2,7 @@
 import os
 import sys
 
-sys.path.append(os.path.abspath('..'))
+sys.path.append(os.path.abspath('../..'))
 import task
 
 def bfs_shortest_cycle_x(graph, x):

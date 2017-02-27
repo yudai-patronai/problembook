@@ -4,7 +4,7 @@ import os
 import sys
 import random
 
-sys.path.append(os.path.abspath('..'))
+sys.path.append(os.path.abspath('../..'))
 import task
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
