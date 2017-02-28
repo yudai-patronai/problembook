@@ -37,6 +37,8 @@ def read_graph_directed(n, m):
 
 def read_graph_weighted_to_adj_matrix(n, m):
     matrix = [[float('+inf') for j in range(n)] for i in range(n)]
+    for i in range(n):
+        matrix[i][i] = 0
     for i in range(m):
         a, b, w = map(int, input().split())
         matrix[a][b] = w
@@ -107,6 +109,9 @@ def edges_to_graph(n, edges, directed=False):
 
 def edges_to_adj_matrix(n, edges, directed=False):
     m = [[float('+inf') for j in range(n)] for i in range(n)]
+    for i in range(n):
+        matrix[i][i] = 0
+
     if not edges:
         return m
 
