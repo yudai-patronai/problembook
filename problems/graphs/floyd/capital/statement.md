@@ -2,7 +2,6 @@
 id: ab46d419-f4bf-461b-8403-421a45fa6605
 longname: Нахождение вершины-"столицы"
 tags: [graphs,floyd]
-checker: cmp_int
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
