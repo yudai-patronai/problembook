@@ -187,7 +187,7 @@ def gen_tests_directed(tests_dir):
     os.makedirs(tests_dir)
 
     t = 1
-    for i in range(10):
+    for i in [1,5,2] + list(range(3,10)):
         n = 2 + i * 2
         gen_test_directed(tests_dir, t, n, i * i)
         t += 1
