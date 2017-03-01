@@ -22,6 +22,8 @@ def wave(field, i1, j1):
             field[i][j + 1] = field[i][j] + 1
             queue.append((i, j + 1))
 
+    return (i, j)
+
 
 def read_field(n):
     field = []
