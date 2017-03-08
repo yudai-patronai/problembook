@@ -8,6 +8,8 @@ import shutil
 sys.path.append(os.path.abspath('../..'))
 import task
 
+random.seed('prima')
+
 def gen_tests_weight(tests_dir):
     shutil.rmtree(tests_dir, ignore_errors=True)
     os.makedirs(tests_dir)
