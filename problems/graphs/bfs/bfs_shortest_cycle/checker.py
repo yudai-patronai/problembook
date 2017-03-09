@@ -41,14 +41,14 @@ except (IOError, ValueError):
 
 if no_cycle != o_no_cycle:
     print('FAIL')
-    sys.exit(CheckerResult.PE)
+    sys.exit(CheckerResult.WA)
 elif no_cycle:
     print('OK')
     sys.exit(CheckerResult.OK)
 
 if min_len != len(o_cycle):
     print('FAIL')
-    sys.exit(CheckerResult.PE)
+    sys.exit(CheckerResult.WA)
 
 edges = set()
 with open(input_file) as f:
@@ -59,7 +59,7 @@ with open(input_file) as f:
 for i in range(-1, len(o_cycle) - 1):
     if (o_cycle[i], o_cycle[i + 1]) not in edges:
         print('FAIL')
-        sys.exit(CheckerResult.PE)
+        sys.exit(CheckerResult.WA)
 
 print('OK')
 sys.exit(CheckerResult.OK)
