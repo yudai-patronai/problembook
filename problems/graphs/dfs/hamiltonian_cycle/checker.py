@@ -36,7 +36,7 @@ with open(input_file) as f:
 if len(o_hamiltonian_cycle) != n or \
         set(o_hamiltonian_cycle) != set(range(n)):
     print('FAIL')
-    sys.exit(CheckerResult.PE)
+    sys.exit(CheckerResult.WA)
 
 for i in range(-1, len(o_hamiltonian_cycle) - 1):
     a, b = o_hamiltonian_cycle[i], o_hamiltonian_cycle[i + 1]
@@ -44,7 +44,7 @@ for i in range(-1, len(o_hamiltonian_cycle) - 1):
         a, b = b, a
     if (a, b) not in edges:
         print('FAIL')
-        sys.exit(CheckerResult.PE)
+        sys.exit(CheckerResult.WA)
 
 print('OK')
 sys.exit(CheckerResult.OK)
