@@ -51,13 +51,13 @@ with open(input_file) as f:
 
 if len(o_toposort) != n:
     print('FAIL')
-    sys.exit(CheckerResult.PE)
+    sys.exit(CheckerResult.WA)
 
 o_toposort_set = set(o_toposort)
 for i in range(n):
     if i not in o_toposort_set:
         print('FAIL')
-        sys.exit(CheckerResult.PE)
+        sys.exit(CheckerResult.WA)
 
 time = {o_toposort[i]: i for i in range(n)}
 for a, b in edges:

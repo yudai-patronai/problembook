@@ -83,11 +83,11 @@ except (IOError, ValueError):
 
 if o_weight != min_weight:
     print('FAIL')
-    sys.exit(CheckerResult.PE)
+    sys.exit(CheckerResult.WA)
 
 if len(sub) != n - 1:
     print('FAIL')
-    sys.exit(CheckerResult.PE)
+    sys.exit(CheckerResult.WA)
 
 vert = set([i for e in sub for i in e])
 
