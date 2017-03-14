@@ -2,7 +2,6 @@
 id: e883413f-3a8f-4cf7-8dd2-5e00f09e6caa
 longname: Задача коммивояжёра
 tags: [graphs]
-checker: cmp_yesno
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

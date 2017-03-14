@@ -2,7 +2,6 @@
 id: fbd7fd6f-17da-4aed-b37f-a0146d242b6d
 longname: Минимальное остовное дерево. (Алгоритм Прима.)
 tags: [graphs,prima]
-checker: cmp_yesno
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

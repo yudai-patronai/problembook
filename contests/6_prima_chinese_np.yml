@@ -1,0 +1,51 @@
+name: 6_prima_chinese_np
+problems:
+    
+    # Проверка ацикличности графа
+    - ba1622db-a5ff-4054-b365-20ee63b81788:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+        
+    
+    # Топологическая сортировка
+    - a00b40bc-b6cb-4c8b-9dcb-c28f0eb76cc8:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+        
+    
+    # Минимальное остовное дерево. (Алгоритм Прима.)
+    - fbd7fd6f-17da-4aed-b37f-a0146d242b6d:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+        
+    
+    # Постоение гамильтонова цикла
+    - 55158dce-c7ab-4b35-8ff9-7d36aa95774b:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+        
+    
+    # Задача коммивояжёра
+    - e883413f-3a8f-4cf7-8dd2-5e00f09e6caa:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+        
+    
+    # Задача о китайском почтальоне
+    - cb14889c-324f-48ae-8f0b-e217e4dc414a:
+        score: 100
+        time_limit: 4
+        real_time_limit: 4
+        max_vm_size: 64M
+        
+    

@@ -2,7 +2,6 @@
 id: a00b40bc-b6cb-4c8b-9dcb-c28f0eb76cc8
 longname: Топологическая сортировка
 tags: [graphs,dfs]
-checker: cmp_yesno
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
