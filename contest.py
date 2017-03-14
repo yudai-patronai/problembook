@@ -3,6 +3,7 @@
 import argparse
 import os
 import sys
+import traceback
 import functools
 import multiprocessing
 import subprocess
@@ -28,6 +29,83 @@ TEST_GENERATOR = 'test_generator.py'
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
 )
+
+
+class ProblemValidationError(Exception):
+    def __init__(self, errors):
+        super(ProblemValidationError, self).__init__()
+        self.errors = errors
+
+
+class Problem:
+
+    def __init__(self, ppath):
+        self._prob = frontmatter.load(ppath)
+
+        self.path = os.path.dirname(ppath)
+        self.tests_dir = os.path.join(self.path, TESTS_FOLDER)
+        self.generator = os.path.abspath(os.path.join(self.path, TEST_GENERATOR))
+
+        self.statement = ppath
+        self.metadata = self._prob.metadata
+        self.content = self._prob.content
+
+        errors = []
+        if 'id' not in self.metadata:
+            errors.append('{}: не указан id'.format(self.statement))
+        if 'longname' not in self.metadata:
+            errors.append('{}: не указан longname' .format(self.statement))
+
+        if errors:
+            raise ProblemValidationError(errors)
+
+        if 'tags' not in self.metadata:
+            self.metadata['tags'] = []
+
+    def __getattr__(self, item):
+        return self.metadata[item]
+
+    def __getstate__(self):
+        return self.__dict__
+
+    def __setstate__(self, d):
+        self.__dict__ = d
+
+    def has_tests(self):
+        return os.path.isdir(self.tests_dir)
+
+    def has_solution(self):
+        return os.path.isfile(os.path.join(self.path, 'solution.py'))
+
+    def has_test_generator(self):
+        return os.path.isfile(os.path.join(self.path, 'test_generator.py'))
+
+    def generate_tests(self):
+        subprocess.check_output([sys.executable, self.generator], cwd=self.path)
+
+    def validate(self):
+        errors = []
+
+        if 'checker' not in self.metadata:
+            if not os.path.isfile(os.path.join(self.path, 'checker.py')):
+                errors.append('{}: чекер не найден'.format(self.path))
+        else:
+            c = self.metadata['checker']
+            if c.startswith('cmp'):
+                if c not in ['cmp_yesno', 'cmp_int', 'cmp_int_seq', 'cmp_file']:
+                    errors.append('{}: неизвестный чекер'.format(self.path))
+
+        if not self.has_tests():
+            errors.append('{}: тесты не сгенерированы'.format(self.path))
+
+        if not self.has_solution():
+            errors.append('{}: отсутствует решение'.format(self.path))
+
+        if not self.has_test_generator():
+            errors.append('{}: отсутствует генератор тестов'.format(self.path))
+
+        if errors:
+            raise ProblemValidationError(errors)
 
 
 def parse_io_example(block):
@@ -130,7 +208,7 @@ def create_contest(params):
 
     requested = set(params.problems)
 
-    problems = __find_problems(lambda p: p.metadata['id'] in requested)
+    problems = __find_problems(lambda p: p.id in requested)
 
     diff = requested.difference(problems.keys())
     if diff:
@@ -150,10 +228,10 @@ def create_contest(params):
 
 def find_problems(params):
     problems = [[
-        k,
-        p.metadata['id'],
-        p.metadata['longname'],
-        ' '.join(p.metadata['tags'])
+        k+1,
+        p.id,
+        p.longname,
+        ' '.join(p.tags)
     ] for k, p in enumerate(__find_problems().values())]
 
     print(tabulate.tabulate(
@@ -166,19 +244,26 @@ def __find_problems(predicate=None):
 
     problems = {}
 
-    k = 1
     for root, _, files in os.walk(PROBLEMS_DIR):
         for file in files:
             fname, fext = os.path.splitext(file.lower())
             if fname == 'statement' and fext[1:] in ALLOWED_MD_LANGS:
                 ppath = os.path.join(root, file)
-                problem = frontmatter.load(ppath)
-                problem.metadata['path'] = os.path.dirname(ppath)
-                problem.metadata['statement'] = ppath
+                try:
+                    problem = Problem(ppath)
+                except ProblemValidationError as e:
+                    print(*e.errors, sep='\n')
+                    continue
+                except:
+                    print('Ошибка при загрузке условия: {}'.format(ppath))
+                    if args.verbose:
+                        traceback.print_exc()
+                    continue
+
                 if predicate and not predicate(problem):
                     continue
-                problems[problem.metadata['id']] = problem
-                k += 1
+
+                problems[problem.id] = problem
 
     return problems
 
@@ -207,7 +292,16 @@ def generate_ejudge_config(params):
 
     ids = [list(p.keys())[0] for p in desc['problems']]
     ids_set = set(ids)
-    problems_dict = __find_problems(lambda p: p['id'] in ids_set)
+    problems_dict = __find_problems(lambda p: p.id in ids_set)
+
+    found = True
+    for k in ids_set:
+        if k not in problems_dict:
+            print('{}: задача не найдена'.format(k))
+            found = False
+    if not found:
+        sys.exit(-1)
+
     for k, p in enumerate(ids):
         problems_dict[p].metadata['shortname'] = chr(ord('A') + k)
         problems_dict[p].metadata.update(problem_overrides.get(problems_dict[p].metadata['id']))
@@ -228,25 +322,21 @@ def generate_ejudge_config(params):
             f.write(bs4.BeautifulSoup(html, 'lxml').prettify())
         generate_tests_for_problem(p)
         if 'checker' not in p.metadata:
-            shutil.copy(os.path.join(p.metadata['path'], 'checker.py'), problem_dir)
-        shutil.copytree(os.path.join(p.metadata['path'], TESTS_FOLDER), os.path.join(problem_dir, TESTS_FOLDER))
+            shutil.copy(os.path.join(p.path, 'checker.py'), problem_dir)
+        shutil.copytree(p.tests_dir, os.path.join(problem_dir, TESTS_FOLDER))
 
 
 def generate_tests_for_problem(prob, force=False):
-    path = os.path.abspath(prob if isinstance(prob, str) else prob.metadata['path'])
-
-    tests_dir = os.path.join(path, TESTS_FOLDER)
-    generator = os.path.abspath(os.path.join(path, TEST_GENERATOR))
-    if os.path.isdir(tests_dir) and not force:
-        print('Пропускаю генерацию тестов для ' + path)
+    if prob.has_tests() and not force:
+        print('Пропускаю генерацию тестов для ' + prob.path)
         return
 
-    print('Генерирую тесты для ' + path)
+    print('Генерирую тесты для ' + prob.path)
 
     try:
-        subprocess.check_output([sys.executable, generator], cwd=path)
+        prob.generate_tests()
     except subprocess.CalledProcessError as e:
-        print("Ошибка при генерации тестов для {}: {}".format(path, e.output))
+        print("Ошибка при генерации тестов для {}: {}".format(prob.path, e.output))
 
 
 def generate_tests(params):
@@ -261,50 +351,31 @@ def validate(params):
     ids = set()
 
     for p in problems:
-        path = p.metadata['path']
-        if 'id' not in p.metadata:
-            print('{}: не указан id'.format(path))
-        else:
-            if p.metadata['id'] in ids:
-                print('{}: не уникальный id'.format(path))
+        try:
+            p.validate()
+        except ProblemValidationError as e:
+            print(*e.errors, sep='\n')
+
+            if p.id in ids:
+                print('{}: не уникальный id'.format(p.path))
             else:
-                ids.add(p.metadata['id'])
-
-        if 'longname' not in p.metadata:
-            print('{}: не указано название задачи'.format(path))
-
-        if 'checker' not in p.metadata:
-            if not os.path.isfile(os.path.join(path, 'checker.py')):
-                print('{}: чекер не найден'.format(path))
-        else:
-            c = p.metadata['checker']
-            if c.startswith('cmp'):
-                if c not in ['cmp_yesno', 'cmp_int', 'cmp_int_seq', 'cmp_file']:
-                    print('{}: неизвестный чекер'.format(path))
-
-        if not os.path.isdir(os.path.join(path, 'tests')):
-            print('{}: тесты не сгенерированы'.format(path))
-
-        if not os.path.isfile(os.path.join(path, 'solution.py')):
-            print('{}: отсутствует решение'.format(path))
-
-        if not os.path.isfile(os.path.join(path, 'test_generator.py')):
-            print('{}: отсутствует генератор тестов'.format(path))
+                ids.add(p.id)
 
 
 def show(params):
-    prob = next(iter(__find_problems(lambda p: p.metadata['id'] == params.id).values()))
+    prob = next(iter(__find_problems(lambda p: p.id == params.id).values()))
 
-    with open(prob.metadata['statement']) as f:
+    with open(prob.statement) as f:
         print(f.read())
 
 
 def edit(params):
-    problem = next(iter(__find_problems(lambda p: p.metadata['id'] == params.id).values()))
+    problem = next(iter(__find_problems(lambda p: p.id == params.id).values()))
     editor = subprocess.check_output(['which', os.environ.get('EDITOR', 'vim')]).decode('utf-8').strip()
-    os.execl(editor, editor, problem.metadata['statement'])
+    os.execl(editor, editor, problem.statement)
 
 parser = argparse.ArgumentParser(prog='contest')
+parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
 subparsers = parser.add_subparsers(dest='cmd')
 subparsers.required = True
 
