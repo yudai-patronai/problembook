@@ -25,19 +25,40 @@ PROBLEMS_DIR = os.path.join(SCRIPT_DIR, 'problems')
 CONTESTS_DIR = os.path.join(SCRIPT_DIR, 'contests')
 TESTS_FOLDER = 'tests'
 TEST_GENERATOR = 'test_generator.py'
+CHECKSUM = 'checksum'
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
 )
 
 
-class ProblemValidationError(Exception):
-    def __init__(self, errors):
-        super(ProblemValidationError, self).__init__()
-        self.errors = errors
-
-
 class Problem:
+
+    ERROR_ID_MISSING = 0
+    ERROR_LONGNAME_MISSING = 1
+    ERROR_CHECKER_NOT_FOUND = 2
+    ERROR_CHECKER_UNKNOWN = 3
+    ERROR_TESTS_MISSING = 4
+    ERROR_SOLUTION_MISSING = 5
+    ERROR_TEST_FAILED = 6
+    ERROR_SOLUTION_CANNOT_BE_CHECKED = 7
+    ERROR_TEST_GENERATOR_MISSING = 8
+    ERROR_CHECKSUM_MISSING = 9
+    ERROR_CHECKSUM_MISMATCH = 10
+
+    ERROR_MESSAGES = {
+        ERROR_ID_MISSING: '{0.path}: не указан id',
+        ERROR_LONGNAME_MISSING: '{0.path}: не указан longname',
+        ERROR_CHECKER_NOT_FOUND: '{0.path}: чекер не найден',
+        ERROR_CHECKER_UNKNOWN: '{0.path}: неизвестный чекер',
+        ERROR_TESTS_MISSING: '{0.path}: тесты не сгенерированы',
+        ERROR_SOLUTION_MISSING: '{0.path}: отсутствует решение',
+        ERROR_TEST_FAILED: '{0.path}: тест {1} не пройден',
+        ERROR_SOLUTION_CANNOT_BE_CHECKED: '{0.path}: невозможно проверить решение',
+        ERROR_TEST_GENERATOR_MISSING: '{0.path}: отсутствует генератор тестов',
+        ERROR_CHECKSUM_MISSING: '{0.path}: отсутствует контрольная сумма',
+        ERROR_CHECKSUM_MISMATCH: '{0.path}: контрольным суммы тестов не совпадают'
+    }
 
     def __init__(self, ppath):
         self._prob = frontmatter.load(ppath)
@@ -45,22 +66,29 @@ class Problem:
         self.path = os.path.dirname(ppath)
         self.tests_dir = os.path.join(self.path, TESTS_FOLDER)
         self.generator = os.path.abspath(os.path.join(self.path, TEST_GENERATOR))
+        self.checksum = os.path.abspath(os.path.join(self.path, CHECKSUM))
 
         self.statement = ppath
         self.metadata = self._prob.metadata
         self.content = self._prob.content
 
-        errors = []
+        self.errors = []
         if 'id' not in self.metadata:
-            errors.append('{}: не указан id'.format(self.statement))
+            self._report_error('{}: не указан id'.format(self.statement))
         if 'longname' not in self.metadata:
-            errors.append('{}: не указан longname' .format(self.statement))
-
-        if errors:
-            raise ProblemValidationError(errors)
+            self._report_error('{}: не указан longname' .format(self.statement))
 
         if 'tags' not in self.metadata:
             self.metadata['tags'] = []
+
+    def _report_error(self, error, *args, **kwargs):
+        self.errors.append((error, args, kwargs))
+
+    def format_errors(self):
+        return '\n'.join(Problem.ERROR_MESSAGES[e].format(self, *args, **kwargs) for e, args, kwargs in self.errors)
+
+    def has_error_occurred(self, e):
+        return e in map(lambda x: x[0], self.errors)
 
     def __getattr__(self, item):
         return self.metadata[item]
@@ -80,32 +108,63 @@ class Problem:
     def has_test_generator(self):
         return os.path.isfile(os.path.join(self.path, 'test_generator.py'))
 
+    def has_checksum(self):
+        return os.path.isfile(self.checksum)
+
     def generate_tests(self):
         subprocess.check_output([sys.executable, self.generator], cwd=self.path)
 
-    def validate(self):
-        errors = []
+    def validate(self, check_checksum=True, check_solution=False):
+        self.errors = []
 
         if 'checker' not in self.metadata:
             if not os.path.isfile(os.path.join(self.path, 'checker.py')):
-                errors.append('{}: чекер не найден'.format(self.path))
+                self._report_error(Problem.ERROR_ID_MISSING)
         else:
             c = self.metadata['checker']
             if c.startswith('cmp'):
                 if c not in ['cmp_yesno', 'cmp_int', 'cmp_int_seq', 'cmp_file']:
-                    errors.append('{}: неизвестный чекер'.format(self.path))
+                    self._report_error(Problem.ERROR_CHECKER_UNKNOWN)
 
         if not self.has_tests():
-            errors.append('{}: тесты не сгенерированы'.format(self.path))
+            self._report_error(Problem.ERROR_TESTS_MISSING)
 
         if not self.has_solution():
-            errors.append('{}: отсутствует решение'.format(self.path))
+            self._report_error(Problem.ERROR_SOLUTION_MISSING)
+
+        if check_solution:
+            if self.has_tests() and self.has_solution():
+                tests = list(filter(
+                    lambda x: not x.endswith('.a'),
+                    map(
+                        lambda x: os.path.join(TESTS_FOLDER, x),
+                        sorted(os.listdir(self.tests_dir))
+                    )
+                ))
+                for t in tests:
+                    try:
+                        subprocess.check_call('python3 ./solution.py < {0} | diff -b -q - {0}.a'.format(t), shell=True, cwd=self.path, stdout=subprocess.DEVNULL)
+                    except subprocess.CalledProcessError:
+                        self._report_error(Problem.ERROR_TEST_FAILED, t)
+            else:
+                self._report_error(Problem.ERROR_SOLUTION_CANNOT_BE_CHECKED)
 
         if not self.has_test_generator():
-            errors.append('{}: отсутствует генератор тестов'.format(self.path))
+            self._report_error(Problem.ERROR_TEST_GENERATOR_MISSING)
 
-        if errors:
-            raise ProblemValidationError(errors)
+        if check_checksum:
+            if not self.has_checksum():
+                self._report_error(Problem.ERROR_CHECKSUM_MISSING)
+            else:
+                try:
+                    subprocess.check_call(['sha512sum', '-c', self.checksum], cwd=self.path, stdout=subprocess.DEVNULL)
+                except subprocess.CalledProcessError:
+                    self._report_error(Problem.ERROR_CHECKSUM_MISMATCH)
+
+    def commit(self):
+        tests = list(map(lambda x: os.path.join(TESTS_FOLDER, x), sorted(os.listdir(self.tests_dir))))
+        with open(self.checksum, 'w') as output:
+            subprocess.check_call(['sha512sum'] + tests, stdout=output, cwd=self.path)
 
 
 def parse_io_example(block):
@@ -240,6 +299,17 @@ def find_problems(params):
     ))
 
 
+def find_by_id_pred(id):
+    return lambda p: p.id == id
+
+
+def find_problem_by_id(id):
+    try:
+        return next(iter(__find_problems(find_by_id_pred(id)).values()))
+    except:
+        print('{}: не удалось найти задачу'.format(id))
+
+
 def __find_problems(predicate=None):
 
     problems = {}
@@ -251,9 +321,9 @@ def __find_problems(predicate=None):
                 ppath = os.path.join(root, file)
                 try:
                     problem = Problem(ppath)
-                except ProblemValidationError as e:
-                    print(*e.errors, sep='\n')
-                    continue
+                    if problem.errors:
+                        print(problem.format_errors())
+                        continue
                 except:
                     print('Ошибка при загрузке условия: {}'.format(ppath))
                     if args.verbose:
@@ -263,7 +333,10 @@ def __find_problems(predicate=None):
                 if predicate and not predicate(problem):
                     continue
 
-                problems[problem.id] = problem
+                if problem.id in problems:
+                    print('{}: не уникальный id'.format(problem.path))
+                else:
+                    problems[problem.id] = problem
 
     return problems
 
@@ -346,33 +419,77 @@ def generate_tests(params):
 
 
 def validate(params):
-    problems = __find_problems().values()
+    problems = __find_problems().values() if not params.id else [find_problem_by_id(params.id)]
 
-    ids = set()
+    report = []
 
-    for p in problems:
-        try:
-            p.validate()
-        except ProblemValidationError as e:
-            print(*e.errors, sep='\n')
+    for k, p in enumerate(problems):
+        p.validate(check_checksum=True, check_solution=True)
+        status = '✖️' if p.errors else '✔️'
+        tests = '✖️' if p.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else '✔️'
+        test_generator = '✖️' if p.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else '✔️'
 
-            if p.id in ids:
-                print('{}: не уникальный id'.format(p.path))
-            else:
-                ids.add(p.id)
+        if p.has_error_occurred(Problem.ERROR_SOLUTION_MISSING):
+            solution = '?'
+        elif p.has_error_occurred(Problem.ERROR_TEST_FAILED):
+            solution = '✖️'
+        else:
+            solution = '✔️'
+
+        if p.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING):
+            checksum = '?'
+        elif p.has_error_occurred(Problem.ERROR_CHECKSUM_MISMATCH):
+            checksum = '✖️'
+        else:
+            checksum = '✔'
+
+        report.append((k+1, p.id, p.longname, tests, test_generator, solution, checksum, status))
+
+        if p.errors and params.verbose:
+            print(p.format_errors())
+
+    print(tabulate.tabulate(
+        report,
+        headers=['#', 'Идентификатор', 'Название', 'Тесты', 'Генератор тестов', 'Решение', 'Контрольная сумма', 'Статус']
+    ))
 
 
 def show(params):
-    prob = next(iter(__find_problems(lambda p: p.id == params.id).values()))
+    prob = find_problem_by_id(params.id)
 
     with open(prob.statement) as f:
         print(f.read())
 
 
 def edit(params):
-    problem = next(iter(__find_problems(lambda p: p.id == params.id).values()))
+    problem = find_problem_by_id(params.id)
     editor = subprocess.check_output(['which', os.environ.get('EDITOR', 'vim')]).decode('utf-8').strip()
     os.execl(editor, editor, problem.statement)
+
+
+def info(params):
+    prob = find_problem_by_id(params.id)
+
+    print('id:', prob.id)
+    print('Название:', prob.longname)
+    print('Путь:', prob.path)
+
+
+def commit(params):
+    problem = find_problem_by_id(params.id)
+
+    if problem.has_checksum() and not params.force_overwrite:
+        print('{}: текущее состояние задачи уже зафиксировано, используйте --force-overwrite для перезаписи'.format(problem.path))
+        sys.exit(-1)
+
+    problem.validate(check_checksum=False, check_solution=True)
+    if problem.errors:
+        print(problem.format_errors())
+        print('{}: устраните ошибки перед тем, как фиксировать состояние задачи'.format(problem.path))
+        sys.exit(-1)
+
+    problem.commit()
+    problem.validate()
 
 parser = argparse.ArgumentParser(prog='contest')
 parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
@@ -409,6 +526,7 @@ generate_tests_parser.add_argument('-j', '--jobs', default=1, type=int, help='К
 generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие тесты')
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
+validate_parser.add_argument('id', nargs='?', help='Идентификатор задачи')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
@@ -418,6 +536,15 @@ show_parser.add_argument('id', help='Идентификатор задачи')
 edit_parser = subparsers.add_parser('edit', help='Отредактировать описание задачи')
 edit_parser.set_defaults(_action=edit)
 edit_parser.add_argument('id', help='Идентификатор задачи')
+
+info_parser = subparsers.add_parser('info', help='Показать информацию по задаче')
+info_parser.set_defaults(_action=info)
+info_parser.add_argument('id', help='Идентификатор задачи')
+
+commit_parser = subparsers.add_parser('commit', help='Зафиксировать состояние задачи')
+commit_parser.set_defaults(_action=commit)
+commit_parser.add_argument('id', help='Идентификаторы задач')
+commit_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписать контрольные суммы')
 
 args = parser.parse_args()
 
