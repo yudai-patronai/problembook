@@ -279,7 +279,7 @@ def validate(params):
         else:
             c = p.metadata['checker']
             if c.startswith('cmp'):
-                if c not in ['cmp_yesno', 'cmp_int', 'cmp_int_seq']:
+                if c not in ['cmp_yesno', 'cmp_int', 'cmp_int_seq', 'cmp_file']:
                     print('{}: неизвестный чекер'.format(path))
 
         if not os.path.isdir(os.path.join(path, 'tests')):
