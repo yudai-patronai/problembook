@@ -206,6 +206,10 @@ def gen_test_weight_xy(tests_dir, t, n, e, x, y):
     gen_test(tests_dir, t, n, add_rand_weight(gen_graph_edges(n, e)),
              x, y)
 
+def gen_test_weight_centers(tests_dir, t, n, e, centers):
+    gen_test(tests_dir, t, n, add_rand_weight(gen_graph_edges(n, e)),
+             *centers)
+
 def gen_test_weight(tests_dir, t, n, e, add_xy=True, adj_matrix=False):
     if add_xy:
         gen_test_weight_xy(tests_dir, t, n, e, random.randrange(n), random.randrange(n))
