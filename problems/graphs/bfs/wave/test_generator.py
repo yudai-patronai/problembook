@@ -197,4 +197,4 @@ with open(test, 'w') as f:
         f.write(row)
 
 with open(ans, 'w') as f:
-    f.write('%d\n' % (n - 2))
+    f.write('%d\n' % (n * 2 - 2))
