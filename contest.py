@@ -91,7 +91,7 @@ class Problem:
         return e in map(lambda x: x[0], self.errors)
 
     def __getattr__(self, item):
-        return self.metadata[item]
+        return self.metadata.get(item, None)
 
     def __getstate__(self):
         return self.__dict__
