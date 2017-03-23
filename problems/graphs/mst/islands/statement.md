@@ -2,7 +2,7 @@
 id: 0de6c8ae-f87d-4d95-b0d1-fe2a435d50db
 longname: Нахождение минимального необходимого количества мостов
 tags: [graphs,kruskal]
-checker: cmp_yesno
+checker: cmp_int
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
