@@ -72,7 +72,7 @@ long_name = "{{ p.longname }}"
 type = "standard"
 full_score = {{ p.score }}
 open_tests = "1-3:full"
-{% if p.checker is defined %}standard_checker = "{{ p.checker }}"{% else %}check_cmd = "checker.py"{% endif %}
+{% if p.checker %}standard_checker = "{{ p.checker }}"{% else %}check_cmd = "checker.py"{% endif %}
 {% if p.time_limit is defined %}time_limit = {{ p.time_limit }}{% endif %}
 {% if p.real_time_limit is defined %}real_time_limit = {{ p.real_time_limit }}{% endif %}
 {% if p.max_vm_size is defined %}max_vm_size = {{ p.max_vm_size }}{% endif %}

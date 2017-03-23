@@ -7,5 +7,4 @@ problems:
         {% if p.time_limit is defined %}time_limit: {{ p.time_limit }}{% endif %}
         {% if p.real_time_limit is defined %}real_time_limit: {{ p.real_time_limit }}{% endif %}
         {% if p.max_vm_size is defined %}max_vm_size: {{ p.max_vm_size }}{% endif %}
-        {% if p.checker is defined %}checker: {{ p.checker }}{% endif %}
     {% endfor %}

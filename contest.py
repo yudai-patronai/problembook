@@ -377,7 +377,7 @@ def generate_ejudge_config(params):
 
     for k, p in enumerate(ids):
         problems_dict[p].metadata['shortname'] = chr(ord('A') + k)
-        problems_dict[p].metadata.update(problem_overrides.get(problems_dict[p].metadata['id']))
+        problems_dict[p].metadata.update(problem_overrides.get(problems_dict[p].id))
 
     problems = [problems_dict[p] for p in ids]
 
@@ -394,7 +394,7 @@ def generate_ejudge_config(params):
             html = md.convert(p.content)
             f.write(bs4.BeautifulSoup(html, 'lxml').prettify())
         generate_tests_for_problem(p)
-        if 'checker' not in p.metadata:
+        if p.checker is None:
             shutil.copy(os.path.join(p.path, 'checker.py'), problem_dir)
         shutil.copytree(p.tests_dir, os.path.join(problem_dir, TESTS_FOLDER))
 
