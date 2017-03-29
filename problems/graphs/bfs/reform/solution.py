@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-import bisect
-import os
-import sys
+import heapq
 
 #######################
 # Library
@@ -24,32 +22,33 @@ def read_task_f(read_graph_func):
 def read_task_weight():
     return read_task_f(read_graph_weight)
 
-def dijkstra(graph, centers):
-    district = [-1] * len(graph)
-    dist = [float('+inf') for _ in graph]
-
+def dijkstra_mlogm_heap(graph, centers):
+    n = len(graph)
+    district = [-1] * n  # область
+    dist = [float('+inf')] * n
     queue = []
+
     for x in centers:
-        queue.append((0,x))
-        dist[x] = 0
         district[x] = x
+        dist[x] = 0
+        heapq.heappush(queue, (0, x))
 
     while queue:
-        vd, v = queue.pop(0)
+        vd, v = heapq.heappop(queue)
+        if vd >= dist[v]:
+            continue  # это фиктивный элемент очереди
 
         for v2, r in graph[v]:
-            if dist[v2] > dist[v] + r:
-                i = bisect.bisect_left(queue, (dist[v2], v2))
-                if i < len(queue) and queue[i][1] == v2:
-                    del queue[i]
-                dist[v2] = dist[v] + r
+            if dist[v2] > vd + r:
+                dist[v2] = vd + r
                 district[v2] = district[v]
-                bisect.insort(queue, (dist[v2], v2))
+                queue.add(v2)
+                heapq.heappush(queue, (dist[v2], v2))
 
     return district
 
 def solve(graph, *centers):
-    district = dijkstra(graph, centers)
+    district = dijkstra_mlogm_heap(graph, centers)
     return '\n'.join(map(str, district))
 
 if __name__ == "__main__":
