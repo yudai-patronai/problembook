@@ -3,84 +3,60 @@
 import sys
 sys.setrecursionlimit(2000000)
 
-def dfs(edges, order=None, recursive=True):
-    visited = [False for i in range(len(edges))]
+def dfs(graph, order=None):
+    visited = [False for i in range(len(graph))]
     if order is None:
-        order = range(len(edges))
-    for i in order:
-        if not visited[i]:
-            if recursive:
-                yield dfs_impl_recursive(edges, i, visited)
-            else:
-                yield dfs_impl(edges, i, visited)
+        order = range(len(graph))
+    for vertex in order:
+        if not visited[vertex]:
+            found = []
+            dfs_impl(graph, vertex, visited, found)
+            yield found
 
 
-def dfs_impl(graph, start, visited):
-    found = []
-    stack = [(start, 0)]
-    visited[start] = True
-    while stack:
-        vertex, index = stack.pop()
-        edges = graph[vertex]
-
-        next_vertex = None
-        while index < len(edges):
-            edge = edges[index]
-            index += 1
-            if not visited[edge]:
-                next_vertex = edge
-                break
-
-        if next_vertex is None:
-            found.append(vertex)
-        else:
-            stack.append((vertex, index))
-            stack.append((next_vertex, 0))
-            visited[next_vertex] = True
-    return found
-
-
-def dfs_impl_recursive(graph, start, visited):
-    found = []
-    dfs_impl_internal(graph, start, visited, found)
-    return found
-
-
-def dfs_impl_internal(edges, current, visited, found):
+def dfs_impl(graph, current, visited, found):
     visited[current] = True
-    for v in edges[current]:
-        if not visited[v]:
-            dfs_impl_internal(edges, v, visited, found)
+    for vertex in graph[current]:
+        if not visited[vertex]:
+            dfs_impl(graph, vertex, visited, found)
     found.append(current)
 
 
-def find_components(edges):
-    graph = [[] for i in range(len(edges))]
-    for a, bs in enumerate(edges):
-        for b in bs:
-            graph[a].append(b)
-            graph[b].append(a)
-    return list(dfs(graph))
+def find_components(graph):
+    bigraph = [[] for i in range(len(graph))]
+    for first, adjacent in enumerate(graph):
+        for second in adjacent:
+            bigraph[first].append(second)
+            bigraph[second].append(first)
+    return list(dfs(bigraph))
+
+
+def reverse_graph(graph):
+    reversed_graph = [[] for i in range(len(graph))]
+    for first, adjacent in enumerate(graph):
+        for second in adjacent:
+            reversed_graph[second].append(first)
+    return reversed_graph
 
 
 def find_strong_components(graph):
-    reversed_graph = [[] for i in range(len(graph))]
-    for a, bs in enumerate(graph):
-        for b in bs:
-            reversed_graph[b].append(a)
     order = sum(dfs(graph), [])
-    strong = list(dfs(reversed_graph, order[::-1]))
+    strong = list(dfs(reverse_graph(graph), order[::-1]))
     return strong
 
 
-if __name__ == "__main__":
+def read_graph():
     n = int(input())
     m = int(input())
-    edges = [[] for i in range(n)]
+    graph = [[] for i in range(n)]
     for i in range(m):
-        a, b = map(int, input().split())
-        edges[a].append(b)
+        first, second = map(int, input().split())
+        graph[first].append(second)
+    return graph
 
-    components = find_components(edges)
-    strong_components = find_strong_components(edges)
+
+if __name__ == "__main__":
+    graph = read_graph()
+    components = find_components(graph)
+    strong_components = find_strong_components(graph)
     print(len(components), len(strong_components))
