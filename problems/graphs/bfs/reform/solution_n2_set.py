@@ -12,9 +12,9 @@ def read_graph_weight(n, m):
 
 
 def read_task():
-    task = list(map(int, input().split()))
-    task.append(read_graph_weight(task[0], task[1]))
-    return task
+    n, m, *centers = list(map(int, input().split()))
+    graph = read_graph_weight(n, m)
+    return graph, centers
 
 
 def dijkstra_n2_set(graph, centers):
@@ -37,9 +37,9 @@ def dijkstra_n2_set(graph, centers):
 
         queue.remove(v)
 
-        for v2, r in graph[v]:
-            if dist[v2] > dist[v] + r:
-                dist[v2] = dist[v] + r
+        for v2, w in graph[v]:
+            if dist[v2] > dist[v] + w:
+                dist[v2] = dist[v] + w
                 district[v2] = district[v]
                 queue.add(v2)
 
@@ -47,6 +47,6 @@ def dijkstra_n2_set(graph, centers):
 
 
 if __name__ == "__main__":
-    n, m, *centers, graph = read_task()
+    graph, centers = read_task()
     district = dijkstra_n2_set(graph, centers)
     print('\n'.join(map(str, district)))

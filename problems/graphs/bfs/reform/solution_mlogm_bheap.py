@@ -13,9 +13,9 @@ def read_graph_weight(n, m):
 
 
 def read_task():
-    task = list(map(int, input().split()))
-    task.append(read_graph_weight(task[0], task[1]))
-    return task
+    n, m, *centers = list(map(int, input().split()))
+    graph = read_graph_weight(n, m)
+    return graph, centers
 
 
 def dijkstra_mlogm_heap(graph, centers):
@@ -34,9 +34,9 @@ def dijkstra_mlogm_heap(graph, centers):
         if vd >= dist[v]:
             continue  # это фиктивный элемент очереди
 
-        for v2, r in graph[v]:
-            if dist[v2] > vd + r:
-                dist[v2] = vd + r
+        for v2, w in graph[v]:
+            if dist[v2] > vd + w:
+                dist[v2] = vd + w
                 district[v2] = district[v]
                 queue.add(v2)
                 heapq.heappush(queue, (dist[v2], v2))
@@ -45,6 +45,6 @@ def dijkstra_mlogm_heap(graph, centers):
 
 
 if __name__ == "__main__":
-    n, m, *centers, graph = read_task()
+    graph, centers = read_task()
     district = dijkstra_mlogm_heap(graph, centers)
     print('\n'.join(map(str, district)))
