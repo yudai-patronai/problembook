@@ -1,5 +1,5 @@
 ---
-id: 6e77beeb-4bde-4446-981f-fbebff52e617
+id: efeb00b7-39ec-4ee3-b7d6-d374f0f298d0
 longname: Дерево - листья
 tags: [graphs,binary,tree,btree]
 checker: cmp_file

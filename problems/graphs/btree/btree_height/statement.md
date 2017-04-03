@@ -1,5 +1,5 @@
 ---
-id: 6e77beeb-4bde-4446-981f-fbebff52e617
+id: e1c4a933-7a07-42cd-b285-e6efb19189cc
 longname: Высота дерева
 tags: [graphs,binary,tree,btree]
 checker: cmp_file
