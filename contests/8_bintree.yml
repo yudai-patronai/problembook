@@ -1,0 +1,52 @@
+name: 8_bintree
+problems:
+    
+    # Функции add и print для двоичного дерева
+    - 6e77beeb-4bde-4446-981f-fbebff52e617:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Числа по возрастанию
+    - 14c9fbda-0cd1-4ee8-a655-a3a791ef63cb:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Высота дерева
+    - e1c4a933-7a07-42cd-b285-e6efb19189cc:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Дерево - листья
+    - efeb00b7-39ec-4ee3-b7d6-d374f0f298d0:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Дерево - сбалансированность
+    - 84037843-b1fd-45d4-9369-7619ccd0d60b:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Дерево - частотный словарь
+    - ba1fd3e9-4d07-4874-b76d-9ad9e6fe9130:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Дерево - обход в ширину
+    - 9c37c4a9-5ec5-4c96-8567-19a8984ee87e:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

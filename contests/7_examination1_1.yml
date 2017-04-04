@@ -1,0 +1,32 @@
+name: 7_examination1_1
+problems:
+    
+    # Разноцветные холмы
+    - d7e1160f-59dd-457c-9b55-d013bd0a2bbe:
+        score: 100
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+        checker: cmp_int
+    
+    # Путь коня
+    - b21e2723-9f72-e858-c7ef-5743497aa005:
+        score: 200
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Реформа округов
+    - c830c75e-bbbe-492d-a43c-08d6216c1a06:
+        score: 300
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Долой списывание
+    - 68f6d2dc-d29e-4550-a4c6-24c17d327bad:
+        score: 400
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
