@@ -26,6 +26,9 @@ CONTESTS_DIR = os.path.join(SCRIPT_DIR, 'contests')
 TESTS_FOLDER = 'tests'
 TEST_GENERATOR = 'test_generator.py'
 CHECKSUM = 'checksum'
+CHECKER = 'checker.py'
+HEADER = 'header.py'
+FOOTER = 'footer.py'
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
@@ -67,6 +70,9 @@ class Problem:
         self.tests_dir = os.path.join(self.path, TESTS_FOLDER)
         self.generator = os.path.abspath(os.path.join(self.path, TEST_GENERATOR))
         self.checksum = os.path.abspath(os.path.join(self.path, CHECKSUM))
+
+        self.header = os.path.isfile(os.path.abspath(os.path.join(self.path, HEADER)))
+        self.footer = os.path.isfile(os.path.abspath(os.path.join(self.path, FOOTER)))
 
         self.statement = ppath
         self.metadata = self._prob.metadata
@@ -118,7 +124,7 @@ class Problem:
         self.errors = []
 
         if 'checker' not in self.metadata:
-            if not os.path.isfile(os.path.join(self.path, 'checker.py')):
+            if not os.path.isfile(os.path.join(self.path, CHECKER)):
                 self._report_error(Problem.ERROR_ID_MISSING)
         else:
             c = self.metadata['checker']
@@ -384,7 +390,7 @@ def generate_ejudge_config(params):
     template = env.get_template(params.template)
 
     with open(os.path.join(conf_dir, 'serve.cfg'), 'w') as f:
-        f.write(template.render(problems=map(lambda p: p.metadata, problems)))
+        f.write(template.render(problems=problems))
 
     md = markdown.Markdown(extensions = ['markdown.extensions.tables', InputOutputExamplesExtension()])
     for p in problems:
@@ -395,7 +401,11 @@ def generate_ejudge_config(params):
             f.write(bs4.BeautifulSoup(html, 'lxml').prettify())
         generate_tests_for_problem(p)
         if p.checker is None:
-            shutil.copy(os.path.join(p.path, 'checker.py'), problem_dir)
+            shutil.copy(os.path.join(p.path, CHECKER), problem_dir)
+        if p.header:
+            shutil.copy(os.path.join(p.path, HEADER), problem_dir)
+        if p.footer:
+            shutil.copy(os.path.join(p.path, FOOTER), problem_dir)
         shutil.copytree(p.tests_dir, os.path.join(problem_dir, TESTS_FOLDER))
 
 
