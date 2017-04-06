@@ -110,6 +110,3 @@ for i in range(1, 41):
 gen_test(tests_dir, [100])
 gen_test(tests_dir, range(100))
 gen_test(tests_dir, range(100, 0, -1))
-gen_test(tests_dir, [1] * 100)
-gen_test(tests_dir, [1, 2, 3, 4, 5] * 100)
-
