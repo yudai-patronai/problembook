@@ -33,7 +33,7 @@ def gen_test(tests_dir, sequence):
 shutil.rmtree(tests_dir, ignore_errors=True)
 os.makedirs(tests_dir)
 
-for i in range(40):
+for i in range(1, 41):
     gen_test(tests_dir, rand_numbers(range(-i * 10, i * 10), i * 3))
 
 gen_test(tests_dir, [100])
