@@ -2,7 +2,7 @@
 id: e1c4a933-7a07-42cd-b285-e6efb19189cc
 longname: Высота дерева
 tags: [graphs,binary,tree,btree]
-checker: cmp_file
+checker: cmp_long_long
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
