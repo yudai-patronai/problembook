@@ -1,0 +1,37 @@
+name: 9_strings
+problems:
+
+    # Префикс функция
+    - f8158168-7725-4489-ae3a-0c278e0cf875:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Z функция
+    - d725c1b9-62ac-4f62-8a0c-7e47042a377f:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Поиск подстроки
+    -  5e36b7fd-7839-4f63-bbd4-86209619bcba:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Циклический сдвиг
+    - c065553e-a163-4764-bb2a-72e2e422f9f4:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Расстояние Левенштейна
+    - 76da0ec6-5426-47a9-8a5b-777ce370e791:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
