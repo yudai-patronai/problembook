@@ -30,7 +30,7 @@ summ = {}
 for i in [res, ans]:
     dist = [float('+inf')]*n
 
-    q = [(i, 0)]
+    q = [(0, i)]
 
     while q:
         v, d = heapq.heappop(q)
@@ -41,7 +41,7 @@ for i in [res, ans]:
 
         for s, w in g[v]:
             if dist[s] > dist[v] + w:
-                heapq.heappush(q, (s, dist[v] + w))
+                heapq.heappush(q, (dist[v] + w, s))
 
     summ[i] = sum(dist)
 
