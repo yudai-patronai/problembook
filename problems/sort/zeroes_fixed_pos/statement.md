@@ -1,6 +1,6 @@
 ---
 id: c4d05092-81b1-479a-9a25-f4e46d80cd5f
-longname: Сортировка: нули остаются на своих местах
+longname: "Сортировка: нули остаются на своих местах"
 tags: [sort,easy]
 checker: cmp_intseq
 time_limit: 1

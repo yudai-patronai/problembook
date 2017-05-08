@@ -1,6 +1,6 @@
 ---
 id: a8f0aabb-6781-4c8b-a795-a04d1dcdb013
-longname: Сортировка: отрицательные по убыванию
+longname: "Сортировка: отрицательные по убыванию"
 tags: [sort,easy]
 checker: cmp_intseq
 time_limit: 1
