@@ -1,5 +1,5 @@
 ---
-id: 52b5a93f-6c53-4885-988f-1d720d790118
+id: 846ddf10-4d95-439a-a2e9-b91a20622f23
 longname: Сортировка: сначала чётные
 tags: [sort,easy]
 checker: cmp_intseq

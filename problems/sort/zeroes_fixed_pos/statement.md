@@ -1,5 +1,5 @@
 ---
-id: 52b5a93f-6c53-4885-988f-1d720d790118
+id: c4d05092-81b1-479a-9a25-f4e46d80cd5f
 longname: Сортировка: нули остаются на своих местах
 tags: [sort,easy]
 checker: cmp_intseq
