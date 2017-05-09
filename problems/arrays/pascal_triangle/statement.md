@@ -2,6 +2,7 @@
 id: 09d7927b-fd45-4be2-9548-a902ebda10fb
 longname: Треугольник Паскаля
 tags: [arrays]
+checker: cmp_file
 time_limit: 5
 real_time_limit: 20
 max_vm_size: 256M
