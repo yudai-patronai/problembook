@@ -1,5 +1,5 @@
 ---
-id: 09d7927b-fd45-4be2-9548-a902ebda10fb
+id: 1e72291c-e278-4ae4-9cd2-3d2ccbc9bbb3
 longname: Треугольник Паскаля
 tags: [arrays]
 checker: cmp_file

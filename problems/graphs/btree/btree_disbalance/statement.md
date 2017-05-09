@@ -1,5 +1,5 @@
 ---
-id: acda3bcd-3361-46a9-999a-5910e0746667
+id: 71d01452-637d-4971-b550-e21fa53adc3b
 longname: Дерево - проверка свойства кучи
 tags: [graphs,binary,tree,btree]
 checker: cmp_long_long
