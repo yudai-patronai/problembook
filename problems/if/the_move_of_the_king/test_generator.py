@@ -23,7 +23,7 @@ for i in range(1, N+1):
         y2 = random.randint(1, 8)
 
 
-    ans = 'YES' if abs((x1-x2)*(y1-y2)) <= 1 else 'NO'
+    ans = 'YES' if abs(x1 - x2) <= 1 and abs(y1 - y2) <= 1 else 'NO'
 
     with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
         f.write("{0}\n{1}\n{2}\n{3}\n".format(x1, y1, x2, y2))
