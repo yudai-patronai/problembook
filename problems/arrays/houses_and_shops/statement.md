@@ -1,5 +1,5 @@
 ---
-id: 09d7927b-fd45-4be2-9548-a902ebda10fb
+id: 41864651-6af3-4232-bdff-b7aa53bf2a20
 longname: Дома и магазины
 tags: [arrays]
 time_limit: 5
