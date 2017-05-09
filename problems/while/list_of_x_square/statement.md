@@ -2,7 +2,7 @@
 id: 47fc8f28-dfcb-4d30-b1f4-e9e4b961bae7
 longname: Список квадратов
 tags: [cycle,easy]
-checker: cmp_yesno
+checker: cmp_intseq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
