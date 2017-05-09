@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 def check_halp_complete(matrix):
+    n = len(matrix)
     for i in range(n):
         for j in range(i + 1, n):
             if matrix[i][j] + matrix[j][i] == 0:
