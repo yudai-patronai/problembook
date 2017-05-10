@@ -2,7 +2,7 @@
 id: c4d05092-81b1-479a-9a25-f4e46d80cd5f
 longname: "Сортировка: нули остаются на своих местах"
 tags: [sort,easy]
-checker: cmp_intseq
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

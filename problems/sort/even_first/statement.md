@@ -2,7 +2,7 @@
 id: 846ddf10-4d95-439a-a2e9-b91a20622f23
 longname: "Сортировка: сначала чётные"
 tags: [sort,easy]
-checker: cmp_intseq
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

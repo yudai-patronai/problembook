@@ -2,7 +2,7 @@
 id: a8f0aabb-6781-4c8b-a795-a04d1dcdb013
 longname: "Сортировка: отрицательные по убыванию"
 tags: [sort,easy]
-checker: cmp_intseq
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
