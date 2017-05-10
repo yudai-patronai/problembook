@@ -1,5 +1,5 @@
 ---
-id: 09d7927b-fd45-4be2-9548-a902ebda10fb
+id: 09d7927b-1988-2be2-9548-a902ebda10fb
 longname: Тапочки
 tags: [arrays]
 time_limit: 5
