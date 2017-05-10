@@ -1,0 +1,59 @@
+name: 20170510-exam-variant1
+problems:
+    
+    # Ход короля
+    - c535fcfd-f6e0-4a3d-bc04-9fff35b923d6:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Двоичный логарифм
+    - e6254f9f-d9d2-4dae-a5b9-345e46d69ef9:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Треугольник Паскаля
+    - 1e72291c-e278-4ae4-9cd2-3d2ccbc9bbb3:
+        score: 80
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Сортировка: сначала чётные
+    - 846ddf10-4d95-439a-a2e9-b91a20622f23:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Проверка матрицы смежности
+    - f2188554-2b3b-4ee9-8940-c5aebdf031b8:
+        score: 100
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Путь минимального веса c четным количеством ребер
+    - e1ccc378-c21d-4b9c-98e8-7a5a3c4c595b:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Дерево - проверка свойства кучи
+    - acda3bcd-3361-46a9-999a-5910e0746667:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подпалиндромы
+    - 81fededd-9c0c-4841-b296-976428c1e230:
+        score: 200
+        time_limit: 4
+        real_time_limit: 4
+        max_vm_size: 256M
+    
