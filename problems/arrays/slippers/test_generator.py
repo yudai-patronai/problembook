@@ -16,7 +16,7 @@ if __name__ == "__main__":
     for test in range(1, 51):
         N = random.randint(1, test*10)
         A = []
-        for i in range(N):
+        for i in range(1, N+1):
             A += [-i, i]
         random.shuffle(A)
         test_name = os.path.join(test_folder, "%02d" % test)
