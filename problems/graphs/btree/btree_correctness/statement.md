@@ -3,9 +3,9 @@ id: acda3bcd-3361-46a9-999a-5910e0746667
 longname: Дерево - проверка корректности
 tags: [graphs,binary,tree,btree]
 checker: cmp_file
-time_limit: 1
-real_time_limit: 1
-max_vm_size: 64M
+time_limit: 7
+real_time_limit: 7
+max_vm_size: 1024M
 ---
 
 Проверьте, что предложенное дерево является двоичным деревом поиска, т.е. для каждой вершины в левом поддереве все ключи меньше чем в данной вершине, а в правом - больше.
