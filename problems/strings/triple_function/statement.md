@@ -1,5 +1,5 @@
 ---
-id: 7879c456-6b2d-492f-929e-75895ad05ce8
+id: 96891199-815a-49be-8823-0574396e7681
 longname: А-функция
 tags: [strings]
 checker: cmp_int_seq
