@@ -1,0 +1,66 @@
+name: 20170512-exam-variant3
+problems:
+    
+    # Ход ферзя
+    - 1bd02933-e8c5-4bda-a04e-a9ff671392e3:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Список квадратов
+    - 47fc8f28-dfcb-4d30-b1f4-e9e4b961bae7:
+        score: 300
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сглаживание массива
+    - 6d876eef-965a-4a6a-ad59-79ce4a7988e5:
+        score: 500
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Сортировка: нули остаются на своих местах
+    - c4d05092-81b1-479a-9a25-f4e46d80cd5f:
+        score: 1000
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Задача Иосифа Флавия
+    - 09d7927b-1988-3be2-9548-a902ebda10fb:
+        score: 1000
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Подсчет количества ребер неориентированного графа
+    - 57c05b56-564f-409f-bf3d-a4e3cd1c4bfb:
+        score: 1000
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Путь минимального веса из 5k+2 ребер
+    - 83ed15cb-88c5-4569-a4d6-979a167859a9:
+        score: 2000
+        time_limit: 1
+        real_time_limit: 20
+        max_vm_size: 64M
+    
+    # Максимум суммы ключей дерева
+    - 5a78b4a6-c2b4-4b65-a01a-12e8958d5a18:
+        score: 2000
+        time_limit: 20
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # B-функция
+    - 96891199-815a-49be-8823-0574396e7681:
+        score: 2000
+        time_limit: 4
+        real_time_limit: 4
+        max_vm_size: 256M
+    
