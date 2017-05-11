@@ -2,6 +2,7 @@
 id: 09d7927b-1988-3be2-9548-a902ebda10fb
 longname: Задача Иосифа Флавия
 tags: [arrays]
+checker: cmp_long_long
 time_limit: 5
 real_time_limit: 20
 max_vm_size: 256M
