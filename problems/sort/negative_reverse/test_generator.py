@@ -5,7 +5,7 @@ import shutil
 import random
 
 N = 50
-MAX_L = 10000
+MAX_L = 500
 
 random.seed(42)
 
