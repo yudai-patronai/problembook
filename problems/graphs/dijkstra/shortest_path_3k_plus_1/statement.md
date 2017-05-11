@@ -2,7 +2,6 @@
 id: e8e9354e-7ba9-403e-9a65-5e3f8bd7467f
 longname: Путь минимального веса из 3k+1 ребер
 tags: [graphs,dijkstra]
-checker: cmp_yesno
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
