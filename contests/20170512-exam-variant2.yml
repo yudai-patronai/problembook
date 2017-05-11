@@ -1,0 +1,66 @@
+name: 20170512-exam-variant2
+problems:
+    
+    # Ход слона
+    - fb690335-ffe3-4425-880f-53ba74727ecb:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Точная степень двойки
+    - 453bacb4-181f-4bd4-884a-f7cdda8e32da:
+        score: 300
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Симметричная последовательность
+    - d620c5ef-2303-4b9b-9580-76c2162c9874:
+        score: 500
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Сортировка: отрицательные по убыванию
+    - a8f0aabb-6781-4c8b-a795-a04d1dcdb013:
+        score: 1000
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Дома и магазины
+    - 41864651-6af3-4232-bdff-b7aa53bf2a20:
+        score: 1000
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Полуполный граф
+    - 9abe9d66-2552-469e-8111-397583c6380e:
+        score: 1000
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 64M
+    
+    # Путь минимального веса из 3k+1 ребер
+    - e8e9354e-7ba9-403e-9a65-5e3f8bd7467f:
+        score: 2000
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Дисбаланс дерева поиска
+    - 71d01452-637d-4971-b550-e21fa53adc3b:
+        score: 2000
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # А-функция
+    - 7879c456-6b2d-492f-929e-75895ad05ce8:
+        score: 2000
+        time_limit: 4
+        real_time_limit: 4
+        max_vm_size: 256M
+    
