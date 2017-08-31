@@ -1,0 +1,22 @@
+dist: trusty
+sudo: false
+
+language: python
+python:
+  - "3.6"
+
+install: pip install -r requirements.txt
+
+
+script:
+  - python ./contest.py generate-tests -f -j5
+  - python ./contest.py validate
+
+branches:
+  only:
+    - master
+
+notifications:
+  email:
+      on_success: change
+      on_failure: always

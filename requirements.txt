@@ -6,3 +6,4 @@ tabulate
 PyYAML
 lxml
 html2markdown
+networkx
