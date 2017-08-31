@@ -16,6 +16,31 @@
 ...
 ```
 
+```
+❯ ./contest.py list-tags                                                                                                                                                                     problembook/git/master 
+
+Тэг             Количество задач
+------------  ------------------
+1d                             1
+arrays                         6
+bfs                            6
+binary                         9
+...
+
+```
+
+```
+❯ ./contest.py find-problems -t arrays,if,1d                                                                                                                                                problembook/git/master !
+  #  Идентификатор                         Название                         Теги
+---  ------------------------------------  -------------------------------  ----------
+  1  c7ae1da3-e9e7-423b-9139-9d3245369aae  Кузнечик-брокер                  1d dynamic
+  2  c535fcfd-f6e0-4a3d-bc04-9fff35b923d6  Ход короля                       if
+  3  fb690335-ffe3-4425-880f-53ba74727ecb  Ход слона                        if
+  4  1bd02933-e8c5-4bda-a04e-a9ff671392e3  Ход ферзя                        if
+  5  1e72291c-e278-4ae4-9cd2-3d2ccbc9bbb3  Треугольник Паскаля              arrays
+...
+```
+
 ### Добавление задач
 
 ```

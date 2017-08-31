@@ -95,6 +95,7 @@ class Problem:
 
         if 'tags' not in self.metadata:
             self.metadata['tags'] = []
+        self.metadata['tags'] = set(self.metadata['tags'])
 
     def _report_error(self, error, *args, **kwargs):
         self.errors.append((error, args, kwargs))
@@ -349,12 +350,17 @@ def create_contest(params):
 
 
 def find_problems(params):
+    if params.tags is None:
+        predicate = None
+    else:
+        tags = set(params.tags.split(','))
+        predicate = lambda p: p.tags & tags
     problems = [[
         k+1,
         p.id,
         p.longname,
         ' '.join(p.tags)
-    ] for k, p in enumerate(__find_problems().values())]
+    ] for k, p in enumerate(__find_problems(predicate).values())]
 
     print(tabulate.tabulate(
         problems,
@@ -601,6 +607,7 @@ create_contest_parser.add_argument('-f', '--force-overwrite', action='store_true
 create_contest_parser.add_argument('problems', nargs='+', help='Список идентификаторов задач')
 
 find_problems_parser = subparsers.add_parser('find-problems', help='Найти задачи')
+find_problems_parser.add_argument('-t', '--tags', help='Список тэгов')
 find_problems_parser.set_defaults(_action=find_problems)
 
 generate_ejudge_config_parser = subparsers.add_parser('ejudge', help='Сгенерировать конфиг ejudge')
