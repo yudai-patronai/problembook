@@ -496,6 +496,8 @@ def validate(params):
 
     report = []
 
+    failed = False
+
     for k, p in enumerate(problems):
         p.validate(check_checksum=True, check_solution=True)
         status = MARK_FAILED if p.errors else MARK_OK
@@ -525,6 +527,7 @@ def validate(params):
 
         report.append((k+1, p.id, p.longname, tests, unique_tests, test_generator, solution, checksum, status))
 
+        failed = failed or p.errors
         if p.errors and params.verbose:
             print(p.format_errors())
 
@@ -532,6 +535,9 @@ def validate(params):
         report,
         headers=['#', 'Идентификатор', 'Название', 'Тесты', 'Уникальные тесты', 'Генератор тестов', 'Решение', 'Контрольная сумма', 'Статус']
     ))
+
+    if failed:
+        return 1
 
 
 def show(params):
@@ -648,4 +654,5 @@ list_tags_parser.set_defaults(_action=list_tags)
 
 args = parser.parse_args()
 
-args._action(args)
+ret = args._action(args)
+sys.exit(0 if ret is None else ret)
