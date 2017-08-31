@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
+import os
+import random
 import shutil
 import string
 import subprocess as sp
-import os
-import random
 
 ALPHABET = list(string.ascii_lowercase)
 
@@ -65,4 +65,4 @@ if __name__ == "__main__":
             tests.append(generate_simple_test(n, s, seed))
 
     for i, t in enumerate(tests):
-        prepare_test(i+1, t, test_folder)
+        prepare_test(i + 1, t, test_folder)

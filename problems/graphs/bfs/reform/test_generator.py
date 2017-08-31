@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 
 import os
-import sys
 import random
 import shutil
-import bisect
-import solution
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
+
 
 def gen_tests_weight_centers(tests_dir):
     shutil.rmtree(tests_dir, ignore_errors=True)
@@ -51,5 +48,6 @@ def gen_tests_weight_centers(tests_dir):
     t += 1
     task.gen_test(tests_dir, t, n, task.add_rand_weight(full), *list(range(100)))
     t += 1
+
 
 gen_tests_weight_centers(tests_dir)

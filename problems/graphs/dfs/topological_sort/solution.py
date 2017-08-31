@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-import os
-import sys
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
+
 
 def dfs_topological_sort_x(graph, x, black):
     '''
@@ -45,6 +43,7 @@ def dfs_topological_sort_x(graph, x, black):
 
     return result
 
+
 def solve(graph):
     result = []
     black = set()
@@ -58,6 +57,7 @@ def solve(graph):
         else:
             result.extend(r)
     return ' '.join(map(str, result[::-1])) + '\n'
+
 
 if __name__ == "__main__":
     n, m, g = task.read_task_directed()

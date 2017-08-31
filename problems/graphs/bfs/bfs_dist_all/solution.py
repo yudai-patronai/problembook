@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-import os
-import sys
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
+
 
 def bfs_dist_all(graph):
     dist = [-1] * len(graph)
@@ -19,8 +17,10 @@ def bfs_dist_all(graph):
 
     return dist
 
+
 def solve(graph):
     return '\n'.join(map(str, bfs_dist_all(graph))) + '\n'
+
 
 if __name__ == "__main__":
     n, m, g = task.read_task()

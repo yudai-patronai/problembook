@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 if __name__ == "__main__":
-    n = int(input()) #  число вершин графа
+    n = int(input())  # число вершин графа
     G = []
     edges = []
     for i in range(n):

@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-import os
-import sys
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
+
 
 def bfs_spanning_tree(graph):
     found = [False] * len(graph)
@@ -21,8 +19,10 @@ def bfs_spanning_tree(graph):
 
     return result
 
+
 def solve(graph):
     return '\n'.join(['%d %d' % e for e in bfs_spanning_tree(graph)]) + '\n'
+
 
 if __name__ == "__main__":
     n, m, g = task.read_task()

@@ -5,15 +5,17 @@ import random
 import shutil
 import subprocess as sp
 
+
 def generate_complete_random_rest(graph, n, m):
     for i in range(m):
-        v1 = random.randint(0, n-1)
-        v2 = random.randint(0, n-1)
+        v1 = random.randint(0, n - 1)
+        v2 = random.randint(0, n - 1)
         while graph[v1][v2]:
-            v1 = random.randint(0, n-1)
-            v2 = random.randint(0, n-1)
+            v1 = random.randint(0, n - 1)
+            v2 = random.randint(0, n - 1)
         graph[v1][v2] = 1
     return graph
+
 
 def generate_random_graph(n, m, p, seed, c):
     random.seed(seed)
@@ -25,13 +27,13 @@ def generate_random_graph(n, m, p, seed, c):
         for j in range(n):
             graph[i][j] = 0
 
-    if m >= n * (n-1) / 2:
+    if m >= n * (n - 1) / 2:
         if random.randint(0, 5) > 1:
             done = 0
             for i in range(n):
                 for j in range(i + 1, n):
                     if random.randint(0, 1):
-                       graph[i][j] = 1
+                        graph[i][j] = 1
                     else:
                         graph[j][i] = 1
                     done += 1
@@ -76,7 +78,7 @@ def generate_test(test, n, m, p, c):
     graph = generate_random_graph(n, m, p, "seed_%d_test" % test, c)
     write_graph(graph, n, m, test_name)
     answer = generate_answer(test_name)
-    print("generated %s with n=%d, m=%d, answer=%s" % (test_name, n, m,answer))
+    print("generated %s with n=%d, m=%d, answer=%s" % (test_name, n, m, answer))
 
 
 if __name__ == "__main__":
@@ -92,9 +94,10 @@ if __name__ == "__main__":
             f.write(d)
         generate_answer(test_name, a)
 
-    for n, m, p in ([(4, 15, 0.6), (5, 10,  1),  (5, 13,  1), (5, 15,  1), (10, 1, 0.3), 
-                    (10, 90,  0.7), (20, 11, 0.2), (20, 300, 0.7), (20, 250, 0.7),(20, 250, 0.7),(20, 250, 0.7),(20, 250, 0.7), (35, 30, 0.1), (35, 500, 0.5), 
-                    (50, 2, 0.1), (50, 1500, 0.7), (50, 1900, 0.7), (50, 1900, 0.7), (50, 1900, 0.7), (88,123, 0.1),
-                    (88, 200, 0.5), (100, 500, 0.05)]):
+    for n, m, p in ([(4, 15, 0.6), (5, 10, 1), (5, 13, 1), (5, 15, 1), (10, 1, 0.3),
+                     (10, 90, 0.7), (20, 11, 0.2), (20, 300, 0.7), (20, 250, 0.7), (20, 250, 0.7), (20, 250, 0.7),
+                     (20, 250, 0.7), (35, 30, 0.1), (35, 500, 0.5),
+                     (50, 2, 0.1), (50, 1500, 0.7), (50, 1900, 0.7), (50, 1900, 0.7), (50, 1900, 0.7), (88, 123, 0.1),
+                     (88, 200, 0.5), (100, 500, 0.05)]):
         test += 1
         generate_test(test, n, m, p, 3)

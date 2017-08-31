@@ -1,25 +1,30 @@
 #!/usr/bin/env python3
 
 import os
-import shutil
-import solution
 import random
+import shutil
+
+import solution
 
 random.seed(42)
+
 
 def generate_answer(name, n, seq):
     with open("%s.a" % name, 'w') as f:
         f.write(solution.solve(n, seq))
+
 
 def makePalindrome(n):
     half = [random.randint(1, 9) for i in range(n // 2)]
     p = half + ([random.randint(1, 9)] if n % 2 else []) + half[::-1]
     return p
 
+
 def generate_task(n):
     p = makePalindrome(n)
-    task_len = random.randint(n//2 + 1, n)
+    task_len = random.randint(n // 2 + 1, n)
     return task_len, p[:task_len]
+
 
 def generate_test(name, n):
     l, seq = generate_task(n)

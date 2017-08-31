@@ -1,4 +1,3 @@
-
 def solve(n, edges):
     comp = [i for i in range(n)]
     n_comp = n
@@ -21,6 +20,7 @@ def solve(n, edges):
             components[b] = []
 
     return str(i) + '\n'
+
 
 if __name__ == "__main__":
     n, m = map(int, input().split())

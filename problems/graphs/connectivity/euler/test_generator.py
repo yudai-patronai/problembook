@@ -3,12 +3,12 @@
 # TODO: Improve tests
 
 import os
-import subprocess as sp
 import random
 import shutil
+import subprocess as sp
 
 simple_tests = [
-("""4
+    ("""4
 4
 0 1
 1 2
@@ -16,22 +16,22 @@ simple_tests = [
 3 0
 """, "YES\n"),
 
-("""3
+    ("""3
 2
 0 1
 1 2
 """, "NO\n"),
 
-("""1
+    ("""1
 0
 """, "YES\n"),
 
-("""2
+    ("""2
 1
 0 1
 """, "NO\n"),
 
-("""6
+    ("""6
 6
 0 1
 2 1
@@ -41,7 +41,7 @@ simple_tests = [
 5 3
 """, "NO\n"),
 
-("""6
+    ("""6
 7
 0 1
 2 1
@@ -52,7 +52,7 @@ simple_tests = [
 0 5
 """, "NO\n"),
 
-("""6
+    ("""6
 7
 0 1
 2 1
@@ -94,12 +94,12 @@ def generate_almost_euler_graph(seed):
     n = random.randint(0, 300)
     m = random.randint(0, n * n // 2)
     graph = [set() for i in range(n)]
-    start = random.randint(0, n-1)
+    start = random.randint(0, n - 1)
     current = start
     visited = set()
     visited.add(current)
     for i in range(m):
-        end = random.randint(0, n-1)
+        end = random.randint(0, n - 1)
         if end == current or (end in graph[current]):
             continue
         graph[current].add(end)
@@ -122,8 +122,8 @@ def generate_random_graph(seed):
     m = random.randint(0, n * n // 2)
     graph = [set() for i in range(n)]
     for i in range(m):
-        a = random.randint(0, n-1)
-        b = random.randint(0, n-1)
+        a = random.randint(0, n - 1)
+        b = random.randint(0, n - 1)
         if a != b:
             graph[a].add(b)
             graph[b].add(a)

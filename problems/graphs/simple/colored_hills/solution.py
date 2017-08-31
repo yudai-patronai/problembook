@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     bad = 0
     for i in range(n):
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             if matrix[i][j] == 1 and colors[i] != colors[j]:
                 bad += 1
 

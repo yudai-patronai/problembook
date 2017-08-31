@@ -2,7 +2,6 @@
 import os
 import random
 import shutil
-import sys
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 random.seed(100)
@@ -41,4 +40,3 @@ gen_test(tests_dir, range(100))
 gen_test(tests_dir, range(100, 0, -1))
 gen_test(tests_dir, [1] * 100)
 gen_test(tests_dir, [1, 2, 3, 4, 5] * 100)
-

@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 
 import os
-import shutil
-import solution
 import random
+import shutil
+
+import solution
 
 random.seed(42)
+
 
 def generate_answer(name, n, k, seq):
     with open("%s.a" % name, 'w') as f:
         f.write(solution.solve(n, k, seq))
+
 
 def generate_test(name, testn):
     minn = 1 if testn < 10 else 10

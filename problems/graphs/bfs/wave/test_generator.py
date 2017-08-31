@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
-import shutil
 import random
+import shutil
 
 import solution
 
@@ -56,13 +56,16 @@ X     X
 XXXXXXX
 """
 
+
 def draw_hline(field, i, j1, j2):
     for j in range(j1, j2 + 1):
         field[i][j] = -2
 
+
 def draw_vline(field, i1, i2, j):
     for i in range(i1, i2 + 1):
         field[i][j] = -2
+
 
 def gen_field(n, m):
     field = [[-1] * m for _ in range(n)]
@@ -85,6 +88,7 @@ def gen_field(n, m):
         draw_vline(field, i, i + c, j)
 
     return field
+
 
 # Not sure that longest, but should be long enough =)
 def find_longest_way(field):
@@ -139,7 +143,6 @@ for t in tests:
                 tt = list(t[i])
                 tt[j] = ' '
                 t[i] = ''.join(tt)
-
 
     test = os.path.join(tests_dir, '%.2d' % ind)
     ans = test + '.a'

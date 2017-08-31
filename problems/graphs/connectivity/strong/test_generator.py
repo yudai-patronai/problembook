@@ -13,7 +13,7 @@ os.makedirs(tests_dir)
 
 random.seed(42)
 
-for k in range(1, N_TESTS+1):
+for k in range(1, N_TESTS + 1):
     g = []
     n_verts = random.randint(1, N_VERTS)
 
@@ -30,7 +30,7 @@ for k in range(1, N_TESTS+1):
         for edge in zip(c, c[1:]):
             edges.add(edge)
         edges.add((c[-1], c[0]))
-        for i in range(random.randrange(0, 5*len(c))):
+        for i in range(random.randrange(0, 5 * len(c))):
             edge_from = random.choice(c)
             edge_to = random.choice(c)
             if edge_from != edge_to:
@@ -46,5 +46,3 @@ for k in range(1, N_TESTS+1):
             fin.write('{} {}\n'.format(*edge))
     with open(os.path.join(tests_dir, '{0:0>2}.a'.format(k)), 'w') as fout:
         fout.write('YES' if n_components == 1 else 'NO')
-
-

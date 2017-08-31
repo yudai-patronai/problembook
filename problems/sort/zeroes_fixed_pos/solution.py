@@ -4,10 +4,9 @@ l = list(map(int, input().split()))
 
 
 def slow(l):
-
     n = len(l)
 
-    for i in range(n-1):
+    for i in range(n - 1):
         if l[i] == 0:
             continue
         m = i
@@ -36,5 +35,6 @@ def fast(l):
         else:
             yield 0
             cz += 1
+
 
 print(' '.join(map(str, fast(l))))

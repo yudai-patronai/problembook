@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
-import bisect
-import os
-import sys
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
+
 
 def floyd(dist):
     n = len(dist)
@@ -20,6 +17,7 @@ def solve(matrix):
     sums = [sum(a) for a in matrix]
 
     return '%d\n' % sums.index(min(sums))
+
 
 if __name__ == "__main__":
     n, m, matrix = task.read_task_weight_adj_matrix()

@@ -14,23 +14,31 @@ import heapq
 
 Пусть для удобства 5n+x - индекс вершины (n, x) вспомогательного графа.
 '''
+
+
 def enc0(n):
     return n * 5
+
 
 def enc1(n):
     return n * 5 + 1
 
+
 def enc2(n):
     return n * 5 + 2
+
 
 def enc3(n):
     return n * 5 + 3
 
+
 def enc4(n):
     return n * 5 + 4
 
+
 def dec(n):
     return n // 5
+
 
 def read_graph_weight(n, m):
     graph = [[] for i in range(5 * n)]
@@ -49,6 +57,7 @@ def read_graph_weight(n, m):
 
     return graph
 
+
 def read_pairs(k):
     pairs = []
     for i in range(k):
@@ -56,6 +65,7 @@ def read_pairs(k):
         pairs.append((enc0(a), enc2(b)))
 
     return pairs
+
 
 def read_task():
     n, m = list(map(int, input().split()))
@@ -88,6 +98,7 @@ def dijkstra_mlogm_heap(graph, start, end):
                 heapq.heappush(queue, (dist[v2], v2))
 
     return parent
+
 
 if __name__ == "__main__":
     graph, pairs = read_task()

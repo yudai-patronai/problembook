@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-import os
-import sys
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
+
 
 def _hamilton(g, Visited, Path, curr):
     Path.append(curr)
@@ -24,6 +22,7 @@ def _hamilton(g, Visited, Path, curr):
 
     return False
 
+
 def hamilton(g, curr):
     Visited = [False] * len(g)
     Path = []
@@ -31,8 +30,10 @@ def hamilton(g, curr):
         return Path
     return None
 
+
 def solve(graph):
     return ' '.join(map(str, hamilton(graph, 0))) + '\n'
+
 
 if __name__ == "__main__":
     n, m, g = task.read_task()

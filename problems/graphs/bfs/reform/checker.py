@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-import sys
-import os
 import bisect
+import sys
+
 
 class CheckerResult:
     OK = 0  # OK, правильный ответ
     WA = 1  # WA, wrong answer, неправильный ответ
     PE = 2  # PE, presentation error, ошибка неправильного формата результата
+
 
 def dijkstra(graph, x, y):
     parent = [-1] * len(graph)
@@ -34,6 +35,7 @@ def dijkstra(graph, x, y):
 
     return (None, None)
 
+
 # checker <input_file> <output_file> <answer_file> [<report_file> [<-appes>]]
 if len(sys.argv) < 3:
     sys.exit(3)
@@ -43,7 +45,7 @@ output_file = sys.argv[2]
 answer_file = sys.argv[2]
 
 with open(input_file) as f:
-    n, m, *centers = map(int, f.readline().split()) 
+    n, m, *centers = map(int, f.readline().split())
     graph = [[] for i in range(n)]
     for line in f.readlines():
         a, b, w = map(int, line.split())

@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-import os
-import sys
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
+
 
 def dfs_cycle_x(graph, x):
     '''
@@ -52,6 +50,7 @@ def dfs_cycle_x(graph, x):
 
     return [], black
 
+
 def solve(graph):
     black = set()
     for x in range(len(graph)):
@@ -64,6 +63,7 @@ def solve(graph):
         if b:
             black |= b
     return 'YES\n'
+
 
 if __name__ == "__main__":
     n, m, g = task.read_task_directed()

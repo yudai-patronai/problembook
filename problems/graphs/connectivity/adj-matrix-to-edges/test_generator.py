@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 import os
-import subprocess as sp
 import random
 import shutil
+import subprocess as sp
 
 
 def get_graph_size(graph):
@@ -21,18 +21,19 @@ def dump_graph(graph, name):
 
 
 simple_tests = [
-"""4
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-""",
-"""3
-2 0 1
-14 8 3
-31 0 0
-""",
+    """4
+    0 0 0 0
+    0 0 0 0
+    0 0 0 0
+    0 0 0 0
+    """,
+    """3
+    2 0 1
+    14 8 3
+    31 0 0
+    """,
 ]
+
 
 def dump_graph(graph, name):
     n, m = get_graph_size(graph)
@@ -41,6 +42,7 @@ def dump_graph(graph, name):
         for g in graph:
             line = ' '.join(str(p) for p in g) + '\n'
             f.write(line)
+
 
 def generate_answer(test):
     with open(test) as f:
@@ -58,7 +60,7 @@ def generate_random_graph(n, p, seed):
     graph = [[] for i in range(n)]
     for i in range(n):
         for j in range(n):
-            num = random.randint(-100,100)
+            num = random.randint(-100, 100)
             graph[i].append(num)
     return graph
 
@@ -72,7 +74,6 @@ def generate_big_graph(n, p, seed):
         b = random.randint(0, n - 1)
         graph[a].add(b)
     return graph
-
 
 
 if __name__ == "__main__":
@@ -89,7 +90,7 @@ if __name__ == "__main__":
             f.write(d)
         generate_answer(test_name)
 
-    param_list = [(3,1), (20, 2), (100, 13), (41,30), (33,17), (16,1)]
+    param_list = [(3, 1), (20, 2), (100, 13), (41, 30), (33, 17), (16, 1)]
     for n, k in param_list:
         p = k / n
         graph = generate_random_graph(n, p, "test=%d,n=%d,k=%d" % (test, n, k))

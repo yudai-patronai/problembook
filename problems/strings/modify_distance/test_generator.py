@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
+import os
+import random
 import shutil
 import string
 import subprocess as sp
-import os
-import random
 
 ALPHABET = list(string.ascii_lowercase)
 
@@ -32,7 +32,7 @@ def generate_random_test(n, a, seed):
     alphabet = random.sample(ALPHABET, a)
     random.seed(seed + "_random")
     first_string = generate_random_string(n, alphabet)
-    second_string = generate_random_string(random.randint(n/2, n), alphabet)
+    second_string = generate_random_string(random.randint(n / 2, n), alphabet)
     return (first_string, second_string)
 
 
@@ -53,4 +53,4 @@ if __name__ == "__main__":
                 tests.append(generate_random_test(n, s, seed))
 
     for i, t in enumerate(tests):
-        prepare_test(i+1, t, test_folder)
+        prepare_test(i + 1, t, test_folder)

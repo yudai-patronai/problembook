@@ -21,7 +21,7 @@ def check_prefix(s, prefix_function):
         assert prefix_function[0] == 0
     for i in range(len(s)):
         assert prefix_function[i] <= i
-        assert s[i - prefix_function[i] + 1: i+1] == s[0:prefix_function[i]]
+        assert s[i - prefix_function[i] + 1: i + 1] == s[0:prefix_function[i]]
 
 
 if __name__ == "__main__":

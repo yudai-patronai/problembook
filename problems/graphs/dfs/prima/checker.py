@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 import sys
-import os
 
-sys.path.append(os.path.abspath('../..'))
 
 class CheckerResult:
     OK = 0  # OK, правильный ответ
     WA = 1  # WA, wrong answer, неправильный ответ
     PE = 2  # PE, presentation error, ошибка неправильного формата результата
+
 
 # checker <input_file> <output_file> <answer_file> [<report_file> [<-appes>]]
 if len(sys.argv) < 3:
@@ -16,6 +15,7 @@ if len(sys.argv) < 3:
 input_file = sys.argv[1]
 output_file = sys.argv[2]
 answer_file = sys.argv[3]
+
 
 def bfs_is_connective(graph):
     found = [False] * len(graph)
@@ -53,6 +53,7 @@ def edges_to_graph(n, edges, directed=False):
                 res[b].append((a, d))
 
     return res
+
 
 with open(answer_file) as f:
     min_weight = int(f.readline().rstrip())
@@ -93,7 +94,7 @@ vert = set([i for e in sub for i in e])
 
 if len(vert) == n and sub.issubset(edges) and \
         bfs_is_connective(edges_to_graph(n, list(sub))) and \
-        sum([edges[e] for e in sub]) == min_weight:
+                sum([edges[e] for e in sub]) == min_weight:
     print('OK')
     sys.exit(CheckerResult.OK)
 else:

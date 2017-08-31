@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 import sys
-import os
-import bisect
+
 
 class CheckerResult:
     OK = 0  # OK, правильный ответ
     WA = 1  # WA, wrong answer, неправильный ответ
     PE = 2  # PE, presentation error, ошибка неправильного формата результата
+
 
 # checker <input_file> <output_file> <answer_file>
 if len(sys.argv) < 3:
@@ -60,7 +60,7 @@ for i in range(k):
             sys.exit(CheckerResult.WA)
 
     for i in range(len(oans) - 1):
-        if ans[i+1] not in graph[ans[i]]:
+        if ans[i + 1] not in graph[ans[i]]:
             print('Edge does not exist in graph')
             sys.exit(CheckerResult.WA)
 
@@ -68,8 +68,8 @@ for i in range(k):
         print('Number of edges in path is wrong')
         sys.exit(CheckerResult.WA)
 
-    weight = sum([graph[ans[i]][ans[i+1]] for i in range(len(ans)-1)])
-    oweight = sum([graph[oans[i]][oans[i+1]] for i in range(len(oans)-1)])
+    weight = sum([graph[ans[i]][ans[i + 1]] for i in range(len(ans) - 1)])
+    oweight = sum([graph[oans[i]][oans[i + 1]] for i in range(len(oans) - 1)])
     if oweight != weight:
         print('There is shorter path in graph')
         sys.exit(CheckerResult.WA)

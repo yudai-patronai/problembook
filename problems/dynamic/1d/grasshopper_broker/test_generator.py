@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
-import random
-import sys
 import os
+import random
 import shutil
 import subprocess
+import sys
 
 random.seed(42)
 
@@ -49,7 +49,8 @@ for i in range(50):
 
     if i >= len(simple_tests):
         with open(os.path.join(tests_dir, '{0:0>2}'.format(i))) as fin:
-            output = subprocess.check_output([sys.executable, os.path.join(prob_dir, 'solution.py')], stdin=fin).decode('utf-8')
+            output = subprocess.check_output([sys.executable, os.path.join(prob_dir, 'solution.py')], stdin=fin).decode(
+                'utf-8')
             _out = list(map(int, output.strip().split()))
 
     with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as fout:

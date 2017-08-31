@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import heapq
 
+
 def read_graph_weight(n, m):
     graph = [[] for i in range(n)]
     for i in range(m):
@@ -10,6 +11,7 @@ def read_graph_weight(n, m):
 
     return graph
 
+
 def read_pairs(k):
     pairs = []
     for i in range(k):
@@ -18,12 +20,14 @@ def read_pairs(k):
 
     return pairs
 
+
 def read_task():
     n, m = list(map(int, input().split()))
     graph = read_graph_weight(n, m)
     k = int(input())
     pairs = read_pairs(k)
     return graph, pairs
+
 
 '''
 Нужно построить вспомогательный граф, вершинами которого будут
@@ -37,17 +41,23 @@ def read_task():
 
 Пусть для удобства 3n+x - индекс вершины (n, x) вспомогательного графа.
 '''
+
+
 def zenc(n):
     return n * 3
+
 
 def oenc(n):
     return n * 3 + 1
 
+
 def tenc(n):
     return n * 3 + 2
 
+
 def dec(n):
     return n // 3
+
 
 def enc_graph_weight(graph, pairs):
     egraph = [[] for i in range(len(graph) * 3)]
@@ -63,7 +73,10 @@ def enc_graph_weight(graph, pairs):
 
     return egraph, epairs
 
+
 ''' Dijkstra '''
+
+
 def dijkstra_mlogm_heap(graph, start, end):
     n = len(graph)
     dist = [float('+inf')] * n
@@ -87,6 +100,7 @@ def dijkstra_mlogm_heap(graph, start, end):
                 heapq.heappush(queue, (dist[v2], v2))
 
     return parent
+
 
 def solve(graph, pairs):
     ans = ''
@@ -112,6 +126,7 @@ def solve(graph, pairs):
 
     return ans
 
+
 if __name__ == "__main__":
     graph, pairs = read_task()
-    print(solve(graph, pairs), end = '')
+    print(solve(graph, pairs), end='')

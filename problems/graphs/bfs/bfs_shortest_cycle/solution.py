@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-import os
-import sys
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
+
 
 def bfs_shortest_cycle_x(graph, x):
     found = [False] * len(graph)
@@ -35,6 +33,7 @@ def bfs_shortest_cycle_x(graph, x):
 
     return []
 
+
 def bfs_shortest_cycle(graph):
     mi = float('+inf')
     mi_list = []
@@ -47,12 +46,14 @@ def bfs_shortest_cycle(graph):
 
     return mi_list
 
+
 def solve(graph):
     c = bfs_shortest_cycle(graph)
     if c:
         return ' '.join(map(str, c)) + '\n'
     else:
         return 'NO CYCLES\n'
+
 
 if __name__ == "__main__":
     n, m, g = task.read_task_directed()

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 import os
-import shutil
 import random
+import shutil
 
 N = 50
 
@@ -13,7 +13,7 @@ tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 shutil.rmtree(tests_dir, ignore_errors=True)
 os.makedirs(tests_dir)
 
-for i in range(1, N+1):
+for i in range(1, N + 1):
     x1 = random.randint(1, 8)
     y1 = random.randint(1, 8)
     x2 = random.randint(1, 8)
@@ -21,7 +21,6 @@ for i in range(1, N+1):
     while x1 == x2 and y1 == y2:
         x2 = random.randint(1, 8)
         y2 = random.randint(1, 8)
-
 
     ans = 'YES' if abs(x1 - x2) == abs(y1 - y2) else 'NO'
 

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
-import shutil
-import string
 import os
 import random
-import solution
+import shutil
+import string
+
 import slow_solution
+import solution
 
 ALPHABET = list(string.ascii_letters)
 
@@ -78,7 +79,8 @@ if __name__ == "__main__":
         (generate_simple("abcba", "xyzyxyz", 200000),),
         (generate_simple(generate_simple("iki", "xyz", 5 + 6 * 3), "xyzyxyz", 200000),),
         (generate_simple(generate_simple("iki", "xyz", 5 + 6 * 3), "kixyzki", 200000),),
-        (generate_simple(generate_simple(generate_simple("aba", "abcdef", 16 + 17 * 3), "xyz", 5 + 6 * (16 + 17 * 3)), "kixyzki", 200000),),
+        (generate_simple(generate_simple(generate_simple("aba", "abcdef", 16 + 17 * 3), "xyz", 5 + 6 * (16 + 17 * 3)),
+                         "kixyzki", 200000),),
     ]
 
     for i, t in enumerate(tests):

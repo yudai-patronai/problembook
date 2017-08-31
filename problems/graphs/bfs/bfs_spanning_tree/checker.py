@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 import sys
-import os
 
-sys.path.append(os.path.abspath('../..'))
 
 class CheckerResult:
     OK = 0  # OK, правильный ответ
     WA = 1  # WA, wrong answer, неправильный ответ
     PE = 2  # PE, presentation error, ошибка неправильного формата результата
+
 
 # checker <input_file> <output_file> <answer_file> [<report_file> [<-appes>]]
 if len(sys.argv) < 3:
@@ -15,6 +14,7 @@ if len(sys.argv) < 3:
 
 input_file = sys.argv[1]
 output_file = sys.argv[2]
+
 
 def bfs_is_connective(graph):
     found = [False] * len(graph)
@@ -52,6 +52,7 @@ def edges_to_graph(n, edges, directed=False):
                 res[b].append((a, d))
 
     return res
+
 
 with open(input_file) as f:
     n, m = map(int, f.readline().split())

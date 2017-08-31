@@ -5,7 +5,7 @@ def dfs(g, i, f):
     f.add(i)
     for j in g[i]:
         if j not in f:
-           dfs(g, j, f)
+            dfs(g, j, f)
 
 
 n = int(input())
@@ -26,4 +26,3 @@ dfs(g1, 0, fired1)
 dfs(g2, 0, fired2)
 
 print("YES" if len(fired1) == len(fired2) == n else "NO")
-

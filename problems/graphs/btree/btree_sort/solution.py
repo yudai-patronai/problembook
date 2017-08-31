@@ -7,12 +7,13 @@ class Node:
         self.left = None
         self.right = None
 
+
 class Tree:
     def __init__(self):
         self.root = None
 
     def add_at(self, node, data):
-        #if node.data == data:
+        # if node.data == data:
         #    return
 
         if data < node.data:
@@ -48,6 +49,7 @@ class Tree:
         if node.right is not None:
             print(' ', end='')
             self.print(node.right)
+
 
 if __name__ == '__main__':
     t = Tree()

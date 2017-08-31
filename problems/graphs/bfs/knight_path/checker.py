@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 import sys
-import os
-import bisect
+
 
 class CheckerResult:
     OK = 0  # OK, правильный ответ
     WA = 1  # WA, wrong answer, неправильный ответ
     PE = 2  # PE, presentation error, ошибка неправильного формата результата
 
+
 s1 = "abcdefgh"
 s2 = "12345678"
+
 
 def is_correct_step(p1, p2):
     ix_1 = s1.index(p1[0])
@@ -22,6 +23,7 @@ def is_correct_step(p1, p2):
         return True
     return False
 
+
 def is_correct_path(path):
     # check points in board
     for p in path:
@@ -31,9 +33,10 @@ def is_correct_path(path):
             return False
     # check steps
     for i, p in enumerate(path[:-2]):
-        if not is_correct_step(p, path[i+1]):
+        if not is_correct_step(p, path[i + 1]):
             return False
     return True
+
 
 # checker <input_file> <output_file> <answer_file> [<report_file> [<-appes>]]
 if len(sys.argv) < 4:
@@ -43,7 +46,6 @@ input_file = sys.argv[1]
 output_file = sys.argv[2]
 answer_file = sys.argv[3]
 
-
 correct_len = 0
 correct_lines = []
 
@@ -51,7 +53,6 @@ with open(answer_file) as f:
     lines = [l.rstrip() for l in f.readlines()]
     correct_len = len(lines)
     correct_lines = lines
-
 
 try:
     with open(output_file) as f:

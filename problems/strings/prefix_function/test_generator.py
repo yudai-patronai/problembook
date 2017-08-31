@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
+import os
+import random
 import shutil
 import string
 import subprocess as sp
-import os
-import random
 
 ALPHABET = list(string.ascii_lowercase)
+
 
 # it could be not best prefix!
 # sometimes it could broke
@@ -48,9 +49,9 @@ def generate_test(i, t, folder):
     with open(filename) as f:
         with open("%s.a" % filename, "w") as g:
             sp.check_call(["./solution.py", "test"], stdin=f, stdout=g)
-    # with open("%s.a" % filename) as f:
-    #     answer = list(map(int, f.readline().split()))
-    # assert t[1] == answer, "%s: %s != %s" % (t[0], t[1], answer)
+            # with open("%s.a" % filename) as f:
+            #     answer = list(map(int, f.readline().split()))
+            # assert t[1] == answer, "%s: %s != %s" % (t[0], t[1], answer)
 
 
 if __name__ == "__main__":

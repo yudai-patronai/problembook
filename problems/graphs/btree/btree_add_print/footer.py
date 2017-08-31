@@ -1,5 +1,3 @@
-
-
 class JudgeTree:
     def __init__(self):
         self.root = None
@@ -32,7 +30,7 @@ def tree_def_str(node):
         return '-'
 
     return '({} {} {})'.format(node.data, tree_def_str(node.left), tree_def_str(node.right))
-        
+
 
 if __name__ == "__main__":
     numbers = list(map(int, input().split()))

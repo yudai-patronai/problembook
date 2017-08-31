@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 import sys
-import os
 
-sys.path.append(os.path.abspath('../..'))
 
 class CheckerResult:
     OK = 0  # OK, правильный ответ
     WA = 1  # WA, wrong answer, неправильный ответ
     PE = 2  # PE, presentation error, ошибка неправильного формата результата
+
 
 # checker <input_file> <output_file> <answer_file> [<report_file> [<-appes>]]
 if len(sys.argv) < 4:
@@ -24,7 +23,7 @@ except (IOError, ValueError):
     sys.exit(CheckerResult.PE)
 
 with open(answer_file) as f:
-        a_weight = int(f.readline().strip())
+    a_weight = int(f.readline().strip())
 
 if o_weight != a_weight:
     print('FAIL')

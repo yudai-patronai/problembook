@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import heapq
 
+
 #######################
 # Library
 #######################
@@ -14,13 +15,16 @@ def read_graph_weight(n, m):
 
     return graph
 
+
 def read_task_f(read_graph_func):
     args = list(map(int, input().split()))
     args.append(read_graph_func(args[0], args[1]))
     return args
 
+
 def read_task_weight():
     return read_task_f(read_graph_weight)
+
 
 def dijkstra_mlogm_heap(graph, centers):
     n = len(graph)
@@ -47,9 +51,11 @@ def dijkstra_mlogm_heap(graph, centers):
 
     return district
 
+
 def solve(graph, *centers):
     district = dijkstra_mlogm_heap(graph, centers)
     return '\n'.join(map(str, district))
+
 
 if __name__ == "__main__":
     n, m, *args = read_task_weight()

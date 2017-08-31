@@ -24,6 +24,7 @@ def compute_b_function(s):
         m = max(l, m)
     return b
 
+
 if __name__ == "__main__":
     s = input()
     print(" ".join(map(str, compute_b_function(s))))

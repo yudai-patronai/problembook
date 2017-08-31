@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-import bisect
-import os
-import sys
 
 #######################
 # Library
@@ -20,10 +17,9 @@ def correct(cell):
 
 Moves = [[1, 2], [1, -2], [-1, 2], [-1, -2], [2, 1], [2, -1], [-2, 1], [-2, -1]]
 
-
 if __name__ == "__main__":
-    D = dict() # расстояния
-    P = dict() # предки
+    D = dict()  # расстояния
+    P = dict()  # предки
 
     for x in "abcdefgh":
         for y in "12345678":
@@ -49,5 +45,3 @@ if __name__ == "__main__":
         Ans.append(curr)
         curr = P[curr]
     print("\n".join(Ans[::-1]))
-
-

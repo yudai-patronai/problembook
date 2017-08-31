@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-import os
-import sys
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
+
 
 class HamCycle():
-    def __init__(self, Cycle = None, CycleLen = 0):
+    def __init__(self, Cycle=None, CycleLen=0):
         self.Cycle = Cycle
         self.CycleLen = CycleLen
+
 
 def _voyager(g, Used, Path, PathLen, Opti, curr):
     Path.append(curr)
@@ -29,6 +28,7 @@ def _voyager(g, Used, Path, PathLen, Opti, curr):
     Path.pop()
     return
 
+
 def voyager(g, curr):
     Used = set()
     Path = []
@@ -37,10 +37,12 @@ def voyager(g, curr):
     _voyager(g, Used, Path, PathLen, Opti, curr)
     return Opti.CycleLen, Opti.Cycle
 
+
 def solve(graph):
     graph = [dict(l) for l in graph]
     CycleLen, Cycle = voyager(graph, 0)
     return str(CycleLen) + '\n' + ' '.join(map(str, Cycle)) + '\n'
+
 
 if __name__ == "__main__":
     n, m, g = task.read_task_weight()

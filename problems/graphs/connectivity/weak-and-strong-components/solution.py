@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import sys
+
 sys.setrecursionlimit(2000000)
+
 
 def dfs(graph, order=None):
     visited = [False for i in range(len(graph))]

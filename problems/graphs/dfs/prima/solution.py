@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 import bisect
-import os
-import sys
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
+
 
 def prima(graph, x):
     parent = [-1] * len(graph)
@@ -28,6 +26,7 @@ def prima(graph, x):
 
     return dist, parent
 
+
 def solve(graph):
     dist, parent = prima(graph, 0)
     l = []
@@ -35,6 +34,7 @@ def solve(graph):
         l.append("%d %d" % (parent[i], i))
 
     return str(sum(dist)) + '\n' + '\n'.join(l) + '\n'
+
 
 if __name__ == "__main__":
     n, m, g = task.read_task_weight()

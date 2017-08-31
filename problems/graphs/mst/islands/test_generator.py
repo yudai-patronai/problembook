@@ -2,15 +2,15 @@
 
 
 import os
-import sys
 import random
 import shutil
+
 import solution
 
-sys.path.append(os.path.abspath('../..'))
-from task import gen_graph_edges
+from lib.graphs.task import gen_graph_edges
 
 random.seed(42)
+
 
 def gen_test(tests_dir, ind, n, edges):
     m = len(edges)
@@ -26,7 +26,7 @@ def gen_test(tests_dir, ind, n, edges):
             f.write(' '.join(map(str, e)) + '\n')
 
     with open(ans, 'w') as f:
-            f.write(solution.solve(n, edges))
+        f.write(solution.solve(n, edges))
 
 
 def gen_tests(tests_dir):
@@ -53,6 +53,7 @@ def gen_tests(tests_dir):
         n = random.randrange(100, 1000)
         gen_test(tests_dir, t, n, gen_graph_edges(n, 10000))
         t += 1
+
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 gen_tests(tests_dir)

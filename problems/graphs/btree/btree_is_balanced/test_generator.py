@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
+import math
 import os
 import random
 import shutil
-import sys
+
 import solution
-import math
-from solution import Node, Tree
+from solution import Node
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 random.seed(100)
 
+
 def rand_numbers(sequence, n):
     return [random.choice(sequence) for i in range(n)]
+
 
 def gen_balanced_none_tree(h):
     if h == 0:
@@ -24,14 +26,14 @@ def gen_balanced_none_tree(h):
 
     r = random.randrange(3)
     if r == 0:
-        n.left = gen_balanced_none_tree(h-1)
-        n.right = gen_balanced_none_tree(h-1)
+        n.left = gen_balanced_none_tree(h - 1)
+        n.right = gen_balanced_none_tree(h - 1)
     elif r == 1:
-        n.left = gen_balanced_none_tree(h-2)
-        n.right = gen_balanced_none_tree(h-1)
+        n.left = gen_balanced_none_tree(h - 2)
+        n.right = gen_balanced_none_tree(h - 1)
     else:
-        n.left = gen_balanced_none_tree(h-1)
-        n.right = gen_balanced_none_tree(h-2)
+        n.left = gen_balanced_none_tree(h - 1)
+        n.right = gen_balanced_none_tree(h - 2)
 
     return n
 
@@ -45,6 +47,7 @@ def tree_node_list(node):
     ret.extend(tree_node_list(node.right))
 
     return ret
+
 
 def tree_rand_bfs(node):
     ret = []
@@ -62,6 +65,7 @@ def tree_rand_bfs(node):
             queue.append(v.right)
 
     return ret
+
 
 def gen_balanced_tree(sequence):
     h = int(math.log2(len(sequence) + 1))

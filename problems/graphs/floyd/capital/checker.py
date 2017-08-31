@@ -6,7 +6,7 @@ import sys
 with open(sys.argv[1]) as fin:
     n, m = map(int, fin.readline().split())
 
-    g = {k:set() for k in range(n)}
+    g = {k: set() for k in range(n)}
 
     for i in range(m):
         f, t, w = map(int, fin.readline().split())
@@ -28,7 +28,7 @@ if res == ans:
 summ = {}
 
 for i in [res, ans]:
-    dist = [float('+inf')]*n
+    dist = [float('+inf')] * n
 
     q = [(0, i)]
 

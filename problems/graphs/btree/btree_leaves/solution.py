@@ -86,7 +86,6 @@ class Tree:
         if node.right is not None:
             Tree.do_leaves(leaves_list, node.right)
 
-
     def leaves(self, leaves_list=None, node=None):
         if self.root is None:
             return []

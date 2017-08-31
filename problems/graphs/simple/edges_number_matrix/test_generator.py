@@ -11,7 +11,7 @@ def generate_random_graph(n, p, seed, c):
     graph = [[0 for j in range(n)] for i in range(n)]
 
     for i in range(n):
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             if random.random() < p:
                 graph[i][j] = 1
                 graph[j][i] = 1
@@ -84,7 +84,9 @@ if __name__ == "__main__":
             f.write(d)
         generate_answer(test_name, a)
 
-    for n, p in ([(4, 0.6), (5, 1), (10, 0.3), (10, 0.7), (20, 0.2), (20, 0.7), (35, 0.1), (35, 0.5), (50, 0.1), (50, 0.7), (88, 0.1),
-                  (88, 0.5), (100, 0.05), (100, 0.3), (100, 0.9)]):
+    for n, p in (
+    [(4, 0.6), (5, 1), (10, 0.3), (10, 0.7), (20, 0.2), (20, 0.7), (35, 0.1), (35, 0.5), (50, 0.1), (50, 0.7),
+     (88, 0.1),
+     (88, 0.5), (100, 0.05), (100, 0.3), (100, 0.9)]):
         test += 1
         generate_test(test, n, p, 3)

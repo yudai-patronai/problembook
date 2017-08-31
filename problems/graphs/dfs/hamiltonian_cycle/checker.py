@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 import sys
-import os
 
-sys.path.append(os.path.abspath('../..'))
 
 class CheckerResult:
     OK = 0  # OK, правильный ответ
     WA = 1  # WA, wrong answer, неправильный ответ
     PE = 2  # PE, presentation error, ошибка неправильного формата результата
+
 
 # checker <input_file> <output_file> <answer_file> [<report_file> [<-appes>]]
 if len(sys.argv) < 4:
@@ -34,7 +33,7 @@ with open(input_file) as f:
         edges.add((a, b))
 
 if len(o_hamiltonian_cycle) != n or \
-        set(o_hamiltonian_cycle) != set(range(n)):
+                set(o_hamiltonian_cycle) != set(range(n)):
     print('FAIL')
     sys.exit(CheckerResult.WA)
 

@@ -3,14 +3,17 @@ import os
 import random
 import shutil
 import sys
-from solution import Tree
+
 from footer import tree_def_str
+from solution import Tree
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 random.seed(100)
 
+
 def rand_numbers(sequence, n):
     return [random.choice(sequence) for i in range(n)]
+
 
 def gen_test(tests_dir, sequence):
     if not hasattr(gen_test, 'ind'):
@@ -50,4 +53,3 @@ gen_test(tests_dir, range(100))
 gen_test(tests_dir, range(100, 0, -1))
 gen_test(tests_dir, [1] * 100)
 gen_test(tests_dir, [1, 2, 3, 4, 5] * 100)
-

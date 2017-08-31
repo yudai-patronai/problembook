@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 
 import os
-import sys
 import random
 import shutil
-import bisect
+
 import solution
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 
 random.seed('shortest_path_even')
+
 
 def gen_test_weight_pairs(tests_dir, ind, n, m, pairs):
     print('test %d' % (ind), n, m)
@@ -33,6 +32,7 @@ def gen_test_weight_pairs(tests_dir, ind, n, m, pairs):
 
     with open(ans, 'w') as f:
         f.write(solution.solve(task.edges_to_graph(n, edges), pairs))
+
 
 def gen_tests_weight_pairs(tests_dir):
     shutil.rmtree(tests_dir, ignore_errors=True)
@@ -64,5 +64,6 @@ def gen_tests_weight_pairs(tests_dir):
             pairs.append((random.randrange(n), random.randrange(n)))
         gen_test_weight_pairs(tests_dir, t, n, 100, pairs)
         t += 1
+
 
 gen_tests_weight_pairs(tests_dir)

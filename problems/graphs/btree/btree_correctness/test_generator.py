@@ -2,12 +2,10 @@
 import os
 import random
 import shutil
-import sys
-import solution
-import math
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 random.seed(100)
+
 
 class Node:
     def __init__(self, data):

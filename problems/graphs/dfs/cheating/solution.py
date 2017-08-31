@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-import os
-import sys
 
-sys.path.append(os.path.abspath('../..'))
-import task
+from lib.graphs import task
+
 
 def dfs_colored(g, start, black, white):
     for v in g[start]:
@@ -19,9 +17,10 @@ def dfs_colored(g, start, black, white):
                 return False
     return True
 
+
 def bigraph_group(g):
-    black=set()
-    white=set()
+    black = set()
+    white = set()
 
     for i in range(len(g)):
         if i not in black | white:
@@ -31,12 +30,14 @@ def bigraph_group(g):
 
     return list(black)
 
+
 def solve(graph):
     cheaters = bigraph_group(graph)
     if len(cheaters):
         return ' '.join(map(str, cheaters)) + '\n'
     else:
         return 'NO\n'
+
 
 if __name__ == "__main__":
     n, m, g = task.read_task()

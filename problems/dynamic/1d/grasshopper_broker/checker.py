@@ -29,15 +29,15 @@ with open(_ans) as f:
     path2 = list(map(int, f.readline().split()))
 
 for p, n in zip(path1, path1[1:]):
-    if n-p < 2:
+    if n - p < 2:
         sys.exit(CheckerResult.WA)
 
 m1 = m2 = startup_capital
 
 for i in path1[1:]:
-    m1 *= (1+percents[i-1]/100)
+    m1 *= (1 + percents[i - 1] / 100)
 
 for i in path2[1:]:
-    m2 *= (1+percents[i-1]/100)
+    m2 *= (1 + percents[i - 1] / 100)
 
-sys.exit(CheckerResult.OK if abs(m1-m2) < THRESHOLD else CheckerResult.WA)
+sys.exit(CheckerResult.OK if abs(m1 - m2) < THRESHOLD else CheckerResult.WA)

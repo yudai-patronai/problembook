@@ -19,6 +19,7 @@ class Node:
 
         return h + 1
 
+
 def is_balanced(node):
     if node is None:
         return True, 0
@@ -27,6 +28,7 @@ def is_balanced(node):
     rb, rh = is_balanced(node.right)
 
     return lb and rb and abs(lh - rh) <= 1, 1 + max(lh, rh)
+
 
 class Tree:
     def __init__(self, sequence=None):
@@ -57,7 +59,6 @@ class Tree:
             return
 
         self.add_at(self.root, data)
-
 
     def is_balanced(self):
         return is_balanced(self.root)[0]

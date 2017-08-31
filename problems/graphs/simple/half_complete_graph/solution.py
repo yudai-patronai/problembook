@@ -5,7 +5,7 @@ def check_halp_complete(matrix):
     for i in range(n):
         for j in range(i + 1, n):
             if matrix[i][j] + matrix[j][i] == 0:
-                return False 
+                return False
     return True
 
 
@@ -22,4 +22,3 @@ if __name__ == "__main__":
         print('YES')
     else:
         print('NO')
-

@@ -17,6 +17,8 @@ import yaml
 import markdown
 import html2markdown
 import bs4
+import tempfile
+import hashlib
 
 #ALLOWED_MD_LANGS = ['md', 'rst']
 ALLOWED_MD_LANGS = ['md']
@@ -29,6 +31,11 @@ CHECKSUM = 'checksum'
 CHECKER = 'checker.py'
 HEADER = 'header.py'
 FOOTER = 'footer.py'
+SOLUTION = 'solution.py'
+
+MARK_UNKNOWN = '?'
+MARK_OK = '✔️'
+MARK_FAILED = '✖️'
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
@@ -48,6 +55,7 @@ class Problem:
     ERROR_TEST_GENERATOR_MISSING = 8
     ERROR_CHECKSUM_MISSING = 9
     ERROR_CHECKSUM_MISMATCH = 10
+    ERROR_TEST_DUPLICATES = 11
 
     ERROR_MESSAGES = {
         ERROR_ID_MISSING: '{0.path}: не указан id',
@@ -60,7 +68,8 @@ class Problem:
         ERROR_SOLUTION_CANNOT_BE_CHECKED: '{0.path}: невозможно проверить решение',
         ERROR_TEST_GENERATOR_MISSING: '{0.path}: отсутствует генератор тестов',
         ERROR_CHECKSUM_MISSING: '{0.path}: отсутствует контрольная сумма',
-        ERROR_CHECKSUM_MISMATCH: '{0.path}: контрольным суммы тестов не совпадают'
+        ERROR_CHECKSUM_MISMATCH: '{0.path}: контрольным суммы тестов не совпадают',
+        ERROR_TEST_DUPLICATES: '{0.path}: совпадают тесты → {1}'
     }
 
     def __init__(self, ppath):
@@ -80,9 +89,9 @@ class Problem:
 
         self.errors = []
         if 'id' not in self.metadata:
-            self._report_error('{}: не указан id'.format(self.statement))
+            self._report_error(Problem.ERROR_ID_MISSING, self.statement)
         if 'longname' not in self.metadata:
-            self._report_error('{}: не указан longname' .format(self.statement))
+            self._report_error(Problem.ERROR_LONGNAME_MISSING, self.statement)
 
         if 'tags' not in self.metadata:
             self.metadata['tags'] = []
@@ -106,40 +115,68 @@ class Problem:
         self.__dict__ = d
 
     def has_tests(self):
-        return os.path.isdir(self.tests_dir)
+        if not os.path.isdir(self.tests_dir):
+            return False
+
+        for l in os.listdir(self.tests_dir):
+            if not l.endswith('.a'):
+                return True
+
+        return False
 
     def has_solution(self):
-        return os.path.isfile(os.path.join(self.path, 'solution.py'))
+        return os.path.isfile(os.path.join(self.path, SOLUTION))
 
     def has_test_generator(self):
-        return os.path.isfile(os.path.join(self.path, 'test_generator.py'))
+        return os.path.isfile(os.path.join(self.path, TEST_GENERATOR))
 
     def has_checksum(self):
         return os.path.isfile(self.checksum)
 
     def generate_tests(self):
-        subprocess.check_output([sys.executable, self.generator], cwd=self.path)
+        subprocess.check_output([sys.executable, self.generator], cwd=self.path, stderr=subprocess.STDOUT)
 
     def validate(self, check_checksum=True, check_solution=False):
         self.errors = []
 
+        checker_found = False
+
         if 'checker' not in self.metadata:
-            if not os.path.isfile(os.path.join(self.path, CHECKER)):
-                self._report_error(Problem.ERROR_ID_MISSING)
+            if os.path.isfile(os.path.join(self.path, CHECKER)):
+                checker_found = True
+            else:
+                self._report_error(Problem.ERROR_CHECKER_NOT_FOUND)
         else:
             c = self.metadata['checker']
             if c.startswith('cmp'):
-                if c not in ['cmp_yesno', 'cmp_int', 'cmp_int_seq', 'cmp_file']:
+                if c not in ['cmp_yesno', 'cmp_int', 'cmp_int_seq', 'cmp_file', 'cmp_long_long_seq', 'cmp_long_long']:
                     self._report_error(Problem.ERROR_CHECKER_UNKNOWN)
 
         if not self.has_tests():
             self._report_error(Problem.ERROR_TESTS_MISSING)
+        else:
+            hashes = {}
+            for t in os.listdir(self.tests_dir):
+                if not t.endswith('.a'):
+                    with open(os.path.join(self.tests_dir, t), 'rb') as f:
+                        hash = hashlib.sha512(f.read()).digest()
+                        if hash not in hashes:
+                            hashes[hash] = [t]
+                        else:
+                            hashes[hash].append(t)
+            duplicates = list(filter(lambda x: len(x) > 1, hashes.values()))
+            for d in duplicates:
+                self._report_error(Problem.ERROR_TEST_DUPLICATES, ', '.join(d))
 
         if not self.has_solution():
             self._report_error(Problem.ERROR_SOLUTION_MISSING)
 
         if check_solution:
             if self.has_tests() and self.has_solution():
+                tmp = tempfile.mkdtemp()
+                output_file = os.path.join(tmp, 'output')
+                full_solution_path = os.path.join(tmp, SOLUTION)
+
                 tests = list(filter(
                     lambda x: not x.endswith('.a'),
                     map(
@@ -148,10 +185,30 @@ class Problem:
                     )
                 ))
                 for t in tests:
+                    full_solution = ''
+                    for part in [HEADER, SOLUTION, FOOTER]:
+                        try:
+                            with open(os.path.join(self.path, part)) as f:
+                                full_solution += f.read()
+                        except:
+                            pass
+
+                    with open(full_solution_path, 'w') as f:
+                        f.write(full_solution)
+
                     try:
-                        subprocess.check_call('python3 ./solution.py < {0} | diff -b -q - {0}.a'.format(t), shell=True, cwd=self.path, stdout=subprocess.DEVNULL)
+                        if not checker_found:
+                            subprocess.check_call('{0} {1} < {2} | diff -B -w -q - {2}.a'.format(sys.executable, full_solution_path, t), shell=True, cwd=self.path, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                        else:
+                            with open(os.path.join(self.path, t)) as f:
+                                output = subprocess.check_output([sys.executable, full_solution_path], cwd=self.path, stdin=f).decode()
+                            with open(output_file, 'w') as f:
+                                f.write(output)
+                            subprocess.check_call([sys.executable, CHECKER, t, output_file, t + '.a'], cwd=self.path, stdout=subprocess.DEVNULL)
                     except subprocess.CalledProcessError:
                         self._report_error(Problem.ERROR_TEST_FAILED, t)
+
+                shutil.rmtree(tmp)
             else:
                 self._report_error(Problem.ERROR_SOLUTION_CANNOT_BE_CHECKED)
 
@@ -163,7 +220,7 @@ class Problem:
                 self._report_error(Problem.ERROR_CHECKSUM_MISSING)
             else:
                 try:
-                    subprocess.check_call(['sha512sum', '-c', self.checksum], cwd=self.path, stdout=subprocess.DEVNULL)
+                    subprocess.check_call(['sha512sum', '--status', '-c', self.checksum], cwd=self.path)
                 except subprocess.CalledProcessError:
                     self._report_error(Problem.ERROR_CHECKSUM_MISMATCH)
 
@@ -419,7 +476,7 @@ def generate_tests_for_problem(prob, force=False):
     try:
         prob.generate_tests()
     except subprocess.CalledProcessError as e:
-        print("Ошибка при генерации тестов для {}: {}".format(prob.path, e.output))
+        print("Ошибка при генерации тестов для {}: {}".format(prob.path, e.output.decode()))
 
 
 def generate_tests(params):
@@ -435,32 +492,39 @@ def validate(params):
 
     for k, p in enumerate(problems):
         p.validate(check_checksum=True, check_solution=True)
-        status = '✖️' if p.errors else '✔️'
-        tests = '✖️' if p.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else '✔️'
-        test_generator = '✖️' if p.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else '✔️'
+        status = MARK_FAILED if p.errors else MARK_OK
+        tests = MARK_FAILED if p.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
+        test_generator = MARK_FAILED if p.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else MARK_OK
+
+        if p.has_error_occurred(Problem.ERROR_TEST_DUPLICATES):
+            unique_tests = MARK_FAILED
+        elif p.has_error_occurred(Problem.ERROR_TESTS_MISSING):
+            unique_tests = MARK_UNKNOWN
+        else:
+            unique_tests = MARK_OK
 
         if p.has_error_occurred(Problem.ERROR_SOLUTION_MISSING):
-            solution = '?'
+            solution = MARK_UNKNOWN
         elif p.has_error_occurred(Problem.ERROR_TEST_FAILED):
-            solution = '✖️'
+            solution = MARK_FAILED
         else:
-            solution = '✔️'
+            solution = MARK_OK
 
         if p.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING):
-            checksum = '?'
+            checksum = MARK_UNKNOWN
         elif p.has_error_occurred(Problem.ERROR_CHECKSUM_MISMATCH):
-            checksum = '✖️'
+            checksum = MARK_FAILED
         else:
             checksum = '✔'
 
-        report.append((k+1, p.id, p.longname, tests, test_generator, solution, checksum, status))
+        report.append((k+1, p.id, p.longname, tests, unique_tests, test_generator, solution, checksum, status))
 
         if p.errors and params.verbose:
             print(p.format_errors())
 
     print(tabulate.tabulate(
         report,
-        headers=['#', 'Идентификатор', 'Название', 'Тесты', 'Генератор тестов', 'Решение', 'Контрольная сумма', 'Статус']
+        headers=['#', 'Идентификатор', 'Название', 'Тесты', 'Уникальные тесты', 'Генератор тестов', 'Решение', 'Контрольная сумма', 'Статус']
     ))
 
 
@@ -483,6 +547,7 @@ def info(params):
     print('id:', prob.id)
     print('Название:', prob.longname)
     print('Путь:', prob.path)
+    print('Теги:', ', '.join(prob.tags))
 
 
 def commit(params):
@@ -500,6 +565,21 @@ def commit(params):
 
     problem.commit()
     problem.validate()
+
+
+def list_tags(params):
+    tags = {}
+
+    for p in __find_problems().values():
+        for t in p.tags:
+            tags[t] = tags.get(t, 0) + 1
+
+    print(tabulate.tabulate(
+        sorted(tags.items()),
+        headers=['Тэг', 'Количество задач']
+    ))
+
+os.environ['PYTHONPATH'] = '{0}:{1}'.format(os.path.dirname(os.path.abspath(__file__)), os.environ.get('PYTHONPATH', ''))
 
 parser = argparse.ArgumentParser(prog='contest')
 parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
@@ -555,6 +635,9 @@ commit_parser = subparsers.add_parser('commit', help='Зафиксировать
 commit_parser.set_defaults(_action=commit)
 commit_parser.add_argument('id', help='Идентификаторы задач')
 commit_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписать контрольные суммы')
+
+list_tags_parser = subparsers.add_parser('list-tags', help='Вывести список тэгов')
+list_tags_parser.set_defaults(_action=list_tags)
 
 args = parser.parse_args()
 

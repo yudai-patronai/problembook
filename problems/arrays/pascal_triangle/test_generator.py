@@ -2,11 +2,14 @@
 
 import os
 import shutil
+
 import solution
+
 
 def generate_answer(name, n):
     with open("%s.a" % name, 'w') as f:
         f.write(solution.solve(n))
+
 
 if __name__ == "__main__":
     test_folder = "tests"
