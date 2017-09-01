@@ -1,22 +1,18 @@
 dist: trusty
 sudo: false
-
 language: python
 python:
-  - "3.6"
-
+- '3.6'
 install: pip install -r requirements.txt
-
-
 script:
-  - python ./contest.py generate-tests -f -j5
-  - python ./contest.py validate
-
+- python ./contest.py generate-tests -f -j5
+- python ./contest.py validate
 branches:
   only:
-    - master
-
+  - master
 notifications:
   email:
-      on_success: change
-      on_failure: always
+    on_success: change
+    on_failure: always
+  slack:
+    secure: rXCzNbPP3fgS84Ue2pj+Mo6AtYkS43OjMDBsdJMRPmym36TfXTRbtJ/9jlqOd88eQFgaYof2zT8VtUKRC4PecvdoKNe0VTc7gdp2Gk61Qt73da28HEAPfNDkPW1ScqHCD6HsXf+izF2LRMvCQ5l6r+i0fIsJTn2vwimtAzKD6Oi3HXRyJBsxf3hQirKQfso23rshnQc0EEhBBIetla8FyxESuehM5Hzx60mhRI8WbhSkp22T6Y89+3eRznBqd6uNKwAg7wKwP3j5o6YVdRE7qBjnYKlEt3kDH8BDT5gMp+C4vQQkmsGClvCeSznZgsOd0Zvc/yhxjkwoZVzplEKk8dQK3eE4gKaWdIRhvSRO97Qd1q9M35cvOFB4S6atkdBc29WDcuXm7B2c3fZGF6DgGh2XCdb967PyYypbY7Nfr6Amw49FMINfH+mR2X4EyW1U5+DJw/QR6rBN8oYlofFFH8oesIqhK0h0dlW0A45LUfazua7Wa0Iw8VZqBtFmsjLc0glVoNUL5fDG9WxikqXu4VBLemZsRzdQwYhtj3/tYY5h6fYbN0F6t0CVqXJSy6d5MwBzamU79qv89KqsVOu1bvfIZyCRSeP4jacgKmCcaCy+I2dxSy621pK2beGpeIY70HzRHI9I1PwrR3qrxy/rP0XolZeBkwhL1L9qTV+Fo8k=
