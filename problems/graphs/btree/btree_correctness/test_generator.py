@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os
-import random
+from lib import random
 import shutil
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
@@ -129,4 +129,5 @@ for i in range(1, 41):
 gen_test(tests_dir, [100])
 gen_test(tests_dir, range(100))
 gen_test(tests_dir, range(100, 0, -1))
-gen_test(tests_dir, random.sample(range(1000000), 500000))
+# Текущая реализация ГПСЧ слишком медленная для этого теста
+# gen_test(tests_dir, random.sample(range(1000000), 500000))

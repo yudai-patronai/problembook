@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import os
-import random
+from lib import random
 import shutil
 import string
 import subprocess as sp
@@ -67,15 +67,15 @@ if __name__ == "__main__":
     for l in [10, 50]:
         for s in [5, 10]:
             for b in [1, 3, 5]:
-                prefix = get_random_almost_prefix_function(b, l, s * 1.0 / l, "%d_%d_%d_prefix" % (b, l, s))
-                string = find_appropriate_string(prefix, "%d_%d_%d_shuffle" % (b, l, s))
+                prefix = get_random_almost_prefix_function(b, l, s * 1.0 / l, "%d_%d_%d_prefix_" % (b, l, s))
+                string = find_appropriate_string(prefix, "%d_%d_%d_shuffle_" % (b, l, s))
                 tests.append([string, prefix])
 
     for l in [100, 500, 1000, 10000, 100000, 100000, 100000, 100000]:
         s = 10
         for b in [5, 7, 12]:
-            prefix = get_random_almost_prefix_function(b, l, s * 1.0 / l, "%d_%d_%d_prefix" % (b, l, s))
-            string = find_appropriate_string(prefix, "%d_%d_%d_shuffle" % (b, l, s))
+            prefix = get_random_almost_prefix_function(b, l, s * 1.0 / l, "%d_%d_%d_prefix_" % (b, l, s))
+            string = find_appropriate_string(prefix, "%d_%d_%d_shuffle_" % (b, l, s))
             tests.append([string, prefix])
 
     for i, t in enumerate(tests):
