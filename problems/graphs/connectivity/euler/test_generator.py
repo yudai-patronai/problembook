@@ -3,7 +3,7 @@
 # TODO: Improve tests
 
 import os
-import random
+from lib import random
 import shutil
 import subprocess as sp
 

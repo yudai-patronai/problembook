@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import os
-import random
+from lib import random
 
 from lib.graphs import task
 

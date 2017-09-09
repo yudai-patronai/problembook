@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import os
-import random
+from lib import random
 import shutil
 import subprocess
 import sys
