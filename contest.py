@@ -409,18 +409,40 @@ def create_contest(params):
         f.write(template.render(name=params.name, problems=[problems[k] for k in params.problems]))
 
 
+def __combine_predicates(*args):
+    def wrapper(predicates):
+        def predicate(x):
+            for p in predicates:
+                if not p(x):
+                    return False
+
+            return True
+
+        return predicate
+
+    return wrapper(list(filter(None, args)))
+
+
+
 def find_problems(params):
     if params.tags is None:
-        predicate = None
+        tags_predicate = None
     else:
         tags = set(params.tags.split(','))
-        predicate = lambda p: p.tags & tags
+        tags_predicate = lambda p: p.tags & tags
+
+    if params.languages is None:
+        languages_predicate = None
+    else:
+        languages = set(params.languages.split(','))
+        languages_predicate = lambda p: p.languages & languages
+
     problems = [[
         k+1,
         p.id,
         p.longname,
         ' '.join(p.tags)
-    ] for k, p in enumerate(__find_problems(predicate).values())]
+    ] for k, p in enumerate(__find_problems(__combine_predicates(tags_predicate, languages_predicate)).values())]
 
     print(tabulate.tabulate(
         problems,
@@ -675,6 +697,7 @@ create_contest_parser.add_argument('problems', nargs='+', help='Список и�
 
 find_problems_parser = subparsers.add_parser('find-problems', help='Найти задачи')
 find_problems_parser.add_argument('-t', '--tags', help='Список тэгов')
+find_problems_parser.add_argument('-l', '--languages', help='Список языков')
 find_problems_parser.set_defaults(_action=find_problems)
 
 generate_ejudge_config_parser = subparsers.add_parser('ejudge', help='Сгенерировать конфиг ejudge')
