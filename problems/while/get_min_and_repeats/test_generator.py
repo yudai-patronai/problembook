@@ -12,6 +12,18 @@ tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 shutil.rmtree(tests_dir, ignore_errors=True)
 os.makedirs(tests_dir)
 
+def getMinAndRep(arrayOfNumbers):
+	for i in arrayOfNumbers:
+		temp = 10000
+		repeatCounter = 0
+		if i == temp:
+			repeatCounter += 1
+		elif temp > i:
+			temp = i
+			repeatCounter = 1
+	return repeatCounter
+
+
 for i in range(1, N + 1):
     x = random.randint(1,1000)
     out = []
@@ -20,3 +32,5 @@ for i in range(1, N + 1):
 
     with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
         f.write("{0}\n{1}\n".format(x, ' '.join(str(cell) for cell in out)))
+    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as f:
+    	f.write(format(getMinAndRep(out)))
