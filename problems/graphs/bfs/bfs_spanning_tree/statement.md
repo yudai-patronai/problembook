@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 8120e7d1-ddde-4996-b262-b5c9b3b55098
 longname: Построить остовное дерево обходом в ширину
 tags: [graphs,bfs]

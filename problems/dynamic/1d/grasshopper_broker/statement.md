@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: c7ae1da3-e9e7-423b-9139-9d3245369aae
 longname: Кузнечик-брокер
 tags: [dynamic,1d]

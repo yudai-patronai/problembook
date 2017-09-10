@@ -527,7 +527,7 @@ def validate(params):
 
         report.append((k+1, p.id, p.longname, tests, unique_tests, test_generator, solution, checksum, status))
 
-        failed = failed or p.errors
+        failed = failed or (p.errors and not p.fixme)
         if p.errors and params.verbose:
             print(p.format_errors())
 

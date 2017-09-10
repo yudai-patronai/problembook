@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: d725c1b9-62ac-4f62-8a0c-7e47042a377f
 longname: Z-функция
 tags: [strings]

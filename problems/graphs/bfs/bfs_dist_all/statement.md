@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 3caf5ad6-a884-4f5b-8e84-1273ff0ea8fc
 longname: Поиск расстояний от заданной вершины до всех остальных
 tags: [graphs,bfs]

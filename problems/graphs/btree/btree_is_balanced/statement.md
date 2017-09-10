@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 84037843-b1fd-45d4-9369-7619ccd0d60b
 longname: Дерево - сбалансированность
 tags: [graphs,binary,tree,btree]

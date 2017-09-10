@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: f47e0efe-913c-4f1c-acc2-7c4ca0297acf
 longname: Сильно связный ли орграф?
 tags: [graphs, connectivity, dfs]
