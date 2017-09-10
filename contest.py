@@ -568,20 +568,35 @@ def generate_tests_for_problem(prob, force=False):
 
 
 def generate_tests(params):
-    problems = __find_problems().values() if not params.id else [find_problem_by_id(params.id)]
+    if params.id:
+        ids = set(params.id)
+        predicate = lambda p: p.id in ids
+    else:
+        predicate = None
+
+    problems = __find_problems(predicate).values()
 
     with multiprocessing.Pool(params.jobs) as p:
         p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), problems)
 
 
 def validate(params):
-    problems = __find_problems().values() if not params.id else [find_problem_by_id(params.id)]
+
+    if params.id:
+        ids = set(params.id)
+        predicate = lambda p: p.id in ids
+    else:
+        predicate = None
+
+    problems = __find_problems(predicate).values()
 
     report = []
 
     failed = False
 
     for k, p in enumerate(problems):
+        if params.verbose:
+            print('Проверка задачи:', p.path)
         p.validate(check_checksum=True, check_solution=True)
         status = MARK_FAILED if p.errors else MARK_OK
         tests = MARK_FAILED if p.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
@@ -709,12 +724,12 @@ generate_ejudge_config_parser.add_argument('-f', '--force-overwrite', action='st
 
 generate_tests_parser = subparsers.add_parser('generate-tests', help='Сгенерировать тесты')
 generate_tests_parser.set_defaults(_action=generate_tests)
-generate_tests_parser.add_argument('id', nargs='?', help='Идентификатор задачи')
+generate_tests_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 generate_tests_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
 generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие тесты')
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
-validate_parser.add_argument('id', nargs='?', help='Идентификатор задачи')
+validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
