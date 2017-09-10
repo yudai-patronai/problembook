@@ -486,9 +486,10 @@ def generate_tests_for_problem(prob, force=False):
 
 
 def generate_tests(params):
+    problems = __find_problems().values() if not params.id else [find_problem_by_id(params.id)]
 
     with multiprocessing.Pool(params.jobs) as p:
-        p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), __find_problems().values())
+        p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), problems)
 
 
 def validate(params):
@@ -625,6 +626,7 @@ generate_ejudge_config_parser.add_argument('-f', '--force-overwrite', action='st
 
 generate_tests_parser = subparsers.add_parser('generate-tests', help='Сгенерировать тесты')
 generate_tests_parser.set_defaults(_action=generate_tests)
+generate_tests_parser.add_argument('id', nargs='?', help='Идентификатор задачи')
 generate_tests_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
 generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие тесты')
 
