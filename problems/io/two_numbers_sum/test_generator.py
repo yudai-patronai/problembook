@@ -18,3 +18,5 @@ for i in range(1, N + 1):
 
     with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
         f.write("{0} {1}\n".format(x1, x2))
+    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as f:
+        f.write(format(x1 + x2))

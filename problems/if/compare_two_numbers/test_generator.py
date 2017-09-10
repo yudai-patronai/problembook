@@ -16,5 +16,14 @@ for i in range(1, N + 1):
     x1 = random.randrange(-10000,10000)
     x2 = random.randrange(-10000,10000)
 
+    if x1 > x2:
+        ret = 1
+    elif x1 < x2:
+        ret = 2
+    else:
+        ret = 0
+
     with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
         f.write("{0} {1}\n".format(x1, x2))
+    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as f:
+        f.write(format(ret))
