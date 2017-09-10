@@ -1,4 +1,5 @@
 name: 20170512-exam-variant3
+language: python
 problems:
     
     # Ход ферзя

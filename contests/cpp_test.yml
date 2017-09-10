@@ -1,0 +1,11 @@
+name: cpp_test
+language: cpp
+problems:
+    
+    # Вычисление суммы двух чисел
+    - 059f7540-4b2e-4616-80d9-47e9c6f37336:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

@@ -47,7 +47,7 @@ MARK_FAILED = '✖️'
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
 )
-
+env.filters['basename'] = os.path.basename
 
 class Problem:
 
@@ -150,14 +150,18 @@ class Problem:
     def has_checksum(self):
         return os.path.isfile(self.checksum)
 
+    def get_file(self, component, lang):
+        path = os.path.join(self.path, component + EXTENSION_MAP[lang])
+        return path if os.path.isfile(path) else None
+
     def get_solution(self, lang):
-        return SOLUTION + EXTENSION_MAP[lang]
+        return self.get_file(SOLUTION, lang)
 
     def get_header(self, lang):
-        return HEADER + EXTENSION_MAP[lang]
+        return self.get_file(HEADER, lang)
 
     def get_footer(self, lang):
-        return FOOTER + EXTENSION_MAP[lang]
+        return self.get_file(FOOTER, lang)
 
     def generate_tests(self):
         subprocess.check_output([sys.executable, self.generator], cwd=self.path, stderr=subprocess.STDOUT)
@@ -235,6 +239,8 @@ class Problem:
 
                     full_solution = ''
                     for part in [self.get_header(lang), self.get_solution(lang), self.get_footer(lang)]:
+                        if part is None:
+                            continue
                         part_path = os.path.join(self.path, part)
                         if os.path.isfile(part_path):
                             with open(part_path) as f:
@@ -406,7 +412,7 @@ def create_contest(params):
 
     template = env.get_template('contest.yml.jinja2')
     with open(contest_file, 'w') as f:
-        f.write(template.render(name=params.name, problems=[problems[k] for k in params.problems]))
+        f.write(template.render(name=params.name, problems=[problems[k] for k in params.problems], language=params.language))
 
 
 def __combine_predicates(*args):
@@ -535,7 +541,7 @@ def generate_ejudge_config(params):
     template = env.get_template(params.template)
 
     with open(os.path.join(conf_dir, 'serve.cfg'), 'w') as f:
-        f.write(template.render(problems=problems))
+        f.write(template.render(problems=problems, language=desc['language']))
 
     md = markdown.Markdown(extensions = ['markdown.extensions.tables', InputOutputExamplesExtension()])
     for p in problems:
@@ -547,10 +553,10 @@ def generate_ejudge_config(params):
         generate_tests_for_problem(p)
         if p.checker is None:
             shutil.copy(os.path.join(p.path, CHECKER), problem_dir)
-        if p.header:
-            shutil.copy(os.path.join(p.path, HEADER), problem_dir)
-        if p.footer:
-            shutil.copy(os.path.join(p.path, FOOTER), problem_dir)
+        for c in [p.get_header, p.get_footer]:
+            c_path = c(desc['language'])
+            if c_path:
+                shutil.copy(c_path, problem_dir)
         shutil.copytree(p.tests_dir, os.path.join(problem_dir, TESTS_FOLDER))
 
 
@@ -707,6 +713,7 @@ create_problem_parser.add_argument('-F', '--from-xml', help='Описание в
 create_contest_parser = subparsers.add_parser('create-contest', help='Создать контест')
 create_contest_parser.set_defaults(_action=create_contest)
 create_contest_parser.add_argument('-n', '--name', required=True, help='Название контеста')
+create_contest_parser.add_argument('-l', '--language', required=True, help='Язык контеста')
 create_contest_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие конфиги контестов')
 create_contest_parser.add_argument('problems', nargs='+', help='Список идентификаторов задач')
 
