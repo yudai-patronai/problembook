@@ -4,7 +4,7 @@ import os
 import shutil
 
 number_pattern = re.compile(r'(?P<speed>\d+)\s+[а-я](?P<number>\d{3})[а-я]{2}')
-russian_letters = list('абвгдеёжзийклмнопрстуфхцчшщъыьэюя')
+russian_letters = list('абвгдежзийклмнопрстуфхцчшщъыьэюя')
 
 
 def read_taxed_numbers(lines):

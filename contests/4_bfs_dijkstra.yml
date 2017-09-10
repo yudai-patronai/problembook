@@ -1,4 +1,5 @@
 name: 4_bfs_dijkstra
+language: python
 problems:
     
     # Поиск расстояний от заданной вершины до всех остальных

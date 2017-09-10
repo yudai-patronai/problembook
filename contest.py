@@ -29,9 +29,16 @@ TESTS_FOLDER = 'tests'
 TEST_GENERATOR = 'test_generator.py'
 CHECKSUM = 'checksum'
 CHECKER = 'checker.py'
-HEADER = 'header.py'
-FOOTER = 'footer.py'
-SOLUTION = 'solution.py'
+HEADER = 'header'
+FOOTER = 'footer'
+SOLUTION = 'solution'
+
+EXTENSION_MAP = {
+    'cpp': '.cpp',
+    'python': '.py'
+}
+
+CPP_COMPILER = 'clang++'
 
 MARK_UNKNOWN = '?'
 MARK_OK = '✔️'
@@ -40,7 +47,7 @@ MARK_FAILED = '✖️'
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
 )
-
+env.filters['basename'] = os.path.basename
 
 class Problem:
 
@@ -56,6 +63,9 @@ class Problem:
     ERROR_CHECKSUM_MISSING = 9
     ERROR_CHECKSUM_MISMATCH = 10
     ERROR_TEST_DUPLICATES = 11
+    ERROR_UNKNOWN_LANGUAGE = 12
+    ERROR_LANGUAGES_MISSING = 13
+    ERROR_SOLUTION_COMPILATION = 14
 
     ERROR_MESSAGES = {
         ERROR_ID_MISSING: '{0.path}: не указан id',
@@ -63,25 +73,25 @@ class Problem:
         ERROR_CHECKER_NOT_FOUND: '{0.path}: чекер не найден',
         ERROR_CHECKER_UNKNOWN: '{0.path}: неизвестный чекер',
         ERROR_TESTS_MISSING: '{0.path}: тесты не сгенерированы',
-        ERROR_SOLUTION_MISSING: '{0.path}: отсутствует решение',
+        ERROR_SOLUTION_MISSING: '{0.path}: отсутствует решение для одного или нескольких языков',
         ERROR_TEST_FAILED: '{0.path}: тест {1} не пройден',
         ERROR_SOLUTION_CANNOT_BE_CHECKED: '{0.path}: невозможно проверить решение',
         ERROR_TEST_GENERATOR_MISSING: '{0.path}: отсутствует генератор тестов',
         ERROR_CHECKSUM_MISSING: '{0.path}: отсутствует контрольная сумма',
         ERROR_CHECKSUM_MISMATCH: '{0.path}: контрольным суммы тестов не совпадают',
-        ERROR_TEST_DUPLICATES: '{0.path}: совпадают тесты → {1}'
+        ERROR_TEST_DUPLICATES: '{0.path}: совпадают тесты → {1}',
+        ERROR_UNKNOWN_LANGUAGE: '{0.path}: неизвестный язык {1}',
+        ERROR_LANGUAGES_MISSING: '{0.path}: не указан язык',
+        ERROR_SOLUTION_COMPILATION: '{0.path}: ошибка компиляции решения {1}'
     }
 
     def __init__(self, ppath):
         self._prob = frontmatter.load(ppath)
 
-        self.path = os.path.dirname(ppath)
+        self.path = os.path.abspath(os.path.dirname(ppath))
         self.tests_dir = os.path.join(self.path, TESTS_FOLDER)
         self.generator = os.path.abspath(os.path.join(self.path, TEST_GENERATOR))
         self.checksum = os.path.abspath(os.path.join(self.path, CHECKSUM))
-
-        self.header = os.path.isfile(os.path.abspath(os.path.join(self.path, HEADER)))
-        self.footer = os.path.isfile(os.path.abspath(os.path.join(self.path, FOOTER)))
 
         self.statement = ppath
         self.metadata = self._prob.metadata
@@ -92,10 +102,16 @@ class Problem:
             self._report_error(Problem.ERROR_ID_MISSING, self.statement)
         if 'longname' not in self.metadata:
             self._report_error(Problem.ERROR_LONGNAME_MISSING, self.statement)
+        if 'languages' not in self.metadata:
+            self._report_error(Problem.ERROR_LANGUAGES_MISSING, self.statement)
 
         if 'tags' not in self.metadata:
             self.metadata['tags'] = []
         self.metadata['tags'] = set(self.metadata['tags'])
+
+        if 'languages' not in self.metadata:
+            self.metadata['languages'] = []
+        self.metadata['languages'] = set(self.metadata['languages'])
 
     def _report_error(self, error, *args, **kwargs):
         self.errors.append((error, args, kwargs))
@@ -126,7 +142,7 @@ class Problem:
         return False
 
     def has_solution(self):
-        return os.path.isfile(os.path.join(self.path, SOLUTION))
+        return all(map(os.path.isfile, [os.path.join(self.path, SOLUTION + EXTENSION_MAP.get(ext, 'NOTFOUND')) for ext in self.languages]))
 
     def has_test_generator(self):
         return os.path.isfile(os.path.join(self.path, TEST_GENERATOR))
@@ -134,13 +150,57 @@ class Problem:
     def has_checksum(self):
         return os.path.isfile(self.checksum)
 
+    def get_file(self, component, lang):
+        path = os.path.join(self.path, component + EXTENSION_MAP[lang])
+        return path if os.path.isfile(path) else None
+
+    def get_solution(self, lang):
+        return self.get_file(SOLUTION, lang)
+
+    def get_header(self, lang):
+        return self.get_file(HEADER, lang)
+
+    def get_footer(self, lang):
+        return self.get_file(FOOTER, lang)
+
     def generate_tests(self):
         subprocess.check_output([sys.executable, self.generator], cwd=self.path, stderr=subprocess.STDOUT)
+
+    def compile_solution_cpp(self, solution_path):
+        solution_bin = solution_path + '.bin'
+        subprocess.check_call([CPP_COMPILER, '-std=c++11', solution_path, '-o', solution_bin])
+
+        return solution_bin
+
+    def run_solution_cpp(self, solution_binary, input_path, output_path):
+        with open(input_path) as f:
+            output = subprocess.check_output([solution_binary], stdin=f).decode()
+        with open(output_path, 'w') as f:
+            f.write(output)
+
+    def compile_solution_python(self, solution_path):
+        return solution_path
+
+    def run_solution_python(self, solution_path, input_path, output_path):
+        with open(input_path) as f:
+            output = subprocess.check_output([sys.executable, solution_path], stdin=f).decode()
+        with open(output_path, 'w') as f:
+            f.write(output)
+
+    def check_test_output(self, input_file, output_file, answer_file, custom_checker):
+        if not custom_checker:
+            subprocess.check_call(['diff', '-B', '-w', '-q', output_file, answer_file], cwd=self.path, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        else:
+            subprocess.check_call([sys.executable, CHECKER, input_file, output_file, answer_file], cwd=self.path, stdout=subprocess.DEVNULL)
 
     def validate(self, check_checksum=True, check_solution=False):
         self.errors = []
 
         checker_found = False
+
+        for lang in self.languages:
+            if lang not in EXTENSION_MAP:
+                self._report_error(Problem.ERROR_UNKNOWN_LANGUAGE, lang)
 
         if 'checker' not in self.metadata:
             if os.path.isfile(os.path.join(self.path, CHECKER)):
@@ -174,42 +234,48 @@ class Problem:
 
         if check_solution:
             if self.has_tests() and self.has_solution():
-                tmp = tempfile.mkdtemp()
-                output_file = os.path.join(tmp, 'output')
-                full_solution_path = os.path.join(tmp, SOLUTION)
+                for lang in self.languages:
+                    tmp = tempfile.mkdtemp()
 
-                tests = list(filter(
-                    lambda x: not x.endswith('.a'),
-                    map(
-                        lambda x: os.path.join(TESTS_FOLDER, x),
-                        sorted(os.listdir(self.tests_dir))
-                    )
-                ))
-                for t in tests:
                     full_solution = ''
-                    for part in [HEADER, SOLUTION, FOOTER]:
-                        try:
-                            with open(os.path.join(self.path, part)) as f:
+                    for part in [self.get_header(lang), self.get_solution(lang), self.get_footer(lang)]:
+                        if part is None:
+                            continue
+                        part_path = os.path.join(self.path, part)
+                        if os.path.isfile(part_path):
+                            with open(part_path) as f:
                                 full_solution += f.read()
-                        except:
-                            pass
 
+                    full_solution_path = os.path.join(tmp, self.get_solution(lang))
                     with open(full_solution_path, 'w') as f:
                         f.write(full_solution)
 
                     try:
-                        if not checker_found:
-                            subprocess.check_call('{0} {1} < {2} | diff -B -w -q - {2}.a'.format(sys.executable, full_solution_path, t), shell=True, cwd=self.path, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                        else:
-                            with open(os.path.join(self.path, t)) as f:
-                                output = subprocess.check_output([sys.executable, full_solution_path], cwd=self.path, stdin=f).decode()
-                            with open(output_file, 'w') as f:
-                                f.write(output)
-                            subprocess.check_call([sys.executable, CHECKER, t, output_file, t + '.a'], cwd=self.path, stdout=subprocess.DEVNULL)
+                        binary_solution = getattr(self, 'compile_solution_{}'.format(lang))(full_solution_path)
                     except subprocess.CalledProcessError:
-                        self._report_error(Problem.ERROR_TEST_FAILED, t)
+                        self._report_error(Problem.ERROR_SOLUTION_COMPILATION, self.get_solution(lang))
+                        continue
 
-                shutil.rmtree(tmp)
+                    tests = list(filter(
+                        lambda x: not x.endswith('.a'),
+                        map(
+                            lambda x: os.path.join(TESTS_FOLDER, x),
+                            sorted(os.listdir(self.tests_dir))
+                        )
+                    ))
+
+                    output_file = os.path.join(tmp, 'output')
+
+                    for t in tests:
+                        input_file = os.path.join(self.path, t)
+
+                        try:
+                            getattr(self, 'run_solution_{}'.format(lang))(binary_solution, input_file, output_file)
+                            self.check_test_output(input_file, output_file, '{}.a'.format(t), checker_found)
+                        except subprocess.CalledProcessError:
+                            self._report_error(Problem.ERROR_TEST_FAILED, t)
+
+                    shutil.rmtree(tmp)
             else:
                 self._report_error(Problem.ERROR_SOLUTION_CANNOT_BE_CHECKED)
 
@@ -346,21 +412,43 @@ def create_contest(params):
 
     template = env.get_template('contest.yml.jinja2')
     with open(contest_file, 'w') as f:
-        f.write(template.render(name=params.name, problems=[problems[k] for k in params.problems]))
+        f.write(template.render(name=params.name, problems=[problems[k] for k in params.problems], language=params.language))
+
+
+def __combine_predicates(*args):
+    def wrapper(predicates):
+        def predicate(x):
+            for p in predicates:
+                if not p(x):
+                    return False
+
+            return True
+
+        return predicate
+
+    return wrapper(list(filter(None, args)))
+
 
 
 def find_problems(params):
     if params.tags is None:
-        predicate = None
+        tags_predicate = None
     else:
         tags = set(params.tags.split(','))
-        predicate = lambda p: p.tags & tags
+        tags_predicate = lambda p: p.tags & tags
+
+    if params.languages is None:
+        languages_predicate = None
+    else:
+        languages = set(params.languages.split(','))
+        languages_predicate = lambda p: p.languages & languages
+
     problems = [[
         k+1,
         p.id,
         p.longname,
         ' '.join(p.tags)
-    ] for k, p in enumerate(__find_problems(predicate).values())]
+    ] for k, p in enumerate(__find_problems(__combine_predicates(tags_predicate, languages_predicate)).values())]
 
     print(tabulate.tabulate(
         problems,
@@ -453,7 +541,7 @@ def generate_ejudge_config(params):
     template = env.get_template(params.template)
 
     with open(os.path.join(conf_dir, 'serve.cfg'), 'w') as f:
-        f.write(template.render(problems=problems))
+        f.write(template.render(problems=problems, language=desc['language']))
 
     md = markdown.Markdown(extensions = ['markdown.extensions.tables', InputOutputExamplesExtension()])
     for p in problems:
@@ -465,10 +553,10 @@ def generate_ejudge_config(params):
         generate_tests_for_problem(p)
         if p.checker is None:
             shutil.copy(os.path.join(p.path, CHECKER), problem_dir)
-        if p.header:
-            shutil.copy(os.path.join(p.path, HEADER), problem_dir)
-        if p.footer:
-            shutil.copy(os.path.join(p.path, FOOTER), problem_dir)
+        for c in [p.get_header, p.get_footer]:
+            c_path = c(desc['language'])
+            if c_path:
+                shutil.copy(c_path, problem_dir)
         shutil.copytree(p.tests_dir, os.path.join(problem_dir, TESTS_FOLDER))
 
 
@@ -486,20 +574,35 @@ def generate_tests_for_problem(prob, force=False):
 
 
 def generate_tests(params):
-    problems = __find_problems().values() if not params.id else [find_problem_by_id(params.id)]
+    if params.id:
+        ids = set(params.id)
+        predicate = lambda p: p.id in ids
+    else:
+        predicate = None
+
+    problems = __find_problems(predicate).values()
 
     with multiprocessing.Pool(params.jobs) as p:
         p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), problems)
 
 
 def validate(params):
-    problems = __find_problems().values() if not params.id else [find_problem_by_id(params.id)]
+
+    if params.id:
+        ids = set(params.id)
+        predicate = lambda p: p.id in ids
+    else:
+        predicate = None
+
+    problems = __find_problems(predicate).values()
 
     report = []
 
     failed = False
 
     for k, p in enumerate(problems):
+        if params.verbose:
+            print('Проверка задачи:', p.path)
         p.validate(check_checksum=True, check_solution=True)
         status = MARK_FAILED if p.errors else MARK_OK
         tests = MARK_FAILED if p.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
@@ -610,11 +713,13 @@ create_problem_parser.add_argument('-F', '--from-xml', help='Описание в
 create_contest_parser = subparsers.add_parser('create-contest', help='Создать контест')
 create_contest_parser.set_defaults(_action=create_contest)
 create_contest_parser.add_argument('-n', '--name', required=True, help='Название контеста')
+create_contest_parser.add_argument('-l', '--language', required=True, help='Язык контеста')
 create_contest_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие конфиги контестов')
 create_contest_parser.add_argument('problems', nargs='+', help='Список идентификаторов задач')
 
 find_problems_parser = subparsers.add_parser('find-problems', help='Найти задачи')
 find_problems_parser.add_argument('-t', '--tags', help='Список тэгов')
+find_problems_parser.add_argument('-l', '--languages', help='Список языков')
 find_problems_parser.set_defaults(_action=find_problems)
 
 generate_ejudge_config_parser = subparsers.add_parser('ejudge', help='Сгенерировать конфиг ejudge')
@@ -626,12 +731,12 @@ generate_ejudge_config_parser.add_argument('-f', '--force-overwrite', action='st
 
 generate_tests_parser = subparsers.add_parser('generate-tests', help='Сгенерировать тесты')
 generate_tests_parser.set_defaults(_action=generate_tests)
-generate_tests_parser.add_argument('id', nargs='?', help='Идентификатор задачи')
+generate_tests_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 generate_tests_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
 generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие тесты')
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
-validate_parser.add_argument('id', nargs='?', help='Идентификатор задачи')
+validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')

@@ -1,4 +1,5 @@
 name: 6_prima_chinese_np
+language: python
 problems:
     
     # Проверка ацикличности графа

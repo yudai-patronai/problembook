@@ -1,4 +1,5 @@
 name: sem2_lab3_euler
+language: python
 problems:
     
     # Существование цикла Эйлера

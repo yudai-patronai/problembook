@@ -1,4 +1,5 @@
 name: 8_bintree
+language: python
 problems:
     
     # Функции add и print для двоичного дерева
