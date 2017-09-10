@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
 import os
-import random
 import shutil
+from lib import random
+from math import sqrt
 
 N = 50;
 random.seed(20000)
@@ -17,3 +18,5 @@ for i in range(1, N + 1):
 
     with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
         f.write("{0}\n".format(x))
+    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as f:
+        f.write(format(int(all(x % i for i in range(2, int(sqrt(x)))))))
