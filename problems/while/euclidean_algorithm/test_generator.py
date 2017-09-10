@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 import os
-import random
 import shutil
+from lib import random
 
 N = 50;
 random.seed(10000)
