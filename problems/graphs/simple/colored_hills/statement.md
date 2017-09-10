@@ -2,6 +2,7 @@
 id: d7e1160f-59dd-457c-9b55-d013bd0a2bbe
 longname: Разноцветные холмы
 tags: [graphs]
+languages: [python]
 checker: cmp_int
 time_limit: 5
 real_time_limit: 20

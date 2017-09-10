@@ -2,6 +2,7 @@
 id: 81fededd-9c0c-4841-b296-976428c1e230
 longname: Подпалиндромы
 tags: [strings]
+languages: [python]
 checker: cmp_int_seq
 time_limit: 4
 real_time_limit: 4

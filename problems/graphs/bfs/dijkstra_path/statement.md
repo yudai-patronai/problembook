@@ -2,6 +2,7 @@
 id: 08e5d404-e27c-48b1-90f5-e8a4c037fa77
 longname: Восстановление кратчайшего пути при помощи алгоритма Дейкстры
 tags: [graphs,dijkstra]
+languages: [python]
 checker: cmp_file
 time_limit: 1
 real_time_limit: 1

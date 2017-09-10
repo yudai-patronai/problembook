@@ -2,6 +2,7 @@
 id: 6d876eef-965a-4a6a-ad59-79ce4a7988e5
 longname: Сглаживание массива
 tags: [arrays]
+languages: [python]
 checker: cmp_int_seq
 time_limit: 5
 real_time_limit: 20

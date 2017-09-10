@@ -2,6 +2,7 @@
 id: e55a944d-1175-4ef5-b8a4-76236f7e73c1
 longname: Тест простоты числа
 tags: [cycle,if]
+languages: [cpp]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1

@@ -2,6 +2,7 @@
 id: d620c5ef-2303-4b9b-9580-76c2162c9874
 longname: Симметричная последовательность
 tags: [arrays]
+languages: [python]
 checker: cmp_file
 time_limit: 5
 real_time_limit: 20

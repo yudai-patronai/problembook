@@ -3,6 +3,7 @@ fixme: true
 id: d725c1b9-62ac-4f62-8a0c-7e47042a377f
 longname: Z-функция
 tags: [strings]
+languages: [python]
 checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1

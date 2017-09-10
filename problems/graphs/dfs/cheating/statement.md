@@ -3,6 +3,7 @@ fixme: true
 id: 68f6d2dc-d29e-4550-a4c6-24c17d327bad
 longname: Долой списывание
 tags: [graphs]
+languages: [python]
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

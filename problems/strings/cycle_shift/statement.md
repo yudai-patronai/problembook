@@ -2,6 +2,7 @@
 id: c065553e-a163-4764-bb2a-72e2e422f9f4
 longname: Циклический сдвиг
 tags: [strings]
+languages: [python]
 checker: cmp_int_seq
 time_limit: 2
 real_time_limit: 2

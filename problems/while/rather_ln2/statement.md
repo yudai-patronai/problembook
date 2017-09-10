@@ -2,6 +2,7 @@
 id: e6254f9f-d9d2-4dae-a5b9-345e46d69ef9
 longname: Двоичный логарифм
 tags: [cycle,easy]
+languages: [python]
 time_limit: 1
 checker: cmp_int
 real_time_limit: 1

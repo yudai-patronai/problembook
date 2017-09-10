@@ -2,6 +2,7 @@
 id: 5a78b4a6-c2b4-4b65-a01a-12e8958d5a18
 longname: Максимум суммы ключей дерева
 tags: [btree]
+languages: [python]
 checker: cmp_long_long
 time_limit: 1
 real_time_limit: 1

@@ -2,6 +2,7 @@
 id: fb690335-ffe3-4425-880f-53ba74727ecb
 longname: Ход слона
 tags: [if]
+languages: [python]
 checker: cmp_yesno
 time_limit: 1
 real_time_limit: 1

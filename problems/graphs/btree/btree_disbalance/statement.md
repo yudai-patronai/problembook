@@ -2,6 +2,7 @@
 id: 71d01452-637d-4971-b550-e21fa53adc3b
 longname: Дисбаланс дерева поиска
 tags: [graphs,binary,tree,btree]
+languages: [python]
 checker: cmp_long_long
 time_limit: 1
 real_time_limit: 1

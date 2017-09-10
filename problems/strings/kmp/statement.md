@@ -2,6 +2,7 @@
 id: 5e36b7fd-7839-4f63-bbd4-86209619bcba
 longname: Поиск подстроки в строке
 tags: [strings]
+languages: [python]
 checker: cmp_int_seq
 time_limit: 2
 real_time_limit: 2

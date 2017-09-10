@@ -2,6 +2,7 @@
 id: ba1fd3e9-4d07-4874-b76d-9ad9e6fe9130
 longname: Дерево - частотный словарь
 tags: [graphs,binary,tree,btree]
+languages: [python]
 checker: cmp_file
 time_limit: 1
 real_time_limit: 1

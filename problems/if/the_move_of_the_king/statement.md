@@ -2,6 +2,7 @@
 id: c535fcfd-f6e0-4a3d-bc04-9fff35b923d6
 longname: Ход короля
 tags: [if]
+languages: [python]
 checker: cmp_yesno
 time_limit: 1
 real_time_limit: 1

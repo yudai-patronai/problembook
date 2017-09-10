@@ -3,6 +3,7 @@ fixme: true
 id: b2380a9a-697f-4a43-914d-808be407ead0
 longname: Поиск кратчайшего пути между двумя узлами невзвешенного графа
 tags: [graphs,bfs]
+languages: [python]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1

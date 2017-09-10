@@ -2,6 +2,7 @@
 id: ce63db20-7666-466c-9084-b3cdae761b5b
 longname: Поиск длины кратчайшего пути при помощи алгоритма Дейкстры
 tags: [graphs,dijkstra]
+languages: [python]
 checker: cmp_file
 time_limit: 1
 real_time_limit: 1

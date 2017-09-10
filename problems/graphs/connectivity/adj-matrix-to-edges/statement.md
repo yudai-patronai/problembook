@@ -2,6 +2,7 @@
 id: 9ce1b6ca-c82a-489e-a783-ecf78fa3c8f8
 longname: Матрица смежности в список ребер
 tags: [graphs, connectivity, dfs]
+languages: [python]
 checker: cmp_int_seq
 time_limit: 4
 real_time_limit: 10

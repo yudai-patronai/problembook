@@ -2,6 +2,7 @@
 id: 059f7540-4b2e-4616-80d9-47e9c6f37336
 longname: Поиск минимального числа через функцию из хэдэра
 tags: [connectivity,easy]
+languages: [cpp]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1

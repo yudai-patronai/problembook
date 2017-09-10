@@ -2,6 +2,7 @@
 id: 453bacb4-181f-4bd4-884a-f7cdda8e32da
 longname: Точная степень двойки
 tags: [cycle,easy]
+languages: [python]
 checker: cmp_yesno
 time_limit: 1
 real_time_limit: 1

@@ -3,6 +3,7 @@ fixme: true
 id: 3c590278-22ba-4856-9374-55d083d6d247
 longname: Посчитать количество компонент связности
 tags: [graphs, connectivity, dfs]
+languages: [python]
 checker: cmp_int
 ---
 

@@ -2,6 +2,7 @@
 id: 55158dce-c7ab-4b35-8ff9-7d36aa95774b
 longname: Постоение гамильтонова цикла
 tags: [graphs]
+languages: [python]
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

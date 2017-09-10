@@ -2,6 +2,7 @@
 id: 0c20383e-ddd0-48fd-a550-35d772d581c2
 longname: Сравнение двух чисел
 tags: [if]
+languages: [cpp]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1

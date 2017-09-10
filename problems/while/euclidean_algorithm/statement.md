@@ -2,6 +2,7 @@
 id: 7d9a68d9-0113-4a88-9ebc-2829477602d3
 longname: Алгоритм Евклида
 tags: [cycle]
+languages: [cpp]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1

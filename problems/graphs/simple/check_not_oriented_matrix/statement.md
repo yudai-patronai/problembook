@@ -2,6 +2,7 @@
 id: f2188554-2b3b-4ee9-8940-c5aebdf031b8
 longname: Проверка матрицы смежности
 tags: [graphs]
+languages: [python]
 checker: cmp_yesno
 time_limit: 5
 real_time_limit: 20

@@ -2,6 +2,7 @@
 id: 41864651-6af3-4232-bdff-b7aa53bf2a20
 longname: Дома и магазины
 tags: [arrays]
+languages: [python]
 checker: cmp_long_long
 time_limit: 5
 real_time_limit: 20

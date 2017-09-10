@@ -2,6 +2,7 @@
 id: 96891199-815a-49be-8823-0574396e7681
 longname: B-функция
 tags: [strings]
+languages: [python]
 checker: cmp_int_seq
 time_limit: 4
 real_time_limit: 4

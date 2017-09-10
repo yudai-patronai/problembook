@@ -2,6 +2,7 @@
 id: 7879c456-6b2d-492f-929e-75895ad05ce8
 longname: А-функция
 tags: [strings]
+languages: [python]
 checker: cmp_int_seq
 time_limit: 4
 real_time_limit: 4

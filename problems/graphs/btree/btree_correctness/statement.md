@@ -2,6 +2,7 @@
 id: acda3bcd-3361-46a9-999a-5910e0746667
 longname: Дерево - проверка корректности
 tags: [graphs,binary,tree,btree]
+languages: [python]
 checker: cmp_file
 time_limit: 7
 real_time_limit: 7

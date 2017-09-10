@@ -2,6 +2,7 @@
 id: 76da0ec6-5426-47a9-8a5b-777ce370e791
 longname: Количество исправлений
 tags: [strings]
+languages: [python]
 checker: cmp_int_seq
 time_limit: 2
 real_time_limit: 2

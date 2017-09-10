@@ -2,6 +2,7 @@
 id: 914412b5-c0f0-4897-aa16-2ebb3ee72805
 longname: Вычисление суммы двух чисел
 tags: [easy]
+languages: [cpp]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1

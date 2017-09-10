@@ -2,6 +2,7 @@
 id: 71ecdc81-415c-4713-8af5-88f316575d46
 longname: Найти минимальное число и количество его повторений в последовательности чисел
 tags: [cycle]
+languages: [cpp]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1
