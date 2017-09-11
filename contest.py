@@ -166,8 +166,8 @@ class Problem:
     def generate_tests(self):
         subprocess.check_output([sys.executable, self.generator], cwd=self.path, stderr=subprocess.STDOUT)
 
-    def compile_solution_cpp(self, solution_path):
-        solution_bin = solution_path + '.bin'
+    def compile_solution_cpp(self, solution_path, output_dir):
+        solution_bin = os.path.join(output_dir, os.path.basename(solution_path) + '.bin')
         subprocess.check_call([CPP_COMPILER, '-std=c++11', solution_path, '-o', solution_bin])
 
         return solution_bin
@@ -178,7 +178,7 @@ class Problem:
         with open(output_path, 'w') as f:
             f.write(output)
 
-    def compile_solution_python(self, solution_path):
+    def compile_solution_python(self, solution_path, output_dir):
         return solution_path
 
     def run_solution_python(self, solution_path, input_path, output_path):
@@ -251,7 +251,7 @@ class Problem:
                         f.write(full_solution)
 
                     try:
-                        binary_solution = getattr(self, 'compile_solution_{}'.format(lang))(full_solution_path)
+                        binary_solution = getattr(self, 'compile_solution_{}'.format(lang))(full_solution_path, tmp)
                     except subprocess.CalledProcessError:
                         self._report_error(Problem.ERROR_SOLUTION_COMPILATION, self.get_solution(lang))
                         continue
