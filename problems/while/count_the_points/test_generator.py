@@ -60,6 +60,7 @@ for i in range(1, N + 1):
     test_input = gen_dots()
 
     with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
+        f.write(str(len(test_input)) + '\n')
         for dot in test_input:
             f.write(str(dot[0]) + ' ' + str(dot[1]) + '\n')
 

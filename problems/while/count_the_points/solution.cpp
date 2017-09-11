@@ -3,7 +3,7 @@
 int main()
 {
   int count1, count2, count3, count4;
-  count1 = count2 = count3 = count4 = 0
+  count1 = count2 = count3 = count4 = 0;
 
   int number = 0;
   std::cin >> number;
