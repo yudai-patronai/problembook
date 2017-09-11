@@ -1,70 +1,42 @@
 #include <iostream>
-#include <math.h>
 
 int main()
 {
-  int data[4][4];
-  // 0 - count
-  // 1 - R
-  // 2 - xR
-  // 3 - yR
-
-  for (int i = 0; i < 4; ++i)
-    for (int j = 0; j < 4; j++)
-      data[i][j] = 0;
+  int count1, count2, count3, count4;
+  count1 = count2 = count3 = count4 = 0
 
   int number = 0;
   std::cin >> number;
 
   for (int i = 0; i < number; ++i)
   {
-    int x;
-    int y;
+    int x, y;
     std::cin >> x >> y;
 
-    int quarterNum = -1;
     if (x * y != 0)
     {
       if (x > 0 && y > 0)
-        quarterNum = 0; //first
+		  count1++; //first
       else if (x < 0 && y > 0)
-        quarterNum = 1; //second
+		  count2++; //second
       else if (x < 0 && y < 0)
-        quarterNum = 2; //third
+		  count3++; //third
       else
-        quarterNum = 3; //fourth
-    }
-    else
-      continue;
-
-    data[quarterNum][0]++;
-
-    if (data[quarterNum][0] == 1
-      || abs(x) < data[quarterNum][1]
-      || abs(y) < data[quarterNum][1])
-      {
-        data[quarterNum][1] = abs(x) < abs(y) ? abs(x) : abs(y);
-        data[quarterNum][2] = x;
-        data[quarterNum][3] = y;
-      }
-  }
-
-  int quarterNum = 0;
-  int max = data[0][0];
-  for (int i = 1; i < 4; ++i)
-  {
-    if (data[i][0] > max
-      || (data[i][0] == max && data[i][1] < data[quarterNum][1]))
-    {
-      max = data[i][0];
-      quarterNum = i;
+		  count4++; //fourth
     }
   }
 
-  std::cout << quarterNum + 1 << std::endl;
-  std::cout << data[quarterNum][0] << std::endl;
-  std::cout << data[quarterNum][2] << " " << data[quarterNum][3] << std::endl;
-  std::cout << data[quarterNum][1] << std::endl;
+  if (count1 >= count2 && count1 >= count3 && count1 >= count4)
+	  std::cout << "1 " << count1;
+  else if (count2 >= count1 && count2 >= count3 && count2 >= count4)
+	  std::cout << "2 " << count2;
+  else if (count3 >= count1 && count3 >= count2 && count3 >= count4)
+	  std::cout << "3 " << count3;
+  else if (count4 >= count1 && count4 >= count2 && count4 >= count3)
+	  std::cout << "4 " << count4;
+  else
+      std::cout << "impossible error";
+  std::cout << std::endl;
 
   return 0;
 }
