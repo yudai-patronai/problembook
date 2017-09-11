@@ -241,12 +241,11 @@ class Problem:
                     for part in [self.get_header(lang), self.get_solution(lang), self.get_footer(lang)]:
                         if part is None:
                             continue
-                        part_path = os.path.join(self.path, part)
-                        if os.path.isfile(part_path):
-                            with open(part_path) as f:
+                        if os.path.isfile(part):
+                            with open(part) as f:
                                 full_solution += f.read()
 
-                    full_solution_path = os.path.join(tmp, self.get_solution(lang))
+                    full_solution_path = os.path.join(tmp, os.path.basename(self.get_solution(lang)))
                     with open(full_solution_path, 'w') as f:
                         f.write(full_solution)
 
