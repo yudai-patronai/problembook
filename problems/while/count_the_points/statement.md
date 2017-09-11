@@ -3,7 +3,7 @@ id: afbf25b1-7945-445d-ac82-b4671236581a
 longname: Подсчет точек на плоскости и расстояния до оси
 tags: [if,cycle]
 languages: [cpp]
-checker: cmp_int
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
