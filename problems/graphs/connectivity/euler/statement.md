@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 66f6680a-f14f-4229-862a-638aec33c804
 longname: Существование цикла Эйлера
 tags: [graphs, connectivity, dfs]
