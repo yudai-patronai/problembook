@@ -3,26 +3,28 @@
 int main()
 {
   int n = 0;
-  int min = 10000;
-  int repeatCounter = 1;
+  int min;
+  int count = 1;
 
   std::cin >> n;
 
-  for(int i = 0; i < n; ++i)
+  std::cin >> min;
+
+  for(int i = 1; i < n; ++i)
   {
     int input;
     std::cin >> input;
 
     if (min == input)
-      repeatCounter++;
+      count++;
     else if (min > input)
     {
       min = input;
-      repeatCounter = 1;
+      count = 1;
     }
   }
 
-  std::cout << min << " " << repeatCounter << std::endl;
+  std::cout << min << " " << count << std::endl;
 
   return 0;
 }
