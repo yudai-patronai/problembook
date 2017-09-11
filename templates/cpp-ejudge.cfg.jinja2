@@ -31,11 +31,26 @@ enable_l10n
 team_download_time = 0
 
 [language]
-id = 23
-short_name = "cpp FIXME"
-long_name = "cpp FIXME"
+id = 3
+short_name = "g++"
+long_name = "GNU C++ 4.8.2"
+src_sfx = ".cpp"
+compiler_env = "EJUDGE_FLAGS=-O2 -static -std=c++11"
+
+[language]
+id = 29
+short_name = "g++-vg"
+long_name = "GNU C++ (valgrind) 4.8.3"
+arch = "valgrind"
+src_sfx = ".cpp"
+
+[language]
+id = 52
+short_name = "clang++"
+long_name = "clang C++ 3.3"
 arch = "linux-shared"
 src_sfx = ".cpp"
+
 
 [problem]
 abstract

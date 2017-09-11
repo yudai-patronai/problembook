@@ -3,7 +3,7 @@ language: cpp
 problems:
     
     # Вычисление суммы двух чисел
-    - 059f7540-4b2e-4616-80d9-47e9c6f37336:
+    - 914412b5-c0f0-4897-aa16-2ebb3ee72805
         score: 100
         time_limit: 1
         real_time_limit: 1
