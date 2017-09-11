@@ -1,9 +1,9 @@
-name: cpp_test
+name: test_cpp2.yml
 language: cpp
 problems:
     
     # Вычисление суммы двух чисел
-    - 914412b5-c0f0-4897-aa16-2ebb3ee72805
+    - 914412b5-c0f0-4897-aa16-2ebb3ee72805:
         score: 100
         time_limit: 1
         real_time_limit: 1

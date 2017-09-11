@@ -2,7 +2,7 @@
 id: 47fc8f28-dfcb-4d30-b1f4-e9e4b961bae7
 longname: Список квадратов
 tags: [cycle,easy]
-languages: [python]
+languages: [python, cpp]
 checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
