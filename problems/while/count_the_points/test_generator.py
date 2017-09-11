@@ -5,11 +5,7 @@ import shutil
 from lib import random
 
 def solution(dots):
-    data = []
-    for i in range(4):
-        data.append([])
-        for j in range(4):
-            data[i].append(0)
+    counters = [0]*4
 
     for dot in dots:
         x, y = dot
@@ -26,28 +22,15 @@ def solution(dots):
         else:
             continue
 
-        data[quarterNum][0] += 1
+        counters[quarterNum] += 1
 
-        if data[quarterNum][0] == 1 or abs(x) < data[quarterNum][1] or abs(y) < data[quarterNum][1]:
-            new_min = 0
-            if abs(x) < abs(y):
-                new_min = abs(x)
-            else:
-                new_min = abs(y)
-            data[quarterNum][1] = new_min
-            data[quarterNum][2] = x
-            data[quarterNum][3] = y
-
-    quarterNum = 0
-
-    max = data[0][0]
+    max_count = counters[0]
+    max_count_quarter = 1
     for i in range(1, 4):
-        if data[i][0] > max or (data[i][0] == max and data[i][1] < data[quarterNum][1]):
-            max = data[i][0]
-            quarterNum = i
-
-    return "{} {} {} {} {}".format(quarterNum + 1, data[quarterNum][0], data[quarterNum][2], data[quarterNum][3],
-                                   data[quarterNum][1])
+        if counters[i] > max_count:
+            max_count = counters[i]
+            max_count_quarter = i + 1  # сдвиг, т.к. "нулевая" четверть называется первой
+    return "{} {}".format(max_count_quarter, max_count)
 
 
 N = 50
@@ -74,7 +57,6 @@ def gen_dots(n=None):
 
 
 for i in range(1, N + 1):
-
     test_input = gen_dots()
 
     with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
