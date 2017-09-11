@@ -7,6 +7,9 @@ int main()
 
   std::cin >> firstNumber >> secondNumber;
 
+  if (firstNumber < secondNumber)
+    std::swap(firstNumber, secondNumber);
+
   int temp = 0;
   while (secondNumber != 0)
   {
