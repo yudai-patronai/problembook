@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/mipt-cs-on-python3/problembook.svg?token=8v3o7rPETFvhX27mEt9d&branch=master)](https://travis-ci.com/mipt-cs-on-python3/problembook)
+[![Build Status](https://travis-ci.com/mipt-cs/problembook.svg?token=8v3o7rPETFvhX27mEt9d&branch=master)](https://travis-ci.com/mipt-cs/problembook)
 
 
 # problembook
