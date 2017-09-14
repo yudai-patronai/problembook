@@ -1,5 +1,3 @@
-a = list(map(lambda x: int(x), input()))
-sum = 0
-for i in a:
-	sum += i
+num = int(input())
+sum = num // 100 + (num % 100) // 10 + num % 10
 print(sum)

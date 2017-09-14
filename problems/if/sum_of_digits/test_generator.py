@@ -6,7 +6,7 @@ import shutil
 
 N = 50
 
-random.seed(37)
+random.seed(33)
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 
