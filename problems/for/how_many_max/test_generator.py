@@ -26,4 +26,4 @@ for num in range(1, N + 1):
 
 	with open(os.path.join(tests_dir, '{0:0>2}.a'.format(num)), 'w') as f:
 		#f.write(str(dct[max(seq)]))
-		f.write('\t'.join([str(max(seq)), str(dct[max(seq)])]))
+		f.write(' '.join([str(max(seq)), str(dct[max(seq)])]))

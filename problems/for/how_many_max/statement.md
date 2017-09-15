@@ -3,7 +3,7 @@ id: 4f36aeaf-e053-4563-9c25-3fc9af1b8fbf
 longname: Количество элементов, равных максимуму
 tags: [if,for]
 languages: [python]
-checker: cmp_yesno
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
