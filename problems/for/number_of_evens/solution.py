@@ -3,11 +3,9 @@
 number = -1
 count=0
 
-while True:
+while number:
 	number=int(input())
-	if not number:
-		break
-	elif not number%2:
+	if not number%2:
 		count+=1
 
 """
@@ -27,4 +25,4 @@ def solve(s):
 if __name__=="__main__":
 	solve(input())
 """
-print(count)
+print(count-1)
