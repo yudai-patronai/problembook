@@ -1,0 +1,74 @@
+name: 2017_python3_week3
+language: python
+problems:
+    
+    # Сумма цифр трехзначного числа
+    - 8171cdf9-c7a5-481c-8899-d3d9d3f7ebf3:
+        score: 50
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Ход ферзя
+    - 1bd02933-e8c5-4bda-a04e-a9ff671392e3:
+        score: 100
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Високосный год
+    - a17a3e98-5a76-4279-8abf-5ff588b0b091:
+        score: 100
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Список квадратов
+    - 47fc8f28-dfcb-4d30-b1f4-e9e4b961bae7:
+        score: 100
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Двоичный логарифм
+    - e6254f9f-d9d2-4dae-a5b9-345e46d69ef9:
+        score: 100
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Длина последовательности
+    - b92233cc-62f3-4308-9c92-a192177db0f1:
+        score: 100
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Сумма введенной последовательности
+    - f3ac9b01-3d2d-46bd-a5c7-08bf2ca5eec6:
+        score: 100
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Количество четных элементов
+    - e4b12144-6c32-4a59-ae94-48762c425814:
+        score: 100
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Максимум последовательности
+    - 56875bc8-2456-4e70-a5d7-907d95821e49:
+        score: 100
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Количество элементов, равных максимуму
+    - 4f36aeaf-e053-4563-9c25-3fc9af1b8fbf:
+        score: 150
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
