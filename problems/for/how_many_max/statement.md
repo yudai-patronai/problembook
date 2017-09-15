@@ -3,7 +3,7 @@ id: 4f36aeaf-e053-4563-9c25-3fc9af1b8fbf
 longname: Количество элементов, равных максимуму
 tags: [if,for]
 languages: [python]
-checker: cmp_int_seq
+checker: cmp_int
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -24,13 +24,20 @@ max_vm_size: 64M
 ### Примеры
 
 ```
--> 1\n7\n9\n0
+-> 1
+->7
+->9
+->0
 --
 <- 1
 ```
 
 ```
--> 1\n3\n3\n1\n0
+-> 1
+->3
+->3
+->1
+->0
 --
 <- 2
 ```
