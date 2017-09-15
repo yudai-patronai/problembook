@@ -1,5 +1,17 @@
 #!/usr/bin/env python3
 
+number = -1
+count=0
+
+while True:
+	number=int(input())
+	if not number:
+		break
+	elif not number%2:
+		count+=1
+
+"""
+
 def solve(s):
 	count=0
 #	nums=map(int(),s.split())
@@ -14,3 +26,5 @@ def solve(s):
 
 if __name__=="__main__":
 	solve(input())
+"""
+print(count)
