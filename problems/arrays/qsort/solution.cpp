@@ -1,5 +1,7 @@
 #include <iostream>
 
+const int MAX_N = 500000;
+
 void sort(int *array, int begin, int end)
 {
 	int hi = begin;
@@ -34,9 +36,9 @@ void sort(int *array, int begin, int end)
 int main()
 {
 	int N;
-	std::cin >> N;
+	int array[MAX_N];
 
-	int* array = new int[N];
+	std::cin >> N;
 
 	for (int i = 0; i < N; ++i)
 	{
@@ -50,8 +52,6 @@ int main()
 		std::cout << array[i] << " ";
 	}
 	std::cout << std::endl;
-
-	delete[] array;
 
 	return 0;
 }
