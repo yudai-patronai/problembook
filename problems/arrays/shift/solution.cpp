@@ -1,11 +1,13 @@
 #include <iostream>
 
+const int MAX_N = 100000;
+
 int main()
 {
 	int N, M;
-	std::cin >> N >> M;
+	int array[MAX_N];
 
-	int* array = new int[N];
+	std::cin >> N >> M;
 
 	for (int i = 0; i < N; ++i)
 	{
@@ -23,8 +25,6 @@ int main()
 		std::cout << array[i] << " ";
 	}
 	std::cout << std::endl;
-
-	delete[] array;
 
 	return 0;
 }
