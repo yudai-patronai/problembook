@@ -10,7 +10,7 @@ int main()
   for (int i = 0; i < n; ++i)
     a[i] = 0;
 
-  for(int i = 0; i < n; i++)
+  for(int i = 0; i < n; ++i)
     std::cin >> a[i];
 
   for(int i = 1; i <= n; ++i)

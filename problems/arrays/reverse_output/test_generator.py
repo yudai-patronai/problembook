@@ -8,7 +8,7 @@ import sys
 
 NUM_TEST = 50
 
-random.seed(1000)
+random.seed(42)
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 shutil.rmtree(tests_dir, ignore_errors=True)
@@ -18,7 +18,7 @@ for i in range(1, NUM_TEST + 1):
 
 	n = random.randint(1, 1000)
 	array = []
-	for i in range(n + 1):
+	for j in range(n):
 		array.append(random.randint(1, 1000))
 
 	with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
