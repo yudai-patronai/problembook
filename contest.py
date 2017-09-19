@@ -19,6 +19,7 @@ import html2markdown
 import bs4
 import tempfile
 import hashlib
+from termcolor import colored
 
 #ALLOWED_MD_LANGS = ['md', 'rst']
 ALLOWED_MD_LANGS = ['md']
@@ -40,9 +41,9 @@ EXTENSION_MAP = {
 
 CPP_COMPILER = 'clang++'
 
-MARK_UNKNOWN = '?'
-MARK_OK = '✔️'
-MARK_FAILED = '✖️'
+MARK_UNKNOWN = "?"
+MARK_OK = colored('✓', 'green')
+MARK_FAILED = colored('✕', 'red')
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
@@ -78,7 +79,7 @@ class Problem:
         ERROR_SOLUTION_CANNOT_BE_CHECKED: '{0.path}: невозможно проверить решение',
         ERROR_TEST_GENERATOR_MISSING: '{0.path}: отсутствует генератор тестов',
         ERROR_CHECKSUM_MISSING: '{0.path}: отсутствует контрольная сумма',
-        ERROR_CHECKSUM_MISMATCH: '{0.path}: контрольным суммы тестов не совпадают',
+        ERROR_CHECKSUM_MISMATCH: '{0.path}: контрольные суммы тестов не совпадают',
         ERROR_TEST_DUPLICATES: '{0.path}: совпадают тесты → {1}',
         ERROR_UNKNOWN_LANGUAGE: '{0.path}: неизвестный язык {1}',
         ERROR_LANGUAGES_MISSING: '{0.path}: не указан язык',
@@ -599,10 +600,13 @@ def validate(params):
 
     failed = False
 
+    if (params.ignore_checksumm):
+        print("Проверка контрольных сумм отключена")
+
     for k, p in enumerate(problems):
         if params.verbose:
             print('Проверка задачи:', p.path)
-        p.validate(check_checksum=True, check_solution=True)
+        p.validate(check_checksum=not params.ignore_checksumm, check_solution=True)
         status = MARK_FAILED if p.errors else MARK_OK
         tests = MARK_FAILED if p.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
         test_generator = MARK_FAILED if p.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else MARK_OK
@@ -621,12 +625,12 @@ def validate(params):
         else:
             solution = MARK_OK
 
-        if p.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING):
+        if p.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING) or params.ignore_checksumm:
             checksum = MARK_UNKNOWN
         elif p.has_error_occurred(Problem.ERROR_CHECKSUM_MISMATCH):
             checksum = MARK_FAILED
         else:
-            checksum = '✔'
+            checksum = MARK_OK
 
         report.append((k+1, p.id, p.longname, tests, unique_tests, test_generator, solution, checksum, status))
 
@@ -736,6 +740,8 @@ generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
+validate_parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
+validate_parser.add_argument('--ignore-checksumm', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
