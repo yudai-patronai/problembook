@@ -41,8 +41,8 @@ EXTENSION_MAP = {
 CPP_COMPILER = 'clang++'
 
 MARK_UNKNOWN = '?'
-MARK_OK = '✔️'
-MARK_FAILED = '✖️'
+MARK_OK = '✓'
+MARK_FAILED = '✕'
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
@@ -626,7 +626,7 @@ def validate(params):
         elif p.has_error_occurred(Problem.ERROR_CHECKSUM_MISMATCH):
             checksum = MARK_FAILED
         else:
-            checksum = '✔'
+            checksum = MARK_OK
 
         report.append((k+1, p.id, p.longname, tests, unique_tests, test_generator, solution, checksum, status))
 
