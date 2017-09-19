@@ -19,6 +19,7 @@ import html2markdown
 import bs4
 import tempfile
 import hashlib
+from termcolor import colored
 
 #ALLOWED_MD_LANGS = ['md', 'rst']
 ALLOWED_MD_LANGS = ['md']
@@ -40,9 +41,9 @@ EXTENSION_MAP = {
 
 CPP_COMPILER = 'clang++'
 
-MARK_UNKNOWN = '?'
-MARK_OK = '✓'
-MARK_FAILED = '✕'
+MARK_UNKNOWN = "?"
+MARK_OK = colored('✓', 'green')
+MARK_FAILED = colored('✕', 'red')
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
