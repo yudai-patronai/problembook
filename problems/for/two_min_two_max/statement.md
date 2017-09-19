@@ -2,6 +2,7 @@
 id: e6107dbe-b113-4eee-99e5-d39ab0f83cd3
 longname: Два наименьших и два наибольших элемента в массиве
 tags: [array, for]
+languages: [cpp]
 checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
@@ -27,6 +28,7 @@ N - число элементов в массиве (4 < N < 1000000).
 --
 <- 3 16
 ```
+
 ```
 -> 8
 -> 8 8 5 3 2 1 1 4
