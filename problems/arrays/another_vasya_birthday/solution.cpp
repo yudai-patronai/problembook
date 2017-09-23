@@ -1,11 +1,16 @@
 #include <iostream>
 
+const int array_size = 200;
+
 int main()
 {
 	unsigned n;
 
 	std::cin >> n;
-	unsigned array[n];
+	unsigned array[array_size];
+	for(unsigned i = 0; i < array_size; ++i)
+		array[i] = 0;
+
 	for(unsigned i = 0; i < n; ++i)
 		std::cin >> array[i];
 	
