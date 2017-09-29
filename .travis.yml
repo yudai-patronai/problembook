@@ -6,7 +6,7 @@ python:
 install: pip install -r requirements.txt
 script:
 - python ./contest.py generate-tests -f -j5
-- python ./contest.py validate --ignore-checksumm
+- python ./contest.py validate
 branches:
   only:
   - master
