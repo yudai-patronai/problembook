@@ -296,6 +296,35 @@ class Problem:
         with open(self.checksum, 'w') as output:
             subprocess.check_call(['sha512sum'] + tests, stdout=output, cwd=self.path)
 
+    def mark_fixme(self, value=True):
+        if self.fixme and not value:
+            add = False
+        elif not self.fixme and value:
+            add = True
+        else:
+            return
+
+        with open(self.statement) as f:
+            lines = f.readlines()
+
+        for i, l in enumerate(lines):
+            if l.strip() == '---':
+                break
+
+        if i == len(lines)-1:
+            print('Не могу найти начало метаданных', file=sys.stderr)
+            return -1
+
+        if add:
+            lines.insert(i+1, 'fixme: true\n')
+        else:
+            for j in range(len(lines)-1, i, -1):
+                if lines[j].startswith('fixme: '):
+                    lines.pop(j)
+
+        with open(self.statement, 'w') as f:
+            f.writelines(lines)
+
 
 def parse_io_example(block):
     lines = [l.strip() for l in block.split('\n')]
@@ -698,6 +727,18 @@ def list_tags(params):
         headers=['Тэг', 'Количество задач']
     ))
 
+
+def fixme(params):
+    if params.id:
+        ids = set(params.id)
+        predicate = lambda p: p.id in ids
+    else:
+        predicate = None
+
+    for prob in __find_problems(predicate).values():
+        prob.mark_fixme(not params.unset)
+
+
 os.environ['PYTHONPATH'] = '{0}:{1}'.format(os.path.dirname(os.path.abspath(__file__)), os.environ.get('PYTHONPATH', ''))
 
 parser = argparse.ArgumentParser(prog='contest')
@@ -763,6 +804,11 @@ commit_parser.add_argument('-f', '--force-overwrite', action='store_true', help=
 
 list_tags_parser = subparsers.add_parser('list-tags', help='Вывести список тэгов')
 list_tags_parser.set_defaults(_action=list_tags)
+
+fixme_parser = subparsers.add_parser('fixme', help='Добавить/снять метку fixme для задачи')
+fixme_parser.add_argument('-u', '--unset', action='store_true', help='Снять метку')
+fixme_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
+fixme_parser.set_defaults(_action=fixme)
 
 args = parser.parse_args()
 
