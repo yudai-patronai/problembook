@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 4f36aeaf-e053-4563-9c25-3fc9af1b8fbf
 longname: Количество элементов, равных максимуму
 tags: [if,for]

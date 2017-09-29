@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 56875bc8-2456-4e70-a5d7-907d95821e49
 longname: Максимум последовательности
 tags: [if,for]

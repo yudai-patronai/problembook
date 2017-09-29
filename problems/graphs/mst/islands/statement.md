@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 0de6c8ae-f87d-4d95-b0d1-fe2a435d50db
 longname: Нахождение минимального необходимого количества мостов
 tags: [graphs,kruskal]

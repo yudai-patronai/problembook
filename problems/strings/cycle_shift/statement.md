@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: c065553e-a163-4764-bb2a-72e2e422f9f4
 longname: Циклический сдвиг
 tags: [strings]

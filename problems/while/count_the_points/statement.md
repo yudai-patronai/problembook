@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: afbf25b1-7945-445d-ac82-b4671236581a
 longname: Подсчет количества точек на плоскости
 tags: [if,cycle]

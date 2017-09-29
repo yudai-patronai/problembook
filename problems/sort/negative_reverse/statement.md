@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: a8f0aabb-6781-4c8b-a795-a04d1dcdb013
 longname: "Сортировка: отрицательные по убыванию"
 tags: [sort,easy]

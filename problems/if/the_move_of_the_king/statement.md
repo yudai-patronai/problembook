@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: c535fcfd-f6e0-4a3d-bc04-9fff35b923d6
 longname: Ход короля
 tags: [if]

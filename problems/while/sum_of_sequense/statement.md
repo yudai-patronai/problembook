@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: f3ac9b01-3d2d-46bd-a5c7-08bf2ca5eec6
 longname: Сумма введенной последовательности
 tags: [while]

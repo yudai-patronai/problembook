@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 09d7927b-1988-3be2-9548-a902ebda10fb
 longname: Задача Иосифа Флавия
 tags: [arrays]

@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: e4b12144-6c32-4a59-ae94-48762c425814
 longname: Количество четных элементов
 tags: [if,for]

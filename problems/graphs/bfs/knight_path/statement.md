@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: b21e2723-9f72-e858-c7ef-5743497aa005
 longname: Путь коня
 tags: [graphs,bfs]

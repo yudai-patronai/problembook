@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: ce63db20-7666-466c-9084-b3cdae761b5b
 longname: Поиск длины кратчайшего пути при помощи алгоритма Дейкстры
 tags: [graphs,dijkstra]

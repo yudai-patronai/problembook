@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 574594f5-7571-452f-9a13-27720288fd63
 longname: Задача про гаишника
 tags: [if,cycle]

@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: ddb83798-be1e-4aeb-87b2-207a5e9ed0d3
 longname: Быстрая сортировка
 tags: [arrays]

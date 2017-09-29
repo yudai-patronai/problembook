@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: fb690335-ffe3-4425-880f-53ba74727ecb
 longname: Ход слона
 tags: [if]

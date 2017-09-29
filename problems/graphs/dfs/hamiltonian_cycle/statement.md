@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 55158dce-c7ab-4b35-8ff9-7d36aa95774b
 longname: Постоение гамильтонова цикла
 tags: [graphs]

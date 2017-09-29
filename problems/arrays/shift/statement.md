@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: f4157abd-219b-4a8c-9fae-b50743e81555
 longname: Поворот массива
 tags: [arrays]

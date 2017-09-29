@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: d620c5ef-2303-4b9b-9580-76c2162c9874
 longname: Симметричная последовательность
 tags: [arrays]

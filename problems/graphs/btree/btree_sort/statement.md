@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 14c9fbda-0cd1-4ee8-a655-a3a791ef63cb
 longname: Числа по возрастанию
 tags: [graphs,binary,tree,btree]

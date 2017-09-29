@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 81fededd-9c0c-4841-b296-976428c1e230
 longname: Подпалиндромы
 tags: [strings]

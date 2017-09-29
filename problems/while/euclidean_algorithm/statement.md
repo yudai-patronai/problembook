@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 7d9a68d9-0113-4a88-9ebc-2829477602d3
 longname: Алгоритм Евклида
 tags: [cycle]

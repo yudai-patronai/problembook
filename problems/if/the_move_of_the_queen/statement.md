@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 1bd02933-e8c5-4bda-a04e-a9ff671392e3
 longname: Ход ферзя
 tags: [if]

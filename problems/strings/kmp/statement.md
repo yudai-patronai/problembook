@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 5e36b7fd-7839-4f63-bbd4-86209619bcba
 longname: Поиск подстроки в строке
 tags: [strings]

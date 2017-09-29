@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 57c05b56-564f-409f-bf3d-a4e3cd1c4bfb
 longname: Подсчет количества ребер неориентированного графа
 tags: [graphs]
