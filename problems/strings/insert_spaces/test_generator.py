@@ -2,12 +2,12 @@
 
 import os
 import shutil
-from lib import random
-from string import ascii_letters
+import random
+import string
 
 NUM_TEST = 50
 MAX_STR_LEN = 256
-
+ALPHABET  = list(string.ascii_lowercase)
 random.seed(42)
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
@@ -35,7 +35,7 @@ def get_case(data):
 case_list = []
 
 def get_rand_char():
-    return chr(random.randint(ord('A'), ord('z')))
+    return random.choice(ALPHABET)
 
 for _ in range(NUM_TEST):
     in_str = ''.join(get_rand_char() for  _ in range(random.randint(42, MAX_STR_LEN)))
