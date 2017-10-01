@@ -2,7 +2,7 @@
 
 import os
 import shutil
-import random
+from lib import random
 import string
 
 NUM_TEST = 50
