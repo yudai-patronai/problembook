@@ -656,7 +656,7 @@ def validate(params):
 
     failed = False
 
-    if (params.ignore_checksumm):
+    if params.ignore_checksumm and params.verbose:
         print("Проверка контрольных сумм отключена")
 
     for k, p in enumerate(problems):
@@ -873,7 +873,7 @@ generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 validate_parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
-validate_parser.add_argument('--ignore-checksumm', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
+validate_parser.add_argument('-I','--ignore-checksumm', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
