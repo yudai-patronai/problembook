@@ -3,6 +3,7 @@ id: 831a44bf-fddf-41d4-a151-a416a4e163ea
 longname: Минимальное четырёхзначное число
 tags: [for, sort]
 checker: cmp_int
+languages: [cpp]
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
