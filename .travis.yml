@@ -5,7 +5,7 @@ python:
 - '3.6'
 install:
 - pip install -r requirements.txt
-- pip install --rep -r pre-requirements.txt
+- pip install --pre -r pre-requirements.txt
 script:
 - python ./contest.py generate-tests -f -j5
 - python ./contest.py validate
