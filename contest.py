@@ -19,11 +19,15 @@ import html2markdown
 import bs4
 import tempfile
 import hashlib
+import time
 from termcolor import colored
+import github3
+import getpass
+
 
 #ALLOWED_MD_LANGS = ['md', 'rst']
 ALLOWED_MD_LANGS = ['md']
-SCRIPT_DIR = os.path.dirname(__file__)
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROBLEMS_DIR = os.path.join(SCRIPT_DIR, 'problems')
 CONTESTS_DIR = os.path.join(SCRIPT_DIR, 'contests')
 TESTS_FOLDER = 'tests'
@@ -44,6 +48,27 @@ CPP_COMPILER = 'clang++'
 MARK_UNKNOWN = "?"
 MARK_OK = colored('✓', 'green')
 MARK_FAILED = colored('✕', 'red')
+
+CREDENTIALS_FILE = os.path.join(SCRIPT_DIR, '.github-token')
+ISSUE_BODY = '''\
+id: {{ id }}
+Путь: {{ path }}
+
+[Описание задачи](https://github.com/mipt-cs/problembook/tree/master/{{ path }})
+
+- [ ] Проверить условие
+{% for lang in langs -%}
+- [ ] Проверить решение {{ lang }}
+{% endfor -%}
+{% for lang in missed_langs -%}
+- [ ] Написать решение {{ lang }}
+{% endfor -%}
+- [ ] Проверить генератор тестов
+{% if has_checker -%}
+- [ ] Проверить чекер
+{% endif -%}
+- [ ] Добавить/обновить контрольные суммы
+'''
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
@@ -151,6 +176,9 @@ class Problem:
     def has_checksum(self):
         return os.path.isfile(self.checksum)
 
+    def has_checker(self):
+        return os.path.isfile(os.path.join(self.path, CHECKER))
+
     def get_file(self, component, lang):
         path = os.path.join(self.path, component + EXTENSION_MAP[lang])
         return path if os.path.isfile(path) else None
@@ -204,7 +232,7 @@ class Problem:
                 self._report_error(Problem.ERROR_UNKNOWN_LANGUAGE, lang)
 
         if 'checker' not in self.metadata:
-            if os.path.isfile(os.path.join(self.path, CHECKER)):
+            if self.has_checker():
                 checker_found = True
             else:
                 self._report_error(Problem.ERROR_CHECKER_NOT_FOUND)
@@ -444,6 +472,14 @@ def create_contest(params):
         f.write(template.render(name=params.name, problems=[problems[k] for k in params.problems], language=params.language))
 
 
+def __filter_by_id_predicate(params):
+    if params.id:
+        ids = set(params.id)
+        return lambda p: p.id in ids
+    else:
+        return None
+
+
 def __combine_predicates(*args):
     def wrapper(predicates):
         def predicate(x):
@@ -456,7 +492,6 @@ def __combine_predicates(*args):
         return predicate
 
     return wrapper(list(filter(None, args)))
-
 
 
 def find_problems(params):
@@ -603,11 +638,7 @@ def generate_tests_for_problem(prob, force=False):
 
 
 def generate_tests(params):
-    if params.id:
-        ids = set(params.id)
-        predicate = lambda p: p.id in ids
-    else:
-        predicate = None
+    predicate = __filter_by_id_predicate(params)
 
     problems = __find_problems(predicate).values()
 
@@ -617,11 +648,7 @@ def generate_tests(params):
 
 def validate(params):
 
-    if params.id:
-        ids = set(params.id)
-        predicate = lambda p: p.id in ids
-    else:
-        predicate = None
+    predicate = __filter_by_id_predicate(params)
 
     problems = __find_problems(predicate).values()
 
@@ -629,7 +656,7 @@ def validate(params):
 
     failed = False
 
-    if (params.ignore_checksumm):
+    if params.ignore_checksumm and params.verbose:
         print("Проверка контрольных сумм отключена")
 
     for k, p in enumerate(problems):
@@ -729,17 +756,81 @@ def list_tags(params):
 
 
 def fixme(params):
-    if params.id:
-        ids = set(params.id)
-        predicate = lambda p: p.id in ids
-    else:
-        predicate = None
+    predicate = __filter_by_id_predicate(params)
 
     for prob in __find_problems(predicate).values():
         prob.mark_fixme(not params.unset)
 
 
-os.environ['PYTHONPATH'] = '{0}:{1}'.format(os.path.dirname(os.path.abspath(__file__)), os.environ.get('PYTHONPATH', ''))
+def __github_login():
+    def two_factor_callback():
+        code = None
+        while not code:
+            code = input('Код для двухфакторной аутентификации: ')
+
+        return code
+
+    user = None
+    while not user:
+        user = input('Имя пользователя: ')
+
+    try:
+        with open(CREDENTIALS_FILE, 'r') as f:
+            token, id = map(str.strip, f.readlines())
+            return github3.login(user, token)
+    except IOError:
+
+        password = None
+        while not password:
+            password = getpass.getpass('Пароль для {0}: '.format(user))
+
+        note = 'contest.py'
+        note_url = 'https://github.com/mipt-cs/problembook'
+        scopes = ['user', 'repo']
+
+        auth = github3.authorize(user, password, scopes, note, note_url, two_factor_callback=two_factor_callback)
+
+        with open(CREDENTIALS_FILE, 'w') as f:
+            f.write(auth.token + '\n')
+            f.write(str(auth.id))
+
+        return github3.login(user, auth.token)
+
+
+def review(params):
+    predicate = __filter_by_id_predicate(params)
+
+    gh = __github_login()
+
+    repo = gh.repository('mipt-cs', 'problembook')
+
+    template = jinja2.Environment(loader=jinja2.BaseLoader).from_string(ISSUE_BODY)
+
+    for prob in __find_problems(predicate).values():
+        if prob.fixme:
+            if args.verbose:
+                print('Создаю тикет для задачи:', prob.longname)
+            path = prob.path[len(SCRIPT_DIR)+1:]
+            title = 'Ревью: ' + prob.longname
+            langs = []
+            missed_langs = []
+            for lang in EXTENSION_MAP:
+                if prob.get_solution(lang):
+                    langs.append(lang)
+                else:
+                    missed_langs.append(lang)
+            body = template.render(id=prob.id, path=path, langs=langs, missed_langs=missed_langs, has_checker=prob.has_checker())
+            while True:
+                try:
+                    repo.create_issue(title=title, body=body, labels=['review', 'help wanted'])
+                    break
+                except github3.exceptions.ForbiddenError:
+                    if args.verbose:
+                        print('Ошибка при создании тикета, пауза 30 секунд…')
+                    time.sleep(30)
+
+
+os.environ['PYTHONPATH'] = '{0}:{1}'.format(SCRIPT_DIR, os.environ.get('PYTHONPATH', ''))
 
 parser = argparse.ArgumentParser(prog='contest')
 parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
@@ -782,7 +873,7 @@ generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 validate_parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
-validate_parser.add_argument('--ignore-checksumm', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
+validate_parser.add_argument('-I','--ignore-checksumm', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
@@ -809,6 +900,10 @@ fixme_parser = subparsers.add_parser('fixme', help='Добавить/снять 
 fixme_parser.add_argument('-u', '--unset', action='store_true', help='Снять метку')
 fixme_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 fixme_parser.set_defaults(_action=fixme)
+
+review_parser = subparsers.add_parser('review', help='Открыть на Github тикет на ревью')
+review_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
+review_parser.set_defaults(_action=review)
 
 args = parser.parse_args()
 

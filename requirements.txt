@@ -8,3 +8,4 @@ lxml
 html2markdown
 networkx
 termcolor
+github3.py
