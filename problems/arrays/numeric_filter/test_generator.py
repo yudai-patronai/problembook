@@ -44,7 +44,7 @@ if __name__ == "__main__":
     test_folder = "tests"
     shutil.rmtree(test_folder, ignore_errors=True)
     os.mkdir(test_folder)
-    for test in range(1, 5):
+    for test in range(1, 6):
         test_name = os.path.join(test_folder, "%02d" % test)
         print("generating %s..." % test_name)
         generate_test(test_name, test)
