@@ -1,0 +1,65 @@
+"""
+def make_snail(board):
+    
+    visited = [[0] * len(board) for _ in range(len(board))]
+    
+    h, v = 0, 0
+    visited[h][v] = 1
+    s = 1
+    print(board[h][v])    
+    
+    while s <= len(board) ** 2:
+        if v + 1 < len(board) and visited[h][v+1] != 1:
+                v += 1
+                visited[h][v] = 1
+                print(board[h][v])
+        
+        elif h + 1 < len(board) and visited[h+1][v] != 1:
+                h += 1
+                visited[h][v] = 1
+                print(board[h][v])
+        
+        elif v - 1 >= 0 and visited[h][v-1] != 1:
+                v -= 1
+                visited[h][v] = 1
+                print(board[h][v])      
+        
+                
+        elif h - 1 >= 0 and visited[h-1][v] != 1:
+                h -= 1
+                visited[h][v] = 1
+                print(board[h][v])
+          
+        s += 1
+"""
+
+def make_snail(array):
+    
+    if array == [[]]:
+        print(-1)
+    
+    
+    size = len(array)
+    
+    for n in range((size + 1) // 2):
+        for x in range(n, size - n):
+            print(array[n][x])
+        for y in range(1 + n, size - n):
+            print(array[y][-1 - n])
+        for x in range(2 + n, size - n + 1):
+            print(array[-1 - n][-x])
+        for y in range(2 + n, size - n):
+            print(array[-y][n])
+
+
+if __name__ == '__main__':
+    
+    N = int(input())
+    board = [[0] * N for _ in range(N)] 
+    
+    for i in range(N):
+        for j in range(N):
+            board[i][j] = int(input()) 
+    
+    print()
+    make_snail(board)
