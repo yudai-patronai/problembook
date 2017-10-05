@@ -3,6 +3,7 @@ id: 05202903-2be4-4d8d-9669-0fc7889894da
 longname: Книжный шифр
 tags: [arrays]
 languages: [python]
+checker: cmp_file
 time_limit: 1
 real_time_limit: 5
 max_vm_size: 64M
