@@ -1,9 +1,9 @@
 import os
 import shutil
-import random
+from lib import random
 from solution import solve
 
-random.seed("segfault")
+random.seed(42)
 
 manual_tests = [
     {"task": [1, 1, 3],
@@ -29,8 +29,8 @@ manual_tests = [
 ]
 
 def generate_test(name):
-    n = random.randint(3, 40)
-    memory = [random.randint(1, n) for i in range(n)]
+    n = random.randint(3, 200)
+    memory = [random.randint(1, n) for _ in range(n)]
     with open(name, "w") as f:
         f.write(str(n) + '\n')
         for i in memory:
