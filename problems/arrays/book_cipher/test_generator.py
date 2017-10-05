@@ -7,8 +7,7 @@ import shutil
 random.seed(42)
 
 
-def generate_string():
-    l = random.randint(1, 100)
+def generate_string(l=random.randint(1, 100)):
     s = ""
     for _ in range(l):
         c = chr(random.randint(1, 256))
@@ -33,17 +32,16 @@ def generate_test(name, testn):
         f.write(" ".join(ans))
             
 
-def write_manual_test(name, n, seq, x, ans=[]):
+def write_manual_test(name, n, code, cipher):
     with open(name, "w") as f:
         f.write(str(n)+"\n")
-        for elem in seq:
-            f.write(str(elem)+"\n")
-        f.write(str(x))
+        for s in code:
+            f.write(s+"\n")
+        for i in cipher:
+            f.write(str(i)+"\n")
+    ans = [code[i] for i in cipher]
     with open(name+".a", "w") as f:
-        if len(ans):
-            f.write(' '.join(ans))
-        else:
-            f.write("-1")
+         f.write(" ".join(ans))
 
 
 if __name__ == "__main__":
@@ -55,6 +53,6 @@ if __name__ == "__main__":
         print("generating %s..." % test_name)
         generate_test(test_name, test)
         
-    #write_manual_test(os.path.join(test_folder, "06"), 0, [], 12)
-    #write_manual_test(os.path.join(test_folder, "07"), 100, [random.randint(1, 1000000) for _ in range(100)], 1, [str(i) for i in range(100)])
-    #write_manual_test(os.path.join(test_folder, "08"), 100, [random.randint(1, 1000000) % 90000 for _ in range(100)], 90000)
+    write_manual_test(os.path.join(test_folder, "06"), 1, ["Hello"], [0])
+    write_manual_test(os.path.join(test_folder, "07"), 100, [generate_string(100) for _ in range(100)], [random.randint(100) for _ in range(100)])
+    write_manual_test(os.path.join(test_folder, "08"), 3, ["word  word", "word ", "word "], [1, 0, 2])
