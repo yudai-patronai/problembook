@@ -44,6 +44,7 @@ EXTENSION_MAP = {
 }
 
 CPP_COMPILER = 'clang++'
+CPP_FLAGS = ['-std=c++11', '-Wall', '-Wextra', '-Wpedantic', '-Werror']
 
 MARK_UNKNOWN = "?"
 MARK_OK = colored('✓', 'green')
@@ -197,7 +198,7 @@ class Problem:
 
     def compile_solution_cpp(self, solution_path, output_dir):
         solution_bin = os.path.join(output_dir, os.path.basename(solution_path) + '.bin')
-        subprocess.check_call([CPP_COMPILER, '-std=c++11', solution_path, '-o', solution_bin])
+        subprocess.check_call([CPP_COMPILER] + CPP_FLAGS + [solution_path, '-o', solution_bin])
 
         return solution_bin
 
