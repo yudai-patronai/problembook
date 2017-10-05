@@ -1,6 +1,6 @@
 def make_snail(array):
     
-    if array == [[]]:
+    if array == []:
         print(-1)
         
     size = len(array)
