@@ -6,8 +6,9 @@ x = int(input())
 ans = []
 for i in range(n):
     if seq[i] % x == 0:
-        ans.append(str(i))
+        ans.append(i)
 if len(ans):
-    print(' '.join(ans))
+    for i in ans:
+        print(i, end=' ')
 else:
     print(-1)
