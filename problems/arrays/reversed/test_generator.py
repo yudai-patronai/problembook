@@ -1,9 +1,9 @@
 import os
 import shutil
-import random
+from lib import random
 
 
-N = 10
+N = 6
 random.seed(1984)
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
@@ -13,13 +13,13 @@ os.makedirs(tests_dir)
 
 for num in range(1, N + 1):
 	if num == 1:
-		seq = [random.randint(1, 100)]
+		seq = [random.randint(1, 10000)]
 
 	elif num == 2:
-		seq = [random.randint(1, 100)]*3
+		seq = [random.randint(1, 10000)]*3
 	
 	elif num == 3:
-		seq = [random.randint(1, 100) for i in range(3)]
+		seq = [random.randint(1, 10000) for i in range(3)]
 	
 	else:
 		cur_max_random = random.randint(100, 10000)
@@ -27,9 +27,7 @@ for num in range(1, N + 1):
 	
 	with open(os.path.join(tests_dir, '{0:0>2}'.format(num)), 'w') as f:
 		f.write(str(len(seq)) + '\n')
-		for i in range(len(seq)):
-			f.write(str(seq[i]) + '\n')
+		f.write('\n'.join(map(str,seq)))
 
 	with open(os.path.join(tests_dir, '{0:0>2}.a'.format(num)), 'w') as f:
-		for i in reversed(range(len(seq))):
-			f.write(str(seq[i]) + '\n')
+		f.write('\n'.join(map(str,seq[::-1])))
