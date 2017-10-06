@@ -3,9 +3,9 @@ id: a76fad54-cee5-40fb-b295-f4e36c5b7437
 longname: Циклический сдвиг
 tags: [arrays, functions]
 languages: [python]
-checker: cmp_yesno
-time_limit: 1
-real_time_limit: 1
+checker: cmp_int_seq
+time_limit: 2
+real_time_limit: 5
 max_vm_size: 64M
 ---
 
