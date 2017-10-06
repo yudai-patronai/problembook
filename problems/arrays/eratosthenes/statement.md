@@ -4,7 +4,7 @@ longname: Решето Эратосфена
 tags: [arrays]
 languages: [python]
 checker: cmp_int_seq
-time_limit: 1
+time_limit: 3
 real_time_limit: 5
 max_vm_size: 64M
 ---

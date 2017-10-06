@@ -33,11 +33,11 @@ if __name__ == "__main__":
     os.mkdir(test_folder)
     with open("prime_list", "r") as f:
         primes = f.readline().split(' ')
-    for test in range(1, 6):
+    for test in range(1, 3):
         test_name = os.path.join(test_folder, "%02d" % test)
         print("generating %s..." % test_name)
         generate_test(test_name, random.randint(3, 10000), primes)
         
-    generate_test(os.path.join(test_folder, "06"), 2, primes)
-    generate_test(os.path.join(test_folder, "07"), 10000, primes)
-    generate_test(os.path.join(test_folder, "08"), 8689, primes)
+    generate_test(os.path.join(test_folder, "04"), 2, primes)
+    generate_test(os.path.join(test_folder, "05"), 10000, primes)
+    generate_test(os.path.join(test_folder, "06"), 8689, primes)

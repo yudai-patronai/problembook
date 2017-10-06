@@ -18,8 +18,8 @@ manual = {
         [4, 3, 2, 1],
         [3, 2, 1],
         [],
-        [0],
-        []
+        [],
+        [0]
     ]
 }
 
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     # random tests
     shift = len(manual["answer"])
     for test in range(NUM_RANDOM_TESTS):
-        test_name = os.path.join(test_folder, "%02d" % (test+shift,))
+        test_name = os.path.join(test_folder, "%02d" % (test+shift+1,))
         seq_len = random.randint(30,100)
         N = random.randint(0,seq_len)
         seq = [random.randint(-100,100) for _ in range(seq_len)]
