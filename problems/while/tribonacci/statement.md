@@ -2,6 +2,7 @@
 id: a814faa3-34fc-474a-bd2a-73b2f3bf6b42
 longname: Первое число трибоначчи, превосходящее заданное
 tags: [cycle]
+languages: [python]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1
