@@ -11,7 +11,7 @@ def make_seq(max_el, uniq_el):
 	res = random.sample(range(1, max_el), uniq_el)
 	seq = [j for subset in [[random.randint(1, 10000)]*i for i in res] for j in subset]
 	random.shuffle(seq)
-	return(seq)
+	return([len(seq)] + seq)
 
 N = 5
 random.seed(1984)
@@ -23,10 +23,10 @@ os.makedirs(tests_dir)
 
 for num in range(1, N + 1):
 	if num == 1:
-		seq = [random.randint(1, 10000)]
+		seq = [1, random.randint(1, 10000)]
 
 	elif num == 2:
-		seq = [random.randint(1, 10000)]*3
+		seq = [3]+[random.randint(1, 10000)]*3
 	
 	elif num == 3:
 		seq = make_seq(4, 3)
@@ -35,9 +35,8 @@ for num in range(1, N + 1):
 		seq = make_seq(40, 20)
 
 	with open(os.path.join(tests_dir, '{0:0>2}.a'.format(num)), 'w') as f:
-		f.write(str(which_max(seq)))
+		f.write(str(which_max(seq[1:])))
 
-	seq.append(0)	
 	with open(os.path.join(tests_dir, '{0:0>2}'.format(num)), 'w') as f:
 		f.write('\n'.join(map(str,seq)))
 
