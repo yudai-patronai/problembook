@@ -7,3 +7,5 @@
 [FAQ](https://github.com/mipt-cs/problembook/wiki/FAQ)
 
 [Использование contest.py](https://github.com/mipt-cs/problembook/wiki/contest.py)
+
+[Создание задач в problembook](https://github.com/mipt-cs/problembook/wiki/Cоздание-задач-в-problembook)
