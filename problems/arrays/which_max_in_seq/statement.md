@@ -1,7 +1,7 @@
 ---
 id: 2de3a851-b5e8-4ba3-8f53-eb633720d321
 longname: Какое число встречается в массиве наибольшее число раз
-tags: [while,for]
+tags: [arrays]
 languages: [python]
 checker: cmp_int
 time_limit: 2
