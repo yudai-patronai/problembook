@@ -657,7 +657,7 @@ def validate_problem(prob, params):
     if params.verbose:
         print('Проверка задачи:', prob.path)
 
-    prob.validate(check_checksum=not params.ignore_checksumm, check_solution=True)
+    prob.validate(check_checksum=not params.ignore_checksum, check_solution=True)
     status = MARK_FAILED if prob.errors else MARK_OK
     tests = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
     test_generator = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else MARK_OK
@@ -676,7 +676,7 @@ def validate_problem(prob, params):
     else:
         solution = MARK_OK
 
-    if prob.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING) or params.ignore_checksumm:
+    if prob.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING) or params.ignore_checksum:
         checksum = MARK_UNKNOWN
     elif prob.has_error_occurred(Problem.ERROR_CHECKSUM_MISMATCH):
         checksum = MARK_FAILED
@@ -692,7 +692,7 @@ def validate(params):
 
     problems = __find_problems(predicate).values()
 
-    if params.ignore_checksumm and params.verbose:
+    if params.ignore_checksum and params.verbose:
         print("Проверка контрольных сумм отключена")
 
     with multiprocessing.Pool(params.jobs) as p:
