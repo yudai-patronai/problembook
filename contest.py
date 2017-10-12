@@ -112,7 +112,13 @@ class Problem:
     }
 
     def __init__(self, ppath):
-        self._prob = frontmatter.load(ppath)
+        with open(ppath) as f:
+            lines = f.readlines()
+            for i, l in enumerate(lines):
+                if not l.startswith('#'):
+                    break
+            lines = lines[i:]
+        self._prob = frontmatter.loads(''.join(lines))
 
         self.path = os.path.abspath(os.path.dirname(ppath))
         self.tests_dir = os.path.join(self.path, TESTS_FOLDER)
