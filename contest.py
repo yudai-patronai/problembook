@@ -887,7 +887,7 @@ generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
-validate_parser.add_argument('-I','--ignore-checksumm', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
+validate_parser.add_argument('-I','--ignore-checksum', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
 validate_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для проверки')
 validate_parser.set_defaults(_action=validate)
 
