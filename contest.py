@@ -112,7 +112,13 @@ class Problem:
     }
 
     def __init__(self, ppath):
-        self._prob = frontmatter.load(ppath)
+        with open(ppath) as f:
+            lines = f.readlines()
+            for i, l in enumerate(lines):
+                if not l.startswith('#'):
+                    break
+            lines = lines[i:]
+        self._prob = frontmatter.loads(''.join(lines))
 
         self.path = os.path.abspath(os.path.dirname(ppath))
         self.tests_dir = os.path.join(self.path, TESTS_FOLDER)
@@ -646,53 +652,60 @@ def generate_tests(params):
         p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), problems)
 
 
+def validate_problem(prob, params):
+    if params.verbose:
+        print('Проверка задачи:', prob.path)
+
+    prob.validate(check_checksum=not params.ignore_checksumm, check_solution=True)
+    status = MARK_FAILED if prob.errors else MARK_OK
+    tests = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
+    test_generator = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else MARK_OK
+
+    if prob.has_error_occurred(Problem.ERROR_TEST_DUPLICATES):
+        unique_tests = MARK_FAILED
+    elif prob.has_error_occurred(Problem.ERROR_TESTS_MISSING):
+        unique_tests = MARK_UNKNOWN
+    else:
+        unique_tests = MARK_OK
+
+    if prob.has_error_occurred(Problem.ERROR_SOLUTION_MISSING):
+        solution = MARK_UNKNOWN
+    elif prob.has_error_occurred(Problem.ERROR_TEST_FAILED):
+        solution = MARK_FAILED
+    else:
+        solution = MARK_OK
+
+    if prob.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING) or params.ignore_checksumm:
+        checksum = MARK_UNKNOWN
+    elif prob.has_error_occurred(Problem.ERROR_CHECKSUM_MISMATCH):
+        checksum = MARK_FAILED
+    else:
+        checksum = MARK_OK
+
+    return prob, tests, unique_tests, test_generator, solution, checksum, status
+
+
 def validate(params):
 
     predicate = __filter_by_id_predicate(params)
 
     problems = __find_problems(predicate).values()
 
-    report = []
-
-    failed = False
-
     if params.ignore_checksumm and params.verbose:
         print("Проверка контрольных сумм отключена")
 
-    for k, p in enumerate(problems):
-        if params.verbose:
-            print('Проверка задачи:', p.path)
-        p.validate(check_checksum=not params.ignore_checksumm, check_solution=True)
-        status = MARK_FAILED if p.errors else MARK_OK
-        tests = MARK_FAILED if p.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
-        test_generator = MARK_FAILED if p.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else MARK_OK
+    with multiprocessing.Pool(params.jobs) as p:
+        result = p.map(functools.partial(validate_problem, params=params), problems)
 
-        if p.has_error_occurred(Problem.ERROR_TEST_DUPLICATES):
-            unique_tests = MARK_FAILED
-        elif p.has_error_occurred(Problem.ERROR_TESTS_MISSING):
-            unique_tests = MARK_UNKNOWN
-        else:
-            unique_tests = MARK_OK
+    report = []
+    failed = False
+    for k, (prob, tests, unique_tests, test_generator, solution, checksum, status) in enumerate(result):
+        report.append([k+1, prob.id, prob.longname, tests, unique_tests, test_generator, solution, checksum])
 
-        if p.has_error_occurred(Problem.ERROR_SOLUTION_MISSING):
-            solution = MARK_UNKNOWN
-        elif p.has_error_occurred(Problem.ERROR_TEST_FAILED):
-            solution = MARK_FAILED
-        else:
-            solution = MARK_OK
+        failed = failed or (prob.errors and not prob.fixme)
 
-        if p.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING) or params.ignore_checksumm:
-            checksum = MARK_UNKNOWN
-        elif p.has_error_occurred(Problem.ERROR_CHECKSUM_MISMATCH):
-            checksum = MARK_FAILED
-        else:
-            checksum = MARK_OK
-
-        report.append((k+1, p.id, p.longname, tests, unique_tests, test_generator, solution, checksum, status))
-
-        failed = failed or (p.errors and not p.fixme)
-        if p.errors and params.verbose:
-            print(p.format_errors())
+        if prob.errors and params.verbose:
+            print(prob.format_errors())
 
     print(tabulate.tabulate(
         report,
@@ -873,8 +886,8 @@ generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
-validate_parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
 validate_parser.add_argument('-I','--ignore-checksumm', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
+validate_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для проверки')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
