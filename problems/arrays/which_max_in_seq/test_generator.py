@@ -9,7 +9,8 @@ def which_max(seq):
 
 def make_seq(max_el, uniq_el):
 	res = random.sample(range(1, max_el), uniq_el)
-	seq = [j for subset in [[random.randint(0, 99)]*i for i in res] for j in subset]
+	random_sequence = random.sample(range(0, 99), len(res))
+	seq = [j for subset in [[random_sequence[j]]*i for j, i in enumerate(res)] for j in subset]
 	random.shuffle(seq)
 	return([len(seq)] + seq)
 
