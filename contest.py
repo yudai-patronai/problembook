@@ -608,7 +608,8 @@ def generate_ejudge_config(params):
 
     problems = [problems_dict[p] for p in ids]
 
-    template = env.get_template(params.template)
+    template_file = params.template if params.template != 'auto' else '{}-ejudge.cfg.jinja2'.format(desc['language'])
+    template = env.get_template(template_file)
 
     with open(os.path.join(conf_dir, 'serve.cfg'), 'w') as f:
         f.write(template.render(problems=problems, language=desc['language']))
@@ -656,7 +657,7 @@ def validate_problem(prob, params):
     if params.verbose:
         print('Проверка задачи:', prob.path)
 
-    prob.validate(check_checksum=not params.ignore_checksumm, check_solution=True)
+    prob.validate(check_checksum=not params.ignore_checksum, check_solution=True)
     status = MARK_FAILED if prob.errors else MARK_OK
     tests = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
     test_generator = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else MARK_OK
@@ -675,7 +676,7 @@ def validate_problem(prob, params):
     else:
         solution = MARK_OK
 
-    if prob.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING) or params.ignore_checksumm:
+    if prob.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING) or params.ignore_checksum:
         checksum = MARK_UNKNOWN
     elif prob.has_error_occurred(Problem.ERROR_CHECKSUM_MISMATCH):
         checksum = MARK_FAILED
@@ -691,7 +692,7 @@ def validate(params):
 
     problems = __find_problems(predicate).values()
 
-    if params.ignore_checksumm and params.verbose:
+    if params.ignore_checksum and params.verbose:
         print("Проверка контрольных сумм отключена")
 
     with multiprocessing.Pool(params.jobs) as p:
@@ -874,7 +875,7 @@ find_problems_parser.set_defaults(_action=find_problems)
 generate_ejudge_config_parser = subparsers.add_parser('ejudge', help='Сгенерировать конфиг ejudge')
 generate_ejudge_config_parser.set_defaults(_action=generate_ejudge_config)
 generate_ejudge_config_parser.add_argument('contest', help='Файл с описание контеста')
-generate_ejudge_config_parser.add_argument('-t', '--template', required=True, help='Шаблон конфига')
+generate_ejudge_config_parser.add_argument('-t', '--template', default='auto', help='Шаблон конфига')
 generate_ejudge_config_parser.add_argument('-o', '--output-dir', required=True, help='Выходной путь')
 generate_ejudge_config_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие конфиги ejudge')
 
@@ -886,7 +887,7 @@ generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
-validate_parser.add_argument('-I','--ignore-checksumm', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
+validate_parser.add_argument('-I','--ignore-checksum', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
 validate_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для проверки')
 validate_parser.set_defaults(_action=validate)
 
