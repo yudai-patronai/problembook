@@ -43,6 +43,11 @@ EXTENSION_MAP = {
     'python': '.py'
 }
 
+LINT_MAP = {
+    'cpp': ['cclint', '--filter=-legal/copyright'],
+    'python': ['pep8']
+}
+
 CPP_COMPILER = 'clang++'
 
 MARK_UNKNOWN = "?"
@@ -92,6 +97,7 @@ class Problem:
     ERROR_UNKNOWN_LANGUAGE = 12
     ERROR_LANGUAGES_MISSING = 13
     ERROR_SOLUTION_COMPILATION = 14
+    ERROR_BAD_CODESTYLE = 15
 
     ERROR_MESSAGES = {
         ERROR_ID_MISSING: '{0.path}: не указан id',
@@ -108,7 +114,8 @@ class Problem:
         ERROR_TEST_DUPLICATES: '{0.path}: совпадают тесты → {1}',
         ERROR_UNKNOWN_LANGUAGE: '{0.path}: неизвестный язык {1}',
         ERROR_LANGUAGES_MISSING: '{0.path}: не указан язык',
-        ERROR_SOLUTION_COMPILATION: '{0.path}: ошибка компиляции решения {1}'
+        ERROR_SOLUTION_COMPILATION: '{0.path}: ошибка компиляции решения {1}',
+        ERROR_BAD_CODESTYLE: '{0.path}: плохой code-style решения {1}'
     }
 
     def __init__(self, ppath):
@@ -283,6 +290,11 @@ class Problem:
                     full_solution_path = os.path.join(tmp, os.path.basename(self.get_solution(lang)))
                     with open(full_solution_path, 'w') as f:
                         f.write(full_solution)
+
+                    try:
+                        subprocess.check_call(LINT_MAP[lang] + [full_solution_path])
+                    except subprocess.CalledProcessError:
+                        self._report_error(Problem.ERROR_BAD_CODESTYLE, self.get_solution(lang))
 
                     try:
                         binary_solution = getattr(self, 'compile_solution_{}'.format(lang))(full_solution_path, tmp)

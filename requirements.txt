@@ -9,3 +9,5 @@ html2markdown
 networkx
 termcolor
 github3.py
+pep8
+cclint
