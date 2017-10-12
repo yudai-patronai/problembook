@@ -9,7 +9,7 @@ def which_max(seq):
 
 def make_seq(max_el, uniq_el):
 	res = random.sample(range(1, max_el), uniq_el)
-	seq = [j for subset in [[random.randint(1, 10000)]*i for i in res] for j in subset]
+	seq = [j for subset in [[random.randint(0, 99)]*i for i in res] for j in subset]
 	random.shuffle(seq)
 	return([len(seq)] + seq)
 
@@ -23,10 +23,10 @@ os.makedirs(tests_dir)
 
 for num in range(1, N + 1):
 	if num == 1:
-		seq = [1, random.randint(1, 10000)]
+		seq = [1, random.randint(0, 99)]
 
 	elif num == 2:
-		seq = [3]+[random.randint(1, 10000)]*3
+		seq = [3]+[random.randint(0, 99)]*3
 	
 	elif num == 3:
 		seq = make_seq(4, 3)

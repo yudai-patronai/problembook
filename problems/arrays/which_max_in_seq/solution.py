@@ -1,8 +1,10 @@
-dct = {}
+max_num = 99
 
 N = int(input())
+lst = [0]*(max_num + 1)
+
 for _ in range(N):
     number = int(input())
-    dct[number] = dct.get(number, 0) + 1
+    lst[number] += 1
 
-print(max(dct, key=dct.get))
+print(lst.index(max(lst)))
