@@ -844,6 +844,7 @@ create_problem_parser.add_argument('-t', '--tags', default='', help='Списо�
 create_problem_parser.add_argument('-L', '--markdown-language', default=ALLOWED_MD_LANGS[0], choices=ALLOWED_MD_LANGS, help='Язык разметки')
 create_problem_parser.add_argument('-l', '--longname', help='Длинное название')
 create_problem_parser.add_argument('-F', '--from-xml', help='Описание в задачи в xml для импорта')
+create_problem_parser.add_argument('-G', '--languages', default='', help='Список языков через запятую')
 
 create_contest_parser = subparsers.add_parser('create-contest', help='Создать контест')
 create_contest_parser.set_defaults(_action=create_contest)
