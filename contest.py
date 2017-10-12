@@ -608,7 +608,8 @@ def generate_ejudge_config(params):
 
     problems = [problems_dict[p] for p in ids]
 
-    template = env.get_template(params.template)
+    template_file = params.template if params.template != 'auto' else '{}-ejudge.cfg.jinja2'.format(desc['language'])
+    template = env.get_template(template_file)
 
     with open(os.path.join(conf_dir, 'serve.cfg'), 'w') as f:
         f.write(template.render(problems=problems, language=desc['language']))
@@ -874,7 +875,7 @@ find_problems_parser.set_defaults(_action=find_problems)
 generate_ejudge_config_parser = subparsers.add_parser('ejudge', help='Сгенерировать конфиг ejudge')
 generate_ejudge_config_parser.set_defaults(_action=generate_ejudge_config)
 generate_ejudge_config_parser.add_argument('contest', help='Файл с описание контеста')
-generate_ejudge_config_parser.add_argument('-t', '--template', required=True, help='Шаблон конфига')
+generate_ejudge_config_parser.add_argument('-t', '--template', default='auto', help='Шаблон конфига')
 generate_ejudge_config_parser.add_argument('-o', '--output-dir', required=True, help='Выходной путь')
 generate_ejudge_config_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие конфиги ejudge')
 
