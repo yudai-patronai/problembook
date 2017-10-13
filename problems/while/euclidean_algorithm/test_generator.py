@@ -3,8 +3,7 @@
 import os
 import shutil
 
-#from lib import random
-import random
+from lib import random
 N = 15
 random.seed(10000)
 
