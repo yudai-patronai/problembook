@@ -1,11 +1,11 @@
 ---
 id: ef8eaddb-07c7-4b43-9de4-47a0dafcd76d
 longname: По росту!
-languages: [cpp, python]
+languages: [python]
 tags: [easy, io, if, for]
 checker: cmp_int
 time_limit: 10
-real_time_limit: 1
+real_time_limit: 10
 max_vm_size: 40M
 ---
 
