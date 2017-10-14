@@ -13,7 +13,7 @@ def place_mine(a, x, y, n, m):
 n = int(input())
 m = int(input())
 k = int(input())
-a = [[0]*m]*n
+a = [[0]*m for _ in range(n)]
 for _ in range(k):
     i = int(input())
     j = int(input())

@@ -3,7 +3,6 @@ id: 7a811457-ab74-428c-b7e3-cf8ae472a3ed
 longname: Заполнение поля сапера
 languages: [python]
 tags: [arrays]
-checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 5
 max_vm_size: 64M
