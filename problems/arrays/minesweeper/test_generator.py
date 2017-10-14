@@ -48,8 +48,8 @@ def write_manual_test(name, n, m, k, a):
         for i in range(n):
             for j in range(m):
                 if a[i][j] == -1:
-                    f.write(str(i)+"\n")
-                    f.write(str(j)+"\n")
+                    f.write(str(i+1)+"\n")
+                    f.write(str(j+1)+"\n")
     with open(name+".a", "w") as f:
         for i in range(n):
             f.write(' '.join(list(map(str, a[i])))+'\n')
