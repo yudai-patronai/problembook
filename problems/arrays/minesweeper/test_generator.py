@@ -7,8 +7,6 @@ import shutil
 random.seed(42)
 
 def place_mine(a, x, y, n, m):
-    x -= 1
-    y -= 1
     dx = [-1, -1, -1, 0, 0, 1, 1, 1]
     dy = [-1, 0, 1, -1, 1, -1, 0, 1]
     a[x][y] = -1
@@ -35,8 +33,8 @@ def generate_test(name, testn):
         for i in range(n):
             for j in range(m):
                 if a[i][j] == -1:
-                    f.write(str(i)+"\n")
-                    f.write(str(j)+"\n")
+                    f.write(str(i+1)+"\n")
+                    f.write(str(j+1)+"\n")
     with open(name+".a", "w") as f:
         for i in range(n):
             f.write(' '.join(list(map(str, a[i])))+'\n')
