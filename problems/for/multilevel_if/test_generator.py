@@ -9,17 +9,17 @@ def get_case(seq):
     question += ' '.join(str(a) for a in seq)
     temp = []
     for i in range(len(seq)):
-        if ((seq[i] % 4 == 0) or (seq[i] % 7 == 0) or (seq[i] % 9 == 0)):
-            temp.append(seq[i])
-            continue
         digit = int(str(seq[i])[:1])
         if (digit == 7 or digit == 1 or digit == 4 or digit == 5 or digit == 9):
             temp.append(seq[i])
+        if ((seq[i] % 4 == 0) or (seq[i] % 7 == 0) or (seq[i] % 9 == 0)):
+            temp.append(seq[i])
+            continue
 
     if len(temp) == 0:
         temp.append(0)
     
-    answer = ' '.join([str(x) for x in temp])
+    answer = '\n'.join([str(x) for x in temp])
 
     return question, answer
 
