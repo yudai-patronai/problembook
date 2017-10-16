@@ -10,9 +10,13 @@ def get_case(seq):
     temp = []
     for i in range(len(seq)):
         digit = int(str(seq[i])[:1])
-        if (digit == 7 or digit == 1 or digit == 4 or digit == 5 or digit == 9):
+        if ((seq[i] % 4 == 0) and (digit != 4 and digit != 5)):
             temp.append(seq[i])
-        if ((seq[i] % 4 == 0) or (seq[i] % 7 == 0) or (seq[i] % 9 == 0)):
+            continue
+        if ((seq[i] % 7 == 0) and (digit != 7 and digit != 1)):
+            temp.append(seq[i])
+            continue
+        if ((seq[i] % 9 == 0) and (digit != 8 and digit != 9)):
             temp.append(seq[i])
             continue
 
