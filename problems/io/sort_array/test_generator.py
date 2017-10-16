@@ -9,7 +9,9 @@ def sortArray():
 	for j in range(n):
 		array.append(random.randint(-1000, 1000))
 
-	return '{}'.format(' '.join(str(val) for val in array)), '{}'.format(' '.join(str(val) for val in sorted(array)))
+	pin = '{}\n{}'.format(len(array), ' '.join(str(val) for val in array))
+	pout = '{}'.format(' '.join(str(val) for val in sorted(array))) 
+	return pin, pout
 
 
 tests = TestSet()
