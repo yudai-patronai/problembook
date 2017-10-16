@@ -3,7 +3,7 @@ id: 3bbb963b-0a57-4d74-a279-501671c07c86
 longname: Заборчик
 tags: [strings]
 languages: [cpp]
-checker: cmp_str
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
