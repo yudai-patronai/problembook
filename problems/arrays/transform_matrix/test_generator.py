@@ -41,9 +41,6 @@ tests.add(*get_case(4, 3,
     [0, 2, 0, 0],
     [0, 0, 2, 0],
     [0, 0, 0, 1]]))
-#tests.add(*get_case([1, -2, 2, -1, 3]))
-#tests.add(*get_case([3, 2, 1]))
-#tests.add(*get_case([-1, 0, -1]))
 
 for _ in range(MAX_RAND_TESTS):
     tests.add(*get_random_case(randint(1, 20)))
