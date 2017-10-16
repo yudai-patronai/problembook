@@ -6,9 +6,11 @@ from lib.random import sample
 MAX_RAND_TEST = 20
 MAX_RAND_LEN = 1000000
 
-def get_case(seq):
+def get_case(seq, flag):
     seq.sort()
-    number = choice(seq)
+    if flag == 1:
+        number = choice(seq)
+    number = randint(1, 1500000)
     question = '{}\n'.format(len(seq))
     question += str(number)
     question += '\n'
@@ -30,5 +32,8 @@ def get_case(seq):
 
 tests = TestSet()
 
-for i in range(MAX_RAND_TEST):
-    tests.add(*get_case(sample(range(1, 1500000), randint(10, MAX_RAND_LEN))))
+for i in range(MAX_RAND_TEST // 2):
+    tests.add(*get_case(sample(range(1, 1500000), randint(10, MAX_RAND_LEN)), 1))
+
+for i in range(MAX_RAND_TEST // 2):
+    tests.add(*get_case(sample(range(1, 1500000), randint(10, MAX_RAND_LEN)), 0))
