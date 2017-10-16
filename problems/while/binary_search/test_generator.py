@@ -33,8 +33,13 @@ def get_case(seq, flag):
 
 tests = TestSet()
 
+for i in range(5):
+    tests.add(*get_case(sample(range(1, 100), randint(10, 50)), 1))
+
 for i in range(MAX_RAND_TEST // 2):
     tests.add(*get_case(sample(range(1, 1500000), randint(10, MAX_RAND_LEN)), 1))
 
 for i in range(MAX_RAND_TEST // 2):
     tests.add(*get_case(sample(range(1, 1500000), randint(10, MAX_RAND_LEN)), 0))
+
+tests.add(*get_case(sample(range(1, 1500000), 2000000), 1))

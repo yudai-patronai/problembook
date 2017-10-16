@@ -1,17 +1,17 @@
 #include <iostream>
 
 int main() {
-    const int size = 1000000;
-    int array[1000000];
-    int n, number;
+    const unsigned long int size = 2000000;
+    unsigned int array[size];
+    unsigned int n, number;
     std::cin >> n;
     std::cin >> number;
-    for(int i = 0; i < n; i++)
+    for (unsigned int i = 0; i < n; i++)
         std::cin >> array[i];
-    int left = 0;
-    int right = n - 1;
+    unsigned int left = 0;
+    unsigned int right = n - 1;
     while (left <= right) {
-        int middle = (left + right) / 2;
+        unsigned int middle = (left + right) / 2;
         if (array[middle] == number) {
             std::cout << middle + 1 << std::endl;
             return 0;
