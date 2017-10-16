@@ -1,12 +1,13 @@
 #include <iostream>
 
 int main() {
+    const int size = 1000000;
+    int array[1000000];
     int n, number;
     std::cin >> n;
-    int array[n];
+    std::cin >> number;
     for(int i = 0; i < n; i++)
         std::cin >> array[i];
-    std::cin >> number;
     int left = 0;
     int right = n - 1;
     while (left <= right) {

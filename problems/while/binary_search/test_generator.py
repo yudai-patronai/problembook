@@ -1,14 +1,18 @@
 from lib.testgen import TestSet
 from lib.random import randint
+from lib.random import choice
+from lib.random import sample
 
 MAX_RAND_TEST = 20
-MAX_RAND_LEN = 100
+MAX_RAND_LEN = 1000000
 
-def get_case(seq, number):
-    sorted(seq)
+def get_case(seq):
+    seq.sort()
+    number = choice(seq)
     question = '{}\n'.format(len(seq))
+    question += str(number)
+    question += '\n'
     question += ' '.join(str(a) for a in seq)
-    question += '\n' + str(number)
     answer = -1
     left = 0
     right = len(seq) - 1
@@ -16,6 +20,7 @@ def get_case(seq, number):
         middle = (left + right) // 2
         if (seq[middle] == number):
             answer = middle + 1
+            break
         elif (seq[middle] > number):
             right = middle - 1
         else:
@@ -25,5 +30,5 @@ def get_case(seq, number):
 
 tests = TestSet()
 
-for _ in range(MAX_RAND_TEST):
-    tests.add(*get_case([randint(1, 200) for _ in range(10, MAX_RAND_LEN)], randint(1, 200)))
+for i in range(MAX_RAND_TEST):
+    tests.add(*get_case(sample(range(1, 1500000), randint(10, MAX_RAND_LEN))))
