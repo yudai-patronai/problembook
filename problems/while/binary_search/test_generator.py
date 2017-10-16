@@ -10,7 +10,8 @@ def get_case(seq, flag):
     seq.sort()
     if flag == 1:
         number = choice(seq)
-    number = randint(1, 1500000)
+    else:
+        number = randint(1, 1500000)
     question = '{}\n'.format(len(seq))
     question += str(number)
     question += '\n'
