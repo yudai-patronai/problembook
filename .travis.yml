@@ -7,10 +7,12 @@ before_install: 'if [ "$TRAVIS_BRANCH" = "master" ] || [ "$TRAVIS_BRANCH" = "dev
 install: pip install -r requirements.txt
 script:
 - python ./contest.py generate-tests -f -j5
-- python ./contest.py validate $VALIDATE_OPTS
-after_success:
-- base64 -d <<< $DEPLOY_KEY | tar -xz -C $HOME
-- 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then python ./utils/deploy.py; fi'
+
+- python ./contest.py validate --ignore-checksumm
+branches:
+  only:
+  - master
+
 notifications:
   email:
     on_success: change
