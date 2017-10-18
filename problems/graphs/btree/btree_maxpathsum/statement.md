@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 5a78b4a6-c2b4-4b65-a01a-12e8958d5a18
 longname: Максимум суммы ключей дерева
 tags: [btree]

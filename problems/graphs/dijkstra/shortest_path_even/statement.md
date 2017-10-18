@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: e1ccc378-c21d-4b9c-98e8-7a5a3c4c595b
 longname: Путь минимального веса c четным количеством ребер
 tags: [graphs,dijkstra]

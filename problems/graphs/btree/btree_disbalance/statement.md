@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 71d01452-637d-4971-b550-e21fa53adc3b
 longname: Дисбаланс дерева поиска
 tags: [graphs,binary,tree,btree]

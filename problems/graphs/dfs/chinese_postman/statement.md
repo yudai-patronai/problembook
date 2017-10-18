@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: cb14889c-324f-48ae-8f0b-e217e4dc414a
 longname: Задача о китайском почтальоне
 tags: [graphs]

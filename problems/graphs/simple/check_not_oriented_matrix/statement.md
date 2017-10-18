@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: f2188554-2b3b-4ee9-8940-c5aebdf031b8
 longname: Проверка матрицы смежности
 tags: [graphs]

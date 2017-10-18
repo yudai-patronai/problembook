@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 7879c456-6b2d-492f-929e-75895ad05ce8
 longname: А-функция
 tags: [strings]

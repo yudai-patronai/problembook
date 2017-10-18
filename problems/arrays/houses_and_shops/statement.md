@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 41864651-6af3-4232-bdff-b7aa53bf2a20
 longname: Дома и магазины
 tags: [arrays]

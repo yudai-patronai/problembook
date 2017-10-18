@@ -24,4 +24,3 @@ if __name__ == "__main__":
     second = input()
     print(find_distance(first, second))
     end = time.time()
-    print(end - start, file=sys.stderr)

@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: e1c4a933-7a07-42cd-b285-e6efb19189cc
 longname: Высота дерева
 tags: [graphs,binary,tree,btree]

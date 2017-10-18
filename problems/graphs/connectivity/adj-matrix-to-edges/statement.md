@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 9ce1b6ca-c82a-489e-a783-ecf78fa3c8f8
 longname: Матрица смежности в список ребер
 tags: [graphs, connectivity, dfs]

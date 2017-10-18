@@ -31,4 +31,3 @@ if __name__ == "__main__":
     second = input()
     print(check(first, second))
     end = time.time()
-    print(end - start, file=sys.stderr)

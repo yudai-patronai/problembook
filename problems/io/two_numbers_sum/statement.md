@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 914412b5-c0f0-4897-aa16-2ebb3ee72805
 longname: Вычисление суммы двух чисел
 tags: [easy]

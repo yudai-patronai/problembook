@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 1f149524-be56-4cfb-82f1-acdae2be34aa
 longname: Проверить связность графа
 tags: [graphs, connectivity, dfs]

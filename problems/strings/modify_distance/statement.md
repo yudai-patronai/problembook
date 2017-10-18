@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 76da0ec6-5426-47a9-8a5b-777ce370e791
 longname: Количество исправлений
 tags: [strings]

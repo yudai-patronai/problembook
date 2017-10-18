@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: efeb00b7-39ec-4ee3-b7d6-d374f0f298d0
 longname: Дерево - листья
 tags: [graphs,binary,tree,btree]

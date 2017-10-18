@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 1e72291c-e278-4ae4-9cd2-3d2ccbc9bbb3
 longname: Треугольник Паскаля
 tags: [arrays]
