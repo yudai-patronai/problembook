@@ -1,14 +1,12 @@
 #include <iostream>
 
-#define MIN(a, b) ((a < b) ? a : b)
-
 int main()
 {
 	std::string input;
 	std::getline(std::cin, input);
 	for (unsigned i = 0; i < input.size(); ++i)
 	{
-		unsigned max_len = MIN(i, input.size() - 1 - i);
+		unsigned max_len = std::min(i, input.size() - 1 - i);
 		unsigned len = 1;
 		for (; len <= max_len; ++len)
 		{
@@ -16,7 +14,7 @@ int main()
 				break;
 		}
 
-		std::cout << (len - 1) * 2 + 1 << ' ';
+		std::cout << (len - 1) * 2 + 1 << ' ' << std::endl;
 	}
 	return 0;
 }
