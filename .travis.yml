@@ -3,13 +3,16 @@ sudo: false
 language: python
 python:
 - '3.6'
+before_install: 'if [ "$TRAVIS_BRANCH" = "master" ] || [ "$TRAVIS_BRANCH" = "dev" ]; then export VALIDATE_OPTS=""; else VALIDATE_OPTS="--ignore-checksum"; fi'
 install: pip install -r requirements.txt
 script:
 - python ./contest.py generate-tests -f -j5
-- python ./contest.py validate
+
+- python ./contest.py validate --ignore-checksumm
 branches:
   only:
   - master
+
 notifications:
   email:
     on_success: change

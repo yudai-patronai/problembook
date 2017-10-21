@@ -19,11 +19,15 @@ import html2markdown
 import bs4
 import tempfile
 import hashlib
+import time
 from termcolor import colored
+import github3
+import getpass
+
 
 #ALLOWED_MD_LANGS = ['md', 'rst']
 ALLOWED_MD_LANGS = ['md']
-SCRIPT_DIR = os.path.dirname(__file__)
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROBLEMS_DIR = os.path.join(SCRIPT_DIR, 'problems')
 CONTESTS_DIR = os.path.join(SCRIPT_DIR, 'contests')
 TESTS_FOLDER = 'tests'
@@ -39,11 +43,38 @@ EXTENSION_MAP = {
     'python': '.py'
 }
 
+LINT_MAP = {
+    'cpp': ['cclint', '--filter=-legal/copyright'],
+    'python': ['pep8']
+}
+
 CPP_COMPILER = 'clang++'
+CPP_FLAGS = ['-std=c++11', '-Wall', '-Wextra', '-Wpedantic', '-Werror']
 
 MARK_UNKNOWN = "?"
 MARK_OK = colored('✓', 'green')
 MARK_FAILED = colored('✕', 'red')
+
+CREDENTIALS_FILE = os.path.join(SCRIPT_DIR, '.github-token')
+ISSUE_BODY = '''\
+id: {{ id }}
+Путь: {{ path }}
+
+[Описание задачи](https://github.com/mipt-cs/problembook/tree/master/{{ path }})
+
+- [ ] Проверить условие
+{% for lang in langs -%}
+- [ ] Проверить решение {{ lang }}
+{% endfor -%}
+{% for lang in missed_langs -%}
+- [ ] Написать решение {{ lang }}
+{% endfor -%}
+- [ ] Проверить генератор тестов
+{% if has_checker -%}
+- [ ] Проверить чекер
+{% endif -%}
+- [ ] Добавить/обновить контрольные суммы
+'''
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(SCRIPT_DIR, 'templates')),
@@ -67,6 +98,7 @@ class Problem:
     ERROR_UNKNOWN_LANGUAGE = 12
     ERROR_LANGUAGES_MISSING = 13
     ERROR_SOLUTION_COMPILATION = 14
+    ERROR_BAD_CODESTYLE = 15
 
     ERROR_MESSAGES = {
         ERROR_ID_MISSING: '{0.path}: не указан id',
@@ -83,11 +115,18 @@ class Problem:
         ERROR_TEST_DUPLICATES: '{0.path}: совпадают тесты → {1}',
         ERROR_UNKNOWN_LANGUAGE: '{0.path}: неизвестный язык {1}',
         ERROR_LANGUAGES_MISSING: '{0.path}: не указан язык',
-        ERROR_SOLUTION_COMPILATION: '{0.path}: ошибка компиляции решения {1}'
+        ERROR_SOLUTION_COMPILATION: '{0.path}: ошибка компиляции решения {1}',
+        ERROR_BAD_CODESTYLE: '{0.path}: плохой code-style решения {1}'
     }
 
     def __init__(self, ppath):
-        self._prob = frontmatter.load(ppath)
+        with open(ppath) as f:
+            lines = f.readlines()
+            for i, l in enumerate(lines):
+                if not l.startswith('#'):
+                    break
+            lines = lines[i:]
+        self._prob = frontmatter.loads(''.join(lines))
 
         self.path = os.path.abspath(os.path.dirname(ppath))
         self.tests_dir = os.path.join(self.path, TESTS_FOLDER)
@@ -151,6 +190,9 @@ class Problem:
     def has_checksum(self):
         return os.path.isfile(self.checksum)
 
+    def has_checker(self):
+        return os.path.isfile(os.path.join(self.path, CHECKER))
+
     def get_file(self, component, lang):
         path = os.path.join(self.path, component + EXTENSION_MAP[lang])
         return path if os.path.isfile(path) else None
@@ -169,7 +211,7 @@ class Problem:
 
     def compile_solution_cpp(self, solution_path, output_dir):
         solution_bin = os.path.join(output_dir, os.path.basename(solution_path) + '.bin')
-        subprocess.check_call([CPP_COMPILER, '-std=c++11', solution_path, '-o', solution_bin])
+        subprocess.check_call([CPP_COMPILER] + CPP_FLAGS + [solution_path, '-o', solution_bin])
 
         return solution_bin
 
@@ -204,7 +246,7 @@ class Problem:
                 self._report_error(Problem.ERROR_UNKNOWN_LANGUAGE, lang)
 
         if 'checker' not in self.metadata:
-            if os.path.isfile(os.path.join(self.path, CHECKER)):
+            if self.has_checker():
                 checker_found = True
             else:
                 self._report_error(Problem.ERROR_CHECKER_NOT_FOUND)
@@ -249,6 +291,11 @@ class Problem:
                     full_solution_path = os.path.join(tmp, os.path.basename(self.get_solution(lang)))
                     with open(full_solution_path, 'w') as f:
                         f.write(full_solution)
+
+                    try:
+                        subprocess.check_call(LINT_MAP[lang] + [full_solution_path])
+                    except subprocess.CalledProcessError:
+                        self._report_error(Problem.ERROR_BAD_CODESTYLE, self.get_solution(lang))
 
                     try:
                         binary_solution = getattr(self, 'compile_solution_{}'.format(lang))(full_solution_path, tmp)
@@ -444,6 +491,14 @@ def create_contest(params):
         f.write(template.render(name=params.name, problems=[problems[k] for k in params.problems], language=params.language))
 
 
+def __filter_by_id_predicate(params):
+    if params.id:
+        ids = set(params.id)
+        return lambda p: p.id in ids
+    else:
+        return None
+
+
 def __combine_predicates(*args):
     def wrapper(predicates):
         def predicate(x):
@@ -456,7 +511,6 @@ def __combine_predicates(*args):
         return predicate
 
     return wrapper(list(filter(None, args)))
-
 
 
 def find_problems(params):
@@ -567,7 +621,8 @@ def generate_ejudge_config(params):
 
     problems = [problems_dict[p] for p in ids]
 
-    template = env.get_template(params.template)
+    template_file = params.template if params.template != 'auto' else '{}-ejudge.cfg.jinja2'.format(desc['language'])
+    template = env.get_template(template_file)
 
     with open(os.path.join(conf_dir, 'serve.cfg'), 'w') as f:
         f.write(template.render(problems=problems, language=desc['language']))
@@ -603,11 +658,7 @@ def generate_tests_for_problem(prob, force=False):
 
 
 def generate_tests(params):
-    if params.id:
-        ids = set(params.id)
-        predicate = lambda p: p.id in ids
-    else:
-        predicate = None
+    predicate = __filter_by_id_predicate(params)
 
     problems = __find_problems(predicate).values()
 
@@ -615,57 +666,60 @@ def generate_tests(params):
         p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), problems)
 
 
+def validate_problem(prob, params):
+    if params.verbose:
+        print('Проверка задачи:', prob.path)
+
+    prob.validate(check_checksum=not params.ignore_checksum, check_solution=True)
+    status = MARK_FAILED if prob.errors else MARK_OK
+    tests = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
+    test_generator = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else MARK_OK
+
+    if prob.has_error_occurred(Problem.ERROR_TEST_DUPLICATES):
+        unique_tests = MARK_FAILED
+    elif prob.has_error_occurred(Problem.ERROR_TESTS_MISSING):
+        unique_tests = MARK_UNKNOWN
+    else:
+        unique_tests = MARK_OK
+
+    if prob.has_error_occurred(Problem.ERROR_SOLUTION_MISSING):
+        solution = MARK_UNKNOWN
+    elif prob.has_error_occurred(Problem.ERROR_TEST_FAILED):
+        solution = MARK_FAILED
+    else:
+        solution = MARK_OK
+
+    if prob.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING) or params.ignore_checksum:
+        checksum = MARK_UNKNOWN
+    elif prob.has_error_occurred(Problem.ERROR_CHECKSUM_MISMATCH):
+        checksum = MARK_FAILED
+    else:
+        checksum = MARK_OK
+
+    return prob, tests, unique_tests, test_generator, solution, checksum, status
+
+
 def validate(params):
 
-    if params.id:
-        ids = set(params.id)
-        predicate = lambda p: p.id in ids
-    else:
-        predicate = None
+    predicate = __filter_by_id_predicate(params)
 
     problems = __find_problems(predicate).values()
 
-    report = []
-
-    failed = False
-
-    if (params.ignore_checksumm):
+    if params.ignore_checksum and params.verbose:
         print("Проверка контрольных сумм отключена")
 
-    for k, p in enumerate(problems):
-        if params.verbose:
-            print('Проверка задачи:', p.path)
-        p.validate(check_checksum=not params.ignore_checksumm, check_solution=True)
-        status = MARK_FAILED if p.errors else MARK_OK
-        tests = MARK_FAILED if p.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
-        test_generator = MARK_FAILED if p.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else MARK_OK
+    with multiprocessing.Pool(params.jobs) as p:
+        result = p.map(functools.partial(validate_problem, params=params), problems)
 
-        if p.has_error_occurred(Problem.ERROR_TEST_DUPLICATES):
-            unique_tests = MARK_FAILED
-        elif p.has_error_occurred(Problem.ERROR_TESTS_MISSING):
-            unique_tests = MARK_UNKNOWN
-        else:
-            unique_tests = MARK_OK
+    report = []
+    failed = False
+    for k, (prob, tests, unique_tests, test_generator, solution, checksum, status) in enumerate(result):
+        report.append([k+1, prob.id, prob.longname, tests, unique_tests, test_generator, solution, checksum])
 
-        if p.has_error_occurred(Problem.ERROR_SOLUTION_MISSING):
-            solution = MARK_UNKNOWN
-        elif p.has_error_occurred(Problem.ERROR_TEST_FAILED):
-            solution = MARK_FAILED
-        else:
-            solution = MARK_OK
+        failed = failed or (prob.errors and not prob.fixme)
 
-        if p.has_error_occurred(Problem.ERROR_CHECKSUM_MISSING) or params.ignore_checksumm:
-            checksum = MARK_UNKNOWN
-        elif p.has_error_occurred(Problem.ERROR_CHECKSUM_MISMATCH):
-            checksum = MARK_FAILED
-        else:
-            checksum = MARK_OK
-
-        report.append((k+1, p.id, p.longname, tests, unique_tests, test_generator, solution, checksum, status))
-
-        failed = failed or (p.errors and not p.fixme)
-        if p.errors and params.verbose:
-            print(p.format_errors())
+        if prob.errors and params.verbose:
+            print(prob.format_errors())
 
     print(tabulate.tabulate(
         report,
@@ -729,17 +783,81 @@ def list_tags(params):
 
 
 def fixme(params):
-    if params.id:
-        ids = set(params.id)
-        predicate = lambda p: p.id in ids
-    else:
-        predicate = None
+    predicate = __filter_by_id_predicate(params)
 
     for prob in __find_problems(predicate).values():
         prob.mark_fixme(not params.unset)
 
 
-os.environ['PYTHONPATH'] = '{0}:{1}'.format(os.path.dirname(os.path.abspath(__file__)), os.environ.get('PYTHONPATH', ''))
+def __github_login():
+    def two_factor_callback():
+        code = None
+        while not code:
+            code = input('Код для двухфакторной аутентификации: ')
+
+        return code
+
+    user = None
+    while not user:
+        user = input('Имя пользователя: ')
+
+    try:
+        with open(CREDENTIALS_FILE, 'r') as f:
+            token, id = map(str.strip, f.readlines())
+            return github3.login(user, token)
+    except IOError:
+
+        password = None
+        while not password:
+            password = getpass.getpass('Пароль для {0}: '.format(user))
+
+        note = 'contest.py'
+        note_url = 'https://github.com/mipt-cs/problembook'
+        scopes = ['user', 'repo']
+
+        auth = github3.authorize(user, password, scopes, note, note_url, two_factor_callback=two_factor_callback)
+
+        with open(CREDENTIALS_FILE, 'w') as f:
+            f.write(auth.token + '\n')
+            f.write(str(auth.id))
+
+        return github3.login(user, auth.token)
+
+
+def review(params):
+    predicate = __filter_by_id_predicate(params)
+
+    gh = __github_login()
+
+    repo = gh.repository('mipt-cs', 'problembook')
+
+    template = jinja2.Environment(loader=jinja2.BaseLoader).from_string(ISSUE_BODY)
+
+    for prob in __find_problems(predicate).values():
+        if prob.fixme:
+            if args.verbose:
+                print('Создаю тикет для задачи:', prob.longname)
+            path = prob.path[len(SCRIPT_DIR)+1:]
+            title = 'Ревью: ' + prob.longname
+            langs = []
+            missed_langs = []
+            for lang in EXTENSION_MAP:
+                if prob.get_solution(lang):
+                    langs.append(lang)
+                else:
+                    missed_langs.append(lang)
+            body = template.render(id=prob.id, path=path, langs=langs, missed_langs=missed_langs, has_checker=prob.has_checker())
+            while True:
+                try:
+                    repo.create_issue(title=title, body=body, labels=['review', 'help wanted'])
+                    break
+                except github3.exceptions.ForbiddenError:
+                    if args.verbose:
+                        print('Ошибка при создании тикета, пауза 30 секунд…')
+                    time.sleep(30)
+
+
+os.environ['PYTHONPATH'] = '{0}:{1}'.format(SCRIPT_DIR, os.environ.get('PYTHONPATH', ''))
 
 parser = argparse.ArgumentParser(prog='contest')
 parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
@@ -753,6 +871,7 @@ create_problem_parser.add_argument('-t', '--tags', default='', help='Списо�
 create_problem_parser.add_argument('-L', '--markdown-language', default=ALLOWED_MD_LANGS[0], choices=ALLOWED_MD_LANGS, help='Язык разметки')
 create_problem_parser.add_argument('-l', '--longname', help='Длинное название')
 create_problem_parser.add_argument('-F', '--from-xml', help='Описание в задачи в xml для импорта')
+create_problem_parser.add_argument('-G', '--languages', default='', help='Список языков через запятую')
 
 create_contest_parser = subparsers.add_parser('create-contest', help='Создать контест')
 create_contest_parser.set_defaults(_action=create_contest)
@@ -769,7 +888,7 @@ find_problems_parser.set_defaults(_action=find_problems)
 generate_ejudge_config_parser = subparsers.add_parser('ejudge', help='Сгенерировать конфиг ejudge')
 generate_ejudge_config_parser.set_defaults(_action=generate_ejudge_config)
 generate_ejudge_config_parser.add_argument('contest', help='Файл с описание контеста')
-generate_ejudge_config_parser.add_argument('-t', '--template', required=True, help='Шаблон конфига')
+generate_ejudge_config_parser.add_argument('-t', '--template', default='auto', help='Шаблон конфига')
 generate_ejudge_config_parser.add_argument('-o', '--output-dir', required=True, help='Выходной путь')
 generate_ejudge_config_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие конфиги ejudge')
 
@@ -781,8 +900,8 @@ generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
-validate_parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
-validate_parser.add_argument('--ignore-checksumm', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
+validate_parser.add_argument('-I','--ignore-checksum', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
+validate_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для проверки')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
@@ -809,6 +928,10 @@ fixme_parser = subparsers.add_parser('fixme', help='Добавить/снять 
 fixme_parser.add_argument('-u', '--unset', action='store_true', help='Снять метку')
 fixme_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 fixme_parser.set_defaults(_action=fixme)
+
+review_parser = subparsers.add_parser('review', help='Открыть на Github тикет на ревью')
+review_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
+review_parser.set_defaults(_action=review)
 
 args = parser.parse_args()
 
