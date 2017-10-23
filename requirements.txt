@@ -6,7 +6,7 @@ tabulate
 PyYAML
 lxml
 html2markdown
-networkx
+networkx==1.11
 termcolor
 github3.py
 pep8
