@@ -1,0 +1,74 @@
+name: 2017_python3_week6
+language: python
+problems:
+    
+    # В обратном порядке
+    - 14f445ba-4d5f-4204-a9b4-4e80c0229462:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Обращение массива
+    - 9089c343-29b6-4835-aea4-f72740db8709:
+        score: 100
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Создание инвертированного массива
+    - 0a7fc578-04eb-4df2-97b4-cbc221e844fe:
+        score: 100
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Циклический сдвиг
+    - a76fad54-cee5-40fb-b295-f4e36c5b7437:
+        score: 100
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Решето Эратосфена
+    - 3712a78d-d3e7-4295-9648-91d626525a7a:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Фильтрация чисел в массиве
+    - cd5a2baf-979b-421b-a821-3187bbfaaa0c:
+        score: 150
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Проход по массиву со смещением
+    - b940159e-784d-45ee-8706-b10c2175ec8a:
+        score: 150
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Книжный шифр
+    - 05202903-2be4-4d8d-9669-0fc7889894da:
+        score: 200
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Кто выиграл в крестики-нолики?
+    - 628f76c5-6a6c-4106-877b-f246a3791775:
+        score: 200
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Змейка
+    - 2e0e6dc9-ff9b-486b-b660-fff735cb21cf:
+        score: 300
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    

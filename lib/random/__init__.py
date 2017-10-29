@@ -37,12 +37,9 @@ def randrange(a, b=0):
 
 
 def __sample_small(l, k):
-    idx = set()
-
-    while len(idx) < k:
-        idx.add(randrange(k))
-
-    return [l[i] for i in idx]
+    tmp = list(l)
+    shuffle(tmp)
+    return tmp[:k]
 
 
 def sample(l, k):
