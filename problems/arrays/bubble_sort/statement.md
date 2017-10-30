@@ -1,6 +1,7 @@
 ---
 id: 5f370c33-beb2-433b-8c53-01fdce4a0abe
 longname: Сортировка пузырьком
+languages: [python, cpp]
 tags: [array, for, sort]
 checker: cmp_int_seq
 time_limit: 1
