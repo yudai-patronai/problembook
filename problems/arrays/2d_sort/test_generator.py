@@ -14,8 +14,7 @@ def gen_answer(arr):
         replace = 0
         for i in range(N*M-1):
             if arr[i // M][i % M] > arr[(i + 1) // M][(i + 1) % M]:
-                arr[i // M][i % M], arr[(i + 1) // M][(i + 1) % M] = arr[(i + 1) // M][(i + 1) % M],
-                                                                     arr[i // M][i % M]
+                arr[i // M][i % M], arr[(i + 1) // M][(i + 1) % M] = arr[(i + 1) // M][(i + 1) % M], arr[i // M][i % M]
                 replace += 1
 
 def generate_test(name, testn): 

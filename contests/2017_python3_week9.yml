@@ -1,0 +1,67 @@
+name: 2017_python3_week9
+language: python
+problems:
+    
+    # Сортировка пузырьком
+    - 5f370c33-beb2-433b-8c53-01fdce4a0abe:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Argsort
+    - 330feb1d-13c7-4893-9b01-80f19c85463e:
+        score: 200
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Сортировка двух массивов
+    - 1f095b57-dc93-494b-9c16-39c8cd293881:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Сортировка только четных элементов
+    - 8d9c0d00-698d-4b16-be6f-1163e25a207f:
+        score: 200
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Сортировка двумерного массива
+    - 238b94aa-586e-45a7-9e18-30c1f6734634:
+        score: 200
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Сортировка по сумме цифр
+    - a6e6e35f-89f3-4f73-b177-ca5ec246727c:
+        score: 200
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Количество элементов, превосходящих опорный
+    - f6a72564-4f38-465d-b34e-c0fe56336b25:
+        score: 200
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Слияние отсортированных списков
+    - 5b8c5134-194c-43c6-bdcd-66933106c115:
+        score: 400
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Проверка выполнения свойств кучи в массиве
+    - 213e015f-324e-42ce-b29d-990bcdd73859:
+        score: 400
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    

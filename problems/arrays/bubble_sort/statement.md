@@ -3,7 +3,7 @@ id: 5f370c33-beb2-433b-8c53-01fdce4a0abe
 longname: Сортировка пузырьком
 languages: [python, cpp]
 tags: [array, for, sort]
-checker: cmp_int_seq
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -29,6 +29,7 @@ N - число элементов в массиве (4 < N < 100000).
 --
 <- 1 2 3 4 5 6 7 8 9 10
 ```
+
 ```
 -> 5
 -> 28 5 3 99 8
