@@ -1,0 +1,74 @@
+name: 2017_cpp14_week9
+language: cpp
+problems:
+    
+    # Сортировка слов в лексикографическом порядке
+    - ac001e1c-bda6-4bc7-8e66-af7783b66844:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Стек
+    - 9500b664-18ac-48c3-992b-d60a31785832:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Уникальные числа
+    - ecd1d77f-4a93-4a51-b738-4501b0052950:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Самoе популярое слово
+    - 290f937d-4055-452f-8257-f62479fe679f:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Срединй вес исходящих рёбер
+    - 0772089f-0c87-4c42-840d-a78747178af0:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Нахождение минимального необходимого количества мостов
+    - 8fe6f09b-75b3-471b-a6f6-80577930b9c4:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Восстановление кратчайшего пути при помощи алгоритма Дейкстры
+    - 08e5d404-e27c-48b1-90f5-e8a4c037fa77:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск расстояний от заданной вершины до всех остальных
+    - 3caf5ad6-a884-4f5b-8e84-1273ff0ea8fc:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Дерево - сбалансированность
+    - 84037843-b1fd-45d4-9369-7619ccd0d60b:
+        score: 400
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Путь минимального веса из 3k+1 ребер
+    - e8e9354e-7ba9-403e-9a65-5e3f8bd7467f:
+        score: 400
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
