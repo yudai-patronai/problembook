@@ -684,7 +684,7 @@ def validate_problem(prob, params):
 
     if prob.has_error_occurred(Problem.ERROR_SOLUTION_MISSING):
         solution = MARK_UNKNOWN
-    elif prob.has_error_occurred(Problem.ERROR_TEST_FAILED):
+    elif prob.has_error_occurred(Problem.ERROR_TEST_FAILED) or prob.has_error_occurred(Problem.ERROR_SOLUTION_COMPILATION):
         solution = MARK_FAILED
     else:
         solution = MARK_OK
