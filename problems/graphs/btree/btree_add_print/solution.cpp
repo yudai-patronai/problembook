@@ -1,8 +1,9 @@
 #include <vector>
 #include <iostream>
 
-struct Node
+class Node
 {
+public:
     Node(int data) : left(NULL), right(NULL), data(data) { }
 
     Node *left;
@@ -10,14 +11,10 @@ struct Node
     int data;
 };
 
-struct Tree
+class Tree
 {
-    Tree() : root(NULL) { }
-
-    ~Tree()
-    {
-        free_children(root);
-    }
+	Node *root;
+    std::vector<int> vect;
 
     void free_children(Node *node)
     {
@@ -28,6 +25,15 @@ struct Tree
             free_children(node->right);
 
         delete node;
+    }
+
+public:
+
+	Tree() : root(NULL) { }
+
+	~Tree()
+    {
+        free_children(root);
     }
 
     void add(int data)
@@ -79,8 +85,5 @@ struct Tree
    		if (node->right)
    			print(node->right);
    	}
-
-    Node *root;
-    std::vector<int> vect;
 };
 
