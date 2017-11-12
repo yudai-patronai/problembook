@@ -3,7 +3,8 @@ id: 605dc6c5-ecf9-49a6-a93e-8e8b6b55e276
 longname: Класс для записи календарной даты
 languages: [cpp]
 tags: [class]
-checker: cmp_str
+source_footer: footer.cpp
+checker: cmp_int
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

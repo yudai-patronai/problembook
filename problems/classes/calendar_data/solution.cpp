@@ -2,8 +2,9 @@
 
 class CalendarData {
  public:
+     CalendarData() {}
      CalendarData(const int& new_day, const int& new_month,
-     const int& new_year) {
+    const int& new_year) {
          day = new_day;
          month = new_month;
          year = new_year;
