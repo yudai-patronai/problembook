@@ -3,6 +3,7 @@ id: d5383850-b53c-43cc-8642-69efbe4637b8
 longname: Класс с массивом структур
 languages: [cpp]
 tags: [classes]
+source_footer: footer.cpp
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1
@@ -17,3 +18,14 @@ PrintStructures() - распечатать содержимое элементо
 ### Формат выходных данных
 
 Число и строка, разделённые пробелом
+
+### Пример
+
+```
+-> 1 hello
+-> 2 hi
+-> 2 hi
+--
+<- 1 hello
+<- 2 hi
+```
