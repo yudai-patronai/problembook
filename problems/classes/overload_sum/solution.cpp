@@ -19,7 +19,7 @@ class MyClass {
          }
          myStructInfo.push_back(new_struct);
      }
-     void operator+(MyClass b) {
+     void operator+=(MyClass b) {
          int sizeMy = static_cast<int>(myStructInfo.size());
          int sizeB = static_cast<int>(b.myStructInfo.size());
          for (int i = 0; i < sizeB; ++i) {

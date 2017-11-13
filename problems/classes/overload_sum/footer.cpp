@@ -18,7 +18,7 @@ int main() {
         std::cin >> word;
         class2.AddElement(number, word);
     }
-    class1 + class2;
+    class1 += class2;
     class1.PrintStructures();
     return 0;
 }
