@@ -3,6 +3,7 @@ id: 68492a33-01b9-4115-93e5-a0eecf40480e
 longname: Перегрузка оператора суммы
 languages: [cpp]
 tags: [classes]
+source_header: header.cpp
 source_footer: footer.cpp
 checker: cmp_file
 time_limit: 1
@@ -25,14 +26,14 @@ max_vm_size: 64M
 
 ```
 ->Для первого экземпляра
--> obj1.AddElement(1, "hi");
--> obj1.AddElement(2, "hello");
--> obj1.AddElement(2, "hello");
+-> obj1.addElement(1, "hi");
+-> obj1.addElement(2, "hello");
+-> obj1.addElement(2, "hello");
 ->Для второго экземпляра
--> obj2.AddElement(3, "hey");
--> obj2.AddElement(4, "pop");
--> obj2.AddElement(2, "hello");
--> obj2.AddElement(5, "hello");
+-> obj2.addElement(3, "hey");
+-> obj2.addElement(4, "pop");
+-> obj2.addElement(2, "hello");
+-> obj2.addElement(5, "hello");
 --
 <-После вызова функции obj1.PrintStructures()
 <- 1 hi

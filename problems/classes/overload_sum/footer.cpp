@@ -8,7 +8,7 @@ int main() {
         std::string word;
         std::cin >> number;
         std::cin >> word;
-        class1.AddElement(number, word);
+        class1.addElement(number, word);
     }
     std::cin >> numberOfTests;
     for (int i = 0; i < numberOfTests; ++i) {
@@ -16,9 +16,9 @@ int main() {
         std::string word;
         std::cin >> number;
         std::cin >> word;
-        class2.AddElement(number, word);
+        class2.addElement(number, word);
     }
     class1 += class2;
-    class1.PrintStructures();
+    class1.printStructures();
     return 0;
 }
