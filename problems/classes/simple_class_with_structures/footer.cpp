@@ -7,8 +7,8 @@ int main() {
         std::string word;
         std::cin >> number;
         std::cin >> word;
-        simpleClass.AddElement(number, word);
+        simpleClass.addElement(number, word);
     }
-    simpleClass.PrintStructures();
+    simpleClass.printStructures();
     return 0;
 }

@@ -1,6 +1,3 @@
-#include <string>
-#include <iostream>
-#include <vector>
 
 typedef struct MyStruct {
     int number;
@@ -9,7 +6,7 @@ typedef struct MyStruct {
 
 class MyClass {
  public:
-     void AddElement(const int& new_number, const std::string& new_word) {
+     void addElement(const int& new_number, const std::string& new_word) {
          simpleStruct new_struct = { new_number, new_word };
          int size = static_cast<int>(myStructInfo.size());
          for (int i = 0; i < size; ++i) {
@@ -19,7 +16,7 @@ class MyClass {
          }
          myStructInfo.push_back(new_struct);
      }
-     void PrintStructures() {
+     void printStructures() {
         int size = static_cast<int>(myStructInfo.size());
          for (int i = 0; i < size; ++i) {
              std::cout << myStructInfo[i].number <<
