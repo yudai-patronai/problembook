@@ -4,7 +4,7 @@ longname: Класс с массивом структур
 languages: [cpp]
 tags: [classes]
 source_footer: footer.cpp
-checker: cmp_int
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -17,15 +17,16 @@ PrintStructures() - распечатать содержимое элементо
 
 ### Формат выходных данных
 
-Число и строка, разделённые пробелом
+Число и строка, разделённые пробелом, в результате вызова PrintStructures()
 
 ### Пример
 
 ```
--> 1 hello
--> 2 hi
--> 2 hi
+-> obj1.AddElement(1, "hello");
+-> obj1.AddElement(2, "hi");
+-> obj1.AddElement(2, "hi");
 --
+<- После вызова obj1.PrintStructures()
 <- 1 hello
 <- 2 hi
 ```
