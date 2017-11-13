@@ -24,17 +24,17 @@ max_vm_size: 64M
 ### Примеры
 
 ```
-Для первого экземпляра
+->Для первого экземпляра
 -> obj1.AddElement(1, "hi");
 -> obj1.AddElement(2, "hello");
 -> obj1.AddElement(2, "hello");
-Для второго экземпляра
+->Для второго экземпляра
 -> obj2.AddElement(3, "hey");
 -> obj2.AddElement(4, "pop");
 -> obj2.AddElement(2, "hello");
 -> obj2.AddElement(5, "hello");
 --
-После вызова функции obj1.PrintStructures()
+<-После вызова функции obj1.PrintStructures()
 <- 1 hi
 <- 2 hello
 <- 3 hey
