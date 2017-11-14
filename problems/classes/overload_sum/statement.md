@@ -35,12 +35,12 @@ max_vm_size: 64M
 -> obj2.addElement(2, "hello");
 -> obj2.addElement(5, "hello");
 -> obj1 += obj2;
--> obj1.printStructures()
+-> obj1.printStructures();
 --
-<-
 <- 1 hi
 <- 2 hello
 <- 3 hey
 <- 4 pop
 <- 5 hello
 ```
+
