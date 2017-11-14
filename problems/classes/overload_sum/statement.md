@@ -25,17 +25,19 @@ max_vm_size: 64M
 ### Примеры
 
 ```
-->Для первого экземпляра
+-> MyClass obj1;
 -> obj1.addElement(1, "hi");
 -> obj1.addElement(2, "hello");
 -> obj1.addElement(2, "hello");
-->Для второго экземпляра
+-> MyClass obj2;
 -> obj2.addElement(3, "hey");
 -> obj2.addElement(4, "pop");
 -> obj2.addElement(2, "hello");
 -> obj2.addElement(5, "hello");
+-> obj1 += obj2;
+-> obj1.printStructures()
 --
-<-После вызова функции obj1.PrintStructures()
+<-
 <- 1 hi
 <- 2 hello
 <- 3 hey
