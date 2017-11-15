@@ -9,3 +9,6 @@ def make_exchange(money, coins):
     
     return make_exchange(money-coins[-1],coins) + make_exchange(money,coins[:-1])
     
+
+money, coins = 20, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(make_exchange(money, coins))
