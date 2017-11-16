@@ -1,6 +1,6 @@
 import os
 import shutil
-import random
+from lib import random
 
 def solution(arr):
     N = len(arr)
