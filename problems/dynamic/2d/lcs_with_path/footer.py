@@ -1,3 +1,4 @@
+
 def check(s1, s2, sub):
     cur = 0
     for i in s1:
