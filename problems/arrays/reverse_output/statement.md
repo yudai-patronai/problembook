@@ -2,6 +2,7 @@
 id: 4dbe8f5a-4181-40fe-9393-56017cf31785
 longname: Считать данные в массив и вывести в обратном порядке
 tags: [cycle]
+languages: [cpp]
 checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
