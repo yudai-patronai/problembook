@@ -19,7 +19,9 @@ if __name__ == "__main__":
     test_folder = "tests"
     shutil.rmtree(test_folder, ignore_errors=True)
     os.mkdir(test_folder)
-    questions = random.sample(range(1, MAX_N), 15)
+
+    questions = [1, 10, 3, 7, 8]
+    questions.extend(random.sample(range(11, MAX_N), 10))
     if MAX_N not in questions:
         questions[-1] = MAX_N
 
