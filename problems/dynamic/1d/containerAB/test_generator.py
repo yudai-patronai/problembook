@@ -26,6 +26,6 @@ if __name__ == "__main__":
         questions[-1] = MAX_N
 
     for test, n in enumerate(questions):
-        test_name = os.path.join(test_folder, "%02d" % test)
+        test_name = os.path.join(test_folder, "%02d" % (test+1))
         print("generating %s..." % test_name)
         generate_test(test_name, n)
