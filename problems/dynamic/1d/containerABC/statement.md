@@ -3,7 +3,7 @@ id: 6f175d58-dd48-4033-8bca-62ff2e5a2176
 longname: Взрывоопасность (A,B,C)
 languages: [python]
 tags: [dynamic,1d]
-checker: cmp_yesno
+checker: cmp_int
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
