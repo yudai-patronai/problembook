@@ -6,7 +6,7 @@ import shutil
 from solution import solve
 
 random.seed(42)
-MAX_N = 50
+MAX_N = 30
 
 def generate_test(name, n):
     with open(name, "w") as f:
