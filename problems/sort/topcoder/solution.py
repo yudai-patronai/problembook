@@ -6,7 +6,8 @@ for _ in range(n):
     tmp = []
     i, j = 0, 0
     while i < len(res) and j < len(a):
-        if float(res[i][0]) < float(a[j][0]) or float(res[i][0]) == float(a[j][0]) and res[i][1] > a[j][1]:
+        if float(res[i][0]) < float(a[j][0]) \
+          or float(res[i][0]) == float(a[j][0]) and res[i][1] > a[j][1]:
             tmp.append(a[j])
             j += 1
         else:
