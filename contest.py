@@ -24,7 +24,7 @@ from termcolor import colored
 import github3
 import getpass
 
-multiprocessing.freeze_support()
+
 #ALLOWED_MD_LANGS = ['md', 'rst']
 ALLOWED_MD_LANGS = ['md']
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
