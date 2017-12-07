@@ -3,7 +3,7 @@ id: ea15b32e-47d3-47de-9bc8-720a9dd84c4a
 longname: Оттепель
 languages: [python]
 tags: [arrays]
-checker: cmp_int
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
