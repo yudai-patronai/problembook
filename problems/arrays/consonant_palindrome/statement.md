@@ -3,7 +3,7 @@ id: db09c9f0-8a3d-4ecb-b6b5-647ab6cdff03
 longname: Негласный палиндром
 languages: [python]
 tags: [arrays]
-checker: cmp_yesno
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
