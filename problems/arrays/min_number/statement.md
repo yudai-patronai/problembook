@@ -3,7 +3,7 @@ id: d5bff3f1-00b4-4069-bd8e-15fd77759811
 longname: Минимальное число
 languages: [python]
 tags: [arrays]
-checker: cmp_int
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
