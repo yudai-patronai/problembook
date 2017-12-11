@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
-import time
-
 
 def compute_z_function(s):
     z = [0]
@@ -18,16 +15,14 @@ def compute_z_function(s):
 
 
 if __name__ == "__main__":
-    start = time.time()
     pattern = input()
     text = input()
     z = compute_z_function(pattern + "#" + text)
     meets = []
     for i, v in enumerate(z):
         if v == len(pattern):
-            meets.append(i - len(pattern) - 1)
+            meets.append(i)
     if meets:
         print(" ".join(map(str, meets)))
     else:
         print("-1")
-    end = time.time()

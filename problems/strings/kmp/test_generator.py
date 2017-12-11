@@ -56,7 +56,7 @@ if __name__ == "__main__":
         ["abc", "abdcab"],
         ["ababa", "abababababa"]
     ]
-    for n in [10, 50, 1000, 10000, 100000]:
+    for n in [10, 50, 1000, 10000]:
         ps = [3, 5, 9]
         if n > 1000:
             ps += [100, 1000]
@@ -69,17 +69,11 @@ if __name__ == "__main__":
                 tests.append(generate_at_least_once_test(p, n, a, seed))
     tests += [
         generate_random_test(10, 100, 1, "abc"),
-        generate_random_test(10, 100, 2, "def"),
         generate_random_test(5, 100, 3, "asdf"),
-        generate_random_test(10, 100000, 1, "agsd"),
         generate_random_test(10, 100000, 2, "fdst"),
         generate_random_test(1, 100000, 3, "gf234d"),
-        generate_random_test(2, 100000, 3, "gfsd"),
-        generate_random_test(3, 100000, 3, "gfsd"),
         generate_random_test(5, 100000, 3, "gfsd"),
         generate_random_test(1, 100000, 1, "asdfgsdf"),
-        ["ababa", generate_random_string(100000, ["a", "b"])],
-        ["cdecde", generate_random_string(100000, ["c", "d", "e"])],
     ]
     for i, t in enumerate(tests):
         prepare_test(i + 1, t, test_folder)
