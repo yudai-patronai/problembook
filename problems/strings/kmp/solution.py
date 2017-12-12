@@ -21,7 +21,7 @@ if __name__ == "__main__":
     meets = []
     for i, v in enumerate(z):
         if v == len(pattern):
-            meets.append(i)
+            meets.append(i-len(pattern)-1)
     if meets:
         print(" ".join(map(str, meets)))
     else:
