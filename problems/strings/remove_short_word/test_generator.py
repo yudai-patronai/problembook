@@ -4,7 +4,7 @@ from lib import random
 import string
 
 def solution(string):
-    raw_sorted = sorted(string.split(' '), key=lambda x: len(x))
+    raw_sorted = string.split(' ')
     return [sum([ord(i) for i in word]) for word in raw_sorted if len(word) > 4]
 
 def str_generator(size=6, chars=string.ascii_letters + string.digits):
