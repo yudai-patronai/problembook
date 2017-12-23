@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 244af21b-5c97-43e9-bbb0-571063cf8cfa
 longname: Скалярное произведение
 tags: [arrays,functions]

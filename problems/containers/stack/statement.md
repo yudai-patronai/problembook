@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 9500b664-18ac-48c3-992b-d60a31785832
 longname: Стек
 languages: [cpp]

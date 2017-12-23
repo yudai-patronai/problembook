@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 2e0e6dc9-ff9b-486b-b660-fff735cb21cf
 longname: Змейка
 tags: [arrays]

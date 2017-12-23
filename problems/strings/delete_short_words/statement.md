@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 60c32e09-20dd-470e-bc87-232e984d24d6
 longname: Удаление коротких слов
 tags: [strings]

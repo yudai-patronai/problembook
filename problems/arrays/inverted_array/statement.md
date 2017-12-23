@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 0a7fc578-04eb-4df2-97b4-cbc221e844fe
 longname: Создание инвертированного массива
 tags: [array, function]
