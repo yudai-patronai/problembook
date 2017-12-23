@@ -351,7 +351,7 @@ class Problem:
         else:
             return
 
-        with open(self.statement) as f:
+        with open(self.statement, newline='') as f:
             lines = f.readlines()
 
         for i, l in enumerate(lines):
@@ -363,13 +363,14 @@ class Problem:
             return -1
 
         if add:
-            lines.insert(i+1, 'fixme: true\n')
+            end = '\r\n' if l[-2:] == '\r\n' else '\n'
+            lines.insert(i+1, 'fixme: true' + end)
         else:
             for j in range(len(lines)-1, i, -1):
                 if lines[j].startswith('fixme: '):
                     lines.pop(j)
 
-        with open(self.statement, 'w') as f:
+        with open(self.statement, 'w', newline='') as f:
             f.writelines(lines)
 
 
