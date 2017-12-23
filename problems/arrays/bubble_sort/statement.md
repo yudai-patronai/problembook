@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 5f370c33-beb2-433b-8c53-01fdce4a0abe
 longname: Сортировка пузырьком
 tags: [array, for, sort]
