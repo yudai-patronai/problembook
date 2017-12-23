@@ -700,10 +700,16 @@ def validate_problem(prob, params):
 
 
 def validate(params):
+    if params.skip_fixme is None:
+        fixme_predicate = None
+    else:
+        fixme_predicate = lambda p: not p.fixme
 
-    predicate = __filter_by_id_predicate(params)
+    id_predicate = __filter_by_id_predicate(params)
 
-    problems = __find_problems(predicate).values()
+
+    problems = __find_problems( __combine_predicates(fixme_predicate,
+                                                     id_predicate)).values()
 
     if params.ignore_checksum and params.verbose:
         print("Проверка контрольных сумм отключена")
@@ -902,6 +908,7 @@ validate_parser = subparsers.add_parser('validate', help='Проверить к�
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 validate_parser.add_argument('-I','--ignore-checksum', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
 validate_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для проверки')
+validate_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
