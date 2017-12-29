@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: b940159e-784d-45ee-8706-b10c2175ec8a
 longname: Проход по массиву со смещением
 tags: [arrays]

@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 8189a2c6-621e-41a9-93e3-fdaedc8b85a8
 longname: Линейная регрессия
 languages: [python]

@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 163e83cc-f95f-4a0c-ba58-aaa1e9732714
 longname: Алгоритм Левенштейна
 tags: [strings]

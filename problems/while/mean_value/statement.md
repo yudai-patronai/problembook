@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: b7fb7ca3-4fff-4f8f-8dc8-ca35c02cec7c
 longname: Среднее значение последовательности, заканчивающейся нулем
 tags: [while,for]

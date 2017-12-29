@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 13965abc-aad4-4aba-b3b8-c07bd57e2a59
 longname: Запись строки в файл в обратном порядке
 tags: [string, file]

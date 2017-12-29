@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: c19875ae-a597-455f-9cf9-a655aba535fb
 longname: Алгоритм Флойда-Уоршелла
 languages: [cpp]
