@@ -701,10 +701,10 @@ def validate_problem(prob, params):
 
 
 def validate(params):
-    if params.skip_fixme is None:
-        fixme_predicate = None
-    else:
+    if params.skip_fixme:
         fixme_predicate = lambda p: not p.fixme
+    else:
+        fixme_predicate = None
 
     id_predicate = __filter_by_id_predicate(params)
 
