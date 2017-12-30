@@ -3,6 +3,7 @@ fixme: true
 id: bfc54875-8fd9-4f3b-9d87-847de0ddd0e9
 longname: День Рождения Васи
 tags: [array, for, sort]
+languages: [cpp]
 checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1

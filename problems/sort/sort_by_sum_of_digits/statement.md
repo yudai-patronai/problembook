@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: e1d21bb0-f27a-4b8d-a401-5dc89d10195a
 longname: Сортировка по сумме цифр
 tags: [sort]
