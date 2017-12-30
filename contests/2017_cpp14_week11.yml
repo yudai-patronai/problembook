@@ -1,0 +1,32 @@
+name: 2017_cpp14_week11
+language: cpp
+problems:
+    
+    # Класс для записи календарной даты
+    - 605dc6c5-ecf9-49a6-a93e-8e8b6b55e276:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Класс с массивом структур
+    - d5383850-b53c-43cc-8642-69efbe4637b8:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Перегрузка оператора суммы
+    - 68492a33-01b9-4115-93e5-a0eecf40480e:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Класс частотного словаря
+    - 9acd09d9-1b20-428a-9237-ce0afe855a19:
+        score: 400
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
