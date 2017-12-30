@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 51a10767-0d01-415c-b469-8162503dec52
 longname: Суеверный Петя
 tags: [for, if]

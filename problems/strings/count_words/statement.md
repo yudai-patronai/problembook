@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: a5d2199e-366b-4fee-9135-ef33b1f6f479
 longname: Подсчет количества слов в файле
 tags: [string]

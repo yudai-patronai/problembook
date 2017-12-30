@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 92664ad3-aa67-4dee-89b2-f357e47aa79a
 longname: Реализация интерфейса функции сортировки массива
 tags: [arrays,sort,io]

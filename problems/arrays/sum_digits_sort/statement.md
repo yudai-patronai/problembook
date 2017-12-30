@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: a6e6e35f-89f3-4f73-b177-ca5ec246727c
 longname: Сортировка по сумме цифр
 languages: [python]

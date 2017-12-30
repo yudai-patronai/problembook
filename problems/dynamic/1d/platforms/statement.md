@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 7991115d-b097-4d30-87e5-eddd554d87ec
 longname: Компьютерная игра
 languages: [python]
