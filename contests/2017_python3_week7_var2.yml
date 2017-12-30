@@ -1,0 +1,74 @@
+name: 2017_python3_week7_var2
+language: python
+problems:
+    
+    # FizzBuzz
+    - 28b86c2a-d00d-40cb-8a3d-0bbc7ce0737e:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Количество положительных корней квадратного уравнения
+    - 91157976-b406-4663-9f9e-e422d1c1d078:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Максимальное произведение двух целых чисел
+    - c99cf78f-6aed-4225-b4ac-839b627efe50:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # По росту!
+    - ef8eaddb-07c7-4b43-9de4-47a0dafcd76d:
+        score: 100
+        time_limit: 10
+        real_time_limit: 10
+        max_vm_size: 40M
+    
+    # Какое число встречается в массиве наибольшее число раз
+    - 2de3a851-b5e8-4ba3-8f53-eb633720d321:
+        score: 200
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Первое число трибоначчи, превосходящее заданное
+    - a814faa3-34fc-474a-bd2a-73b2f3bf6b42:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заполнение поля сапера
+    - 7a811457-ab74-428c-b7e3-cf8ae472a3ed:
+        score: 200
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Наибольший прямоугольник
+    - c57be5c2-ead4-41a3-a0f0-b346dabc952d:
+        score: 400
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 64M
+    
+    # Поиск максимума в неполной последовательности
+    - 7b94d391-c83a-466f-b646-88c4f1960d6f:
+        score: 400
+        time_limit: 6
+        real_time_limit: 6
+        max_vm_size: 50M
+    
+    # Раскраска прямой
+    - dac8b909-6199-49bd-aace-9a1c2b2030b3:
+        score: 400
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    

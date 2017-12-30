@@ -48,12 +48,18 @@ def generate_test(i, t, folder):
     with open(filename, "w") as f:
         print(t[0], file=f)
 
-    with open(filename) as f:
-        with open("%s.a" % filename, "w") as g:
-            sp.check_call(["./solution.py", "test"], stdin=f, stdout=g)
-            # with open("%s.a" % filename) as f:
-            #     answer = list(map(int, f.readline().split()))
-            # assert t[1] == answer, "%s: %s != %s" % (t[0], t[1], answer)
+    with open("%s.a" % filename, "w") as f:
+        print(*t[1], file=f)    
+
+
+def slow_z_function(s):
+    z = [0]
+    for i in range(1, len(s)):
+        x = 0
+        while i + x < len(s) and s[x] == s[i + x]:
+            x += 1
+        z.append(x)
+    return z
 
 
 if __name__ == "__main__":
@@ -62,23 +68,25 @@ if __name__ == "__main__":
     os.mkdir(test_folder)
 
     tests = [
-        ["aaaa", [0, 1, 2, 3]],
-        ["ababcabd", [0, 0, 1, 2, 0, 1, 2, 0]],
-        ["abcdddabce", [0, 0, 0, 0, 0, 0, 1, 2, 3, 0]]
+        ["aaaa", slow_z_function("aaaa")],
+        ["ababcabd", slow_z_function("ababcabd")],
+        ["abcdddabce", slow_z_function("abcdddabce")]
     ]
     for l in [10, 50]:
         for s in [5, 10]:
             for b in [1, 3, 5]:
                 prefix = get_random_almost_prefix_function(b, l, s * 1.0 / l, "%d_%d_%d_prefix_" % (b, l, s))
                 string = find_appropriate_string(prefix, "%d_%d_%d_shuffle_" % (b, l, s))
-                tests.append([string, prefix])
+                z = slow_z_function(string)
+                tests.append([string, z])
 
-    for l in [100, 500, 1000, 10000, 100000, 100000, 100000, 100000]:
+    for l in [1000, 10000, 100000]:
         s = 10
         for b in [5, 7, 12]:
             prefix = get_random_almost_prefix_function(b, l, s * 1.0 / l, "%d_%d_%d_prefix_" % (b, l, s))
             string = find_appropriate_string(prefix, "%d_%d_%d_shuffle_" % (b, l, s))
-            tests.append([string, prefix])
+            z = slow_z_function(string)
+            tests.append([string, z])
 
     for i, t in enumerate(tests):
         generate_test(i + 1, t, test_folder)

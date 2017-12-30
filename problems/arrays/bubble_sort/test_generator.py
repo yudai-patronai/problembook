@@ -13,12 +13,10 @@ os.makedirs(test_dir)
 
 for i in range(1, NUM_TEST + 1):
     n = random.randint(1, 1000)
-    array = []
-    for j in range(n):
-        array.append(random.randint(1, 1000))
+    array = [random.randint(1, 1000) for _ in range(n)]
 
     with open(os.path.join(test_dir, '{0:0>2}'.format(i)), 'w') as f:
-        f.write('{0}\n{1}\n'.format(n, ' '.join(str(val) for val in array)))
+        f.write('{0}\n{1}\n'.format(n, '\n'.join(str(val) for val in array)))
 
     with open(os.path.join(test_dir, '{0:0>2}.a'.format(i)), 'w') as f:
-        f.write('{0}\n'.format(sorted(array)))
+        f.write('{0}\n'.format(" ".join(map(str, sorted(array)))))
