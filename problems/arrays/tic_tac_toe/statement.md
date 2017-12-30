@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 628f76c5-6a6c-4106-877b-f246a3791775
 longname: Кто выиграл в крестики-нолики?
 tags: [arrays]
