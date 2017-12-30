@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 68492a33-01b9-4115-93e5-a0eecf40480e
 longname: Перегрузка оператора суммы
 languages: [cpp]

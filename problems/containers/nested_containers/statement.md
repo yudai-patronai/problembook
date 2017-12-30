@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 0772089f-0c87-4c42-840d-a78747178af0
 longname: Срединй вес исходящих рёбер
 languages: [cpp]

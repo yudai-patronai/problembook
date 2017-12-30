@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 9089c343-29b6-4835-aea4-f72740db8709
 longname: Обращение массива
 tags: [array, function]

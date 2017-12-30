@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: d5383850-b53c-43cc-8642-69efbe4637b8
 longname: Класс с массивом структур
 languages: [cpp]
