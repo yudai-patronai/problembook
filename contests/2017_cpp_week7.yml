@@ -1,0 +1,74 @@
+name: 2017_cpp_week7
+language: cpp
+problems:
+    
+    # Проверка числа на степень двойки
+    - f1f4b163-00d1-4042-bd58-276d8a29ef8b:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Суеверный Петя
+    - 51a10767-0d01-415c-b469-8162503dec52:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Реализация интерфейса функции сортировки массива
+    - 92664ad3-aa67-4dee-89b2-f357e47aa79a:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Преобразование матрицы
+    - b3f8a0ae-f49a-42ab-bbf1-95000422b56c:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заборчик
+    - 3bbb963b-0a57-4d74-a279-501671c07c86:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Бинарный поиск в отсортированном массиве
+    - a6a04ea5-585c-47fa-ac53-22d0530148f9:
+        score: 300
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Максимальная возрастающая подпоследовательность
+    - c07b984d-286d-493e-999f-5575cd704b1c:
+        score: 300
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Проверить связность графа
+    - 1f149524-be56-4cfb-82f1-acdae2be34aa:
+        score: 400
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск кратчайшего пути между двумя узлами невзвешенного графа
+    - b2380a9a-697f-4a43-914d-808be407ead0:
+        score: 400
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Алгоритм Флойда-Уоршелла
+    - c19875ae-a597-455f-9cf9-a655aba535fb:
+        score: 500
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
