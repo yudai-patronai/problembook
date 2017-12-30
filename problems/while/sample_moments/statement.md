@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 4e6b4aa5-98fe-4e78-b02b-99d9bdb17858
 longname: Выборочные моменты
 languages: [python]

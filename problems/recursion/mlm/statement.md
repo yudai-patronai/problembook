@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: a9ee0d56-953e-4435-ae33-4407bcce9a36
 longname: Сетевой Маркетинг
 languages: [cpp, python]

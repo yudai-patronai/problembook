@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: b127e684-7c8a-4a13-8950-08d89f54ba25
 longname: Наибольшая общая подпоследовательность
 languages: [python]

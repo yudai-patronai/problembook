@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 2c82c3b4-4c2f-413d-9801-43f3eaf55d86
 longname: Казино
 languages: [python]

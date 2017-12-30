@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: d7f8d30b-8d20-46b4-84e3-7e0bf7e38932
 longname: Женские и мужские последователи Хофштадтера
 languages: [python]

@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: be5747eb-ec4f-4957-88c1-74f050225b1d
 longname: Самая вкусная задача
 languages: [python]

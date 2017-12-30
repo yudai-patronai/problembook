@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: a90b54a8-7d78-478b-b64c-0b018c7fbebe
 longname: Похожие массивы
 languages: [python]

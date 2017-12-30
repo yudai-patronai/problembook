@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: b34e19a4-71fd-4081-8224-4502922803d8
 longname: Разбиение массива на три группы
 languages: [python]

@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 982d3c81-9848-4d21-ae2e-6cb98ccb00c8
 longname: Белый король
 languages: [python]

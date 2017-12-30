@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: f29af065-a5f9-4a9a-8d55-ef997846f1cb
 longname: Сумма чисел Фибоначчи
 languages: [python]

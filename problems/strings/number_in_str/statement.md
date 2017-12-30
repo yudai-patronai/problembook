@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: bd15229f-780d-4a49-bc59-5b7e8b41e4d1
 longname: Произведение чисел в строке
 languages: [python]

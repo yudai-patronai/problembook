@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: eb9cea10-7a39-4b88-915b-1b747054b6b4
 longname: Длины слов
 languages: [python]

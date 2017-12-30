@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: e4c4b882-2eb9-47d8-b55c-8320fa282f34
 longname: Кузнечик - математик
 languages: [python]

@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 1003c2c0-2500-4968-9641-c19c38e3091e
 longname: Два хода конем
 languages: [python]

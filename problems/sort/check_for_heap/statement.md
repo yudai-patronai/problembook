@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 213e015f-324e-42ce-b29d-990bcdd73859
 longname: Проверка выполнения свойств кучи в массиве
 languages: [python]

@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: b3ea8b6c-e45a-470b-9d8f-c007bfd0665c
 longname: Количество букв разного регистра
 languages: [python]

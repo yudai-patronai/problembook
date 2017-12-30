@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: a4d20867-b9c4-45f3-b24f-1e9d373891a8
 longname: Выборы
 languages: [python]

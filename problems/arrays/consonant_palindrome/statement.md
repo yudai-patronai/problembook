@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: db09c9f0-8a3d-4ecb-b6b5-647ab6cdff03
 longname: Негласный палиндром
 languages: [python]

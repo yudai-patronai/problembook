@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: ac001e1c-bda6-4bc7-8e66-af7783b66844
 longname: Сортировка слов в лексикографическом порядке
 languages: [cpp]

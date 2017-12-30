@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 18839e41-dbd9-488e-b006-b733bd9999d1
 longname: Подтягивания лесенкой
 languages: [cpp, python]

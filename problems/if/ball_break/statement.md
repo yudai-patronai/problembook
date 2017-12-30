@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 54288608-5296-4610-b643-798a38e1fcfd
 longname: Разбить шарик
 languages: [python]

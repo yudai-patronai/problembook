@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: d5bff3f1-00b4-4069-bd8e-15fd77759811
 longname: Минимальное число
 languages: [python]
