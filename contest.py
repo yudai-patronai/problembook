@@ -281,12 +281,14 @@ class Problem:
                     tmp = tempfile.mkdtemp()
 
                     full_solution = ''
+                    delimiter = ''
                     for part in [self.get_header(lang), self.get_solution(lang), self.get_footer(lang)]:
                         if part is None:
                             continue
                         if os.path.isfile(part):
                             with open(part) as f:
-                                full_solution += f.read()
+                                full_solution += delimiter + f.read()
+                                delimiter = '\n\n' # make PEP8 happy
 
                     full_solution_path = os.path.join(tmp, os.path.basename(self.get_solution(lang)))
                     with open(full_solution_path, 'w') as f:
