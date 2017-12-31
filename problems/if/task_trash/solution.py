@@ -19,4 +19,3 @@ elif a > b:
         print('NORMAL')
 else:
     print('UNKNOWN')
-

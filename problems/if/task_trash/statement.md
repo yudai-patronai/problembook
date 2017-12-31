@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 47393356-c4b9-4737-b092-4eead08bddf3
 longname: Ленивый преподаватель
 languages: [python]

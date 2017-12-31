@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: b4297e1b-a396-4ef9-91d8-9363d338852c
 longname: Белая пешка
 languages: [python]

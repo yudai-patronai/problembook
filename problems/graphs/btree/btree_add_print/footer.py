@@ -29,7 +29,8 @@ def tree_def_str(node):
     if node is None:
         return '-'
 
-    return '({} {} {})'.format(node.data, tree_def_str(node.left), tree_def_str(node.right))
+    return '({} {} {})'.format(node.data, tree_def_str(node.left),
+                               tree_def_str(node.right))
 
 
 if __name__ == "__main__":

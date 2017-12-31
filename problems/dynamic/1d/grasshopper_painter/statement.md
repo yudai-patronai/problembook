@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: acd0aa11-ccf3-4336-ae8d-6637905dc5c4
 longname: Кузнечик - художник
 languages: [python]
