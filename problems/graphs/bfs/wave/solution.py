@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 def wave(field, i1, j1):
     field[i1][j1] = 0
     queue = [(i1, j1)]

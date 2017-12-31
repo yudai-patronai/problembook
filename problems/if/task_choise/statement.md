@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: a3d7308c-e73c-4e19-8f3e-9c0890f19320
 longname: Что решал Вася?
 languages: [python]

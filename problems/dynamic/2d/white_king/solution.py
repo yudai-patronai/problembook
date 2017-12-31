@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 def try_set(d, i, j):
     if 0 <= i <= 7 and 0 <= j <= 7:
         d[i][j] = -1

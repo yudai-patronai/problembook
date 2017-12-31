@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 4d49e107-f822-4ff5-b802-28bf839b1e6b
 longname: Длина удава
 languages: [python]
