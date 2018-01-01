@@ -529,6 +529,9 @@ def problem_selector(params):
     if params.skip_fixme:
         predicates.append(lambda p: not p.fixme)
 
+    if params.only_fixme:
+        predicates.append(lambda p: p.fixme)
+
     if params.tags:
         tags = set(params.tags.split(','))
         predicates.append(lambda p: p.tags & tags)
@@ -895,6 +898,7 @@ create_contest_parser.add_argument('problems', nargs='+', help='Список и�
 find_problems_parser = subparsers.add_parser('find-problems', help='Найти задачи')
 find_problems_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 find_problems_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
+find_problems_parser.add_argument('--only-fixme', action='store_true', help='Только задачи с меткой "fixme: true"')
 find_problems_parser.add_argument('-t', '--tags', help='Список тэгов')
 find_problems_parser.add_argument('-l', '--languages', help='Список языков')
 find_problems_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
@@ -913,6 +917,7 @@ generate_tests_parser.add_argument('id', nargs='*', help='Идентификат
 generate_tests_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
 generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие тесты')
 generate_tests_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
+generate_tests_parser.add_argument('--only-fixme', action='store_true', help='Только задачи с меткой "fixme: true"')
 generate_tests_parser.add_argument('-t', '--tags', help='Список тэгов')
 generate_tests_parser.add_argument('-l', '--languages', help='Список языков')
 generate_tests_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
@@ -922,6 +927,7 @@ validate_parser.add_argument('id', nargs='*', help='Идентификатор �
 validate_parser.add_argument('-I','--ignore-checksum', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
 validate_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для проверки')
 validate_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
+validate_parser.add_argument('--only-fixme', action='store_true', help='Только задачи с меткой "fixme: true"')
 validate_parser.add_argument('-t', '--tags', help='Список тэгов')
 validate_parser.add_argument('-l', '--languages', help='Список языков')
 validate_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
