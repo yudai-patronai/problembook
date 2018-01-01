@@ -547,15 +547,16 @@ def problem_selector(params):
 
 def find_problems(params):
     problems = [[
-        k+1,
+        p.author,
+        p.path.split('/problems/')[-1],
         p.id,
-        p.longname,
+        p.longname if len(p.longname) <= 25 else p.longname[:22] + '...',
         ' '.join(p.tags)
     ] for k, p in enumerate(__find_problems(problem_selector(params)).values())]
 
     print(tabulate.tabulate(
-        problems,
-        headers=['#', 'Идентификатор', 'Название', 'Теги']
+        sorted(problems),
+        headers=['Автор', 'Путь', 'Идентификатор', 'Название', 'Теги']
     ))
 
 
