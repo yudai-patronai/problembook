@@ -132,6 +132,7 @@ class Problem:
         self.tests_dir = os.path.join(self.path, TESTS_FOLDER)
         self.generator = os.path.abspath(os.path.join(self.path, TEST_GENERATOR))
         self.checksum = os.path.abspath(os.path.join(self.path, CHECKSUM))
+        self.author = self.get_first_committer()
 
         self.statement = ppath
         self.metadata = self._prob.metadata
@@ -376,6 +377,13 @@ class Problem:
             f.writelines(lines)
 
 
+    def get_first_committer(self):
+        cmd = ['git', 'log', '--reverse', '--format=%an%%%ae', self.path]
+        out = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode('utf8')
+        name, email = out.split('\n')[0].split('%')
+        return name or email
+
+
 def parse_io_example(block):
     lines = [l.strip() for l in block.split('\n')]
 
@@ -528,6 +536,9 @@ def problem_selector(params):
     if params.languages:
         languages = set(params.languages.split(','))
         predicates.append(lambda p: p.languages & languages)
+
+    if params.author:
+        predicates.append(lambda p: p.author == params.author)
 
     return __combine_predicates(*predicates)
 
@@ -886,6 +897,7 @@ find_problems_parser.add_argument('id', nargs='*', help='Идентификат�
 find_problems_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
 find_problems_parser.add_argument('-t', '--tags', help='Список тэгов')
 find_problems_parser.add_argument('-l', '--languages', help='Список языков')
+find_problems_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
 find_problems_parser.set_defaults(_action=find_problems)
 
 generate_ejudge_config_parser = subparsers.add_parser('ejudge', help='Сгенерировать конфиг ejudge')
@@ -903,6 +915,7 @@ generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true
 generate_tests_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
 generate_tests_parser.add_argument('-t', '--tags', help='Список тэгов')
 generate_tests_parser.add_argument('-l', '--languages', help='Список языков')
+generate_tests_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
@@ -911,6 +924,7 @@ validate_parser.add_argument('-j', '--jobs', default=1, type=int, help='Коли
 validate_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
 validate_parser.add_argument('-t', '--tags', help='Список тэгов')
 validate_parser.add_argument('-l', '--languages', help='Список языков')
+validate_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
