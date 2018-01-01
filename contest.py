@@ -515,26 +515,29 @@ def __combine_predicates(*args):
 
     return wrapper(list(filter(None, args)))
 
+def problem_selector(params):
+    predicates = [__filter_by_id_predicate(params)]
+
+    if params.skip_fixme:
+        predicates.append(lambda p: not p.fixme)
+
+    if params.tags:
+        tags = set(params.tags.split(','))
+        predicates.append(lambda p: p.tags & tags)
+
+    if params.languages:
+        languages = set(params.languages.split(','))
+        predicates.append(lambda p: p.languages & languages)
+
+    return __combine_predicates(*predicates)
 
 def find_problems(params):
-    if params.tags is None:
-        tags_predicate = None
-    else:
-        tags = set(params.tags.split(','))
-        tags_predicate = lambda p: p.tags & tags
-
-    if params.languages is None:
-        languages_predicate = None
-    else:
-        languages = set(params.languages.split(','))
-        languages_predicate = lambda p: p.languages & languages
-
     problems = [[
         k+1,
         p.id,
         p.longname,
         ' '.join(p.tags)
-    ] for k, p in enumerate(__find_problems(__combine_predicates(tags_predicate, languages_predicate)).values())]
+    ] for k, p in enumerate(__find_problems(problem_selector(params)).values())]
 
     print(tabulate.tabulate(
         problems,
@@ -661,9 +664,7 @@ def generate_tests_for_problem(prob, force=False):
 
 
 def generate_tests(params):
-    predicate = __filter_by_id_predicate(params)
-
-    problems = __find_problems(predicate).values()
+    problems = __find_problems(problem_selector(params)).values()
 
     with multiprocessing.Pool(params.jobs) as p:
         p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), problems)
@@ -703,16 +704,7 @@ def validate_problem(prob, params):
 
 
 def validate(params):
-    if params.skip_fixme:
-        fixme_predicate = lambda p: not p.fixme
-    else:
-        fixme_predicate = None
-
-    id_predicate = __filter_by_id_predicate(params)
-
-
-    problems = __find_problems( __combine_predicates(fixme_predicate,
-                                                     id_predicate)).values()
+    problems = __find_problems(problem_selector(params)).values()
 
     if params.ignore_checksum and params.verbose:
         print("Проверка контрольных сумм отключена")
@@ -890,6 +882,8 @@ create_contest_parser.add_argument('-f', '--force-overwrite', action='store_true
 create_contest_parser.add_argument('problems', nargs='+', help='Список идентификаторов задач')
 
 find_problems_parser = subparsers.add_parser('find-problems', help='Найти задачи')
+find_problems_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
+find_problems_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
 find_problems_parser.add_argument('-t', '--tags', help='Список тэгов')
 find_problems_parser.add_argument('-l', '--languages', help='Список языков')
 find_problems_parser.set_defaults(_action=find_problems)
@@ -906,12 +900,17 @@ generate_tests_parser.set_defaults(_action=generate_tests)
 generate_tests_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 generate_tests_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
 generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие тесты')
+generate_tests_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
+generate_tests_parser.add_argument('-t', '--tags', help='Список тэгов')
+generate_tests_parser.add_argument('-l', '--languages', help='Список языков')
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 validate_parser.add_argument('-I','--ignore-checksum', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
 validate_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для проверки')
 validate_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
+validate_parser.add_argument('-t', '--tags', help='Список тэгов')
+validate_parser.add_argument('-l', '--languages', help='Список языков')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
