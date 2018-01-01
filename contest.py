@@ -715,6 +715,9 @@ def validate_problem(prob, params):
     else:
         checksum = MARK_OK
 
+    if params.update_fixme:
+        prob.mark_fixme(status == MARK_FAILED)
+
     return prob, tests, unique_tests, test_generator, solution, checksum, status
 
 
@@ -932,6 +935,10 @@ validate_parser.add_argument('--only-fixme', action='store_true', help='Толь
 validate_parser.add_argument('-t', '--tags', help='Список тэгов')
 validate_parser.add_argument('-l', '--languages', help='Список языков')
 validate_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
+validate_parser.add_argument('--update-fixme', action='store_true',
+                             help='Автоматически проставить fixme для задач ' \
+                             'не прошедших валидацию и убрать fixme для ' \
+                             'прошедших')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
