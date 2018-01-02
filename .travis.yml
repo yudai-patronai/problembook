@@ -8,7 +8,7 @@ install: pip install -r requirements.txt
 script:
 - python ./contest.py generate-tests -f -j5
 
-- python ./contest.py validate --ignore-checksum --skip-fixme
+- python ./contest.py -v validate --ignore-checksum --skip-fixme
 branches:
   only:
   - master
