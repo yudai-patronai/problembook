@@ -46,10 +46,10 @@ if __name__ == "__main__":
     test_folder = "tests"
     shutil.rmtree(test_folder, ignore_errors=True)
     os.mkdir(test_folder)
-    for test in range(1, 6):
+    for test in range(1, 4):
         test_name = os.path.join(test_folder, "%02d" % test)
         print("generating %s..." % test_name)
         generate_test(test_name, test)
         
-    write_manual_test(os.path.join(test_folder, "06"), [(random.randint(-max_int, max_int), random.randint(-max_int, max_int)) for _ in range(1000)])
-    write_manual_test(os.path.join(test_folder, "07"), [(5, 1), (4, 2), (3, 3), (2, 4), (1, 3)])
+    write_manual_test(os.path.join(test_folder, "04"), [(random.randint(-max_int, max_int), random.randint(-max_int, max_int)) for _ in range(1000)])
+    write_manual_test(os.path.join(test_folder, "05"), [(5, 1), (4, 2), (3, 3), (2, 4), (1, 3)])
