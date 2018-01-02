@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 3712a78d-d3e7-4295-9648-91d626525a7a
 longname: Решето Эратосфена
 tags: [arrays]

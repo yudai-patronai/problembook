@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: f906faed-3478-4dc7-9eb8-02fde7ee2abc
 longname: Задача о рюкзаке
 languages: [python]

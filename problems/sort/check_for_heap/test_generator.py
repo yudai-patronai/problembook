@@ -18,7 +18,7 @@ def generate_test(name, testn):
             f.write(str(i)+"\n")
     with open(name+".a", "w") as f:
         for i in reversed(range(1, n)):
-            if a[i//2] < a[i]:
+            if a[(i-1)//2] < a[i]:
                 f.write("NO")
                 return 
         f.write("YES")
@@ -31,7 +31,7 @@ def write_manual_test(name, n, a):
             f.write(str(i)+"\n")
     with open(name+".a", "w") as f:
         for i in reversed(range(1, n)):
-            if a[i//2] < a[i]:
+            if a[(i-1)//2] < a[i]:
                 f.write("NO")
                 return 
         f.write("YES")
