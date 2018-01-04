@@ -132,6 +132,7 @@ class Problem:
         self.tests_dir = os.path.join(self.path, TESTS_FOLDER)
         self.generator = os.path.abspath(os.path.join(self.path, TEST_GENERATOR))
         self.checksum = os.path.abspath(os.path.join(self.path, CHECKSUM))
+        self.author = self.get_first_committer()
 
         self.statement = ppath
         self.metadata = self._prob.metadata
@@ -376,6 +377,13 @@ class Problem:
             f.writelines(lines)
 
 
+    def get_first_committer(self):
+        cmd = ['git', 'log', '--reverse', '--format=%an%%%ae', self.path]
+        out = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode('utf8')
+        name, email = out.split('\n')[0].split('%')
+        return name or email
+
+
 def parse_io_example(block):
     lines = [l.strip() for l in block.split('\n')]
 
@@ -515,30 +523,40 @@ def __combine_predicates(*args):
 
     return wrapper(list(filter(None, args)))
 
+def problem_selector(params):
+    predicates = [__filter_by_id_predicate(params)]
+
+    if params.skip_fixme:
+        predicates.append(lambda p: not p.fixme)
+
+    if params.only_fixme:
+        predicates.append(lambda p: p.fixme)
+
+    if params.tags:
+        tags = set(params.tags.split(','))
+        predicates.append(lambda p: p.tags & tags)
+
+    if params.languages:
+        languages = set(params.languages.split(','))
+        predicates.append(lambda p: p.languages & languages)
+
+    if params.author:
+        predicates.append(lambda p: p.author == params.author)
+
+    return __combine_predicates(*predicates)
 
 def find_problems(params):
-    if params.tags is None:
-        tags_predicate = None
-    else:
-        tags = set(params.tags.split(','))
-        tags_predicate = lambda p: p.tags & tags
-
-    if params.languages is None:
-        languages_predicate = None
-    else:
-        languages = set(params.languages.split(','))
-        languages_predicate = lambda p: p.languages & languages
-
     problems = [[
-        k+1,
+        p.author,
+        p.path.split('/problems/')[-1],
         p.id,
-        p.longname,
+        p.longname if len(p.longname) <= 25 else p.longname[:22] + '...',
         ' '.join(p.tags)
-    ] for k, p in enumerate(__find_problems(__combine_predicates(tags_predicate, languages_predicate)).values())]
+    ] for k, p in enumerate(__find_problems(problem_selector(params)).values())]
 
     print(tabulate.tabulate(
-        problems,
-        headers=['#', 'Идентификатор', 'Название', 'Теги']
+        sorted(problems),
+        headers=['Автор', 'Путь', 'Идентификатор', 'Название', 'Теги']
     ))
 
 
@@ -661,9 +679,7 @@ def generate_tests_for_problem(prob, force=False):
 
 
 def generate_tests(params):
-    predicate = __filter_by_id_predicate(params)
-
-    problems = __find_problems(predicate).values()
+    problems = __find_problems(problem_selector(params)).values()
 
     with multiprocessing.Pool(params.jobs) as p:
         p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), problems)
@@ -699,20 +715,14 @@ def validate_problem(prob, params):
     else:
         checksum = MARK_OK
 
+    if params.update_fixme:
+        prob.mark_fixme(status == MARK_FAILED)
+
     return prob, tests, unique_tests, test_generator, solution, checksum, status
 
 
 def validate(params):
-    if params.skip_fixme:
-        fixme_predicate = lambda p: not p.fixme
-    else:
-        fixme_predicate = None
-
-    id_predicate = __filter_by_id_predicate(params)
-
-
-    problems = __find_problems( __combine_predicates(fixme_predicate,
-                                                     id_predicate)).values()
+    problems = __find_problems(problem_selector(params)).values()
 
     if params.ignore_checksum and params.verbose:
         print("Проверка контрольных сумм отключена")
@@ -723,9 +733,9 @@ def validate(params):
     report = []
     failed = False
     for k, (prob, tests, unique_tests, test_generator, solution, checksum, status) in enumerate(result):
-        report.append([k+1, prob.id, prob.longname, tests, unique_tests, test_generator, solution, checksum])
+        report.append([k+1, prob.id, prob.longname, tests, unique_tests, test_generator, solution, checksum, status])
 
-        failed = failed or (prob.errors and not prob.fixme)
+        failed = failed or prob.errors
 
         if prob.errors and params.verbose:
             print(prob.format_errors())
@@ -890,8 +900,12 @@ create_contest_parser.add_argument('-f', '--force-overwrite', action='store_true
 create_contest_parser.add_argument('problems', nargs='+', help='Список идентификаторов задач')
 
 find_problems_parser = subparsers.add_parser('find-problems', help='Найти задачи')
+find_problems_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
+find_problems_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
+find_problems_parser.add_argument('--only-fixme', action='store_true', help='Только задачи с меткой "fixme: true"')
 find_problems_parser.add_argument('-t', '--tags', help='Список тэгов')
 find_problems_parser.add_argument('-l', '--languages', help='Список языков')
+find_problems_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
 find_problems_parser.set_defaults(_action=find_problems)
 
 generate_ejudge_config_parser = subparsers.add_parser('ejudge', help='Сгенерировать конфиг ejudge')
@@ -906,12 +920,25 @@ generate_tests_parser.set_defaults(_action=generate_tests)
 generate_tests_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 generate_tests_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
 generate_tests_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие тесты')
+generate_tests_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
+generate_tests_parser.add_argument('--only-fixme', action='store_true', help='Только задачи с меткой "fixme: true"')
+generate_tests_parser.add_argument('-t', '--tags', help='Список тэгов')
+generate_tests_parser.add_argument('-l', '--languages', help='Список языков')
+generate_tests_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
 
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 validate_parser.add_argument('-I','--ignore-checksum', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
 validate_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для проверки')
 validate_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
+validate_parser.add_argument('--only-fixme', action='store_true', help='Только задачи с меткой "fixme: true"')
+validate_parser.add_argument('-t', '--tags', help='Список тэгов')
+validate_parser.add_argument('-l', '--languages', help='Список языков')
+validate_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
+validate_parser.add_argument('--update-fixme', action='store_true',
+                             help='Автоматически проставить fixme для задач ' \
+                             'не прошедших валидацию и убрать fixme для ' \
+                             'прошедших')
 validate_parser.set_defaults(_action=validate)
 
 show_parser = subparsers.add_parser('show', help='Показать описание задачи')
