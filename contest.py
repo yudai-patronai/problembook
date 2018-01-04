@@ -723,7 +723,7 @@ def validate(params):
     report = []
     failed = False
     for k, (prob, tests, unique_tests, test_generator, solution, checksum, status) in enumerate(result):
-        report.append([k+1, prob.id, prob.longname, tests, unique_tests, test_generator, solution, checksum])
+        report.append([k+1, prob.id, prob.longname, tests, unique_tests, test_generator, solution, checksum, status])
 
         failed = failed or (prob.errors and not prob.fixme)
 
