@@ -6,4 +6,4 @@ ans = ""
 for i in range(n):
     ind = int(input())
     ans += code[ind] + " "
-print(ans)        
+print(ans)

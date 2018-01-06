@@ -1,3 +1,4 @@
+
 if __name__ == "__main__":
     array = [int(x) for x in input().split(" ")]
     x = int(input())

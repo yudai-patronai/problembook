@@ -1,5 +1,4 @@
 
-
 if __name__ == "__main__":
     array = [int(x) for x in input().split(" ")]
     array_test = array
