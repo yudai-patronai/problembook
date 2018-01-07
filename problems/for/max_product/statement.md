@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: c99cf78f-6aed-4225-b4ac-839b627efe50
 longname: Максимальное произведение двух целых чисел
 tags: [for]

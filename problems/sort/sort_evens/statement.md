@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 8d9c0d00-698d-4b16-be6f-1163e25a207f
 longname: Сортировка только четных элементов
 languages: [python]

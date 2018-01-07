@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: c830c75e-bbbe-492d-a43c-08d6216c1a06
 longname: Реформа округов
 tags: [graphs,dijkstra]

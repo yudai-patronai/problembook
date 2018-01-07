@@ -15,7 +15,7 @@ random.seed(42)
 
 for k in range(1, N_TESTS + 1):
     g = []
-    n_verts = random.randint(1, N_VERTS)
+    n_verts = random.randint(5, N_VERTS)
 
     n_components = 1 if k % 2 == 0 else random.randint(2, N_VERTS)
     components = [[] for i in range(n_components)]

@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 5b8c5134-194c-43c6-bdcd-66933106c115
 longname: Слияние отсортированных списков
 tags: [sort, functions]
