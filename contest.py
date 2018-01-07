@@ -379,7 +379,7 @@ class Problem:
 
     def get_first_committer(self):
         cmd = ['git', 'log', '--reverse', '--format=%an%%%ae', self.path]
-        out = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode('utf8')
+        out = subprocess.check_output(cmd).decode()
         name, email = out.split('\n')[0].split('%')
         return name or email
 
