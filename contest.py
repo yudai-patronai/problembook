@@ -548,7 +548,7 @@ def problem_selector(params):
 def find_problems(params):
     problems = [[
         p.author,
-        p.path.split('/problems/')[-1],
+        os.path.relpath(p.path, PROBLEMS_DIR),
         p.id,
         p.longname if len(p.longname) <= 25 else p.longname[:22] + '...',
         ' '.join(p.tags)
