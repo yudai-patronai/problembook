@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 05202903-2be4-4d8d-9669-0fc7889894da
 longname: Книжный шифр
 tags: [arrays]

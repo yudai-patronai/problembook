@@ -23,4 +23,4 @@ def lcs(s1, s2):
                 f[i+1][j+1] = (i+1, j)
     ans = []
     recover_path(n, m, f, ans)
-    return [s1[i] for i in ans]        
+    return [s1[i] for i in ans]

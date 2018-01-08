@@ -17,7 +17,7 @@ def lis(s):
                 m = d[j]
                 k = j
         d[i] = m + 1
-        f[i] = k            
+        f[i] = k
     ans = []
     m = 0
     for i in range(1, n):
