@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: d64b1f50-0304-4702-8e56-9c54d18e6c33
 longname: Побег
 languages: [python]

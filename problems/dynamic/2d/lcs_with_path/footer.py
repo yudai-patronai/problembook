@@ -16,6 +16,7 @@ def check(s1, s2, sub):
             cur += 1
     return cur == len(sub)
 
+
 if __name__ == "__main__":
     s1 = list(map(int, input().split(' ')))
     s2 = list(map(int, input().split(' ')))

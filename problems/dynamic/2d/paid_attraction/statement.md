@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: aedeec91-922a-4a12-8df6-a94dd4cd5432
 longname: Платный аттракцион
 languages: [python]
