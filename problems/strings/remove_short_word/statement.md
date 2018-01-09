@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 00ed44a8-0dd3-4a5a-b705-63b4df9a08e4
 longname: Удалить короткие слова
 languages: [python]
