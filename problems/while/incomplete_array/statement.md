@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 7b94d391-c83a-466f-b646-88c4f1960d6f
 longname: Поиск максимума в неполной последовательности
 tags: [cycles]

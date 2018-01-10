@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 244af21b-5c97-43e9-bbb0-571063cf8cfa
 longname: Скалярное произведение
 tags: [arrays,functions]
@@ -29,7 +28,7 @@ max_vm_size: 64M
 
 ### Примеры
 
-    >> print(dot_product([1, 2, 3], [1, 2, 3])
-    14
-    >> print(dot_product([1, 2, 3], [4, 5, 6])
-    32
+    `>> print(dot_product([1, 2, 3], [1, 2, 3])`
+    `14`
+    `>> print(dot_product([1, 2, 3], [4, 5, 6])`
+    `32`

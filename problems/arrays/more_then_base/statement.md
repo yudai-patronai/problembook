@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: f6a72564-4f38-465d-b34e-c0fe56336b25
 longname: Количество элементов, превосходящих опорный
 languages: [python]
