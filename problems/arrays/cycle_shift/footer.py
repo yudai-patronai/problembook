@@ -1,6 +1,6 @@
-
 def solution(arr):
     return arr[1:]+arr[:1]
+
 
 if __name__ == "__main__":
     array = [int(x) for x in input().split(" ")]
