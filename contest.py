@@ -798,7 +798,9 @@ def validate(params):
     results = validate_problems(params)
 
     if print_validation_results(results, params.verbose):
-        return -1
+        return 0
+    else:
+        return 1
 
 
 def show(params):
