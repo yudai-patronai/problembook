@@ -704,7 +704,7 @@ def generate_tests_for_problem(prob, force=False):
     return status
 
 
-def generate_tests(params):
+def __generate_tests(params):
     problems = __find_problems(problem_selector(params))
 
     with multiprocessing.Pool(params.jobs) as p:
@@ -713,6 +713,12 @@ def generate_tests(params):
             p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), problems.values())
         ))
 
+# FIXME
+def generate_tests(params):
+    for s in __generate_tests(params).values():
+        if not s:
+            return -1
+
 
 def validate_problem(prob, params):
     if params.verbose:
@@ -720,7 +726,8 @@ def validate_problem(prob, params):
 
     prob.validate(check_checksum=not params.ignore_checksum, check_solution=True, check_codestyle=not params.ignore_codestyle)
 
-    allowed_errors = set(params.allowed_errors or [])
+    # FIXME
+    allowed_errors = set((params.allowed_errors if 'allowed_errors' in params else None) or [])
     status = MARK_FAILED if any(filter(lambda e: e[0] not in allowed_errors, prob.errors)) else MARK_OK
 
     tests = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TESTS_MISSING) else MARK_OK
