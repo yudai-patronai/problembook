@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: cfe2de70-fa3d-4ae3-bb2e-ca100381e788
 longname: Количество элементов, не равных максимальному
 languages: [python]

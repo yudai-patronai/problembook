@@ -24,6 +24,9 @@ from termcolor import colored
 import github3
 import getpass
 
+import lib.problembook as pb
+import lib.problembook.git as git
+
 
 #ALLOWED_MD_LANGS = ['md', 'rst']
 ALLOWED_MD_LANGS = ['md']
@@ -45,7 +48,7 @@ EXTENSION_MAP = {
 
 LINT_MAP = {
     'cpp': ['cclint', '--filter=-legal/copyright'],
-    'python': ['pep8']
+    'python': ['pycodestyle']
 }
 
 CPP_COMPILER = 'clang++'
@@ -133,6 +136,7 @@ class Problem:
         self.generator = os.path.abspath(os.path.join(self.path, TEST_GENERATOR))
         self.checksum = os.path.abspath(os.path.join(self.path, CHECKSUM))
         self.author = self.get_first_committer()
+        self.last_update = self.get_last_update()
 
         self.statement = ppath
         self.metadata = self._prob.metadata
@@ -237,7 +241,7 @@ class Problem:
         else:
             subprocess.check_call([sys.executable, CHECKER, input_file, output_file, answer_file], cwd=self.path, stdout=subprocess.DEVNULL)
 
-    def validate(self, check_checksum=True, check_solution=False):
+    def validate(self, check_checksum=True, check_solution=False, check_codestyle=False):
         self.errors = []
 
         checker_found = False
@@ -295,10 +299,11 @@ class Problem:
                     with open(full_solution_path, 'w') as f:
                         f.write(full_solution)
 
-                    try:
-                        subprocess.check_call(LINT_MAP[lang] + [full_solution_path])
-                    except subprocess.CalledProcessError:
-                        self._report_error(Problem.ERROR_BAD_CODESTYLE, self.get_solution(lang))
+                    if check_codestyle:
+                        try:
+                            subprocess.check_call(LINT_MAP[lang] + [full_solution_path])
+                        except subprocess.CalledProcessError:
+                            self._report_error(Problem.ERROR_BAD_CODESTYLE, self.get_solution(lang))
 
                     try:
                         binary_solution = getattr(self, 'compile_solution_{}'.format(lang))(full_solution_path, tmp)
@@ -376,12 +381,18 @@ class Problem:
         with open(self.statement, 'w', newline='') as f:
             f.writelines(lines)
 
-
     def get_first_committer(self):
-        cmd = ['git', 'log', '--reverse', '--format=%an%%%ae', self.path]
-        out = subprocess.check_output(cmd).decode()
-        name, email = out.split('\n')[0].split('%')
-        return name or email
+        repo = git.Repository(SCRIPT_DIR)
+
+        if not repo.is_git_repo():
+            return None
+
+        fc = repo.get_first_commit(self.path)
+        return fc[0] or fc[1]
+
+    def get_last_update(self):
+        repo = git.Repository(SCRIPT_DIR)
+        return repo.get_last_commit(self.path)[2] if repo.is_git_repo() else None
 
 
 def parse_io_example(block):
@@ -503,7 +514,7 @@ def create_contest(params):
 
 
 def __filter_by_id_predicate(params):
-    if params.id:
+    if params.id is not None:
         ids = set(params.id)
         return lambda p: p.id in ids
     else:
@@ -548,7 +559,7 @@ def problem_selector(params):
 def find_problems(params):
     problems = [[
         p.author,
-        p.path.split('/problems/')[-1],
+        os.path.relpath(p.path, PROBLEMS_DIR),
         p.id,
         p.longname if len(p.longname) <= 25 else p.longname[:22] + '...',
         ' '.join(p.tags)
@@ -637,8 +648,10 @@ def generate_ejudge_config(params):
         sys.exit(-1)
 
     for k, p in enumerate(ids):
-        problems_dict[p].metadata['shortname'] = chr(ord('A') + k)
-        problems_dict[p].metadata.update(problem_overrides.get(problems_dict[p].id))
+        shortname = pb.problem_shortname(k, len(ids))
+        prob = problems_dict[p]
+        prob.metadata['shortname'] = shortname
+        prob.metadata.update(problem_overrides.get(prob.id))
 
     problems = [problems_dict[p] for p in ids]
 
@@ -664,35 +677,61 @@ def generate_ejudge_config(params):
                 shutil.copy(c_path, problem_dir)
         shutil.copytree(p.tests_dir, os.path.join(problem_dir, TESTS_FOLDER))
 
+    if params.summary:
+        print('Задачи контеста:')
+
+        print(tabulate.tabulate(
+            [(prob.metadata['shortname'], prob.id, prob.longname) for prob in map(problems_dict.get, ids)],
+            headers=['Короткое название', 'Идентификатор', 'Название']
+        ))
+
 
 def generate_tests_for_problem(prob, force=False):
+
     if prob.has_tests() and not force:
         print('Пропускаю генерацию тестов для ' + prob.path)
-        return
+        return True
 
     print('Генерирую тесты для ' + prob.path)
 
     try:
         prob.generate_tests()
+        status = True
     except subprocess.CalledProcessError as e:
         print("Ошибка при генерации тестов для {}: {}".format(prob.path, e.output.decode()))
+        status = False
+
+    return status
 
 
-def generate_tests(params):
-    problems = __find_problems(problem_selector(params)).values()
+def __generate_tests(params):
+    problems = __find_problems(problem_selector(params))
 
     with multiprocessing.Pool(params.jobs) as p:
-        p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), problems)
+        return dict(zip(
+            problems.keys(),
+            p.map(functools.partial(generate_tests_for_problem, force=params.force_overwrite), problems.values())
+        ))
+
+# FIXME
+def generate_tests(params):
+    for s in __generate_tests(params).values():
+        if not s:
+            return -1
 
 
 def validate_problem(prob, params):
     if params.verbose:
         print('Проверка задачи:', prob.path)
 
-    prob.validate(check_checksum=not params.ignore_checksum, check_solution=True)
-    status = MARK_FAILED if prob.errors else MARK_OK
-    tests = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TESTS_MISSING)  else MARK_OK
-    test_generator = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING)  else MARK_OK
+    prob.validate(check_checksum=not params.ignore_checksum, check_solution=True, check_codestyle=not params.ignore_codestyle)
+
+    # FIXME
+    allowed_errors = set((params.allowed_errors if 'allowed_errors' in params else None) or [])
+    status = MARK_FAILED if any(filter(lambda e: e[0] not in allowed_errors, prob.errors)) else MARK_OK
+
+    tests = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TESTS_MISSING) else MARK_OK
+    test_generator = MARK_FAILED if prob.has_error_occurred(Problem.ERROR_TEST_GENERATOR_MISSING) else MARK_OK
 
     if prob.has_error_occurred(Problem.ERROR_TEST_DUPLICATES):
         unique_tests = MARK_FAILED
@@ -721,36 +760,55 @@ def validate_problem(prob, params):
     return prob, tests, unique_tests, test_generator, solution, checksum, status
 
 
-def validate(params):
+def validate_problems(params):
     problems = __find_problems(problem_selector(params)).values()
 
     if params.ignore_checksum and params.verbose:
         print("Проверка контрольных сумм отключена")
 
     with multiprocessing.Pool(params.jobs) as p:
-        result = p.map(functools.partial(validate_problem, params=params), problems)
+        return list(p.map(functools.partial(validate_problem, params=params), problems))
+
+
+def print_validation_results(results, verbose=False):
+    if len(results) == 0:
+        return
 
     report = []
     failed = False
-    for k, (prob, tests, unique_tests, test_generator, solution, checksum, status) in enumerate(result):
-        report.append([k+1, prob.id, prob.longname, tests, unique_tests, test_generator, solution, checksum, status])
+    for k, (prob, tests, unique_tests, test_generator, solution, checksum, status) in enumerate(results):
+        report.append([k + 1, prob.id, prob.longname, tests, unique_tests, test_generator, solution, checksum, status])
 
         failed = failed or prob.errors
 
-        if prob.errors and params.verbose:
+        if prob.errors and verbose:
             print(prob.format_errors())
 
     print(tabulate.tabulate(
         report,
-        headers=['#', 'Идентификатор', 'Название', 'Тесты', 'Уникальные тесты', 'Генератор тестов', 'Решение', 'Контрольная сумма', 'Статус']
+        headers=['#', 'Идентификатор', 'Название', 'Тесты', 'Уникальные тесты', 'Генератор тестов', 'Решение',
+                 'Контрольная сумма', 'Статус']
     ))
 
-    if failed:
+    return not failed
+
+
+def validate(params):
+
+    results = validate_problems(params)
+
+    if print_validation_results(results, params.verbose):
+        return 0
+    else:
         return 1
 
 
 def show(params):
     prob = find_problem_by_id(params.id)
+
+    if prob is None:
+        print('Задача не найдена')
+        return -1
 
     with open(prob.statement) as f:
         print(f.read())
@@ -758,12 +816,21 @@ def show(params):
 
 def edit(params):
     problem = find_problem_by_id(params.id)
+
+    if problem is None:
+        print('Задача не найдена')
+        return -1
+
     editor = subprocess.check_output(['which', os.environ.get('EDITOR', 'vim')]).decode('utf-8').strip()
     os.execl(editor, editor, problem.statement)
 
 
 def info(params):
     prob = find_problem_by_id(params.id)
+
+    if prob is None:
+        print('Задача не найдена')
+        return -1
 
     print('id:', prob.id)
     print('Название:', prob.longname)
@@ -876,7 +943,141 @@ def review(params):
                     time.sleep(30)
 
 
-os.environ['PYTHONPATH'] = '{0}:{1}'.format(SCRIPT_DIR, os.environ.get('PYTHONPATH', ''))
+def mega_contest(params):
+
+    repo = git.Repository(SCRIPT_DIR)
+
+    if not repo.check_tree_is_clean():
+        print('Создание мега-контеста предполагает активное переключение веток в текущем репозитории, '
+              'поэтому перед запуском команды убедитесь, что незакомиченные изменения отсутствуют')
+
+        return -1
+
+    root = tempfile.mkdtemp()
+    problems_dir = os.path.join(root, 'problems')
+
+    for dir in 'lib', 'templates':
+        shutil.copytree(os.path.join(SCRIPT_DIR, dir), os.path.join(root, dir))
+
+    shutil.copy(__file__, os.path.join(root, 'contest.py'))
+
+    os.mkdir(problems_dir)
+
+    cur_branch = repo.get_current_branch()
+
+    problems_map = {}
+
+    find_params = problem_selector(
+        pb.FakeArgs(
+            language=params.language,
+            skip_fixme=False
+        )
+    )
+
+    for branch in repo.list_branches():
+        print('Обрабатываю бранч', branch)
+        repo.checkout_branch(branch)
+
+        for id, prob in __find_problems(find_params).items():
+            update = False
+            if id not in problems_map:
+                update = True
+            elif prob.last_update > problems_map[id][1]:
+                update = True
+
+            if update:
+                problems_map[id] = branch, prob.last_update
+
+    branch_map = {}
+
+    for id, (branch, _) in problems_map.items():
+        if branch not in branch_map:
+            branch_map[branch] = []
+        branch_map[branch].append(id)
+
+    print('Статистика по задачам из разных бранчей:')
+    stats = sorted(((len(ids), branch) for branch, ids in branch_map.items()), reverse=True)
+    for count, branch in stats:
+        print('  ', branch, ': ', count, sep='')
+
+    print('Всего: ', sum(map(pb.first, stats)))
+
+    mega_contest = {
+        'name': params.id,
+        'language': params.language,
+        'problems': []
+    }
+
+    for branch, probs in branch_map.items():
+        print('Обрабатываю задачи из бранча', branch)
+
+        repo.checkout_branch(branch)
+
+        generated_tests = generate_tests(pb.FakeArgs(
+            id=probs,
+            language=params.language,
+            jobs=params.jobs,
+            force_overwrite=True,
+            skip_fixme=True
+        ))
+
+        tasks_to_validate = list(map(
+            pb.first,
+            filter(
+                pb.second,
+                generated_tests.items()
+            )
+        ))
+
+        print('Количество задач, для которых сгенерированы тесты:', len(tasks_to_validate))
+
+        validated_problems = validate_problems(pb.FakeArgs(
+            id=tasks_to_validate,
+            ignore_checksum=True,
+            check_solution=True,
+            ignore_codestyle=True,
+            allowed_errors=[Problem.ERROR_TEST_DUPLICATES]
+        ))
+
+        print_validation_results(validated_problems)
+
+        good_problems = list(map(
+            pb.first,
+            filter(
+                lambda x: x[1] == MARK_OK and x[4] == MARK_OK,
+                validated_problems
+            )
+        ))
+
+        print('Количество минимально готовых задач:', len(good_problems))
+
+        for prob in good_problems:
+            rel_path = os.path.relpath(prob.path, SCRIPT_DIR)
+            target_path = os.path.join(root, rel_path)
+            shutil.copytree(prob.path, target_path)
+
+            mega_contest['problems'].append({
+                prob.id: {
+                    'score': 1000
+                }
+            })
+
+
+    repo.checkout_branch(cur_branch)
+
+    with open(os.path.join(root, 'mega.yml'), 'w') as f:
+        yaml.dump(mega_contest, f)
+
+    subprocess.check_call([
+        sys.executable, 'contest.py',
+        'ejudge',
+        '-o', root,
+        '-s',
+        'mega.yml'
+    ], cwd=root)
+
+
+os.environ['PYTHONPATH'] = '{}{}{}'.format(SCRIPT_DIR, os.pathsep, os.environ.get('PYTHONPATH', ''))
 
 parser = argparse.ArgumentParser(prog='contest')
 parser.add_argument('-v', '--verbose', action='store_true', help='Включить подробный вывод')
@@ -914,6 +1115,7 @@ generate_ejudge_config_parser.add_argument('contest', help='Файл с опис
 generate_ejudge_config_parser.add_argument('-t', '--template', default='auto', help='Шаблон конфига')
 generate_ejudge_config_parser.add_argument('-o', '--output-dir', required=True, help='Выходной путь')
 generate_ejudge_config_parser.add_argument('-f', '--force-overwrite', action='store_true', help='Перезаписывать существующие конфиги ejudge')
+generate_ejudge_config_parser.add_argument('-s', '--summary', action='store_true', help='Вывести короткие имена для задач  в контесте')
 
 generate_tests_parser = subparsers.add_parser('generate-tests', help='Сгенерировать тесты')
 generate_tests_parser.set_defaults(_action=generate_tests)
@@ -929,6 +1131,7 @@ generate_tests_parser.add_argument('--author', help='Только задачи �
 validate_parser = subparsers.add_parser('validate', help='Проверить корректность условий в репозитории')
 validate_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 validate_parser.add_argument('-I','--ignore-checksum', action='store_true', help='Не учитывать контрольную сумму в статусе валидации')
+validate_parser.add_argument('-C','--ignore-codestyle', action='store_true', help='Не проверять стиль кода')
 validate_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для проверки')
 validate_parser.add_argument('-s', '--skip-fixme', action='store_true', help='Пропускать задачи с меткой "fixme: true"')
 validate_parser.add_argument('--only-fixme', action='store_true', help='Только задачи с меткой "fixme: true"')
@@ -970,7 +1173,15 @@ review_parser = subparsers.add_parser('review', help='Открыть на Github
 review_parser.add_argument('id', nargs='*', help='Идентификатор задачи')
 review_parser.set_defaults(_action=review)
 
+mega_contest_parser = subparsers.add_parser('mega-contest', help='Создать «мега-контест» из всех задач')
+mega_contest_parser.add_argument('-l', '--language', required=True, help='Язык контеста')
+mega_contest_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
+mega_contest_parser.add_argument('-i', '--id', required=True, help='Идентификатор контеста в ejudge')
+mega_contest_parser.set_defaults(_action=mega_contest)
+
 args = parser.parse_args()
 
-ret = args._action(args)
-sys.exit(0 if ret is None else ret)
+if 'id' in args and args.id == []:
+    args.id = None
+
+sys.exit(args._action(args) or 0)

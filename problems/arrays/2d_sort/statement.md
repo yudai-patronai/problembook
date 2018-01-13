@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 238b94aa-586e-45a7-9e18-30c1f6734634
 longname: Сортировка двумерного массива
 languages: [python]

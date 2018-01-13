@@ -9,5 +9,5 @@ html2markdown
 networkx==1.11
 termcolor
 github3.py
-pep8
+pycodestyle
 cclint
