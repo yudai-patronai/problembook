@@ -9,5 +9,6 @@ def solution(arr):
             sseq_len.append(1)
     return max(sseq_len)
 
+
 arr = [int(i) for i in input().strip().split(' ')]
 print(solution(arr))

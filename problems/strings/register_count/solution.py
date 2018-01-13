@@ -11,6 +11,7 @@ def solution():
 
     return upper, lower
 
+
 if __name__ == '__main__':
     upper, lower = solution()
     print(upper, lower)
