@@ -164,7 +164,7 @@ def gen_tests(tests_dir):
         t += 1
 
     for i in range(5):
-        n = 2 + i * 2
+        n = 4 + i * 2
         gen_test(tests_dir, t, n, gen_graph_edges(n, 0))
         t += 1
 

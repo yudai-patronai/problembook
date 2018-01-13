@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: ab46d419-f4bf-461b-8403-421a45fa6605
 longname: Нахождение вершины-"столицы"
 tags: [graphs,floyd]

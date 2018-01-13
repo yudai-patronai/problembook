@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: a17a3e98-5a76-4279-8abf-5ff588b0b091
 longname: Високосный год
 tags: [if]

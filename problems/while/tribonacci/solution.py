@@ -11,6 +11,7 @@ def get_trib_number(n):
         num += 1
     return num
 
+
 if __name__ == "__main__":
     n = int(input())
     print(get_trib_number(n))
