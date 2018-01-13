@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 7fe5b98b-7fcc-4209-9f0d-13dc473aa56a
 longname: Реализация классов с заданным интерфейсом
 languages: [cpp]
