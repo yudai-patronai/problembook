@@ -4,7 +4,7 @@ import os
 from lib import random
 import shutil
 
-N_TESTS = 50
+N_TESTS = 10
 N_VERTS = 50
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
