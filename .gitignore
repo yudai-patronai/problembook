@@ -4,3 +4,4 @@ tests
 *.pyc
 .github-token
 .venv
+.cache
