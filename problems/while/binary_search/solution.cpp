@@ -1,8 +1,7 @@
 #include <iostream>
 
 int main() {
-    const unsigned long int size = 2000000;
-    unsigned int array[size];
+    unsigned int array[2000000];
     unsigned int n, number;
     std::cin >> n;
     std::cin >> number;
@@ -15,11 +14,11 @@ int main() {
         if (array[middle] == number) {
             std::cout << middle + 1 << std::endl;
             return 0;
-        }
-        else if (array[middle] > number)
+        } else if (array[middle] > number) {
             right = middle - 1;
-        else
+        } else {
             left = middle + 1;
+        }
     }
     std::cout << -1 << std::endl;
     return 0;
