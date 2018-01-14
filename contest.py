@@ -23,6 +23,7 @@ import time
 from termcolor import colored
 import github3
 import getpass
+import pickle
 
 import lib.problembook as pb
 import lib.problembook.git as git
@@ -33,6 +34,7 @@ ALLOWED_MD_LANGS = ['md']
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROBLEMS_DIR = os.path.join(SCRIPT_DIR, 'problems')
 CONTESTS_DIR = os.path.join(SCRIPT_DIR, 'contests')
+CACHE_FILE = os.path.join(SCRIPT_DIR, '.cache')
 TESTS_FOLDER = 'tests'
 TEST_GENERATOR = 'test_generator.py'
 CHECKSUM = 'checksum'
@@ -582,10 +584,7 @@ def find_problem_by_id(id):
         print('{}: не удалось найти задачу'.format(id))
 
 
-def __find_problems(predicate=None):
-
-    problems = {}
-
+def __list_problems_on_fs():
     for root, _, files in os.walk(PROBLEMS_DIR):
         for file in files:
             fname, fext = os.path.splitext(file.lower())
@@ -595,20 +594,32 @@ def __find_problems(predicate=None):
                     problem = Problem(ppath)
                     if problem.errors:
                         print(problem.format_errors())
-                        continue
+                    yield problem
                 except:
                     print('Ошибка при загрузке условия: {}'.format(ppath))
                     if args.verbose:
                         traceback.print_exc()
-                    continue
 
-                if predicate and not predicate(problem):
-                    continue
 
-                if problem.id in problems:
-                    print('{}: не уникальный id'.format(problem.path))
-                else:
-                    problems[problem.id] = problem
+def __list_problems_in_cache():
+    with open(CACHE_FILE, 'rb') as f:
+        return pickle.load(f)
+
+
+def __find_problems(predicate=None):
+
+    problems = {}
+
+    probs = __list_problems_in_cache() if os.path.isfile(CACHE_FILE) else __list_problems_on_fs()
+
+    for problem in probs:
+        if predicate and not predicate(problem):
+            continue
+
+        if problem.id in problems:
+            print('{}: не уникальный id'.format(problem.path))
+        else:
+            problems[problem.id] = problem
 
     return problems
 
@@ -1077,6 +1088,16 @@ def mega_contest(params):
     ], cwd=root)
 
 
+def cache(params):
+    if params.clear:
+        if os.path.isfile(CACHE_FILE):
+            os.remove(CACHE_FILE)
+    elif params.make:
+        probs = list(__list_problems_on_fs())
+        with open(CACHE_FILE, 'wb') as f:
+            pickle.dump(probs, f)
+
+
 os.environ['PYTHONPATH'] = '{}{}{}'.format(SCRIPT_DIR, os.pathsep, os.environ.get('PYTHONPATH', ''))
 
 parser = argparse.ArgumentParser(prog='contest')
@@ -1178,6 +1199,12 @@ mega_contest_parser.add_argument('-l', '--language', required=True, help='Язы
 mega_contest_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
 mega_contest_parser.add_argument('-i', '--id', required=True, help='Идентификатор контеста в ejudge')
 mega_contest_parser.set_defaults(_action=mega_contest)
+
+cache_parser = subparsers.add_parser('cache', help='Работа с кэшем для быстрого поиска задач')
+cache_parser.set_defaults(_action=cache)
+group = cache_parser.add_mutually_exclusive_group(required=True)
+group.add_argument('-m', '--make', action='store_true', help='Создать кэш')
+group.add_argument('-c', '--clear', action='store_true', help='Очистить кэш')
 
 args = parser.parse_args()
 
