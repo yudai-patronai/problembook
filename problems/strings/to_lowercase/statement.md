@@ -3,7 +3,7 @@ fixme: true
 id: 1a3f2367-c257-4736-afe8-064c47f094bd
 longname: Смена регистра на нижний
 tags: [string]
-checker: cmp_str
+checker: cmp_int_seq
 languages: [cpp]
 time_limit: 1
 real_time_limit: 1
