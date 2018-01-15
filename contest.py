@@ -49,7 +49,7 @@ EXTENSION_MAP = {
 }
 
 LINT_MAP = {
-    'cpp': ['cpplint', '--filter=-legal/copyright'],
+    'cpp': ['cclint', '--filter=-legal/copyright'],
     'python': ['pycodestyle']
 }
 
