@@ -384,13 +384,10 @@ class Problem:
             f.writelines(lines)
 
     def get_first_committer(self):
-        repo = git.Repository(SCRIPT_DIR)
-
-        if not repo.is_git_repo():
-            return None
-
-        fc = repo.get_first_commit(self.path)
-        return fc[0] or fc[1]
+        cmd = ['git', 'log', '--reverse', '--format=%an%%%ae', self.path]
+        out = subprocess.check_output(cmd).decode()
+        name, email = out.split('\n')[0].split('%')
+        return name or email
 
     def get_last_update(self):
         repo = git.Repository(SCRIPT_DIR)
