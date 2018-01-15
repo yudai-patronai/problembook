@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: f1f4b163-00d1-4042-bd58-276d8a29ef8b
 longname: Проверка числа на степень двойки
 languages: [cpp]
