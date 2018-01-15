@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: ba1622db-a5ff-4054-b365-20ee63b81788
 longname: Проверка ацикличности графа
 tags: [graphs,dfs]
