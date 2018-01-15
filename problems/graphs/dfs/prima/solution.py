@@ -29,11 +29,11 @@ def prima(graph, x):
 
 def solve(graph):
     dist, parent = prima(graph, 0)
-    l = []
+    res = []
     for i in range(1, len(parent)):
-        l.append("%d %d" % (parent[i], i))
+        res.append("%d %d" % (parent[i], i))
 
-    return str(sum(dist)) + '\n' + '\n'.join(l) + '\n'
+    return str(sum(dist)) + '\n' + '\n'.join(res) + '\n'
 
 
 if __name__ == "__main__":
