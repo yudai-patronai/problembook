@@ -86,7 +86,7 @@ def dijkstra_mlogm_heap(graph, start, end):
         if vd > dist[v]:
             continue  # это фиктивный элемент очереди
         if v == end:
-            break;
+            break
 
         for v2, w in graph[v]:
             if dist[v2] > vd + w:

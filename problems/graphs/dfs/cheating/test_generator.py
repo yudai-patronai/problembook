@@ -60,7 +60,7 @@ def gen_tests(tests_dir):
         task.gen_test(tests_dir, t, n, gen_graph_edges(n, 2 * i, 0))
         t += 1
 
-    for i in range(5):
+    for i in range(1, 6):
         n = 3 + i * 2
         task.gen_test(tests_dir, t, n, gen_graph_edges(n, 2 * i, 2 * i))
         t += 1

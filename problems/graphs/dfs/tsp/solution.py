@@ -14,7 +14,7 @@ def _voyager(g, Used, Path, PathLen, Opti, curr):
     if len(Path) == len(g):
         if Path[0] in g[Path[-1]]:
             CycleLen = PathLen + g[Path[-1]][Path[0]]
-            if Opti.Cycle == None or CycleLen < Opti.CycleLen:
+            if Opti.Cycle is None or CycleLen < Opti.CycleLen:
                 Opti.Cycle = Path[:]
                 Opti.CycleLen = CycleLen
         Path.pop()
