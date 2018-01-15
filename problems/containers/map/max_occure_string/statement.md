@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 290f937d-4055-452f-8257-f62479fe679f
 longname: Самoе популярое слово
 languages: [cpp]

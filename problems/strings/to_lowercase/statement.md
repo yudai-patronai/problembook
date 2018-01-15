@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 1a3f2367-c257-4736-afe8-064c47f094bd
 longname: Смена регистра на нижний
 tags: [string]
