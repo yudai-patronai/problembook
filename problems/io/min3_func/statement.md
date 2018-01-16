@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 059f7540-4b2e-4616-80d9-47e9c6f37336
 longname: Поиск минимального числа из трёх
 tags: [easy, min, io]

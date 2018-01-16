@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 21a29019-2c78-41a7-99e3-a16ebca4829e
 longname: Еще один День Рождения Васи
 tags: [cycle,for,sort]
