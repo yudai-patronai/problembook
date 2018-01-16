@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 
-l = list(map(int, input().split()))
+numbers = list(map(int, input().split()))
 
-negative = [x for x in l if x < 0]
-positive = [x for x in l if x >= 0]
+negative = [x for x in numbers if x < 0]
+positive = [x for x in numbers if x >= 0]
 
-print(' '.join(map(str, sorted(negative, reverse=True))), ' '.join(map(str, sorted(positive))))
+print(
+    ' '.join(map(str, sorted(negative, reverse=True))),
+    ' '.join(map(str, sorted(positive)))
+)

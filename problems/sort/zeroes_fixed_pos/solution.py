@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-l = list(map(int, input().split()))
+numbers = list(map(int, input().split()))
 
 
 def slow(l):
@@ -37,4 +37,4 @@ def fast(l):
             cz += 1
 
 
-print(' '.join(map(str, fast(l))))
+print(' '.join(map(str, fast(numbers))))
