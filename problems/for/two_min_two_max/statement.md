@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: e6107dbe-b113-4eee-99e5-d39ab0f83cd3
 longname: Два наименьших и два наибольших элемента в массиве
 tags: [array, for]
