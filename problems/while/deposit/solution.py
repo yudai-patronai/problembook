@@ -10,6 +10,7 @@ def solve(x, p, y):
 
     return years
 
+
 if __name__ == "__main__":
     x, p, y = map(int, input().split())
     print(solve(x, p, y))
