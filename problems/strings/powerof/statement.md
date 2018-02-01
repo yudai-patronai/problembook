@@ -1,6 +1,6 @@
 ---
 id: 8a13b8f6-b127-44ca-a723-ebadc1f40139
-longname: Ñòåïåíü ñòðîêè
+longname: Степень строки
 languages: [python]
 tags: [string]
 checker: cmp_file

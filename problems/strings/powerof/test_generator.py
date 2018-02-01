@@ -31,7 +31,7 @@ for num in range(1, N + 1):
         exponent = 3
 
     elif num == 2:
-        seq = ' abcdabcd'
+        seq = 'abcdabcd'
         exponent = -2
 
     elif num == 3:
