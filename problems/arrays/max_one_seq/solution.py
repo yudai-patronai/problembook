@@ -9,10 +9,10 @@ def solve(N, arr):
             cur_seq = 0
         else:
             cur_seq += 1
-
     if cur_seq > max_seq:
         max_seq = cur_seq
     return max_seq
+
 
 if __name__ == "__main__":
     N = int(input())

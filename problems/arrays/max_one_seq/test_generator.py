@@ -1,12 +1,14 @@
 import os
 import shutil
 from lib import random
-#import random
+# import random
 import solution
+
 
 def make_seq(N):
     seq = [random.randint(0, 1) for _ in range(N)]
     return seq
+
 
 random.seed(228)
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
@@ -36,8 +38,7 @@ for num in range(hard_tests):
 
 for i, test in enumerate(tests):
     N, seq, ans = test
-    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i+1)), 'w') as f:
+    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i + 1)), 'w') as f:
         f.write(str(ans))
-    with open(os.path.join(tests_dir, '{0:0>2}'.format(i+1)), 'w') as f:
-        f.write('\n'.join(map(str,[N] + seq)))
-
+    with open(os.path.join(tests_dir, '{0:0>2}'.format(i + 1)), 'w') as f:
+        f.write('\n'.join(map(str, [N] + seq)))
