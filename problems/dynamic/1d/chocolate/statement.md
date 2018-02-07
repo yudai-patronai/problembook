@@ -3,7 +3,7 @@ id: 34cb6f38-1082-45b7-a9f8-eccd2c7df242
 longname: Шоколадка
 languages: [python]
 tags: [dynamic]
-checker: cmp_int
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
