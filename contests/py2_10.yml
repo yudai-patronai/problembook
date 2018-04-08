@@ -4,63 +4,56 @@ problems:
     
     # Подсчет количества ребер неориентированного графа
     - 57c05b56-564f-409f-bf3d-a4e3cd1c4bfb:
-        score: 1
+        score: 100
         time_limit: 1
         real_time_limit: 5
         max_vm_size: 64M
     
     # Проверка матрицы смежности
     - f2188554-2b3b-4ee9-8940-c5aebdf031b8:
-        score: 1
+        score: 100
         time_limit: 1
         real_time_limit: 5
         max_vm_size: 64M
     
     # Разноцветные холмы
     - d7e1160f-59dd-457c-9b55-d013bd0a2bbe:
-        score: 1
+        score: 100
         time_limit: 1
         real_time_limit: 5
         max_vm_size: 64M
     
     # Полуполный граф
     - 9abe9d66-2552-469e-8111-397583c6380e:
-        score: 1
+        score: 100
         time_limit: 5
         real_time_limit: 20
         max_vm_size: 64M
     
     # Проверка ацикличности графа
     - ba1622db-a5ff-4054-b365-20ee63b81788:
-        score: 1
+        score: 150
         time_limit: 1
         real_time_limit: 5
         max_vm_size: 64M
     
     # Топологическая сортировка
     - a00b40bc-b6cb-4c8b-9dcb-c28f0eb76cc8:
-        score: 1
+        score: 150
         time_limit: 1
         real_time_limit: 5
         max_vm_size: 64M
     
     # Долой списывание
     - 68f6d2dc-d29e-4550-a4c6-24c17d327bad:
-        score: 1
+        score: 200
         time_limit: 1
         real_time_limit: 5
         max_vm_size: 64M
     
     # Постоение гамильтонова цикла
     - 55158dce-c7ab-4b35-8ff9-7d36aa95774b:
-        score: 1
-        time_limit: 5
-        real_time_limit: 25
-        max_vm_size: 64M
-    
-    # Задача коммивояжёра
-    - e883413f-3a8f-4cf7-8dd2-5e00f09e6caa:
-        score: 1
+        score: 250
         time_limit: 5
         real_time_limit: 25
         max_vm_size: 64M

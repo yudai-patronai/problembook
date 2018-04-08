@@ -1,7 +1,7 @@
 ---
 id: e883413f-3a8f-4cf7-8dd2-5e00f09e6caa
 longname: Задача коммивояжёра
-tags: [graphs, dfs]
+tags: [graphs]
 languages: [python]
 time_limit: 5
 real_time_limit: 25
