@@ -1,12 +1,11 @@
 ---
-fixme: true
 id: 9abe9d66-2552-469e-8111-397583c6380e
 longname: Полуполный граф
 tags: [graphs]
 languages: [python]
 checker: cmp_yesno
-time_limit: 5
-real_time_limit: 20
+time_limit: 1
+real_time_limit: 5
 max_vm_size: 64M
 ---
 
