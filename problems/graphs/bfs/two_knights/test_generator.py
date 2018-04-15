@@ -18,9 +18,7 @@ def solver(in_str):
         for sx, sy in moves:
             for tx, ty in moves:
                 if 0 <= s[0] + sx < 8 and 0 <= s[1] + sy < 8 and 0 <= t[0] + tx < 8 and 0 <= t[1] + ty < 8 and \
-                        (d[s[0] + sx][s[1] + sy][t[0] + tx][t[1] + ty] == -1 or d[s[0] + sx][s[1] + sy][t[0] + tx][
-                            t[1] + ty] >
-                         d[s[0]][s[1]][t[0]][t[1]] + 1):
+                        d[s[0] + sx][s[1] + sy][t[0] + tx][t[1] + ty] == -1:
                     d[s[0] + sx][s[1] + sy][t[0] + tx][t[1] + ty] = d[s[0]][s[1]][t[0]][t[1]] + 1
                     q.put(([s[0] + sx, s[1] + sy], [t[0] + tx, t[1] + ty]))
 
@@ -52,7 +50,7 @@ with open(os.path.join(tests_dir, '{0:0>2}'.format(3)), 'w') as f:
 with open(os.path.join(tests_dir, '{0:0>2}.a'.format(3)), 'w') as f:
     f.write("0\n")
 
-for i in range(4, 11):
+for test in range(4, 11):
     ix = random.randint(ord('a'), ord('h'))
     iy = random.randint(0, 7)
     jx = random.randint(ord('a'), ord('h'))
@@ -61,7 +59,7 @@ for i in range(4, 11):
     s = "".join([chr(ix), str(iy)])
     t = "".join([chr(jx), str(jy)])
 
-    with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
+    with open(os.path.join(tests_dir, '{0:0>2}'.format(test)), 'w') as f:
         f.write("{0} {1}\n".format(s, t))
-    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as f:
+    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(test)), 'w') as f:
         f.write("{}\n".format(solver(" ".join([s, t]))))
