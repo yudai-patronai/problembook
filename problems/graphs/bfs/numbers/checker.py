@@ -2,6 +2,18 @@
 import sys
 
 
+def possible_move(u, v):
+    if u-1 == v:
+        return True
+    if u+1000 == v:
+        return True
+    if u % 1000 * 10 + u // 1000 == v:
+        return True
+    if u // 10 + u % 10 * 1000 == v:
+        return True
+    return False
+
+
 class CheckerResult:
     OK = 0  # OK, правильный ответ
     WA = 1  # WA, wrong answer, неправильный ответ
@@ -16,47 +28,29 @@ input_file = sys.argv[1]
 output_file = sys.argv[2]
 answer_file = sys.argv[3]
 
-no_cycle = False
-min_len = -1
-with open(answer_file) as f:
-    s = f.readline().rstrip()
-    if s == 'NO CYCLES':
-        no_cycle = True
-    else:
-        min_len = len(s.split())
+with open(input_file) as f:
+    s, t = map(lambda x: int(x.strip()), f.readlines())
 
-o_no_cycle = False
-o_cycle = []
+with open(answer_file) as f:
+    path_len = int(f.readline().strip())
+
 try:
     with open(output_file) as f:
-        s = f.readline().rstrip()
-        if s == 'NO CYCLES':
-            o_no_cycle = True
-        else:
-            o_cycle = list(map(int, s.split()))
+        path = list(map(lambda x: int(x.strip()), f.readlines()))
 except (IOError, ValueError):
     print('FAIL')
     sys.exit(CheckerResult.PE)
 
-if no_cycle != o_no_cycle:
-    print('FAIL')
-    sys.exit(CheckerResult.WA)
-elif no_cycle:
-    print('OK')
-    sys.exit(CheckerResult.OK)
-
-if min_len != len(o_cycle):
+if len(path) != path_len:
     print('FAIL')
     sys.exit(CheckerResult.WA)
 
-edges = set()
-with open(input_file) as f:
-    n, m = map(int, f.readline().split())
-    for l in f.readlines():
-        edges.add(tuple(map(int, l.split())))
+if path[0] != s or path[-1] != t:
+    print('FAIL')
+    sys.exit(CheckerResult.WA)
 
-for i in range(-1, len(o_cycle) - 1):
-    if (o_cycle[i], o_cycle[i + 1]) not in edges:
+for i in range(path_len-1):
+    if not possible_move(path[i], path[i+1]):
         print('FAIL')
         sys.exit(CheckerResult.WA)
 
