@@ -1,6 +1,6 @@
 ---
 id: 54e4675a-8b90-44f7-9422-36f4b6ddb52b
-longname: Длинное название задачи
+longname: Таблица
 languages: [python]
 tags: [graphs,bfs]
 checker: cmp_int_seq
