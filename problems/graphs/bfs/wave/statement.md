@@ -4,7 +4,7 @@ longname: Поиск расстояния на прямоугольном пол
 tags: [graphs,bfs,wave]
 languages: [python]
 checker: cmp_file
-time_limit: 1
+time_limit: 2
 real_time_limit: 5
 max_vm_size: 64M
 ---
