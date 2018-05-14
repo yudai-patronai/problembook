@@ -26,7 +26,7 @@ def solution(n, A):
             istok.append(i+1)
     istok.sort()
     
-    return ' '.join(map(str, stok)), ' '.join(map(str, istok))
+    return ' '.join(map(str, istok)), ' '.join(map(str, stok))
 
 
 def generate_array(n, istok, stok):
