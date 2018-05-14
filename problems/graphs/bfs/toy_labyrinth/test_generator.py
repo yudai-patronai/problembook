@@ -71,7 +71,7 @@ with open(os.path.join(tests_dir, '{0:0>2}'.format(6)), 'w') as f:
             f.write("0 ")
         f.write("0\n")
 with open(os.path.join(tests_dir, '{0:0>2}.a'.format(6)), 'w') as f:
-    f.write("2\n")
+    f.write("1\n")
 
 with open(os.path.join(tests_dir, '{0:0>2}'.format(7)), 'w') as f:
     f.write("{0} {1}\n".format(7, 7))
