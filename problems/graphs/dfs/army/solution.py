@@ -17,6 +17,7 @@ for i, j in connectionf:
 flag = True
 out = []
 
+
 def dfs(vertex):
     global flag
     color[vertex] = 'grey'
@@ -28,6 +29,7 @@ def dfs(vertex):
     color[vertex] = 'black'
     out.append(vertex + 1)
 
+
 color = OrderedDict((i, 'white') for i in range(n))
 cycle = []
 for key in color:
@@ -37,7 +39,5 @@ for key in color:
 
 if flag:
     print('Yes')
-    #print(' '.join(map(str, reversed(out))))
 else:
     print('No')
-
