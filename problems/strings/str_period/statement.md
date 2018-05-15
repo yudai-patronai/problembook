@@ -4,7 +4,7 @@ longname: Период строки
 languages: [python]
 tags: [string]
 checker: cmp_int
-time_limit: 1
+time_limit: 2
 real_time_limit: 5
 max_vm_size: 64M
 ---
