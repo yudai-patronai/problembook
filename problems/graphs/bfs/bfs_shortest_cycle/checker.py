@@ -35,7 +35,7 @@ try:
         else:
             o_cycle = list(map(int, s.split()))
 except (IOError, ValueError):
-    ts_directedrint('FAIL')
+    print('FAIL')
     sys.exit(CheckerResult.PE)
 
 if no_cycle != o_no_cycle:

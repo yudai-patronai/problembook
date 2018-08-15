@@ -1,11 +1,10 @@
 ---
-fixme: true
 id: ba1622db-a5ff-4054-b365-20ee63b81788
 longname: Проверка ацикличности графа
 tags: [graphs,dfs]
 languages: [python]
 time_limit: 1
-real_time_limit: 1
+real_time_limit: 5
 max_vm_size: 64M
 ---
 

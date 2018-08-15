@@ -1,13 +1,12 @@
 ---
-fixme: true
 id: 57c05b56-564f-409f-bf3d-a4e3cd1c4bfb
 longname: Подсчет количества ребер неориентированного графа
 tags: [graphs]
 languages: [python]
 checker: cmp_int
-time_limit: 5
-real_time_limit: 20
-max_vm_size: 256M
+time_limit: 1
+real_time_limit: 5
+max_vm_size: 64M
 ---
 
 Простой неориентированный граф задан матрицей смежности. Найдите количество ребер в графе.
