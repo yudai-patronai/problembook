@@ -45,11 +45,13 @@ SOLUTION = 'solution'
 
 EXTENSION_MAP = {
     'cpp': '.cpp',
+    'c': '.c',
     'python': '.py'
 }
 
 LINT_MAP = {
     'cpp': ['cclint', '--filter=-legal/copyright'],
+    'c': ['cclint', '--filter=-legal/copyright'],
     'python': ['pycodestyle']
 }
 
