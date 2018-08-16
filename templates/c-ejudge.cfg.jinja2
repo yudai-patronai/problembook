@@ -48,7 +48,7 @@ src_sfx = ".c"
 
 [language]
 id = 51
-short_name = "clanglong_name = "clang C 3.3"
+short_name = "clang"
 long_name = "clang C 3.3"
 arch = "linux-shared"
 src_sfx = ".c"
@@ -73,7 +73,7 @@ max_file_size = 64M
 max_open_file_count = 32
 max_process_count = 32
 check_cmd = "check"
-lang_compiler_env = "gcc=EJUDGE_FLAGS=-Wall -Werror=format -Werror=return-type -Werror=vla -Werror=uninitialized -Werror=maybe-uninitialized -Werror-implicit-function-declaration -std=c99 -O2"
+lang_compiler_env = "gcc=EJUDGE_FLAGS=-Wall -Werror=format -Werror=return-type -Werror=vla -Werror=uninitialized -Werror=maybe-uninitialized -Werror-implicit-function-declaration --std=c99 -O2"
 lang_compiler_env = "clang=EJUDGE_FLAGS=-Wall -Werror=format -Werror=return-type -Werror=vla -Werror=uninitialized -Werror-implicit-function-declaration -fsanitize=address -fno-omit-frame-pointer -g -O2"
 start_env = "EJUDGE_VG_FLAGS=-q --track-origins=yes --malloc-fill=66 --free-fill=66 --error-exitcode=1 --leak-check=full"
 disable_user_submit = 0
