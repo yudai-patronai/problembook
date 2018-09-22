@@ -17,7 +17,7 @@ def get_case(dim, v1, v2):
 def generate_random_case(dim, max_abs_val):
     v1 = [randint(-max_abs_val, max_abs_val) for _ in range(dim)]
     v2 = [randint(-max_abs_val, max_abs_val) for _ in range(dim)]
-    return get_case(len(dim), v1, v2)
+    return get_case(dim, v1, v2)
 
 
 tests = TestSet()

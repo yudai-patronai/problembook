@@ -4,7 +4,7 @@
 
 int* read_array(int size) {
     int* arr = (int*)malloc(size * sizeof(int));
-    for (size_t i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) {
         scanf("%d", &arr[i]);
     }
     return arr;
@@ -12,7 +12,7 @@ int* read_array(int size) {
 
 int64_t dot_product(int* lhs, int* rhs, int size) {
     int64_t result = 0;
-    for (size_t i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) {
         result += lhs[i] * rhs[i];
     }
     return result;

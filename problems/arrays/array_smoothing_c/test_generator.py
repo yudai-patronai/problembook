@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import os
-from lib import random
 import shutil
+import random
 
 random.seed(42)
 
@@ -33,10 +33,15 @@ if __name__ == "__main__":
     shutil.rmtree(test_folder, ignore_errors=True)
     os.mkdir(test_folder)
 
-    write_test("%02d" % 1, [7, 2, 3])
-    write_test("%02d" % 2, [39, 2, 36, 13])
+    test_name = os.path.join(test_folder, "%02d" % 1)
+    print("generating %s..." % test_name)
+    write_test(test_name, [7, 2, 3])
+    test_name = os.path.join(test_folder, "%02d" % 2)
+    print("generating %s..." % test_name)
+    write_test(test_name, [39, 2, 36, 13])
 
     for test_idx in range(3, 8):
         test_name = os.path.join(test_folder, "%02d" % test_idx)
         print("generating %s..." % test_name)
         generate_test(test_name, test_idx)
+

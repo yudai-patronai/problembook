@@ -1,7 +1,7 @@
 ---
 id: 86440dc9-8cc4-40c9-9907-d45c21635771
 longname: Скалярное произведение
-languages: [c]
+languages: [cpp]
 tags: [arrays,functions]
 checker: cmp_long_long
 time_limit: 1

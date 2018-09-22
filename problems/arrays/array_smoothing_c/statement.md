@@ -1,7 +1,7 @@
 ---
 id: 53335f08-504b-40eb-8a62-d28d81f7c44a
 longname: Сглаживание массива
-languages: [c]
+languages: [cpp]
 tags: [arrays]
 checker: cmp_int_seq
 time_limit: 1
