@@ -1,0 +1,32 @@
+name: py_304_18
+language: cpp
+problems:
+    
+    # Сглаживание массива
+    - 53335f08-504b-40eb-8a62-d28d81f7c44a:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 256M
+    
+    # Скалярное произведение
+    - 86440dc9-8cc4-40c9-9907-d45c21635771:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Поворот массива
+    - f4157abd-219b-4a8c-9fae-b50743e81555:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Преобразование матрицы
+    - b3f8a0ae-f49a-42ab-bbf1-95000422b56c:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
