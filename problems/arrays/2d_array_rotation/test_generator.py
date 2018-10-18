@@ -12,7 +12,7 @@ def solve(n, seq):
 
 def solve(matrix):
     n = len(matrix)
-    solution = matrix.copy()
+    solution = [line[:] for line in matrix]
     for i in range(n):
         for j in range(n):
             solution[j][n-i-1] = matrix[i][j]
