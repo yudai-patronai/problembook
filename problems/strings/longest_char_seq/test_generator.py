@@ -1,7 +1,6 @@
 import os
 import shutil
-# from lib import random
-import random
+from lib import random
 import string
 
 def solution(s):
