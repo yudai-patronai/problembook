@@ -7,9 +7,9 @@ def get_case(values, size):
     a_str = ''
     for _ in range(size):
         char = choice(values)
-    q_str += char
-    if char != ' ':
-        a_str += char
+        q_str += char
+        if char != ' ':
+            a_str += char
 
     return q_str, a_str
 
