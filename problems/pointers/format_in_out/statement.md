@@ -3,7 +3,7 @@ id: c50fa501-1d17-468c-935b-1cdc6c89372c
 longname: Преобразование формата
 languages: [cpp]
 tags: [pointers, io]
-checker: cmp_yesno
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -21,16 +21,16 @@ max_vm_size: 64M
 
 ### Формат выходных данных
 
-Отформатированны
+Отформатированный результат
 
 ### Примеры
 
 ```
 -> %s
--> input string data
+-> input_string_data
 -> %s
 --
-<- input string data
+<- input_string_data
 ```
 
 ```

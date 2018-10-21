@@ -9,9 +9,9 @@ tests = TestSet()
 
 tests.add(getstr(
 	"%s", 
-	"input string data",
+	"input_string_data",
 	"%s"  ),
-	"input string data");
+	"input_string_data");
 
 tests.add(getstr(
 	"%d", 
@@ -26,7 +26,7 @@ tests.add(getstr(
 	"5.38");
 
 tests.add(getstr(
-	"%[absd]",	
+	"%[absd]",
 	"absddsbaasdbsdbaabds",
 	"%s"),
 	"absddsbaasdbsdbaabds");
@@ -35,7 +35,7 @@ tests.add(getstr(
 	"%3d %d",	
 	"12345",
 	"%05d"),
-	"00123");
+	"00045");
 
 tests.add(getstr(
 	"%le",	

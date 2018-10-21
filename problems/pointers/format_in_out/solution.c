@@ -6,12 +6,10 @@ int main()
 	char *format, *a;
 	format = malloc(21);
 	a = calloc(1, 21);
-	size_t len = 20;
 
-	getline(&format, &len, stdin);
+	fgets(format, 20, stdin);
 	scanf(format, a);
-
-	getline(&format, &len, stdin);
+	fgets(format, 20, stdin);
 	if (a[8]!='\0'){
 		printf(format, a);
 	}
