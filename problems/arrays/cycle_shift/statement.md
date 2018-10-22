@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: a76fad54-cee5-40fb-b295-f4e36c5b7437
 longname: Циклический сдвиг
 tags: [arrays, functions]
@@ -15,7 +14,7 @@ max_vm_size: 64M
 В данной задаче Вам необходимо написать **функцию** 
 
 + python: `cycle_shift(arr, N)`, 
-+ c++: void cycle_shift(int *arr, int N),
++ c++: `void cycle_shift(int *arr, int N)`,
 
 где `arr` -- исходный массив, `N` -- длина этого массива.
 
