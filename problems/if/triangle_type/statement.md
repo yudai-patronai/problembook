@@ -2,7 +2,7 @@
 id: 79a4267d-9eeb-4c58-bfec-3f77ed2bc6ad
 longname: Определение типа треугольника
 tags: [if]
-languages: [python]
+languages: [python,cpp]
 checker: cmp_file
 time_limit: 1
 real_time_limit: 5
