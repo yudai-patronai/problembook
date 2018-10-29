@@ -14,7 +14,7 @@ int main() {
         return 0;
     }
 
-    if ((a*a + b*b > c*c) || (c*c + b*b > a*a) || (a*a + c*c >  b*b)) {
+    if ((a*a + b*b < c*c) || (c*c + b*b < a*a) || (a*a + c*c <  b*b)) {
         std::cout << "obtuse";
         return 0;
     }
