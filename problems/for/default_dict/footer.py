@@ -1,13 +1,10 @@
-#!/usr/bin/env python3
-import os
-from lib import random
-import shutil
-import sys
 from collections import defaultdict
-
-from footer import tree_def_str
-from solution import PrefixClass
 
 
 if __name__ == "__main__":
-	pass
+	pc = PrefixClass()
+	dct = defaultdict(pc)
+	elems = list(map(int, input().split()))
+	PREFIX = elems.pop(0)
+	result_list = [dct[elem] for elem in elems]
+	print(''.join(result_list))

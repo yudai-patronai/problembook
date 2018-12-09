@@ -1,9 +1,9 @@
 class PrefixClass(object):
-    def __init__(self):
+    def __init__(self, PREFIX):
         self.run = 0
+        self.PREFIX = PREFIX
     def __call__(self):
-        global PREFIX
         self.run += 1
-        if PREFIX:
+        if self.PREFIX:
             return '>>{}>>'.format(self.run)
         return ''
