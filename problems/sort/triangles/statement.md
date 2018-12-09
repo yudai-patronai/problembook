@@ -3,6 +3,8 @@ id: 97bed6d9-2775-4ba8-b80b-b2fdeac5a2ef
 longname: Сортировка треугольников
 languages: [python]
 tags: [sort]
+source_header: header.py
+source_footer: footer.py
 checker: cmp_file
 time_limit: 1
 real_time_limit: 1

@@ -3,6 +3,8 @@ id: efbb76f3-f70a-4eaa-9364-d40ab4eb2f7c
 longname: Заработок обувного магазина 2
 languages: [python]
 tags: [collections,counter]
+source_header: header.py
+source_footer: footer.py
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1
