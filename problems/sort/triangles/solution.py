@@ -26,6 +26,6 @@ for _ in range(N):
     a, b, c = map(int, [a, b, c])
     triangles.append(Triangle(id_, a, b, c))
 
-triangles = sorted(triangles, key=lambda tr: tr.square)
+triangles = sorted(triangles, key=lambda tr: (tr.square, tr.id_))
 for triangle in triangles:
     print(triangle)

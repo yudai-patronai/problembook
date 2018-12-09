@@ -30,7 +30,7 @@ def generate_triangles(count):
     return [generate_triangle(i) for i in range(count)]
 
 def write_test(tests_dir, ind, triangles):
-    sorted_triangles = sorted(triangles, key=lambda tr: get_square(tr))
+    sorted_triangles = sorted(triangles, key=lambda tr: (get_square(tr), tr[0]))
     N = len(sorted_triangles)
 
     test = os.path.join(tests_dir, '%.2d' % ind)
