@@ -1,5 +1,6 @@
 import math
 
+
 class Triangle(object):
     def __init__(self, id_, a, b, c):
         self.id_ = id_
@@ -17,7 +18,8 @@ class Triangle(object):
     def __repr__(self):
         return '{} {} {} {}'.format(self.id_, self.a, self.b, self.c)
 
-N = input()
+
+N = int(input())
 triangles = []
 for _ in range(N):
     id_, a, b, c = input().split()
