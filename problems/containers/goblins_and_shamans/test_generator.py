@@ -11,22 +11,22 @@ def write_test(fname):
     goblins = set([i for i in range(1, n+1)])
     q = []
     with open(fname, "w") as fin, open(fname+".a", "w") as fout: 
+        fin.write("{}\n".format(n))
         for _ in range(n):
             act = random.randint(1, 3) if len(q) else random.randint(1, 2)
-            if (act == 1) {
-                x = random.choice(goblins)
+            if (act == 1):
+                x = random.choice(list(goblins))
                 goblins.remove(x)
                 fin.write("+ {}\n".format(x))
                 q.append(x)
-            } elif (act == 2) {
-                x = random.choice(goblins)
+            elif (act == 2):
+                x = random.choice(list(goblins))
                 goblins.remove(x)
                 fin.write("* {}\n".format(x))
                 q.insert(len(q) // 2 + len(q) % 2, x)
-            } else {
+            else:
                 fin.write("-\n")
                 fout.write("{}\n".format(q.pop(0)))
-            }
 
 
 def write_tests(tests_dir):

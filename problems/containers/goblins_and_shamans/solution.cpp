@@ -13,7 +13,7 @@ struct Queue {
 };
 
 void push(Queue *q, int x) {
-    Node *t = new Node;
+    Node *t = new Node();
     t->v = x;
     if (!q->size) {
         q->size = 1;
@@ -30,7 +30,9 @@ void push(Queue *q, int x) {
 int pop(Queue *q) {
     Node *t = q->head;
     q->head = t->next;
-    q->head->prev = nullptr;
+    if (q->head) {
+        q->head->prev = nullptr;
+    }
     q->size--;
     if (!q->size) {
         q->tail = nullptr;
@@ -46,7 +48,7 @@ void insert_into_middle(Queue *q, int x) {
         return;
     }
     int p = q->size / 2 + q->size % 2;
-    Node *t = new Node;
+    Node *t = new Node();
     t->v = x;
     int i = 0;
     Node *cur = q->head;
@@ -85,7 +87,6 @@ int main() {
             std::cin >> x;
             insert_into_middle(&q, x);
         }
-        std::cin >> c;
     }
     free_queue(&q);
     return 0;
