@@ -1,0 +1,74 @@
+name: cpp_y1_s1_c2
+language: cpp
+problems:
+    
+    # Сглаживание массива
+    - 6d876eef-965a-4a6a-ad59-79ce4a7988e5:
+        score: 100
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Тапочки
+    - 09d7927b-1988-2be2-9548-a902ebda10fb:
+        score: 100
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Суеверный Петя
+    - 51a10767-0d01-415c-b469-8162503dec52:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Гоблины и шаманы
+    - 9a424146-84d5-45ca-8246-fd1c6afc8b13:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Обратная польская запись
+    - ba88c07e-930c-4e61-84ef-f283692ff893:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Похожие массивы
+    - a90b54a8-7d78-478b-b64c-0b018c7fbebe:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Сортировка двух массивов
+    - 1f095b57-dc93-494b-9c16-39c8cd293881:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Компьютерная игра
+    - 7991115d-b097-4d30-87e5-eddd554d87ec:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Максимальная возрастающая подпоследовательность
+    - c07b984d-286d-493e-999f-5575cd704b1c:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Белая пешка
+    - b4297e1b-a396-4ef9-91d8-9363d338852c:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
