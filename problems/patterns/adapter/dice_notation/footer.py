@@ -2,7 +2,8 @@
 
 class Randomizer:
 
-    def __init__(self)
+    def __init__(self):
+        pass
     
     def generate_by_seq(self, seq):
         _sum = 0
