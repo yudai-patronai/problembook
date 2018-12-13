@@ -1,17 +1,3 @@
-class AbstractMonopod(metaclass = abc.ABCMeta):
-    _origin = 1
-    @abc.abstractmethod
-    def __init__(self):
-        pass
-
-    @abc.abstractmethod
-    def get_hello_text(self):
-        pass
-
-    @abc.abstractmethod
-    def make_magic(self):
-        pass
-
 
 if 'InvisibleMonopod' not in dir():
     print("ERROR: I can't find InvisibleMonopod in solution.")
@@ -21,12 +7,12 @@ if 'CuteMonopod' not in dir():
     print("ERROR: I can't find CuteMonopod in solution.")
     exit()
 
-if issubclass(InvisibleMonopod, AbstractMonopod):
-    print("ERROR: InvisibleMonopod class is not child of AbstractDragon class.")
+if issubclass(AbstractMonopod, InvisibleMonopod):
+    print("ERROR: InvisibleMonopod class is not child of AbstractMonopod class.")
     exit()
 
-if issubclass(CuteMonopod, AbstractMonopod):
-    print("ERROR: CuteMonopod class is not child of AbstractDragon class.")
+if issubclass(AbstractMonopod, CuteMonopod):
+    print("ERROR: CuteMonopod class is not child of AbstractMonopod class.")
     exit()
 
 try:
@@ -68,9 +54,9 @@ try:
     assert g.get_hello_text() == "Hello, my name is mik. I'm Invisible squared monopod."
     assert b.get_hello_text() == "Hello, my name is sam. I'm Cute negative monopod."
 except:
-    print("Wrong intro text.0")0
+    print("Wrong hello text")
     exit();  
              
 
-print("CORRECT", end="")
+print("CORRECT - ", sys.a, end="")
     

@@ -6,5 +6,5 @@ MAX_RAND_TESTS = 20
 
 tests = TestSet()
 
-for _ in range(MAX_RAND_TESTS):
-    tests.add("1","CORRECT")
+tests.add("1","CORRECT - 1")
+tests.add("2","CORRECT - 2")
