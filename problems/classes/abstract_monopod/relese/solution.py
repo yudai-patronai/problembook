@@ -1,23 +1,24 @@
 
-class GreenDragon(AbstractDragon):
+class InvisibleMonopod(AbstractMonopod):
 
-    color = "Green"
+    status = "invisible"
     def __init__(self, name):
         self.name = name
 
-    def get_intro_text(self):
-        return "Hello, my name is " + self.name + ". I'm " + self.color + " squared dragon."
+    def get_hello_text(self):
+        return "Hello, my name is " + self.name + ". I'm Invisible squared monopod."
 
-    def make_action(self, x):
+    def make_magic(self, x):
         return x*x
 
-class BlueDragon(AbstractDragon):
-    color = "Blue"
+class CuteMonopod(AbstractMonopod):
+
+    status = "cute"
     def __init__(self, name):
         self.name = name
 
-    def get_intro_text(self):
-        return "Hello, my name is " + self.name + ". I'm "+ self.color + " negative dragon."
+    def get_hello_text(self):
+        return "Hello, my name is " + self.name + ". I'm Cute negative monopod."
 
-    def make_action(self, x):
+    def make_magic(self, x):
         return -x

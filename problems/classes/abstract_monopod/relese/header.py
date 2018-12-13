@@ -2,8 +2,8 @@ import abc
 
 abc.a = input()
 
-class AbstractOnefootman(metaclass = abc.ABCMeta):
-	_origin = 1
+class AbstractMonopod(metaclass = abc.ABCMeta):
+    _origin = 1
     @abc.abstractmethod
     def __init__(self):
         pass
@@ -15,3 +15,4 @@ class AbstractOnefootman(metaclass = abc.ABCMeta):
     @abc.abstractmethod
     def make_magic(self):
         pass
+
