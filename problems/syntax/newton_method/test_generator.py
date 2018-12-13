@@ -12,29 +12,32 @@ os.makedirs(tests_dir)
 
 tests = [
     ["x*x", "2*x", "0", "0"],
-    ["x*x", "2*x", 5, 0],
-    ["math.sin(x*x)", "2*x*math.cos(x*x)", 5, 0.001],
+    ["x*x", "2*x", 1, 0],
+    ["math.sin(x*x)", "2*x*math.cos(x*x)", 1, 0.001],
     ["math.exp(x) - 1", "math.exp(x)", 10, 0],
-    ["math.exp(x+4) - math.exp(-x-20)", "math.exp(x+4) + math.exp(-x-20)", 0, 1e-7]
+    ["math.exp(x+4) - math.exp(-x-20)", "math.exp(x+4) + math.exp(-x-20)", -13, 1e-7]
 ]
 
-def gradient_descent(f, d, x, lr=0.1, eps=1e-4):
+def gradient_descent(f, d, x, eps=1e-4):
     yield (x, f(x))
     while True:
-        xn = x - f(x)*d(x)
+        if d(x):
+            xn = x - f(x)/d(x)
+        else:
+            xn = x
         yield (xn, f(xn))
         if abs(f(xn)) <= eps:
             return
         x = xn
 
-for j, (a, b, c, d, e) in enumerate(tests):
+for j, (a, b, c, e) in enumerate(tests):
     fx = eval("lambda x: {}".format(a))
     dx = eval("lambda x: {}".format(b))
     x = float(c)
     eps = float(e)
 
     with open(os.path.join(tests_dir, "{:02}".format(j+1)), "w") as f:
-        f.write("\n".join(map(str, (a,b,c,d,e))))
+        f.write("\n".join(map(str, (a,b,c,e))))
     with open(os.path.join(tests_dir, "{:02}.a".format(j+1)), "w") as f:    
         if eps != 0.:
             for i, (xi, fxi) in enumerate(gradient_descent(fx, dx, x, eps)):
