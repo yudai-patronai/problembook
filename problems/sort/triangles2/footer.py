@@ -1,0 +1,2 @@
+
+assert globals().get('Triangle')
