@@ -6,7 +6,7 @@ import shutil
 import string
 
 ALPHABET = list(string.ascii_letters)
-NUM_TEST = 50
+NUM_TEST = 15
 
 def generate_random_string(n):
     s = []
