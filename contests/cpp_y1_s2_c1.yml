@@ -1,0 +1,46 @@
+name: cpp_y1_s2_c1
+language: python
+problems:
+    
+    # Еще один День Рождения Васи
+    - 21a29019-2c78-41a7-99e3-a16ebca4829e:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Алгоритм Левенштейна
+    - 163e83cc-f95f-4a0c-ba58-aaa1e9732714:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Циклический сдвиг
+    - c065553e-a163-4764-bb2a-72e2e422f9f4:
+        score: 1
+        time_limit: 2
+        real_time_limit: 2
+        max_vm_size: 256M
+    
+    # Запись строки в файл в обратном порядке
+    - 13965abc-aad4-4aba-b3b8-c07bd57e2a59:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # B-функция
+    - 96891199-815a-49be-8823-0574396e7681:
+        score: 1
+        time_limit: 4
+        real_time_limit: 4
+        max_vm_size: 256M
+    
+    # Подпалиндромы
+    - 81fededd-9c0c-4841-b296-976428c1e230:
+        score: 1
+        time_limit: 3
+        real_time_limit: 3
+        max_vm_size: 256M
+    
