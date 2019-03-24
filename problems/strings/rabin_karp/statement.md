@@ -1,11 +1,11 @@
 ---
 id: e59ce472-730a-4df0-be36-d25cb5663662
 longname: Алгоритм Рабина-Карпа
-languages: [python]
+languages: [cpp, python]
 tags: [strings]
 checker: cmp_int_seq
-time_limit: 1
-real_time_limit: 1
+time_limit: 2
+real_time_limit: 2
 max_vm_size: 64M
 ---
 
