@@ -1,4 +1,6 @@
 def check(s, t, u):
+    if s == t == u == '':
+        return True
     if t and s[0] == t[0] and check(s[1:], t[1:], u):
         return True
     if u and s[0] == u[0] and check(s[1:], t, u[1:]):
@@ -14,7 +16,7 @@ if __name__ == "__main__":
     m = len(t)
     k = len(u)
     for i in range(n - m - k + 1):
-        if set(s[i:i + m + k]) != set(t) + set(u):
+        if set(s[i:i + m + k]) != set(t) | set(u):
             continue
         if check(s[i:i + m + k], t, u):
             print("Yes")

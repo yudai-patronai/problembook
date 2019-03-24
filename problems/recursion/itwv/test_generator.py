@@ -12,6 +12,8 @@ def generate_random_string(n):
     return "".join(s)
 
 def check(s, t, u):
+    if s == t == u == '':
+        return True
     if t and s[0] == t[0] and check(s[1:], t[1:], u):
         return True
     if u and s[0] == u[0] and check(s[1:], t, u[1:]):
@@ -28,18 +30,17 @@ if __name__ == "__main__":
     os.makedirs(tests_dir)
 
 
-    # tests = ["ACA", "LPK", "EIR"]
+    tests = [
+        ("GACCACGGTT", "ACAG", "CCG", "Yes"),
+        ("GACCACAAAAGGTT", "ACAG", "CCG", "No"),
+        ("GACACGGTT", "ACAG", "CCG", "No")
+    ]
     for i in [1, 2, 3]:
-        input_str = tests[i - 1]
+        s, t, u, res = tests[i - 1]
         with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
-            f.write("{0}\n".format(input_str))
-
-        mass = 0.0
-        for c in input_str:
-            mass += table[c]
-
+            f.write("{}\n{}\n{}\n".format(s, t, u))
         with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as f:
-            f.write('{:.5f}'.format(mass))
+            f.write('{}\n'.format(res))
 
     for i in range(4, N + 1):
         n = random.randint(20, 1000)
@@ -57,21 +58,38 @@ if __name__ == "__main__":
                     to = random.randint(0, 2)
                     if to == 0:
                         t += c
+                        m -= 1
                     elif to == 1:
                         u += c
+                        k -= 1
                     else:
                         t += c
                         u += c
+                        m -= 1
+                        k -= 1
+                elif m:
+                    t += c
+                    m -= 1
+                elif k:
+                    u += c
+                    k -= 1 
         else:
             pos = random.randint(0, n - m - k)
-            sub = s[pos:pos + m + k - delta]
+            sub = s[pos:pos + m + k]
             for c in sub:
                 if m and k:
-                    to = random.randint(0, 2)
-                    if to == 0:
+                    if random.randint(0, 1):
                         t += c
-                    elif to == 1:
+                        m -= 1
+                    else:
                         u += c
+                        k -= 1
+                elif m:
+                    t += c
+                    m -= 1
+                elif k:
+                    u += c
+                    k -= 1    
 
         with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
             f.write("{}\n{}\n{}\n".format(s, t, u))
@@ -80,10 +98,10 @@ if __name__ == "__main__":
         m = len(t)
         k = len(u)
         res = "No"
-        for i in range(n - m - k + 1):
-            if set(s[i:i + m + k]) != set(t) + set(u):
+        for j in range(n - m - k + 1):
+            if set(s[j:j + m + k]) != set(t) | set(u):
                 continue
-            if check(s[i:i + m + k], t, u):
+            if check(s[j:j + m + k], t, u):
                 res = "Yes"
                 break
 
