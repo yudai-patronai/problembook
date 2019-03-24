@@ -35,11 +35,11 @@ if __name__ == "__main__":
             mass += table[c]
 
         with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as f:
-            f.write('{}'.format(mass))
+            f.write('{:.5f}'.format(mass))
 
     for i in range(4, N + 1):
         input_size = random.randint(10, 1000)
-        input_str = generate_random_string(input_size, table.keys())
+        input_str = generate_random_string(input_size, list(table.keys()))
 
         with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as f:
             f.write("{0}\n".format(input_str))
@@ -49,4 +49,4 @@ if __name__ == "__main__":
             mass += table[c]
 
         with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as f:
-            f.write('{}'.format(mass))
+            f.write('{:.5f}'.format(mass))

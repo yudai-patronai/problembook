@@ -25,5 +25,4 @@ if __name__ == "__main__":
     mass = 0.0
     for c in s:
         mass += table[c]
-    print(mass)
-
+    print('%.5f' % mass)
