@@ -7,7 +7,7 @@ int main() {
     for (int i = 0; i < 6; ++i) {
         int k;
         std::cin >> k;
-        a += k * p[i];
+        a += k * p[i] * 2;
     }
     std::cout << std::fixed << a << '\n';
     return 0;

@@ -20,6 +20,6 @@ for i in range(1, N + 1):
     
     a = 0
     for x, y in zip(k, p):
-        a += x * y
+        a += x * y * 2
     with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as f:
         f.write("{}\n".format(a))
