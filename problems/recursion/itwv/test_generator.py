@@ -12,13 +12,14 @@ def generate_random_string(n):
     return "".join(s)
 
 def check(s, t, u):
-    if s == t == u == '':
+    if t == u == "":
         return True
-    if t and s[0] == t[0] and check(s[1:], t[1:], u):
-        return True
-    if u and s[0] == u[0] and check(s[1:], t, u[1:]):
-        return True
-    return False
+    result = False
+    if t and s[0] == t[0]:
+        result |= check(s[1:], t[1:], u)
+    if not result and u and s[0] == u[0]:
+        result |= check(s[1:], t, u[1:])
+    return result
 
 if __name__ == "__main__":
 
@@ -107,3 +108,13 @@ if __name__ == "__main__":
 
         with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as f:
             f.write('{}\n'.format(res))
+
+    s = "".join([random.choice(["C", "G"]) for _ in range(10000 - 20)])
+    s += "AAAAAAAAATAAAAAAAAAA"
+    t = "A" * 10
+    u = "A" * 9 + "T"
+    with open(os.path.join(tests_dir, '{0:0>2}'.format(N + 1)), 'w') as f:
+            f.write("{}\n{}\n{}\n".format(s, t, u))
+
+    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(N + 1)), 'w') as f:
+            f.write('{}\n'.format("Yes"))

@@ -1,11 +1,12 @@
 def check(s, t, u):
-    if s == t == u == '':
+    if t == u == "":
         return True
-    if t and s[0] == t[0] and check(s[1:], t[1:], u):
-        return True
-    if u and s[0] == u[0] and check(s[1:], t, u[1:]):
-        return True
-    return False
+    result = False
+    if t and s[0] == t[0]:
+        result |= check(s[1:], t[1:], u)
+    if not result and u and s[0] == u[0]:
+        result |= check(s[1:], t, u[1:])
+    return result
 
 
 if __name__ == "__main__":
