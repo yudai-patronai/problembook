@@ -6,4 +6,3 @@ tests
 .venv
 .cache
 .vscode
-venv

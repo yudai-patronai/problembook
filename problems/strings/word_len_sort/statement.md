@@ -32,7 +32,7 @@ max_vm_size: 64M
 ### Примеры
 
 ```
--> 'abcd hi efg'
+-> abcd hi efg
 --
 <- 209 306 394
 ```
