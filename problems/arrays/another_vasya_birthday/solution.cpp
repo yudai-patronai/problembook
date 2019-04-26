@@ -1,35 +1,27 @@
 #include <iostream>
+#include <map>
 
-const int array_size = 200;
-
-int main()
-{
-	unsigned n;
-
-	std::cin >> n;
-	unsigned array[array_size];
-	for(unsigned i = 0; i < array_size; ++i)
-		array[i] = 0;
-
-	for(unsigned i = 0; i < n; ++i)
-		std::cin >> array[i];
-	
-	//bubble
-	for(unsigned i = 0; i < n; ++i)
-		for(unsigned j = 1; j < n; ++j)
-			if (array[j] < array[j - 1])
-			{
-				unsigned temp = array[j];
-				array[j] = array[j - 1];
-				array[j - 1] = temp;
-			}
-
-	unsigned stoneOut = 0;
-	for(unsigned i = 1; i < n; ++i)
-		if (array[i - 1] ==  array[i])
-			stoneOut++;
-
-	std::cout << (stoneOut > 1 ? 0 : 1) << std::endl;
-
-	return 0;
+int main() {
+    int n;
+    std::cin >> n;
+    std::map<int, int> stones;
+    int count = 0;
+    for (int i = 0; i < n; ++i) {
+        int c;
+        std::cin >> c;
+        stones[c] += 1;
+        if (stones[c] == 3) {
+            std::cout << 0 << '\n';
+            return 0;
+        }
+        if (stones[c] == 2) {
+            ++count;
+            if (count == 2) {
+                std::cout << 0 << '\n';
+                return 0;
+            }
+        }
+    }
+    std::cout << 1 << '\n';
+    return 0;
 }
