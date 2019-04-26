@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 94a23596-ee69-4436-a02a-bd24ebfe115c
 longname: Максимальная подпоследовательность
 languages: [python]
