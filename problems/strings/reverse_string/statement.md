@@ -1,10 +1,9 @@
 ---
-fixme: true
 id: 13965abc-aad4-4aba-b3b8-c07bd57e2a59
 longname: Запись строки в файл в обратном порядке
 tags: [string, file]
 checker: cmp_file
-languages: [cpp]
+languages: [cpp,python]
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
