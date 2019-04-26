@@ -17,7 +17,7 @@ os.makedirs(tests_dir)
 
 for i in range(1, NUM_TEST + 1):
 
-    n = random.randint(1, 100)
+    n = random.randint(1, 10000)
     array = []
     for j in range(n):
         array.append(random.randint(1, 150))

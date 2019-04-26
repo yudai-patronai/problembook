@@ -557,7 +557,6 @@ def problem_selector(params):
 
 def find_problems(params):
     problems = [[
-        p.author,
         os.path.relpath(p.path, PROBLEMS_DIR),
         p.id,
         p.longname if len(p.longname) <= 25 else p.longname[:22] + '...',
@@ -566,7 +565,7 @@ def find_problems(params):
 
     print(tabulate.tabulate(
         sorted(problems),
-        headers=['Автор', 'Путь', 'Идентификатор', 'Название', 'Теги']
+        headers=['Путь', 'Идентификатор', 'Название', 'Теги']
     ))
 
 

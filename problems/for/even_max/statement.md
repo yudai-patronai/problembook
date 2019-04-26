@@ -2,7 +2,7 @@
 id: e8184571-6255-451e-9c8f-f71b4e1c90aa
 longname: Поиск максильного четного числа в последовательности
 tags: [if,for]
-languages: [python]
+languages: [python,cpp]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1

@@ -6,12 +6,12 @@ from lib import random
 
 manual = {
     "test" : [
-        [[1], [1]],
-        [[4], [2]],
-        [[1,2,3,4,2], [3,2,2,1,4]],
-        [[3,3,3,3,3], [3,3,3,3,3]],
-        [[0], [0]],
-        [[0], [100025212]]
+        [1, [1], [1]],
+        [1, [4], [2]],
+        [5, [1,2,3,4,2], [3,2,2,1,4]],
+        [5, [3,3,3,3,3], [3,3,3,3,3]],
+        [1, [0], [0]],
+        [1, [0], [100025212]]
     ]
 }
 
@@ -32,11 +32,12 @@ if __name__ == "__main__":
         test_name = os.path.join(test_folder, "%02d" % (idx+1,))
 
         with open(test_name, "w") as f:
-            f.write('{}\n{}'.format(" ".join(map(str, test[0])),
-                                    " ".join(map(str, test[1]))))
+            f.write('{}\n{}\n{}'.format(test[0],
+                                        " ".join(map(str, test[1])),
+                                        " ".join(map(str, test[2]))))
         
         with open(test_name+'.a', "w") as f:
-            f.write(str(gen_answer(test[0],test[1])))
+            f.write(str(gen_answer(test[1],test[2])))
     
     # random tests
     shift = len(manual["test"])
@@ -44,11 +45,12 @@ if __name__ == "__main__":
         
         test_name = os.path.join(test_folder, "%02d" % (test))
         
-        seq_len = random.randint(100,10000)
+        seq_len = random.randint(10, 100)
         v1 = [random.randint(-1000,1000) for _ in range(seq_len)]
         v2 = [random.randint(-1000,1000) for _ in range(seq_len)]
 
         with open(test_name, "w") as f:
+            f.write('{}\n'.format(seq_len))
             f.write('{}\n{}'.format(" ".join(map(str, v1)),
                                     " ".join(map(str, v2))))
         
