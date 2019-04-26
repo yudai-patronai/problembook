@@ -1,7 +1,7 @@
 ---
 id: 1f095b57-dc93-494b-9c16-39c8cd293881
 longname: Сортировка двух массивов
-languages: [python]
+languages: [python,cpp]
 tags: [sort]
 checker: cmp_file
 time_limit: 1
