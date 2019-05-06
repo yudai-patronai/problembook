@@ -13,7 +13,7 @@ if __name__ == "__main__":
                 d[v] = d[u] + w
                 if i == n-1:
                     changed[v] = True
-    
+
     for i in range(n):
         if changed[i] or d[i] == float("inf"):
             d[i] = "UDF"
