@@ -3,19 +3,46 @@
 import os
 import shutil
 from lib import random
-from lib.graphs import gen_graph_edges, edges_to_graph
 
 
-def solve(n, edges, x):
+def solve(n, edges, s):
     m = len(edges)
     d = [float("inf")] * n
     d[s] = 0
+    changed = [False] * n
     for i in range(n):
         for u, v, w in edges:
             if d[v] > d[u] + w:
-                d[v] = (d[u] + w if i != n-1 else float("inf"))
+                d[v] = d[u] + w
+                if i == n-1:
+                    changed[v] = True
     
-    return [(v if v != float("inf") else "UDF") for v in d]
+    for i in range(n):
+        if changed[i] or d[i] == float("inf"):
+            d[i] = "UDF"    
+    return d
+
+
+def gen_graph_edges(n, m):
+    g = set()
+
+    for i in range(m):
+        a = random.randrange(n)
+        b = random.randrange(n - 1)
+        if a > b:
+            a, b = b, a
+        elif a == b:
+            b = n - 1
+        g.add((a, b))
+
+    g = list(g)
+    for i in range(len(g)):
+        if random.random() < 0.5:
+            g[i] = g[i][::-1]
+
+    random.shuffle(g)
+
+    return g
 
 
 def gen_test(tests_dir, ind, n, edges, *args, **kwargs):
@@ -32,15 +59,15 @@ def gen_test(tests_dir, ind, n, edges, *args, **kwargs):
             f.write(' '.join(map(str, e)) + '\n')
 
     with open(ans, 'w') as f:
-        f.write(solve(n, edges, *args))
+        f.write(' '.join(map(str, solve(n, edges, *args))))
 
 
 def add_rand_weight(edges):
-    return [(a, b, random.randrange(-1000, 1000)) for a, b in edges]
+    return [(a, b, random.randint(-500, 1000)) for a, b in edges]
 
 
 def gen_test_weight(tests_dir, t, n, e):
-    gen_test(tests_dir, t, n, add_rand_weight(gen_graph_edges(n, e, connective=False)), random.randrange(n))
+    gen_test(tests_dir, t, n, add_rand_weight(gen_graph_edges(n, e)), random.randrange(n))
 
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
@@ -48,27 +75,19 @@ shutil.rmtree(tests_dir, ignore_errors=True)
 os.makedirs(tests_dir)
 
 t = 1
-for i in range(5):
+for i in range(10):
     n = 2 + i * 2
-    gen_test_weight(tests_dir, t, n, i)
-    t += 1
-
-for i in range(5):
-    n = 2 + i * 2
-    gen_test_weight(tests_dir, t, n, 0)
+    gen_test_weight(tests_dir, t, n, random.randint(i + 1, n * (n - 1)))
     t += 1
 
 for i in range(5):
     n = random.randrange(100, 1000)
-    gen_test_weight(tests_dir, t, n, 5)
-    t += 1
-
-for i in range(2):
-    n = random.randrange(100, 1000)
-    gen_test(tests_dir, t, n, 10, 5)
+    gen_test_weight(tests_dir, t, n, 50)
     t += 1
 
 for i in range(5):
     n = random.randrange(100, 1000)
-    gen_test_weight(tests_dir, t, n, 100)
+    gen_test_weight(tests_dir, t, n, random.randint(100, 1000))
     t += 1
+
+gen_test(tests_dir, 21, 3, [(0, 1, -4), (1, 2, 4), (2, 0, -1)], 0)
