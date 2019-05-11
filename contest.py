@@ -559,7 +559,7 @@ def find_problems(params):
     problems = [[
         os.path.relpath(p.path, PROBLEMS_DIR),
         p.id,
-        p.longname if len(p.longname) <= 25 else p.longname[:22] + '...',
+        p.longname if len(p.longname) <= 25 or params.wide else p.longname[:24] + '…',
         ' '.join(p.tags)
     ] for k, p in enumerate(__find_problems(problem_selector(params)).values())]
 
@@ -1124,6 +1124,7 @@ find_problems_parser.add_argument('--only-fixme', action='store_true', help='Т�
 find_problems_parser.add_argument('-t', '--tags', help='Список тэгов')
 find_problems_parser.add_argument('-l', '--languages', help='Список языков')
 find_problems_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
+find_problems_parser.add_argument('-w', '--wide', action='store_true', help='Не обрезать описания задач')
 find_problems_parser.set_defaults(_action=find_problems)
 
 generate_ejudge_config_parser = subparsers.add_parser('ejudge', help='Сгенерировать конфиг ejudge')
