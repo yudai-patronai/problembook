@@ -17,6 +17,15 @@ def generate_random_string(n, alphabet):
     return "".join(s)
 
 
+def find_shift_slow(s, t):
+    n = len(s)
+    for i in range(n):
+        if s == t:
+            return i
+        s = s[1:] + s[0]
+    return -1
+
+
 def prepare_test(i, t, folder):
     filename = os.path.join(folder, "%02d" % i)
     with open(filename, "w") as f:
@@ -25,7 +34,7 @@ def prepare_test(i, t, folder):
 
     with open(filename) as f:
         with open("%s.a" % filename, "w") as g:
-            sp.check_call(["./solution.py", "test"], stdin=f, stdout=g)
+            g.write("%d\n" % find_shift_slow(*t))
 
 
 def generate_random_test(n, a, seed):
@@ -56,11 +65,11 @@ if __name__ == "__main__":
         ["abcdef", "cdefab"],
         ["abcdea", "bcdeab"]
     ]
-    for n in [10, 50, 100, 1000, 10000, 100000]:
-        for s in [2, 15, 26]:
+    for n in [10, 50, 100, 1000, 10000]:
+        for s in [2, 15]:
             seed = "%d_%d" % (n, s)
             tests.append(generate_random_test(n, s, seed))
-        for s in [2, 3, 5, 10, 26]:
+        for s in [2, 3, 5, 10]:
             seed = "%d_%d" % (n, s)
             tests.append(generate_simple_test(n, s, seed))
 

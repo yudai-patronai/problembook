@@ -4,7 +4,7 @@ import os
 import shutil
 from lib import random
 
-NUM_TEST = 50
+NUM_TEST = 15
 random.seed(10000)
 
 test_dir = os.path.join(os.path.dirname(__file__), 'tests')

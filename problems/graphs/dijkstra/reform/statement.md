@@ -4,7 +4,7 @@ longname: Реформа округов
 tags: [graphs,dijkstra]
 languages: [python]
 time_limit: 1
-real_time_limit: 1
+real_time_limit: 5
 max_vm_size: 64M
 ---
 

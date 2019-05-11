@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 def compute_prefix_function(s):
     prefix_function = [0] * len(s)
     for i in range(1, len(s)):

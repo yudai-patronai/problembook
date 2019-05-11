@@ -1,12 +1,11 @@
 ---
-fixme: true
 id: f8158168-7725-4489-ae3a-0c278e0cf875
 longname: Префикс функция
 tags: [strings]
-languages: [python]
+languages: [python,cpp]
 checker: cmp_int_seq
 time_limit: 1
-real_time_limit: 1
+real_time_limit: 2
 max_vm_size: 256M
 ---
 

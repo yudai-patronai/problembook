@@ -1,9 +1,8 @@
 ---
-fixme: true
 id: 09d7927b-1988-2be2-9548-a902ebda10fb
 longname: Тапочки
 tags: [arrays]
-languages: [python]
+languages: [python,cpp]
 time_limit: 5
 real_time_limit: 20
 max_vm_size: 256M

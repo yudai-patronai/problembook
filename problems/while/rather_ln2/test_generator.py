@@ -6,7 +6,7 @@ import shutil
 import subprocess
 import sys
 
-NUM_TEST = 50
+NUM_TEST = 10
 
 random.seed(42)
 

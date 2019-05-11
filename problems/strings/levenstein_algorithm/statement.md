@@ -3,7 +3,7 @@ id: 163e83cc-f95f-4a0c-ba58-aaa1e9732714
 longname: Алгоритм Левенштейна
 tags: [strings]
 checker: cmp_int_seq
-languages: [cpp]
+languages: [cpp,python]
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

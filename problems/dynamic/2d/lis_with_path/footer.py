@@ -3,7 +3,7 @@ def check(s1, sub):
     cur = 0
     for i in s1:
         if cur == len(sub):
-                break
+            break
         if i == sub[cur]:
             cur += 1
     return cur == len(sub)
