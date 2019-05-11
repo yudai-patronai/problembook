@@ -562,7 +562,8 @@ def find_problems(params):
         'p': 'Путь',
         'i': 'Идентификатор',
         'l': 'Название',
-        't': 'Теги'
+        't': 'Теги',
+        'a': 'Автор'
     }
 
     for p in __find_problems(problem_selector(params)).values():
@@ -577,6 +578,8 @@ def find_problems(params):
                 value = p.longname if len(p.longname) <= 25 or params.wide else p.longname[:24] + '…'
             elif f == 't':
                 value = ' '.join(p.tags)
+            elif f == 'a':
+                value = p.author
             else:
                 value = '?'
 
