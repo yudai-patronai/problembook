@@ -5,3 +5,4 @@ tests
 .github-token
 .venv
 .cache
+.vscode

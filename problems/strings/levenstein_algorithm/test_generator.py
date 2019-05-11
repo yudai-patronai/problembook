@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# File contains almost copy of problembook/problems/strings/modify_distance/test_generator.py
 
 import os
 from lib import random
