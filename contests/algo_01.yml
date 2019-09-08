@@ -1,0 +1,74 @@
+name: algo_01
+language: cpp
+problems:
+    
+    # Сравнение двух чисел
+    - 0c20383e-ddd0-48fd-a550-35d772d581c2:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Високосный год
+    - a17a3e98-5a76-4279-8abf-5ff588b0b091:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Список квадратов
+    - 47fc8f28-dfcb-4d30-b1f4-e9e4b961bae7:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Точная степень двойки
+    - 453bacb4-181f-4bd4-884a-f7cdda8e32da:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Алгоритм Евклида
+    - 7d9a68d9-0113-4a88-9ebc-2829477602d3:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Тест простоты числа
+    - e55a944d-1175-4ef5-b8a4-76236f7e73c1:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск максильного четного числа в последовательности
+    - e8184571-6255-451e-9c8f-f71b4e1c90aa:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Какое число встречается в массиве наибольшее число раз
+    - 2de3a851-b5e8-4ba3-8f53-eb633720d321:
+        score: 200
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Кузнечик - математик
+    - e4c4b882-2eb9-47d8-b55c-8320fa282f34:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск минимального числа из трёх
+    - 059f7540-4b2e-4616-80d9-47e9c6f37336:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

@@ -1,0 +1,122 @@
+# -*- coding: utf-8 -*-
+# $Id$
+
+contest_time = 0
+contest_finish_time = "2018/12/31 00:00:00"
+score_system = kirov
+board_fog_time = 0
+board_unfog_time = 0
+standings_locale = "Russian"
+
+compile_dir = "../../compile/var/compile"
+
+team_enable_src_view
+team_enable_rep_view
+team_enable_ce_view
+disable_submit_after_ok
+problem_navigation
+
+
+compile_max_vm_size = 512M
+compile_max_file_size = 32M
+
+
+stand_fancy_style
+stand_extra_format = "%UMp1s %UMp1f %UMp1m %UMp1g"
+
+cr_serialization_key = 22723
+secure_run
+detect_violations
+advanced_layout
+enable_max_stack_size
+enable_l10n
+team_download_time = 0
+
+[language]
+id = 2
+short_name = "gcc"
+long_name = "GNU C 4.7.2"
+src_sfx = ".c"
+compiler_env = "EJUDGE_FLAGS=-O2 -static -std=c99"
+
+[language]
+id = 28
+short_name = "gcc-vg"
+long_name = "GNU C (valgrind) 4.8.3"
+arch = "valgrind"
+src_sfx = ".c"
+
+[language]
+id = 51
+short_name = "clang"
+long_name = "clang C 3.3"
+arch = "linux-shared"
+src_sfx = ".c"
+
+
+[problem]
+abstract
+short_name = "Generic"
+use_stdin
+use_stdout
+test_dir = "%Ps"
+test_pat = "%02d"
+use_corr
+corr_dir = "%Ps"
+corr_sfx = ".a"
+corr_pat = "%02d.a"
+time_limit = 1
+real_time_limit = 5
+max_vm_size = 64M
+max_stack_size = 64M
+max_file_size = 64M
+max_open_file_count = 32
+max_process_count = 32
+check_cmd = "check"
+lang_compiler_env = "gcc=EJUDGE_FLAGS=-Wall -Werror=format -Werror=return-type -Werror=vla -Werror=uninitialized -Werror=maybe-uninitialized -Werror-implicit-function-declaration --std=c99 -O2"
+lang_compiler_env = "clang=EJUDGE_FLAGS=-Wall -Werror=format -Werror=return-type -Werror=vla -Werror=uninitialized -Werror-implicit-function-declaration -fsanitize=address -fno-omit-frame-pointer -g -O2"
+start_env = "EJUDGE_VG_FLAGS=-q --track-origins=yes --malloc-fill=66 --free-fill=66 --error-exitcode=1 --leak-check=full"
+disable_user_submit = 0
+disable_submit_after_ok
+disable_security = 0
+enable_text_form
+normalization = "nl"
+
+statement_file = "%Ps.html"
+
+{% for p in problems %}
+[problem]
+id = {{ loop.index }}
+super = "Generic"
+short_name = "{{ p.shortname }}"
+long_name = "{{ p.longname }}"
+type = "standard"
+full_score = {{ p.score }}
+open_tests = "1-3:full"
+{% if p.checker %}standard_checker = "{{ p.checker }}"{% else %}check_cmd = "checker.py"{% endif %}
+{% if p.get_header(language) %}source_header = "{{ p.get_header(language) | basename }}"{% endif %}
+{% if p.get_footer(language) %}source_footer = "{{ p.get_footer(language) | basename }}"{% endif %}
+{% if p.time_limit is defined %}time_limit = {{ p.time_limit }}{% endif %}
+{% if p.real_time_limit is defined %}real_time_limit = {{ p.real_time_limit }}{% endif %}
+{% if p.max_vm_size is defined %}max_vm_size = {{ p.max_vm_size }}{% endif %}
+
+{% endfor %}
+
+[tester]
+name = Linux-shared
+arch = "linux-shared"
+abstract
+no_core_dump
+enable_memory_limit_error
+kill_signal = KILL
+memory_limit_type = "default"
+secure_exec_type = "dll"
+clear_env
+start_env = "PATH=/usr/local/bin:/usr/bin:/bin"
+start_env = "HOME"
+check_dir = "work-disk/work"
+
+[tester]
+any
+super = Linux-shared
+arch = linux-shared
