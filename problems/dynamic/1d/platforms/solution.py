@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 def solve(n, heights):
     cost = [-1] * n
     cost[0] = 0
@@ -11,6 +12,7 @@ def solve(n, heights):
         fromSecond = 3 * abs(heights[i] - heights[i - 2]) + cost[i - 2]
         cost[i] = fromFirst if fromFirst < fromSecond else fromSecond
     return cost[n - 1]
+
 
 if __name__ == "__main__":
     n = int(input())

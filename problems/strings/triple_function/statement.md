@@ -1,9 +1,8 @@
 ---
-fixme: true
 id: 96891199-815a-49be-8823-0574396e7681
 longname: B-функция
 tags: [strings]
-languages: [python]
+languages: [python,cpp]
 checker: cmp_int_seq
 time_limit: 4
 real_time_limit: 4
@@ -36,6 +35,6 @@ max_vm_size: 256M
 ```
 -> abacabacabacaba
 --
-<-
+<- 0 0 0 0 1 0 1 0 1 2 3 4 5 6 7
 ```
 

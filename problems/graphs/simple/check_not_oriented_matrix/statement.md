@@ -1,13 +1,12 @@
 ---
-fixme: true
 id: f2188554-2b3b-4ee9-8940-c5aebdf031b8
 longname: Проверка матрицы смежности
 tags: [graphs]
 languages: [python]
 checker: cmp_yesno
-time_limit: 5
-real_time_limit: 20
-max_vm_size: 256M
+time_limit: 1
+real_time_limit: 5
+max_vm_size: 64M
 ---
 
 По заданной квадратной матрице n×n из нулей и единиц определите, может ли данная матрица быть матрицей смежности простого неориентированного графа.

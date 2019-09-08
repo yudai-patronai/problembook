@@ -1,5 +1,6 @@
 ---
 id: 831a44bf-fddf-41d4-a151-a416a4e163ea
+fixme: true
 longname: Минимальное четырёхзначное число
 tags: [for, sort]
 checker: cmp_int

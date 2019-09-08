@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 
 int main() {
     unsigned n;
@@ -24,5 +25,6 @@ int main() {
             stoneOut++;
 
     std::cout << (stoneOut > 1 ? 0 : 1) << std::endl;
+
     return 0;
 }

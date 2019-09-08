@@ -29,7 +29,7 @@ def calculate_salary(lines):
     return summa
 
 
-N = 50
+N = 15
 random.seed(10000)
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
