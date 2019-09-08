@@ -1,0 +1,60 @@
+name: cpp_y1_s2_c2
+language: python
+problems:
+    
+    # Шашку - в дамки
+    - 427f814e-8917-4cb2-a948-4568d8174c79:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Регулярный граф
+    - 97e98da3-9eff-48f3-b98c-bb19e8ba9840:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Истоки и стоки
+    - afd284ed-a800-497e-a4a3-de35e2cb3e16:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Игрушечный лабиринт
+    - 4f0d6ecc-44eb-4471-8378-9b5aa98a631a:
+        score: 150
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Построение
+    - 9f01132b-74bc-4dec-bd91-10702c2ec0a1:
+        score: 150
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Период строки
+    - 3efbe0c4-e141-4fbb-81f0-bcc806e6006f:
+        score: 150
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Восстановление кратчайшего пути при помощи алгоритма Дейкстры
+    - 08e5d404-e27c-48b1-90f5-e8a4c037fa77:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Алгоритм Форда-Беллмана
+    - f675123f-66e3-4873-80ca-95fd3e190ad5:
+        score: 200
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 64M
+    
