@@ -1,7 +1,7 @@
 ---
 id: 7a811457-ab74-428c-b7e3-cf8ae472a3ed
 longname: Заполнение поля сапера
-languages: [python]
+languages: [python,cpp]
 tags: [arrays]
 time_limit: 1
 real_time_limit: 5

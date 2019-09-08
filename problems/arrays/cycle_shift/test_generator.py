@@ -36,6 +36,7 @@ if __name__ == "__main__":
     for idx, (test, answer) in enumerate(zip(manual["test"], manual["answer"])):
         test_name = os.path.join(test_folder, "%02d" % (idx + 1,))
         with open(test_name, "w") as f:
+            f.write("{}\n".format(len(test)))
             f.write(" ".join(map(str, test)))
         with open(test_name + '.a', "w") as f:
             f.write(' '.join(map(str, answer)))
@@ -46,6 +47,7 @@ if __name__ == "__main__":
         N = random.randint(0, seq_len)
         seq = [random.randint(-100, 100) for _ in range(seq_len)]
         with open(test_name, "w") as f:
+            f.write("{}\n".format(seq_len))
             f.write(" ".join(map(str, seq)))
         with open(test_name + '.a', "w") as f:
             f.write(' '.join(map(str, gen_answer(seq))))

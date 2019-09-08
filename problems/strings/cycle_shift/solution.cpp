@@ -7,11 +7,10 @@ int main() {
     getline(std::cin, input2);
     input1 += input1;
     std::string::size_type answer = 0;
-    while(std::string::npos != (answer = input1.find(input2, answer)))
-    {
-        cout << answer << endl;
-        return 0;
+    if (std::string::npos != (answer = input1.find(input2, answer))) {
+        std::cout << answer << '\n';
+    } else {
+        std::cout << -1 << '\n';
     }
-    cout << -1 << endl;
     return 0;
 }

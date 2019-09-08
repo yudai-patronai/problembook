@@ -3,6 +3,7 @@ def solution(arr):
 
 
 if __name__ == "__main__":
+    _ = input()
     array = [int(x) for x in input().split(" ")]
     array_test = array[:]
     cycle_shift(array, len(array))

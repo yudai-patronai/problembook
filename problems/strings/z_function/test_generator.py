@@ -88,5 +88,9 @@ if __name__ == "__main__":
             z = slow_z_function(string)
             tests.append([string, z])
 
+    s = "a" * (100000 - 10) + "z" + "a" * 9
+    z = [0] + [i for i in range(100000 - 11, 0, -1)] + [0] + [i for i in range(9, 0, -1)]
+    tests.append([s, z])
+
     for i, t in enumerate(tests):
         generate_test(i + 1, t, test_folder)

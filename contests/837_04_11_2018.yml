@@ -1,0 +1,82 @@
+name: 911130
+language: cpp
+problems:
+    # Сумма элементов с определенными индексами
+    - 30c815a2-1aaa-4258-9416-ab0ae825c5c4:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Два наименьших и два наибольших элемента в массиве
+    - e6107dbe-b113-4eee-99e5-d39ab0f83cd3:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Найти минимальное число и количество его повторений в последовательности чисел
+    - 71ecdc81-415c-4713-8af5-88f316575d46:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+        
+    
+    # День Рождения Васи
+    - bfc54875-8fd9-4f3b-9d87-847de0ddd0e9:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Еще один День Рождения Васи
+    - 21a29019-2c78-41a7-99e3-a16ebca4829e:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Минимальное четырёхзначное число
+    - 831a44bf-fddf-41d4-a151-a416a4e163ea:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подсчет количества точек на плоскости
+    - afbf25b1-7945-445d-ac82-b4671236581a:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Тест простоты числа
+    - e55a944d-1175-4ef5-b8a4-76236f7e73c1:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Задача про гаишника
+    - 574594f5-7571-452f-9a13-27720288fd63:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Суеверный Петя
+    - 51a10767-0d01-415c-b469-8162503dec52:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+     
+     
+    # Решето Эратосфена
+    - e6161ba9-b166-4bcc-8f98-c0f1fd787028:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
