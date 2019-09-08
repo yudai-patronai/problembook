@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 3022fe9d-4162-44e2-99f2-2833c76c3925
 longname: Поиск максимального числа в строке
 tags: [for,strings,cycle,if]

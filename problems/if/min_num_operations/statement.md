@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 958fdcb7-cf80-4b3a-9566-73bf831756d3
 longname: Минимальное количество операций
 tags: [if]
