@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 def solve(word):
     vowel = 'aeiouy'
     pal = ''
@@ -7,10 +8,7 @@ def solve(word):
         if c not in vowel:
             pal += c
 
-    if pal == pal[::-1]:
-        return 'YES'
-    else:
-        return 'NO'
+    return 'YES' if pal == pal[::-1] else 'NO'
 
 
 if __name__ == "__main__":

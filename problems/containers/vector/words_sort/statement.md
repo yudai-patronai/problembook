@@ -1,10 +1,9 @@
 ---
-fixme: true
 id: ac001e1c-bda6-4bc7-8e66-af7783b66844
 longname: Сортировка слов в лексикографическом порядке
 languages: [cpp]
 tags: [vector,cpp,sort]
-checker: cmp_string
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

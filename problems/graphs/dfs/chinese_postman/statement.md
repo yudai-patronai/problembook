@@ -2,10 +2,10 @@
 fixme: true
 id: cb14889c-324f-48ae-8f0b-e217e4dc414a
 longname: Задача о китайском почтальоне
-tags: [graphs]
+tags: [graphs,dfs]
 languages: [python]
-time_limit: 4
-real_time_limit: 4
+time_limit: 2
+real_time_limit: 5
 max_vm_size: 64M
 ---
 

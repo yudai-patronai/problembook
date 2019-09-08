@@ -1,12 +1,11 @@
 ---
-fixme: true
 id: 574594f5-7571-452f-9a13-27720288fd63
 longname: Задача про гаишника
 tags: [if,cycle]
-languages: [cpp]
+languages: [cpp,python]
 checker: cmp_int
 time_limit: 1
-real_time_limit: 1
+real_time_limit: 2
 max_vm_size: 64M
 ---
 

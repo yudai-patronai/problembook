@@ -7,11 +7,7 @@ before_install: 'if [ "$TRAVIS_BRANCH" = "master" ] || [ "$TRAVIS_BRANCH" = "dev
 install: pip install -r requirements.txt
 script:
 - python ./contest.py generate-tests -f -j5 --skip-fixme
-
 - python ./contest.py -v validate --ignore-checksum --skip-fixme
-branches:
-  only:
-  - master
 
 notifications:
   email:

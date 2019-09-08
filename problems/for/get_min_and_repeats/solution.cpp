@@ -1,7 +1,6 @@
 #include <iostream>
 
-int main()
-{
+int main() {
   int n = 0;
   int min;
   int count = 1;
@@ -10,15 +9,13 @@ int main()
 
   std::cin >> min;
 
-  for(int i = 1; i < n; ++i)
-  {
+  for (int i = 1; i < n; ++i) {
     int input;
     std::cin >> input;
 
-    if (min == input)
+    if (min == input) {
       count++;
-    else if (min > input)
-    {
+    } else if (min > input) {
       min = input;
       count = 1;
     }

@@ -9,7 +9,8 @@ def solve(graph):
     G = nx.Graph()
     G.add_weighted_edges_from(edges)
     dijkstra_paths = nx.all_pairs_dijkstra_path_length(G)
-    paths = [(i, j, dijkstra_paths[i][j]) for i in dijkstra_paths if G.degree(i) % 2
+    paths = [(i, j, dijkstra_paths[i][j])
+             for i in dijkstra_paths if G.degree(i) % 2
              for j in dijkstra_paths[i] if i != j and G.degree(j) % 2]
     max_shortest_path = max([t[2] for t in paths])
     paths_inv = [(a, b, 1 + max_shortest_path - w) for a, b, w in paths]

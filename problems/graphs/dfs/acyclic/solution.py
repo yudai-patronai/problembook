@@ -40,13 +40,13 @@ def dfs_cycle_x(graph, x):
                 stack.append(n)
 
     if loop_found:
-        l = [v]
-        while l[-1] != n:
-            if parent[l[-1]] == -1:
+        res = [v]
+        while res[-1] != n:
+            if parent[res[-1]] == -1:
                 raise Exception('Cicle resolution problem')
-            l.append(parent[l[-1]])
+            res.append(parent[res[-1]])
 
-        return l[::-1], None
+        return res[::-1], None
 
     return [], black
 

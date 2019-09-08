@@ -31,6 +31,7 @@ int main() {
         }
     }
 
-    std::cout << first_min + secnd_min  << ' ' << first_max + secnd_max << std::endl;
+    std::cout << first_min + secnd_min  << ' ';
+    std::cout << first_max + secnd_max << std::endl;
     return 0;
 }

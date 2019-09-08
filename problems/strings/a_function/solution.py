@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 def compute_z_function(s):
     z = [0]
     left = right = 0

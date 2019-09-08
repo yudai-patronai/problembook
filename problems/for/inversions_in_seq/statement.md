@@ -1,7 +1,7 @@
 ---
 id: ef8eaddb-07c7-4b43-9de4-47a0dafcd76d
 longname: По росту!
-languages: [python]
+languages: [python,cpp]
 tags: [easy, io, if, for]
 checker: cmp_int
 time_limit: 10

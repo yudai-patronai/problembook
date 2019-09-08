@@ -17,12 +17,14 @@ with open(sys.argv[2]) as fout:
     try:
         res = int(fout.readline())
     except:
+        print('PE')
         sys.exit(2)
 
 with open(sys.argv[3]) as fans:
     ans = int(fans.readline())
 
 if res == ans:
+    print('OK')
     sys.exit(0)
 
 summ = {}
@@ -33,7 +35,7 @@ for i in [res, ans]:
     q = [(0, i)]
 
     while q:
-        v, d = heapq.heappop(q)
+        d, v = heapq.heappop(q)
         if dist[v] < d:
             continue
 
@@ -45,4 +47,9 @@ for i in [res, ans]:
 
     summ[i] = sum(dist)
 
-sys.exit(0 if summ[res] == summ[ans] else 1)
+if summ[res] == summ[ans]:
+    print('OK')
+    sys.exit(0)
+else:
+    print('Correct distance is {}, but your distance is {}'.format(sum[ans], sum[res]))
+    sys.exit(1)

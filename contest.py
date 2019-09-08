@@ -23,6 +23,7 @@ import time
 from termcolor import colored
 import github3
 import getpass
+import pickle
 
 import lib.problembook as pb
 import lib.problembook.git as git
@@ -33,6 +34,7 @@ ALLOWED_MD_LANGS = ['md']
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROBLEMS_DIR = os.path.join(SCRIPT_DIR, 'problems')
 CONTESTS_DIR = os.path.join(SCRIPT_DIR, 'contests')
+CACHE_FILE = os.path.join(SCRIPT_DIR, '.cache')
 TESTS_FOLDER = 'tests'
 TEST_GENERATOR = 'test_generator.py'
 CHECKSUM = 'checksum'
@@ -382,13 +384,10 @@ class Problem:
             f.writelines(lines)
 
     def get_first_committer(self):
-        repo = git.Repository(SCRIPT_DIR)
-
-        if not repo.is_git_repo():
-            return None
-
-        fc = repo.get_first_commit(self.path)
-        return fc[0] or fc[1]
+        cmd = ['git', 'log', '--reverse', '--format=%an%%%ae', self.path]
+        out = subprocess.check_output(cmd).decode()
+        name, email = out.split('\n')[0].split('%')
+        return name or email
 
     def get_last_update(self):
         repo = git.Repository(SCRIPT_DIR)
@@ -557,17 +556,40 @@ def problem_selector(params):
     return __combine_predicates(*predicates)
 
 def find_problems(params):
-    problems = [[
-        p.author,
-        os.path.relpath(p.path, PROBLEMS_DIR),
-        p.id,
-        p.longname if len(p.longname) <= 25 else p.longname[:22] + '...',
-        ' '.join(p.tags)
-    ] for k, p in enumerate(__find_problems(problem_selector(params)).values())]
+    problems = []
+
+    headers = {
+        'p': 'Путь',
+        'i': 'Идентификатор',
+        'l': 'Название',
+        't': 'Теги',
+        'a': 'Автор'
+    }
+
+    for p in __find_problems(problem_selector(params)).values():
+        prob = []
+
+        for f in params.format:
+            if f == 'p':
+                value = os.path.relpath(p.path, PROBLEMS_DIR)
+            elif f == 'i':
+                value = p.id
+            elif f == 'l':
+                value = p.longname if len(p.longname) <= 25 or params.wide else p.longname[:24] + '…'
+            elif f == 't':
+                value = ' '.join(p.tags)
+            elif f == 'a':
+                value = p.author
+            else:
+                value = '?'
+
+            prob.append(value)
+
+        problems.append(prob)
 
     print(tabulate.tabulate(
         sorted(problems),
-        headers=['Автор', 'Путь', 'Идентификатор', 'Название', 'Теги']
+        headers=[headers.get(f, f) for f in params.format]
     ))
 
 
@@ -582,10 +604,7 @@ def find_problem_by_id(id):
         print('{}: не удалось найти задачу'.format(id))
 
 
-def __find_problems(predicate=None):
-
-    problems = {}
-
+def __list_problems_on_fs():
     for root, _, files in os.walk(PROBLEMS_DIR):
         for file in files:
             fname, fext = os.path.splitext(file.lower())
@@ -595,20 +614,32 @@ def __find_problems(predicate=None):
                     problem = Problem(ppath)
                     if problem.errors:
                         print(problem.format_errors())
-                        continue
+                    yield problem
                 except:
                     print('Ошибка при загрузке условия: {}'.format(ppath))
                     if args.verbose:
                         traceback.print_exc()
-                    continue
 
-                if predicate and not predicate(problem):
-                    continue
 
-                if problem.id in problems:
-                    print('{}: не уникальный id'.format(problem.path))
-                else:
-                    problems[problem.id] = problem
+def __list_problems_in_cache():
+    with open(CACHE_FILE, 'rb') as f:
+        return pickle.load(f)
+
+
+def __find_problems(predicate=None):
+
+    problems = {}
+
+    probs = __list_problems_in_cache() if os.path.isfile(CACHE_FILE) else __list_problems_on_fs()
+
+    for problem in probs:
+        if predicate and not predicate(problem):
+            continue
+
+        if problem.id in problems:
+            print('{}: не уникальный id'.format(problem.path))
+        else:
+            problems[problem.id] = problem
 
     return problems
 
@@ -1077,6 +1108,16 @@ def mega_contest(params):
     ], cwd=root)
 
 
+def cache(params):
+    if params.clear:
+        if os.path.isfile(CACHE_FILE):
+            os.remove(CACHE_FILE)
+    elif params.make:
+        probs = list(__list_problems_on_fs())
+        with open(CACHE_FILE, 'wb') as f:
+            pickle.dump(probs, f)
+
+
 os.environ['PYTHONPATH'] = '{}{}{}'.format(SCRIPT_DIR, os.pathsep, os.environ.get('PYTHONPATH', ''))
 
 parser = argparse.ArgumentParser(prog='contest')
@@ -1107,6 +1148,8 @@ find_problems_parser.add_argument('--only-fixme', action='store_true', help='Т�
 find_problems_parser.add_argument('-t', '--tags', help='Список тэгов')
 find_problems_parser.add_argument('-l', '--languages', help='Список языков')
 find_problems_parser.add_argument('--author', help='Только задачи указанного автора (по первому комиту)')
+find_problems_parser.add_argument('-w', '--wide', action='store_true', help='Не обрезать описания задач')
+find_problems_parser.add_argument('-f', '--format', default='pilt', action='store', help='Список колонок для вывода. По-умолчания — (p) путь, (i) идентификатор, (l) название, (t) тэги')
 find_problems_parser.set_defaults(_action=find_problems)
 
 generate_ejudge_config_parser = subparsers.add_parser('ejudge', help='Сгенерировать конфиг ejudge')
@@ -1178,6 +1221,12 @@ mega_contest_parser.add_argument('-l', '--language', required=True, help='Язы
 mega_contest_parser.add_argument('-j', '--jobs', default=1, type=int, help='Количество параллельных потоков для генерации')
 mega_contest_parser.add_argument('-i', '--id', required=True, help='Идентификатор контеста в ejudge')
 mega_contest_parser.set_defaults(_action=mega_contest)
+
+cache_parser = subparsers.add_parser('cache', help='Работа с кэшем для быстрого поиска задач')
+cache_parser.set_defaults(_action=cache)
+group = cache_parser.add_mutually_exclusive_group(required=True)
+group.add_argument('-m', '--make', action='store_true', help='Создать кэш')
+group.add_argument('-c', '--clear', action='store_true', help='Очистить кэш')
 
 args = parser.parse_args()
 

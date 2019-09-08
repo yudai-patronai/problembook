@@ -2,7 +2,7 @@
 id: 8171cdf9-c7a5-481c-8899-d3d9d3f7ebf3
 longname: Сумма цифр трехзначного числа
 tags: [if]
-languages: [python]
+languages: [python,cpp]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1
@@ -14,7 +14,7 @@ max_vm_size: 64M
 
 ### Формат входных данных
 
-Вводится трехзначное число.
+Вводится трехзначное число: не меньшее 100 и не больше 999.
 
 ### Формат выходных данных
 
