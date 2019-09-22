@@ -3,7 +3,7 @@ id: 3022fe9d-4162-44e2-99f2-2833c76c3925
 longname: Поиск максимального числа в строке
 tags: [for,strings,cycle,if]
 checker: cmp_int
-languages: [cpp]
+languages: [cpp,python]
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

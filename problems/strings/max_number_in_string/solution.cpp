@@ -9,7 +9,7 @@ int main() {
     int number = 0;
     int temp = 0;
     std::string num;
-    for (int i = 0; i < in.size(); ++i) {
+    for (int i = 0; i < static_cast<int>(in.size()); ++i) {
         if (isdigit(in.at(i)))
             num += in.at(i);
         else
