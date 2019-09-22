@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: e55a944d-1175-4ef5-b8a4-76236f7e73c1
 longname: Тест простоты числа
 tags: [cycle,if]

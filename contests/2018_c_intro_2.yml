@@ -1,0 +1,67 @@
+name: 2018_c_intro_2
+language: c
+problems:
+    
+    # Фильтрация чисел в массиве
+    - cd5a2baf-979b-421b-a821-3187bbfaaa0c:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Сумма элементов с определенными индексами
+    - 30c815a2-1aaa-4258-9416-ab0ae825c5c4:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Среднее значение последовательности, заканчивающейся нулем
+    - b7fb7ca3-4fff-4f8f-8dc8-ca35c02cec7c:
+        score: 100
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Алгоритм Евклида
+    - 7d9a68d9-0113-4a88-9ebc-2829477602d3:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Тест простоты числа
+    - e55a944d-1175-4ef5-b8a4-76236f7e73c1:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # По росту!
+    - ef8eaddb-07c7-4b43-9de4-47a0dafcd76d:
+        score: 100
+        time_limit: 10
+        real_time_limit: 10
+        max_vm_size: 40M
+    
+    # Максимум последовательности
+    - 56875bc8-2456-4e70-a5d7-907d95821e49:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск максильного четного числа в последовательности
+    - e8184571-6255-451e-9c8f-f71b4e1c90aa:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Количество элементов, равных максимуму
+    - 4f36aeaf-e053-4563-9c25-3fc9af1b8fbf:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

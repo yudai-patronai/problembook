@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: bfc54875-8fd9-4f3b-9d87-847de0ddd0e9
 longname: День Рождения Васи
 tags: [array, for, sort]

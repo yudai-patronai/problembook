@@ -1,5 +1,4 @@
-int findMin(int a, int b, int c)
-{
+int findMin(int a, int b, int c) {
   int ret = a;
 
   if (ret > b)
