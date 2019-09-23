@@ -61,10 +61,12 @@ babylons = [ # v = 1, < = 10, < must be first, then v
 ]
 
 for i, b in enumerate(babylons):
+    i += 1
+
     dec = babyl2dec(b)
 
     with open(os.path.join(test_dir, '{0:0>2}'.format(i)), 'w') as f:
         f.write("{}\n".format(dec))
     
     with open(os.path.join(test_dir, '{0:0>2}.a'.format(i)), 'w') as f:
-        f.write(format(b))
+        f.write("{}\n".format(b))
