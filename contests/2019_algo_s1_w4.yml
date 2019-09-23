@@ -1,0 +1,74 @@
+name: 2019_algo_s1_w4
+language: python
+problems:
+    
+    # Алгоритм Евклида
+    - 7d9a68d9-0113-4a88-9ebc-2829477602d3:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Количество четных элементов
+    - e4b12144-6c32-4a59-ae94-48762c425814:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Выборочные моменты
+    - 4e6b4aa5-98fe-4e78-b02b-99d9bdb17858:
+        score: 50
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 30M
+    
+    # Два наименьших и два наибольших элемента в массиве
+    - e6107dbe-b113-4eee-99e5-d39ab0f83cd3:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Количество элементов, не равных максимальному
+    - cfe2de70-fa3d-4ae3-bb2e-ca100381e788:
+        score: 80
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 30M
+    
+    # Поиск максимального числа в строке
+    - 3022fe9d-4162-44e2-99f2-2833c76c3925:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Задача про гаишника
+    - 574594f5-7571-452f-9a13-27720288fd63:
+        score: 1
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 64M
+    
+    # Длина очереди
+    - 71140947-0033-4ed8-9df3-65147a95fb53:
+        score: 1
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 30M
+    
+    # Считывание числа в нега-позиционной системе счисления
+    - 359f7a16-fe13-4473-b372-81cf68c5399e:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Вавилонская система счисления
+    - 9953440f-c15b-4ac0-8ea6-2852f3fe5ea4:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
