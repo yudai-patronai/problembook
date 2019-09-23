@@ -3,7 +3,7 @@ id: 9953440f-c15b-4ac0-8ea6-2852f3fe5ea4
 longname: Вавилонская система счисления
 languages: [python]
 tags: [while,for]
-checker: cmp_str
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
