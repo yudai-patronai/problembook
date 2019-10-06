@@ -2,10 +2,10 @@
 
 import os
 import shutil
-# from lib import random
+import random
 
-NUM_TEST = 50
-# random.seed(10000)
+random.seed(123)
+num_rand_tests = 5
 
 manual_tests = [(1, 2, 2, 3, 1), (2, 1, 0, 1, 2), (1, 2, 3, 2, 2), (1, 3, 2), (2, 1, 3)]
 
@@ -42,7 +42,9 @@ for i in range(1, len(manual_tests) + 1):
     generate_test(test_name, task, ans)
 
 # random tests
-# for test in range(len(manual_tests) + 1, len(manual_tests) + 7):
-#     test_name = os.path.join(test_dir, "%02d" % test)
-#     print("generating %s..." % test_name)
-#     generate_test(test_name)
+for test in range(len(manual_tests) + 1, len(manual_tests) + num_rand_tests + 1):
+    test_name = os.path.join(test_dir, "%02d" % test)
+    task = random.sample(range(100), 100)
+    ans = extreme_points(len(task), task)
+    print("generating %s..." % test_name)
+    generate_test(test_name, task, ans)
