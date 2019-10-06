@@ -1,6 +1,6 @@
 ---
 id: 601330f9-7441-4dae-86ef-6944a45ba2fd
-longname: Индиана Джонс: в поисках утраченного актёра
+longname: Индиана Джонс. в поисках утраченного актёра
 languages: [python]
 tags: [2d,cycle,arrays,strings]
 checker: cmp_yesno
