@@ -1,0 +1,74 @@
+name: 2019_algo_s1_w6
+language: python
+problems:
+    
+    # Циклический сдвиг
+    - a76fad54-cee5-40fb-b295-f4e36c5b7437:
+        score: 100
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # В обратном порядке
+    - 14f445ba-4d5f-4204-a9b4-4e80c0229462:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Фильтрация чисел в массиве
+    - cd5a2baf-979b-421b-a821-3187bbfaaa0c:
+        score: 120
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Поиск локальных экстремумов
+    - f562ab80-e52e-477b-a71a-c31852e1d8d3:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Симметричная последовательность
+    - d620c5ef-2303-4b9b-9580-76c2162c9874:
+        score: 130
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Раскраска прямой
+    - dac8b909-6199-49bd-aace-9a1c2b2030b3:
+        score: 140
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Заполнение поля игры сапёр
+    - 7a811457-ab74-428c-b7e3-cf8ae472a3ed:
+        score: 160
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Наибольший прямоугольник
+    - c57be5c2-ead4-41a3-a0f0-b346dabc952d:
+        score: 160
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 64M
+    
+    # Дома и магазины
+    - 41864651-6af3-4232-bdff-b7aa53bf2a20:
+        score: 160
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Индиана Джонс. в поисках утраченного актёра
+    - 601330f9-7441-4dae-86ef-6944a45ba2fd:
+        score: 180
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
