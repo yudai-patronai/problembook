@@ -20,7 +20,7 @@ tests.add(lstrip_all("""6
                      Party two
                      Party one"""))
 
-tests.add(lstrip_all("""3
+tests.add(lstrip_all("""6
                      Ядро
                      КПРС
                      Ядро
