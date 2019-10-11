@@ -1,14 +1,6 @@
 from lib.testgen import TestSet
 from lib.random import randint
 
-RAND_TESTS_NUM = 0
-MAX_RAND_NUM = 10 ** 3
-
-def get_case(num):
-    films_number = randint(1, num)
-    ans = 'YES' if num & (num - 1) == 0 else 'NO'
-    return str(num), ans
-
 
 def lstrip_all(text):
     left_stripped_lines = [line.lstrip() for line in text.split('\n')]
@@ -43,5 +35,4 @@ tests.add(lstrip_all("""5
                      Сноуден"""),
           "Сноуден 5")
 
-for _ in range(RAND_TESTS_NUM):
-	tests.add(*get_case(randint(MAX_RAND_NUM)))
+tests.add("100\n" + "A\n"*49 + "B\n"*51, "B 51\nA 49\n")
