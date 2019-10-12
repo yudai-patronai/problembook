@@ -6,8 +6,8 @@ import string
 import re
 
 def solve(t1, t2):
-    s1 = 3600*int(t1[:2]) + 60*int(t1[3:5]) + int(t1[7:])
-    s2 = 3600*int(t2[:2]) + 60*int(t2[3:5]) + int(t2[7:])
+    s1 = 3600*int(t1[:2]) + 60*int(t1[3:5]) + int(t1[6:])
+    s2 = 3600*int(t2[:2]) + 60*int(t2[3:5]) + int(t2[6:])
     if s1 <= s2:
         return s2 - s1
     return 24*60*60 - s1 + s2
