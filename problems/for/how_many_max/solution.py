@@ -1,13 +1,13 @@
-number = -1
-current_max = -1
-dct = dict()
+current_max = None
+counter_max = 0
 
+number = int(input())
 while number != 0:
+    if counter_max == 0 or number > current_max:
+        current_max = number
+        counter_max = 1
+    elif number == current_max:
+        counter_max += 1
     number = int(input())
 
-    dct[number] = dct.get(number, 0) + 1
-
-    if number > current_max:
-        current_max = number
-
-print(dct[current_max])
+print(counter_max)
