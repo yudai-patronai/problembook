@@ -19,8 +19,7 @@ def get_case(a):
 
 tests = TestSet()
 
-
-for i in range(1, 15):
+for i in range(1, 16):
   tests.add(*get_case(i))
 
 for _ in range(RAND_TESTS_NUM):

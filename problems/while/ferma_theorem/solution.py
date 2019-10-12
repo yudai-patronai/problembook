@@ -1,5 +1,6 @@
 p = int(input())
 
+
 def ferma_small(p):
   if p == 1 or p == 2:
     return 'YES'
@@ -9,5 +10,6 @@ def ferma_small(p):
         return 'YES'
     else:
       return 'NO'
+
 
 print(ferma_small(p))
