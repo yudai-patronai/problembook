@@ -14,8 +14,9 @@ os.makedirs(tests_dir)
 for num in range(1, N + 1):
 	dct = dict()
 
-	max_in_cur_seq = random.randint(50, 200)
-	seq = [random.randint(1, max_in_cur_seq) for i in range(random.randint(1, 10000))]
+	min_in_cur_seq = random.randint(1, 200)
+	max_in_cur_seq = random.randint(1, 200)
+	seq = [random.randint(min_in_cur_seq, max_in_cur_seq) for i in range(random.randint(1, 10000))]
 	for i in seq:
 		dct[i] = dct.get(i, 0) + 1
 	
