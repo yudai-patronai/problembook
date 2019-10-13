@@ -1,5 +1,5 @@
 from lib.testgen import TestSet
-from lib.random import randint
+from lib.random import randint, randrange
 
 RAND_TESTS_NUM = 20
 MAX_RAND_NUM = 1000
@@ -22,6 +22,6 @@ tests.add(*get_case([1, 2, 3, 4, 5]))
 tests.add(*get_case([75]))
 
 for _ in range(RAND_TESTS_NUM):
-  M = randint.randrange(MAX_RAND_RANGE)
+  M = randrange(MAX_RAND_RANGE)
   mess = [randint(MAX_RAND_NUM) for _ in range(M)]
   tests.add(*get_case(mess))
