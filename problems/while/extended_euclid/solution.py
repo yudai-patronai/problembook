@@ -18,4 +18,4 @@ def ext_euclid(a, b):
         x = buf
     return a, x, y
 
-print(ext_euclid(a, b))
+print('{} {} {}'.format(*ext_euclid(a, b)))
