@@ -1,6 +1,6 @@
 ---
 id: 98b9ddde-e88b-4def-9e53-e9145376afff
-longname: Длинное название задачи
+longname: Алгоритм Евклида для целых чисел
 languages: [python]
 tags: [cycle]
 checker: cmp_int
