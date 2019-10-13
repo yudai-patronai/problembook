@@ -2,6 +2,7 @@ a, b = input().split()
 a = int(a)
 b = int(b)
 
+
 def ext_euclid(a, b):
     x = 1
     y = 0
@@ -18,4 +19,5 @@ def ext_euclid(a, b):
         x = buf
     return a, x, y
 
-print('{} {} {}'.format(*ext_euclid(a, b)))
+
+print(*ext_euclid(a, b))
