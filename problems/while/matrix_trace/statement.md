@@ -3,7 +3,7 @@ id: 3e93ee94-2a68-4098-a8ac-f196f8691a0b
 longname: След матрицы
 languages: [python]
 tags: [while]
-checker: cmp_double
+checker: cmp_int
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -35,7 +35,7 @@ $$
 -> 0 1 0
 -> 0 0 1
 --
-<- 3.0
+<- 3
 ```
 
 ```
@@ -43,5 +43,5 @@ $$
 -> 12 3
 -> 1 32
 --
-<- 44.0
+<- 44
 ```
