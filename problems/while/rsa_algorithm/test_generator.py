@@ -2,7 +2,7 @@ from lib.testgen import TestSet
 from lib.random import randint, randrange
 
 RAND_TESTS_NUM = 20
-MAX_RAND_NUM = 1000
+MAX_RAND_NUM = 187
 MAX_RAND_RANGE = 100
 
 def rsa_decode(mess):
