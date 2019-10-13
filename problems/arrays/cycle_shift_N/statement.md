@@ -1,6 +1,6 @@
 ---
 id: b1a4dbc2-1dab-498b-b38c-0940a9259a55
-longname: Длинное название задачи
+longname: Циклический сдвиг на М позиций
 languages: [python]
 tags: [arrays, functions]
 checker: cmp_yesno
