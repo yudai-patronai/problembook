@@ -1,8 +1,8 @@
 ---
 id: b1a4dbc2-1dab-498b-b38c-0940a9259a55
 longname: Длинное название задачи
-languages: [cpp, python]
-tags: [easy, io]
+languages: [python]
+tags: [arrays, functions]
 checker: cmp_yesno
 time_limit: 1
 real_time_limit: 1

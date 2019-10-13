@@ -1,5 +1,6 @@
 from lib.testgen import TestSet
 from lib.random import randint, randrange
+from copy import copy
 
 RAND_TESTS_NUM = 20
 MAX_RAND_NUM = 1000
@@ -10,11 +11,11 @@ def cycle_shift_N(arr, N, M):
     for i in range(0,  M * (N - 1), M):
         arr[i % N] = arr[(i + M) % N]
     arr[M * (N-1) % N] = tmp
-    return arr
 
 def get_case(arr, N, M):
-  arr_shifted = cycle_shift_N(arr, N, M)
-  return ' '.join(map(str, arr)), ' '.join(map(str, arr_shifted))
+  arr_orig = copy(arr)
+  cycle_shift_N(arr, N, M)
+  return str(N) + '\n' + str(M) + '\n' + ' '.join(map(str, arr_orig)), ' '.join(map(str, arr))
 
 tests = TestSet()
 
