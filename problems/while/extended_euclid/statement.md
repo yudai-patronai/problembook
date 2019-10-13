@@ -1,9 +1,9 @@
 ---
 id: d4839b53-eb8e-4f4c-ab58-6d2d6408d2cd
 longname: Расширенный алгоритм Евклида
-languages: [cpp, python]
-tags: [easy, io]
-checker: cmp_yesno
+languages: [python]
+tags: [cycle]
+checker: cmp_int
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
