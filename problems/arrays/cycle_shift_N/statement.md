@@ -3,7 +3,7 @@ id: b1a4dbc2-1dab-498b-b38c-0940a9259a55
 longname: Циклический сдвиг на М позиций
 languages: [python]
 tags: [arrays, functions]
-checker: cmp_yesno
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
