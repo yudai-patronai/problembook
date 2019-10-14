@@ -8,7 +8,7 @@ if __name__ == "__main__":
     M = int(input())
     array = [int(x) for x in input().split(" ")]
     array_test = array[:]
-    cycle_shift_N(array, N, M)
+    cycle_shift_M(array, N, M)
     array_test = solution(array_test, N, M)
     assert array == array_test, """
     Your function doesn't change the input array properly!

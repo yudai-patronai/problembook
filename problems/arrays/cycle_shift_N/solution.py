@@ -1,4 +1,4 @@
-def cycle_shift_N(arr, N, M):
+def cycle_shift_M(arr, N, M):
     M = M % N
     for i in range(M):
         tmp = arr[0]
