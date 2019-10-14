@@ -1,12 +1,7 @@
-import os
-import shutil
-
 from lib import random
-
+from lib.testgen import TestSet
 
 N = 50
-TEST_PATH = "tests"
-
 
 def get_random_matrix():
     N = random.randint(1, 10)
@@ -17,16 +12,11 @@ def get_random_matrix():
     return lines, trace
 
 def main():
-    shutil.rmtree(TEST_PATH, ignore_errors=True)
-    os.mkdir(TEST_PATH)
+    tests = TestSet()
 
     for i in range(N):
         matrix, trace = get_random_matrix()
-        with open(os.path.join(TEST_PATH, str(i)), "w") as f:
-            f.write("\n".join(matrix))
-        
-        with open(os.path.join(TEST_PATH, str(i) + ".a"), "w") as f:
-            f.write(str(trace))
+        tests.add("\n".join(matrix) + "\n", str(trace) + '\n')
 
 
 if __name__ == "__main__":
