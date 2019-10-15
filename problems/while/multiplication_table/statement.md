@@ -3,18 +3,18 @@ id: ad3d90d5-3c35-48af-b474-183f94c9927a
 longname: Таблица умножения
 languages: [python]
 tags: [easy, while]
-checker: cmp_str
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
 ---
 
 
-Необходимо выложить таблица умножения $N\time N$ c рамками из символов $\#$.
+Необходимо выложить таблица умножения NxN c рамками из символов #.
 
 ### Формат входных данных
 
-Число $1 \leq N \leq 9$.
+Число 1 &le; N &le; 9.
 
 ### Формат выходных данных
 

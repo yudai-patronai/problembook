@@ -1,8 +1,10 @@
 import os
 import shutil
 
+from lib.testgen import TestSet
+
+
 N = 9
-TEST_PATH = "tests"
 
 
 def get_table(N):
@@ -28,16 +30,14 @@ def get_table(N):
 
 
 def main():
-    shutil.rmtree(TEST_PATH, ignore_errors=True)
-    os.mkdir(TEST_PATH)
+    tests = TestSet()
 
     for i in range(1, N+1):
         table = get_table(i)
-        with open(os.path.join(TEST_PATH, str(i)), "w") as f:
-            f.write(str(i))
-        
-        with open(os.path.join(TEST_PATH, str(i) + ".a"), "w") as f:
-            f.write(str(table))
+        tests.add(
+            str(i) + "\n",
+            str(table)  + "\n"
+        )
 
 
 if __name__ == "__main__":
