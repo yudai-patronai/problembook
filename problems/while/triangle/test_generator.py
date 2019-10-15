@@ -1,9 +1,9 @@
 import os
 import shutil
 
+from lib.testgen import TestSet
 
 N = 50
-TEST_PATH = "tests"
 
 
 def get_triangle(N):
@@ -15,20 +15,18 @@ def get_triangle(N):
             counter += 1
         triangle += "\n"
 
-    return triangle[:-1]
+    return triangle
 
 
 def main():
-    shutil.rmtree(TEST_PATH, ignore_errors=True)
-    os.mkdir(TEST_PATH)
+    tests = TestSet()
 
     for i in range(1, N):
         triangle = get_triangle(i)
-        with open(os.path.join(TEST_PATH, str(i)), "w") as f:
-            f.write(str(i))
-
-        with open(os.path.join(TEST_PATH, str(i) + ".a"), "w") as f:
-            f.write(triangle)
+        tests.add(
+            str(i) + "\n",
+            triangle
+        )
 
 
 if __name__ == "__main__":
