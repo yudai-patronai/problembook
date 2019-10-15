@@ -2,7 +2,7 @@ from lib.testgen import TestSet
 from lib.random import randint
 
 RAND_TESTS_NUM = 10
-MAX_RAND_NUM = 10 ** 9
+MAX_RAND_NUM = 1000
 
 def ferma_small(p):
   if p == 1 or p == 2:
@@ -15,7 +15,7 @@ def ferma_small(p):
       return 'NO'
 
 def get_case(a):
-  return str(a), ferma_small(a)
+  return str(a) + '\n', ferma_small(a) + '\n'
 
 tests = TestSet()
 
