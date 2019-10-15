@@ -21,8 +21,7 @@ def ext_euclid(a, b):
     return a, x, y
 
 def get_case(a, b):
-    d = ext_euclid(a, b)
-    return '{} {}'.format(a, b), '{} {} {}'.format(*ext_euclid(a, b))
+    return '{} {}'.format(a, b) + '\n', '{} {} {}'.format(*ext_euclid(a, b)) + '\n'
 
 tests = TestSet()
 
