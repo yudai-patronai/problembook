@@ -21,22 +21,22 @@ tests.add(lstrip_all("""6
                      Party one"""))
 
 tests.add(lstrip_all("""6
-                     Ядро
-                     КПРС
-                     Ядро
-                     Груша
-                     КПРС
-                     Ядро"""),
-          lstrip_all("""Ядро
-                     КПРС
-                     Груша"""))
+                     Yadro
+                     KPRS
+                     Yadro
+                     Grusha
+                     KPRS
+                     Yadro"""),
+          lstrip_all("""Yadro
+                     KPRS
+                     Grusha"""))
 
 tests.add(lstrip_all("""5
-                     Сноуден
-                     Сноуден
-                     Сноуден
-                     Сноуден
-                     Сноуден"""),
-          "Сноуден")
+                     Snouden
+                     Snouden
+                     Snouden
+                     Snouden
+                     Snouden"""),
+          "Snouden")
 
 tests.add("100\n" + "A\n"*49 + "B\n"*51, "B\nA\n")
