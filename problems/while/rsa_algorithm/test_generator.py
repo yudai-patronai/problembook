@@ -14,7 +14,7 @@ def rsa_decode(mess):
 
 def get_case(mess):
   mess_dec = rsa_decode(mess)
-  return ' '.join(map(str, mess)), ' '.join(map(str, mess_dec))
+  return ' '.join(map(str, mess)) + '\n', ' '.join(map(str, mess_dec)) + '\n'
 
 tests = TestSet()
 

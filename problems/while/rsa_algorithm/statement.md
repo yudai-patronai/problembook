@@ -3,7 +3,7 @@ id: e4506a9f-8489-4f90-801a-752c28f213f3
 longname: Алгоритм RSA
 languages: [python]
 tags: [cycle]
-checker: cmp_int
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
