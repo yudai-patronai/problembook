@@ -3,7 +3,7 @@ id: 999cb38b-3530-4c24-b61a-086f6ccfba8a
 longname: InsertionSort
 languages: [python]
 tags: [sort]
-checker: cmp_int_seq
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

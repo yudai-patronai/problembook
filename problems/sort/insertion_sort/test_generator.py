@@ -16,7 +16,7 @@ for i in range(1, NUM_TEST + 1):
     array = [random.randint(-1000, 1000) for _ in range(n)]
 
     with open(os.path.join(test_dir, '{0:0>2}'.format(i)), 'w') as f:
-        f.write('{0}'.format(' '.join(str(val) for val in array)))
+        f.write('{0}\n'.format(' '.join(str(val) for val in array)))
 
     with open(os.path.join(test_dir, '{0:0>2}.a'.format(i)), 'w') as f:
         for mi in range(1, len(array)):
