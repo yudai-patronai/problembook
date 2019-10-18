@@ -6,9 +6,9 @@ def insertion_sort(A):
         j = i
         while j > 0 and A[j-1] > A[j]:
             A[j-1], A[j] = A[j], A[j-1]
+            print(' '.join(map(str, A)))
             j = j - 1
 
 
 array = [int(e) for e in input().split()]
 insertion_sort(array)
-print(' '.join(map(str, array)))
