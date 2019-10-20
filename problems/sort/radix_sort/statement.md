@@ -1,10 +1,9 @@
-
 ---
 id: 842911bc-0705-4b2e-bfb8-149f84527613
 longname: Поразрядная сортировка
 languages: [python]
 tags: [sort]
-checker: cmp_yesno
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -30,5 +29,5 @@ max_vm_size: 64M
 -> 11 10 1
 --
 <- 10 11 1
-   1 10 11
+<- 1 10 11
 ```
