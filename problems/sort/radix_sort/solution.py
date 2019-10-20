@@ -7,7 +7,6 @@ def radixSort(arrayToSort):
     while maxx > 0:
         p+=1
         maxx//=10
-    print(p)
     for i in range(p):
         zero = []
         one =[]
