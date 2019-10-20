@@ -13,16 +13,18 @@ os.makedirs(test_dir)
 
 def selection_sort(a):
     outputs = []
+    str_a  = ' '.join(map(str, a))
     for i in range(0, len(a) - 1):
         min_j = i
         for j in range(i, len(a)):
             if a[j] < a[min_j]:
                 min_j = j
         a[i], a[min_j] = a[min_j], a[i]
-        outputs.append(' '.join(map(str, a)))
-        return outputs
-
-
+        str_a_new = ' '.join(map(str, a))
+        if str_a_new != str_a:
+            str_a = str_a_new
+            outputs.append(str_a)
+    return outputs
 
 for i in range(1, NUM_TEST + 1):
     n = random.randint(1, 10)
