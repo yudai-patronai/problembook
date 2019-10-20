@@ -2,7 +2,7 @@
 ---
 id: 842911bc-0705-4b2e-bfb8-149f84527613
 longname: Поразрядная сортировка
-languages: [cpp, python]
+languages: [python]
 tags: [sort]
 checker: cmp_yesno
 time_limit: 1
