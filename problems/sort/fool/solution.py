@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+
+
 def fool_sort(A):
     i = 0
     while i < len(A) - 1:
@@ -7,5 +10,7 @@ def fool_sort(A):
             print(' '.join(map(str, A)))
         else:
             i += 1
-l = list(map(int, input().split()))
-fool_sort(l)
+
+
+myList = list(map(int, input().split()))
+fool_sort(myList)
