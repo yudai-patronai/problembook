@@ -24,4 +24,4 @@ for i in range(1, NUM_TEST + 1):
             for mj in range(0, n - mi - 1):
                 if arrayToSort[mj] > arrayToSort[mj + 1] :
                     arrayToSort[mj], arrayToSort[mj + 1] = arrayToSort[mj + 1], arrayToSort[mj]
-                    f.write('{0}\n'.format(' '.join(map(str, array))))
+                    f.write('{0}\n'.format(' '.join(map(str, arrayToSort))))
