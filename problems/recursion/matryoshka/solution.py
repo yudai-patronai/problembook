@@ -5,4 +5,3 @@ def matryoshka(n):
         print('verh matryoshki', n)
         matryoshka(n-1)
         print('niz matryoshki', n)
-        
