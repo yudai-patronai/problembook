@@ -1,0 +1,74 @@
+name: 2018_python3_week16_1
+language: python
+problems:
+    
+    # Сортировка треугольников
+    - 97bed6d9-2775-4ba8-b80b-b2fdeac5a2ef:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заменить цифры на слова
+    - a67f648b-6167-4d0b-98a8-df2af92947b1:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Градиентный спуск
+    - 01621cc8-1a60-4683-80eb-81cb6c0b4692:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заработок обувного магазина
+    - ee804bfa-9d39-45de-a2ba-ff0a88fc7a86:
+        score: 2000
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Функция, модифицирующая лист
+    - 257b67cc-c0b3-45fd-86de-4ffdae12366c:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Пары для танцев
+    - ef1c062a-f4f7-465e-ab9c-f567d150a144:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Словарь со стандартными значениями (строки)
+    - f0c10292-b21d-4ecd-a156-e34d291fabb7:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Абстрактный Дракон
+    - 76ca4002-f325-4ebe-baed-810b7ef53433:
+        score: 250
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Абстрактный Дракон
+    - 4562ef8b-6fcb-4301-ba5f-1f9d0b385bac:
+        score: 250
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Дайсы
+    - bbd5103b-4e19-4b30-a5ca-0253117410b7:
+        score: 300
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

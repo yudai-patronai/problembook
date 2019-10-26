@@ -59,16 +59,15 @@ def gen_tests(tests_dir):
 
     write_seq_test(test_fname(tests_dir, 1), [3, 2, 1])
     write_seq_test(test_fname(tests_dir, 2), [1, 2, 3])
-    write_seq_test(test_fname(tests_dir, 3), [1, 1, 1])
+    write_seq_test(test_fname(tests_dir, 3), [10])
     write_seq_test(test_fname(tests_dir, 4), [1, 2, 1])
-    write_seq_test(test_fname(tests_dir, 5), [2, 2, 1])
+    write_seq_test(test_fname(tests_dir, 5), [2, 2, 1, 2, 2, 1, 1, 2, 1, 1])
     write_seq_test(test_fname(tests_dir, 6), [1, 2, 1, 2, 1])
-    write_seq_test(test_fname(tests_dir, 7), [10])
-    write_seq_test(test_fname(tests_dir, 8), [])
+    write_seq_test(test_fname(tests_dir, 7), [1, 1, 1])
 
-    gen_rand_test(test_fname(tests_dir, 9), 100)
-    gen_rand_test(test_fname(tests_dir, 10), 10000)
-    gen_rand_test(test_fname(tests_dir, 11), 2000000)
+    gen_rand_test(test_fname(tests_dir, 8), 100)
+    gen_rand_test(test_fname(tests_dir, 9), 10000)
+    gen_rand_test(test_fname(tests_dir, 10), 2000000)
 
 
 gen_tests(tests_dir)

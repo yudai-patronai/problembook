@@ -2,7 +2,7 @@
 id: 6e77beeb-4bde-4446-981f-fbebff52e617
 longname: Функции add и print для двоичного дерева
 tags: [graphs,binary,tree,btree]
-languages: [python]
+languages: [python,cpp]
 checker: cmp_file
 source_footer: footer.py
 time_limit: 1

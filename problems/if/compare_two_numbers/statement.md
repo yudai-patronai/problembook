@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 0c20383e-ddd0-48fd-a550-35d772d581c2
 longname: Сравнение двух чисел
 tags: [if]

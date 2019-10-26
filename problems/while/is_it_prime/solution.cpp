@@ -1,16 +1,13 @@
-#include <iostream>
 #include <math.h>
+#include <iostream>
 
-int main()
-{
+int main() {
   int input = 0;
 
   std::cin >> input;
 
-  for (int i = 2; i <= sqrt(input); ++i)
-  {
-    if (input % i == 0)
-    {
+  for (int i = 2; i <= sqrt(input); ++i) {
+    if (input % i == 0) {
       std::cout << 0 << std::endl;
       return 0;
     }

@@ -1,0 +1,32 @@
+name: 2018_c_intro_4
+language: c
+problems:
+    
+    # Женские и мужские последователи Хофштадтера
+    - d7f8d30b-8d20-46b4-84e3-7e0bf7e38932:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик - математик
+    - e4c4b882-2eb9-47d8-b55c-8320fa282f34:
+        score: 250
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Компьютерная игра
+    - 7991115d-b097-4d30-87e5-eddd554d87ec:
+        score: 300
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Белый король
+    - 982d3c81-9848-4d21-ae2e-6cb98ccb00c8:
+        score: 300
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

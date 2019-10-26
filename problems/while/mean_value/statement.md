@@ -3,7 +3,7 @@ id: b7fb7ca3-4fff-4f8f-8dc8-ca35c02cec7c
 longname: Среднее значение последовательности, заканчивающейся нулем
 tags: [while,for]
 languages: [python]
-checker: cmp_file
+checker: cmp_double
 time_limit: 3
 real_time_limit: 5
 max_vm_size: 64M

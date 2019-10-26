@@ -1,7 +1,6 @@
 #include <iostream>
 
-int main()
-{
+int main() {
   int firstNumber = 0;
   int secondNumber = 0;
 

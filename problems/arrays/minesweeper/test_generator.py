@@ -63,6 +63,9 @@ if __name__ == "__main__":
         test_name = os.path.join(test_folder, "%02d" % test)
         generate_test(test_name, test)
         
-    write_manual_test(os.path.join(test_folder, "06"), 1, 1, 1, [[-1]])
-    write_manual_test(os.path.join(test_folder, "07"), 100, 100, 10000, [[-1]*100]*100)
-    write_manual_test(os.path.join(test_folder, "08"), 85, 43, 0, [[0]*43]*85)
+    # write_manual_test(os.path.join(test_folder, "06"), 1, 1, 1, [[-1]])
+    # write_manual_test(os.path.join(test_folder, "07"), 100, 100, 10000, [[-1]*100]*100)
+    # write_manual_test(os.path.join(test_folder, "08"), 85, 43, 0, [[0]*43]*85)
+    
+    write_manual_test(os.path.join(test_folder, "06"), 100, 100, 10000, [[-1]*100]*100)
+    write_manual_test(os.path.join(test_folder, "07"), 85, 43, 0, [[0]*43]*85)

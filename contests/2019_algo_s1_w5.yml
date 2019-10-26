@@ -1,0 +1,46 @@
+name: 2019_algo_s1_w5
+language: python
+problems:
+    
+    # Тест простоты числа
+    - e55a944d-1175-4ef5-b8a4-76236f7e73c1:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Факторизация числа
+    - 1901d2f8-2ef7-46b8-94e1-7cfdfe5f05d2:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сумма двух кубов
+    - 62a4d584-b0e3-4cbe-aa8e-0a3cbc0aa1f9:
+        score: 140
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Генерация n-го простого числа
+    - 6705223d-22f4-4421-8196-21c4a4b54a8f:
+        score: 140
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Минимальное по сумме и количеству цифр
+    - 8db8dd53-04a5-4851-9a77-b3727bb5c99d:
+        score: 160
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Число конечных нулей факториала
+    - e2df33f2-c5f9-4df9-8db6-b9a52f986e7e:
+        score: 180
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

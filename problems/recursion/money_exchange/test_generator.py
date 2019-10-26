@@ -8,7 +8,7 @@ def make_test(test_file, money, coins, ans):
 
     with open(test_file, 'w') as f:
         f.write(str(money) + '\n')
-        f.write(" ".join(map(str, coins)))
+        f.write(" ".join(map(str, coins))+'\n')
 
     with open(test_file + '.a', 'w') as f:
         f.write(str(ans) + '\n')

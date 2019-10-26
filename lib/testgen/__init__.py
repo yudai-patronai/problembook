@@ -22,10 +22,10 @@ class TestSet():
         assert isinstance(answer, str)
         assert self._test_num < MAX_TESTS
 
-        with open(os.path.join(self._tests_path, '{0:0>2}'.format(self._test_num)), 'w') as f:
+        with open(os.path.join(self._tests_path, '{0:0>2}'.format(self._test_num + 1)), 'w') as f:
             f.write(question)
 
-        with open(os.path.join(self._tests_path, '{0:0>2}.a'.format(self._test_num)), 'w') as f:
+        with open(os.path.join(self._tests_path, '{0:0>2}.a'.format(self._test_num + 1)), 'w') as f:
             f.write(answer)
 
         self._test_num += 1
