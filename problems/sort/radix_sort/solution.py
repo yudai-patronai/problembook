@@ -11,7 +11,7 @@ def radixSort(arrayToSort):
         zero = []
         one =[]
         for j in range(n):
-            if (arrayToSort[j] // 10**i) % 10**(i+1) ==1:
+            if (arrayToSort[j] % 10**(i+1)) // (10**i) ==1:
                 one.append(arrayToSort[j])
             else:
                 zero.append(arrayToSort[j])

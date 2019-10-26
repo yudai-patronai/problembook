@@ -26,7 +26,7 @@ for i in range(1, NUM_TEST + 1):
             zero = []
             one =[]
             for j in range(n):
-                if (array[j] // 2**i) % 2**(i+1) ==1:
+                if (array[j] % 2**(i+1)) // 2**(i) ==1:
                     one.append(array[j])
                 else:
                     zero.append(array[j])
