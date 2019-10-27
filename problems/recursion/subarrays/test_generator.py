@@ -1,19 +1,17 @@
-
 import os
-#from lib import random
 import shutil
 import subprocess
 import sys
-#from solution import printSubArrays
+
 
 def printSubArrays(arr, start, end, f):
 	#stop at the end	
 	if end == len(arr):
 		return
-# Increment the end point and start from 0 
+	# Increment the end point and start from 0 
 	elif start > end:
 		return printSubArrays(arr, 0, end + 1,f) 
-# Print the subarray and increment start
+	# Print the subarray and increment start
 	else:
 		print(arr[start], type(arr[start]))
 		f.write(' '.join(arr[start:end + 1])+'\n')
@@ -32,11 +30,11 @@ os.makedirs(tests_dir)
 l=[5,10,20,42]
 for i in range(1,len(l)+1):
 	array=list(map(str,range(l[i-1])))
-# store it as task input
+	# store it as task input
 	with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as fin:
-		fin.write(' '.join(val for val in array))
+		fin.write(' '.join(val for val in array) + '\n')
 
-# sort and save it as expected output
+	# sort and save it as expected output
 	with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as fout:
 		printSubArrays(array, 0, 0, fout)
 
@@ -46,7 +44,7 @@ with open(os.path.join(tests_dir, '05'), 'w') as fin:
 with open(os.path.join(tests_dir, '05.a'), 'w') as fin:
 	fin.write('0')
 #empty test
-with open(os.path.join(tests_dir, '06'), 'w') as fin:
-	fin.write('')
-with open(os.path.join(tests_dir, '06.a'), 'w') as fin:
-	fin.write('')
+# with open(os.path.join(tests_dir, '06'), 'w') as fin:
+# 	fin.write('')
+# with open(os.path.join(tests_dir, '06.a'), 'w') as fin:
+# 	fin.write('')
