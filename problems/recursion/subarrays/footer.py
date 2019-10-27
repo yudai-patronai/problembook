@@ -9,7 +9,3 @@ for pattern in exclude_patterns:
 
 
 exec(source_code)
-
-# считывание входных данных
-arr = input().split()
-printSubArrays(arr, 0, 0) 

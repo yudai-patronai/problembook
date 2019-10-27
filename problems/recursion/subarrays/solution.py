@@ -9,3 +9,7 @@ def printSubArrays(arr, start, end):
 	else:
 		print(*arr[start:end + 1])
 		return printSubArrays(arr, start + 1, end) 
+
+# считывание входных данных
+arr = input().split()
+printSubArrays(arr, 0, 0) 
