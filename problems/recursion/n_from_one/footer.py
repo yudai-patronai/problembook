@@ -15,7 +15,8 @@ sys.setrecursionlimit(10003)  # позволяет запускать функц
 n = int(input())
 
 # Проверка на рекурсивный вызов, если n достаточно большое
-assert n <= 4 or test_recursion(lambda: is_add_35(n)), \
+assert n <= 6 or n % 3 == 1 or n % 5 == 1 or \
+    test_recursion(lambda: is_add_35(n)), \
     'Function is_add_35 must be recursive'
 
 print('YES' if is_add_35(n) else 'NO')
