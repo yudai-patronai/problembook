@@ -1,32 +1,23 @@
-#!/usr/bin/env python3
 
-def solution(arr1, arr2):
-    arr = []
-    if len(arr1) == 0:
-        arr = arr2[:]
-        return arr
-    if len(arr2) == 0:
-        arr = arr1[:]
-        return arr
-    i1, i2 = 0, 0
-    n1, n2 = len(arr1), len(arr2)
-    while i1 < n1 and i2 < n2:
-        if arr1[i1] < arr2[i2]:
-            arr.append(arr1[i1])
-            i1 += 1
-        else:
-            arr.append(arr2[i2])
-            i2 += 1
-    if i1 < n1:
-        arr += arr1[i1:]
-    if i2 < n2:
-        arr += arr2[i2:]
-    return arr
+#''' # ЭТО не комментарий, а конец переменной source_code из header
 
-if __name__ == "__main__":
-    arr1 = [int(x) for x in input().split(" ")]
-    arr2 = [int(x) for x in input().split(" ")]
-    array = merge_lists(arr1, arr2)
-    array_test = solution(arr1, arr2)
-    assert array == array_test, "Your function doesn't merge arrays properly!"
-    print(" ".join(map(str, array)))
+# валидация на содержание запрещённых инструкций
+exclude_patterns = ['append', 'sort', 'sorted']
+
+for pattern in exclude_patterns:
+    reobj = re.compile(pattern)
+    assert not re.findall(reobj, source_code), 'instruction "{}" could not be used'.format(pattern)
+
+
+exec(source_code)  # объект merge(L, R) становится доступным
+
+#  считывание данных с учётом того, что могут быть пустые массивы
+L = input().split()
+R = input().split()
+
+L = list(map(int, L)) if L else []
+R = list(map(int, R)) if R else []
+
+A = merge(L, R)
+
+print(' '.join(map(str, A)))

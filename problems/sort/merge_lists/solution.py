@@ -1,24 +1,27 @@
-#!/usr/bin/env python3
-
-def merge_lists(arr1, arr2):
-    arr = []
-    if len(arr1) == 0:
-        arr = arr2[:]
-        return arr
-    if len(arr2) == 0:
-        arr = arr1[:]
-        return arr
-    i1, i2 = 0, 0
-    n1, n2 = len(arr1), len(arr2)
-    while i1 < n1 and i2 < n2:
-        if arr1[i1] < arr2[i2]:
-            arr.append(arr1[i1])
-            i1 += 1
+def merge(L, R):
+    len_L, len_R = len(L), len(R)
+    
+    A = [0] * (len_L + len_R)
+    ind_L = ind_R = ind_A = 0
+    
+    while ind_L < len_L and ind_R < len_R:
+        if L[ind_L] <= R[ind_R]:
+            A[ind_A] = L[ind_L]
+            ind_L += 1
+            ind_A += 1
         else:
-            arr.append(arr2[i2])
-            i2 += 1
-    if i1 < n1:
-        arr += arr1[i1:]
-    if i2 < n2:
-        arr += arr2[i2:]
-    return arr
+            A[ind_A] = R[ind_R]
+            ind_R += 1
+            ind_A += 1
+    
+    while ind_L < len_L:
+        A[ind_A] = L[ind_L]
+        ind_A += 1
+        ind_L += 1
+    
+    while ind_R < len_R:
+        A[ind_A] = R[ind_R]
+        ind_A += 1
+        ind_R += 1
+    
+    return A
