@@ -1,6 +1,6 @@
 ---
 id: 61a9faff-b621-40ca-853f-49dfad2a8d67
-longname: Сортировка выбором: рекурсивный вариант
+longname: Сортировка выбором - рекурсивный вариант
 languages: [python]
 tags: [sort,recursion]
 checker: cmp_file
