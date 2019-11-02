@@ -17,7 +17,7 @@ def answer(arr):
         pp = -1
         pn = -1
         for i in range(len(arr)):
-            if (arr[i] >= 0:
+            if arr[i] >= 0:
                 if pp >= 0 and arr[i] < arr[pp]:
                     arr[i], arr[pp] = arr[pp], arr[i]
                     s += ' '.join(map(str, arr)) + '\n'
