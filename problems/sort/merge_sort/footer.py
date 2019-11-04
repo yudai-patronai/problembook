@@ -2,10 +2,10 @@
 #''' # ЭТО не комментарий, а конец переменной source_code из header
 
 # валидация на содержание запрещённых инструкций
-exclude_patterns = [r'\.append', r'\.sort', r'sorted']
+exclude_patterns = [r'\s*\.\s*append', r'\s*\.\s*sort', r'sorted']
 
 for reobj in exclude_patterns:
-    assert not re.findall(reobj, source_code), 'instruction "{}" could not be used'.format(pattern)
+    assert not re.findall(reobj, source_code), 'You are using restricted constructions'
 
 
 exec(source_code)
