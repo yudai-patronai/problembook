@@ -1,19 +1,13 @@
-def split_array(arr, n, x):
-    a, e, g = [], [], []
-    for i in arr:
-        if i < x:
-            a.append(i)
-        elif i == x:
-            e.append(i)
+def split_barrier(A, barrier):
+    L, M, R = [], [], []
+    for elem in A:
+        if elem < barrier:
+            L.append(elem)
+        elif elem == barrier:
+            M.append(elem)
         else:
-            g.append(i)
+            R.append(elem)
     j = 0
-    for i in a:
-        arr[j] = i
-        j += 1
-    for i in e:
-        arr[j] = i
-        j += 1
-    for i in g:
-        arr[j] = i
+    for elem in L + M + R:
+        A[j] = elem
         j += 1

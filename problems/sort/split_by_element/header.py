@@ -1,2 +1,3 @@
-def sorted(arr):
-    return arr
+import re
+
+source_code = '''

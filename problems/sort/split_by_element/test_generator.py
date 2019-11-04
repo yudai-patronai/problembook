@@ -1,50 +1,37 @@
-#!/usr/bin/env python3
+from lib.testgen import TestSet
 
-import os
-from lib import random
-import shutil
+def question(arr, barrier):
+    return ' '.join(map(str, arr)) + '\n' + str(barrier) + '\n'
 
-random.seed(42)
+def answer(arr):
+    return ' '.join(map(str, arr)) + '\n'
 
+tests = TestSet()
 
-def generate_test(name, testn):
-    n = random.randint(1, 100000)
-    a = [random.randint(-1000000, 1000000) for _ in range(n)]  
-    x = a[random.randint(0, n-1)] 
-    with open(name, "w") as f:
-        f.write(" ".join(map(str, a)) + "\n")
-        f.write(str(x)+"\n")
-    i = 0
-    for e in a:
-        if e < x:
-            i += 1
-    with open(name+".a", "w") as f:
-        f.write(str(i)+"\n")
-            
+arrays = [
+    (
+        [3, 4, 2, 0, 6, 6], #  input array
+        3,                  #  barrier
+        [2, 0, 3, 4, 6, 6]  #  output array
+    ),
+    (
+        [3, 4, 2, 0, 6, 6],
+        1,
+        [0, 3, 4, 2, 6, 6]
+    ),
+    (
+        [3, 4, 2, 0, 6, 6],
+        5,
+        [3, 4, 2, 0, 6, 6]
+    ),
+    (   [10, 7, 4, 1, 8, 1, 12, 5, 7, 9, 4, 3, 2, 12, 2],
+        8,
+        [7, 4, 1, 1, 5, 7, 4, 3, 2, 2, 8, 10, 12, 9, 12]
+    )
+]
 
-def write_manual_test(name, a): 
-    x = a[random.randint(0, len(a)-1)] 
-    with open(name, "w") as f:
-        f.write(" ".join(map(str, a)) + "\n")
-        f.write(str(x)+"\n")
-    i = 0
-    for e in a:
-        if e < x:
-            i += 1
-    with open(name+".a", "w") as f:
-        f.write(str(i)+"\n")
-
-
-if __name__ == "__main__":
-    test_folder = "tests"
-    shutil.rmtree(test_folder, ignore_errors=True)
-    os.mkdir(test_folder)
-    for test in range(1, 6):
-        test_name = os.path.join(test_folder, "%02d" % test)
-        print("generating %s..." % test_name)
-        generate_test(test_name, test)
-        
-    write_manual_test(os.path.join(test_folder, "06"), [5])
-    write_manual_test(os.path.join(test_folder, "07"), [random.randint(-1000000, 1000000) for _ in range(100000)])
-    write_manual_test(os.path.join(test_folder, "08"), [random.randint(-1000000, 1000000)] * random.randint(1, 1000000))
-
+for inp, barrier, out in arrays:
+    tests.add(
+        question(inp, barrier),
+        answer(out)
+    )
