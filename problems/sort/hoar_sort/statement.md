@@ -25,12 +25,14 @@ max_vm_size: 64M
 ### Шаблон функции
 
 ```
+
     def hoar_sort(A, depth=1, part='left'):
         print('depth:', depth, 'part:', part, 'array before:', A)
 
         #  ваша реализация сортировки
 
         print('depth:', depth, 'part:', part, 'array after:', A)
+
 ```
 
 ### Аргументы функции
