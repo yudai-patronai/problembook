@@ -19,8 +19,8 @@ def recursive_selection_sort(a):
 def selection_sort(a, index, outputs):
     if index < len(a) - 1:
         str_a  = ' '.join(map(str, a))
-        min = find_min(a, index)
-        a[index], a[min] = a[min], a[index]
+        min_ = find_min(a, index)
+        a[index], a[min_] = a[min_], a[index]
         str_a_new = ' '.join(map(str, a))
         if str_a_new != str_a:
             str_a = str_a_new
@@ -29,12 +29,12 @@ def selection_sort(a, index, outputs):
 
 
 def find_min(a, index):
-    min = index - 1
+    min_ = index - 1
     if index < len(a) - 1:
-        min = find_min(a, index + 1)
-    if a[min] > a[index]:
-        min = index
-    return min
+        min_ = find_min(a, index + 1)
+    if a[min_] > a[index]:
+        min_ = index
+    return min_
 
 
 for i in range(1, NUM_TEST + 1):
