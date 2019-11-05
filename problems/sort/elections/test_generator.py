@@ -26,7 +26,7 @@ if __name__ == '__main__':
                 [158],
                 [1, 1, 1, 1, 1, 1, 1],
                 [2, 45, 7, 6, 33],
-                [randint(1, 100000) for _ in range(10000)]):
+                [randint(1, 2000) for _ in range(200)]):
         add(arr)
-    for _ in range(4):
-        add([randint(1, 100000) for _ in range(randint(1, 10000))])
+    # for _ in range(4):
+    #     add([randint(1, 100000) for _ in range(randint(1, 10000))])
