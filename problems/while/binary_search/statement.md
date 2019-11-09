@@ -1,7 +1,7 @@
 ---
 id: a6a04ea5-585c-47fa-ac53-22d0530148f9
 longname: Бинарный поиск в отсортированном массиве
-languages: [cpp]
+languages: [cpp, python]
 tags: [easy, while]
 checker: cmp_int
 time_limit: 1
