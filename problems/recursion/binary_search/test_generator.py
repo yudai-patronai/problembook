@@ -4,7 +4,7 @@ from lib.random import choice
 from lib.random import sample
 
 MAX_RAND_TEST = 20
-MAX_RAND_LEN = 1000
+MAX_RAND_LEN = 100
 
 def get_case(seq, flag):
     seq.sort()
