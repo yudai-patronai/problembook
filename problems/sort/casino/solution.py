@@ -1,8 +1,12 @@
+def bubbleSort(arrayToSort):
+    n = len(arrayToSort)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arrayToSort[j] > arrayToSort[j + 1] :
+                arrayToSort[j], arrayToSort[j + 1] = arrayToSort[j + 1], arrayToSort[j]
+
+
 n = int(input())
-a = sorted(list(map(int, input().split())), reverse=True)
-s = 0
-for i in a[:n//2]:
-    s += i
-for i in a[n//2:]:
-    s -= i
-print(s)
+a = list(map(int, input().split()))
+bubbleSort(a)
+print(sum(a[n // 2 : ]) - sum(a[ : n // 2]))

@@ -1,43 +1,46 @@
-#!/usr/bin/env python3
+from lib.testgen import TestSet
+from lib.random import randint, seed
 
-import os
-from lib import random
-import shutil
 
-import solution
+def question(n):
+    return '{}\n'.format(n)
 
-random.seed(42)
 
-manual_tests = [ (1, 1), (4321, 1234), (1990, 1099), (1000, 1000)]
+def solve(n):
+    arr = [0] * 10
+    while n > 0:
+        arr[n % 10] += 1
+        n //= 10
 
-def generate_manual_test(name, task):
-    n = task[0]
-    ans = task[1]
-    with open(name, "w") as f:
-        f.write(str(n) + '\n')
-    # answer
-    with open("%s.a" % name, 'w') as f:
-        f.write(str(ans))
+    for i in range(1, 10):
+        if arr[i] > 0:
+            digit = str(i)
+            arr[i] -= 1
+            break
 
-def generate_test(name):
-    n = random.randint(100, 100000)
-    with open(name, "w") as f:
-        f.write(str(n) + '\n')
-    # answer
-    with open("%s.a" % name, 'w') as f:
-        f.write(str(solution.solve(n)) + '\n')
+    return digit + \
+        ''.join(map(lambda i: str(i) * arr[i], range(10)))
 
-if __name__ == "__main__":
-    test_folder = "tests"
-    shutil.rmtree(test_folder, ignore_errors=True)
-    os.mkdir(test_folder)
-    for test in range(1, len(manual_tests) + 1):
-        test_name = os.path.join(test_folder, "%02d" % test)
-        print("generating %s..." % test_name)
-        generate_manual_test(test_name, manual_tests[test-1])
 
-    # random tests
-    for test in range(len(manual_tests) + 1, len(manual_tests) + 7):
-        test_name = os.path.join(test_folder, "%02d" % test)
-        print("generating %s..." % test_name)
-        generate_test(test_name)
+def answer(n):
+    return solve(n) + '\n'
+
+
+tests = TestSet()
+def add(i):
+    tests.add(question(i), answer(i))
+
+
+seed(42)
+add(1)
+add(randint(2, 9))
+add(randint(1, 9) * 10)
+add(randint(11, 99) * 10 ** 90)
+add(randint(101, 999) * 10 ** 80)
+
+for _ in range(7):
+    add(randint(10 ** 3, 10 ** 10) * 10 ** randint(20, 80) + \
+        randint(100, 10 ** 40))
+
+add(10 ** 100 - randint(1, 9))
+add(10 ** 100)
