@@ -1,24 +1,17 @@
-#!/usr/bin/env python3
-
-
 def solve(n):
     arr = [0] * 10
-    while n:
+    while n > 0:
         arr[n % 10] += 1
         n //= 10
 
-    res = ''
+    for i in range(1, 10):
+        if arr[i] > 0:
+            digit = str(i)
+            arr[i] -= 1
+            break
 
-    for j in range(sum(arr)):
-        for i in range(10):
-            if j == 0 and i == 0:
-                continue
-            if arr[i]:
-                res += str(i)
-                arr[i] -= 1
-                break
-
-    return int(res)
+    return digit + \
+        ''.join(map(lambda i: str(i) * arr[i], range(10)))
 
 
 if __name__ == "__main__":
