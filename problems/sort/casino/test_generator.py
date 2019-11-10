@@ -6,9 +6,10 @@ from lib import random
 
 random.seed(42)
 
+RANDOM_TEST_MAX_LEN = 1000
 
 def generate_test(test_file):
-    n = random.randint(1, 10000) & (~1)
+    n = random.randint(1, RANDOM_TEST_MAX_LEN) & (~1)
     a = [random.randint(1, 1000000) for _ in range(n)]
     b = sorted(a)
     s = 0
@@ -46,7 +47,7 @@ if __name__ == '__main__':
     write_test(os.path.join(test_folder, "01"), [1, 1])
     write_test(os.path.join(test_folder, "02"), [158, 5])
     write_test(os.path.join(test_folder, "03"), [2, 45, 7, 6, 33, 15])
-    write_test(os.path.join(test_folder, "04"), [random.randint(1, 1000000) for _ in range(10000)])
+    write_test(os.path.join(test_folder, "04"), [random.randint(1, 1000000) for _ in range(RANDOM_TEST_MAX_LEN)])
 
     for test in range(5, 10):
         generate_test(os.path.join(test_folder, "0{}".format(test)))

@@ -6,13 +6,14 @@ from lib import random
 
 random.seed(42)
 
+RANDOM_TEST_LEN = 100
 
 def get_name():
     return ''.join(random.sample([chr(i) for i in range(ord('a'), ord('z')+1)]+['_'], random.randint(1, 25)))
 
 
 def generate_test(test_file):
-    n = random.randint(1, 1000)
+    n = random.randint(1, RANDOM_TEST_LEN)
     m = []
     a = []
     for _ in range(n):
@@ -65,7 +66,7 @@ if __name__ == '__main__':
     write_test(os.path.join(test_folder, "01"), [[(125.00, "vasya")]])
     write_test(os.path.join(test_folder, "02"), [[(7.70, "abc")], [(-7.70, "abd")]])
     write_test(os.path.join(test_folder, "03"), [[(-335.08, "vasya"), (-754.45, "petya"), (-41.05, "borya")]])
-    write_test(os.path.join(test_folder, "04"), [[(random.randint(-500000, 1000000)/100, get_name()) for _ in range(20)] for _ in range(1000)])
+    write_test(os.path.join(test_folder, "04"), [[(random.randint(-500000, 1000000)/100, get_name()) for _ in range(20)] for _ in range(RANDOM_TEST_LEN)])
 
     for test in range(5, 8):
         generate_test(os.path.join(test_folder, "0{}".format(test)))
