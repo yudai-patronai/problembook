@@ -1,3 +1,6 @@
+
+
+
 func_str = input()
 a, b, tol, true_root = [float(e) for e in input().split()]
 
