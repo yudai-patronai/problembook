@@ -1,11 +1,11 @@
-''' # source_code переменная конец
+#''' # source_code переменная конец
 
 # валидация на содержание запрещённых инструкций
-exclude_patterns = ['for', 'while']
+exclude_patterns = [r'for([^a-zA-Z_0-9]|$)', r'while']
 
-for pattern in exclude_patterns:
-    reobj = re.compile(pattern)
-    assert not re.findall(reobj, source_code), 'instruction "{}" could not be used'.format(pattern)
+for reobj in exclude_patterns:
+    assert not re.findall(reobj, source_code), \
+    	'instruction "{}" could not be used'.format(pattern)
 
 
 exec(source_code)
