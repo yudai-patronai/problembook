@@ -41,3 +41,5 @@ for i in range(MAX_RAND_TEST // 2):
 
 for i in range(MAX_RAND_TEST // 2):
     tests.add(*get_case(sample(range(1, 1500000), randint(10, MAX_RAND_LEN)), 0))
+
+tests.add("10 20 30 40 50 60\n10", "1\n")
