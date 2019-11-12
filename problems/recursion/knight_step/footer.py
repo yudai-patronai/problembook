@@ -5,7 +5,7 @@ exclude_patterns = [r'for([^a-zA-Z_0-9]|$)', r'while']
 
 for reobj in exclude_patterns:
     assert not re.findall(reobj, source_code), \
-        'instruction "{}" could not be used'.format(pattern)
+        'instruction "{}" could not be used'.format(reobj)
 
 # Считывание происходит здесь, в footer-е.
 # Считанная строка затем в потоковом виде подаётся в функцию solution-а.
