@@ -15,6 +15,7 @@ def solve(n):
         arr[i][2] = arr[i - 1][0] + arr[i - 1][1] + arr[i - 1][2]
     return sum(arr[n])
 
+
 if __name__ == "__main__":
     n = int(input())
     print(solve(n))
