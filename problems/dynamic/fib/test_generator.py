@@ -11,9 +11,10 @@ def fib(n, external_start=True):
         return 1
     global cache
     if external_start:
-        cache = [0] * (n + 1)
+        cache = [None] * (n + 1)
         cache[:2] = 0, 0
-    cache[n] = fib(n - 2, False) + fib(n - 1, False)
+    if cache[n] == None:
+        cache[n] = fib(n - 2, False) + fib(n - 1, False)
     return cache[n]
 
 
