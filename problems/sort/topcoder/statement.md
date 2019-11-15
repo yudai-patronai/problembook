@@ -53,9 +53,9 @@ max_vm_size: 64M
 <- 439.51 tywok
 <- 195.32 aubergineanode
 <- 130.52 LimberG
-<- 0.00 angsa
 <- 0.00 shalinmangar
 <- 0.00 BryanChen
+<- 0.00 angsa
 <- -25.00 Excilus
 <- -75.00 The_Hedgehog
 ```
