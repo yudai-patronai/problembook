@@ -36,8 +36,8 @@ max_vm_size: 64M
 -> 909.94 Savior
 -> 439.51 tywok
 -> 130.52 LimberG
--> 0.00 BryanChen
 -> 0.00 angsa
+-> 0.00 BryanChen
 -> -75.00 The_Hedgehog
 -> 5
 -> 867.15 Ying
@@ -54,8 +54,8 @@ max_vm_size: 64M
 <- 195.32 aubergineanode
 <- 130.52 LimberG
 <- 0.00 shalinmangar
-<- 0.00 BryanChen
 <- 0.00 angsa
+<- 0.00 BryanChen
 <- -25.00 Excilus
 <- -75.00 The_Hedgehog
 ```
