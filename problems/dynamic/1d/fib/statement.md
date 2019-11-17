@@ -3,7 +3,7 @@ id: 412f2781-c52b-4753-b451-2638b8727cc1
 longname: Фибоначчи
 languages: [python]
 tags: [recursion,dynamic]
-checker: cmp_int
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
