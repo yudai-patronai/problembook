@@ -21,7 +21,8 @@ sys.stdout = StringIO()
 sys.stdin = StringIO(input_str)
 
 # Проверка на рекурсию
-assert n <= 2 or test_recursion(lambda: exec(source_code))
+assert n <= 2 or test_recursion(lambda: \
+	exec(source_code, globals(), globals()))
 
 # Возврат потока вывода, запуск кода от нового потока ввода
 sys.stdout = old_stdout
