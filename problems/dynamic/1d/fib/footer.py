@@ -20,17 +20,13 @@ old_stdout, old_stdin = sys.stdout, sys.stdin
 sys.stdout = StringIO()
 sys.stdin = StringIO(input_str)
 
-exec(source_code)
-# Сохранение вывода solution-а, чтобы последующий возможный вывод
-# проверки на рекурсию выводил в тот же поток.
-print_val = sys.stdout.getvalue()
-
-# Для нового запуска в процесе проверки на рекурсию нужны новые потоки.
-sys.stdout = StringIO()
-sys.stdin = StringIO(input_str)
+# Проверка на рекурсию
 assert n <= 2 or test_recursion(lambda: exec(source_code))
 
-# Возврат значений потокам ввода-вывода.
-sys.stdout, sys.stdin = old_stdout, old_stdin
+# Возврат потока вывода, запуск кода от нового потока ввода
+sys.stdout = old_stdout
+sys.stdin = StringIO(input_str)
+exec(source_code)
 
-print(print_val, end='')
+# Возврат потока ввода
+sys.stdin = old_stdin
