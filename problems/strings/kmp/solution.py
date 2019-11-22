@@ -2,7 +2,7 @@
 
 
 def compute_z_function(s):
-    z = [0]
+    z = [0] * len(s)
     left = right = 0
     for i in range(1, len(s)):
         x = min(z[i - left], right - i + 1) if i <= right else 0
@@ -10,7 +10,7 @@ def compute_z_function(s):
             x += 1
         if i + x - 1 > right:
             left, right = i, i + x - 1
-        z.append(x)
+        z[i] = x
     return z
 
 

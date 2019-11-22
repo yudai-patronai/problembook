@@ -1,31 +1,50 @@
 #!/usr/bin/env python3
 
-import os
 from lib import random
-import shutil
 import string
-import subprocess as sp
+from lib.testgen import TestSet
 
 ALPHABET = list(string.ascii_lowercase)
 
 
+def compute_z_function(s):
+    z = [0] * len(s)
+    left = right = 0
+    for i in range(1, len(s)):
+        x = min(z[i - left], right - i + 1) if i <= right else 0
+        while i + x < len(s) and s[x] == s[i + x]:
+            x += 1
+        if i + x - 1 > right:
+            left, right = i, i + x - 1
+        z[i] = x
+    return z
+
+
+def kmp(pattern, text):
+    z = compute_z_function(pattern + "#" + text)
+    meets = []
+    for i, v in enumerate(z):
+        if v == len(pattern):
+            meets.append(i - len(pattern) - 1)
+    return meets
+
+
 def generate_random_string(n, alphabet):
-    s = []
-    for i in range(n):
-        s.append(random.choice(alphabet))
-
-    return "".join(s)
+    return ''.join(random.choice(alphabet) for _ in range(n))
 
 
-def prepare_test(i, t, folder):
-    filename = os.path.join(folder, "%02d" % i)
-    with open(filename, "w") as f:
-        print(t[0], file=f)
-        print(t[1], file=f)
+def question(t):
+    return '\n'.join(t)
 
-    with open(filename) as f:
-        with open("%s.a" % filename, "w") as g:
-            sp.check_call(["./solution.py", "test"], stdin=f, stdout=g)
+
+def answer(t):
+    res = kmp(*t)
+    return '{}\n'.format(-1 if not res else ' '.join(map(str, res)))
+
+
+TESTS = TestSet()
+def add_test(t):
+    TESTS.add(question(t), answer(t))
 
 
 def generate_random_test(p, n, a, seed):
@@ -47,10 +66,6 @@ def generate_at_least_once_test(p, n, a, seed):
 
 
 if __name__ == "__main__":
-    test_folder = "tests"
-    shutil.rmtree(test_folder, ignore_errors=True)
-    os.mkdir(test_folder)
-
     tests = [
         ["aaa", "aaaaa"],
         ["abc", "abdcab"],
@@ -70,10 +85,10 @@ if __name__ == "__main__":
     tests += [
         generate_random_test(10, 100, 1, "abc"),
         generate_random_test(5, 100, 3, "asdf"),
-        generate_random_test(10, 100000, 2, "fdst"),
-        generate_random_test(1, 100000, 3, "gf234d"),
-        generate_random_test(5, 100000, 3, "gfsd"),
-        generate_random_test(1, 100000, 1, "asdfgsdf"),
+        generate_random_test(10, 10000, 2, "fdst"),
+        generate_random_test(1, 10000, 3, "gf234d"),
+        generate_random_test(5, 10000, 3, "gfsd"),
+        generate_random_test(1, 10000, 1, "asdfgsdf"),
     ]
-    for i, t in enumerate(tests):
-        prepare_test(i + 1, t, test_folder)
+    for t in tests:
+        add_test(t)
