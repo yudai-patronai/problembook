@@ -26,5 +26,5 @@ max_vm_size: 64M
 ```
 -> abcde fg higklmn
 --
-<- 495 749
+<- 495 746
 ```
