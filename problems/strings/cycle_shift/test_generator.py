@@ -65,7 +65,7 @@ if __name__ == "__main__":
         ["abcdef", "cdefab"],
         ["abcdea", "bcdeab"]
     ]
-    for n in [10, 50, 100, 1000, 10000]:
+    for n in [10, 10000, 150000]:
         for s in [2, 15]:
             seed = "%d_%d" % (n, s)
             tests.append(generate_random_test(n, s, seed))
