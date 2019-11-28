@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 
-
-import os
 from lib import random
-import shutil
 from string import ascii_lowercase
 from lib.testgen import TestSet
 
 
 NUM_RAND_TESTS = 10
-MAX_STR_LEN = 500
+MAX_STR_LEN = 1000
 random.seed(100)
+
 
 def find_distance(first, second):
     matrix = [[0] * (len(second) + 1) for i in range(len(first) + 1)]
@@ -27,7 +25,7 @@ def find_distance(first, second):
 
 
 def get_case(str1, str2):
-    return '{}\n{}'.format(str1, str2), str(find_distance(str1, str2))
+    return '{}\n{}'.format(str1, str2), '{}\n'.format(find_distance(str1, str2))
 
 
 tests = TestSet()
@@ -38,7 +36,7 @@ tests.add(*get_case("abcdea", "bcdeab"))
 
 for _ in range(NUM_RAND_TESTS):
     # use random.choice instead of random.smaple cause MAX_STR_LEN > len(ascii_lowercase)
-    str1 = ''.join([random.choice(ascii_lowercase) for _ in range(random.randint(1, MAX_STR_LEN))])
-    str2 = ''.join([random.choice(ascii_lowercase) for _ in range(random.randint(1, MAX_STR_LEN))])
+    str1 = ''.join(random.choice(ascii_lowercase) for _ in range(random.randint(1, MAX_STR_LEN)))
+    str2 = ''.join(random.choice(ascii_lowercase) for _ in range(random.randint(1, MAX_STR_LEN)))
 
     tests.add(*get_case(str1, str2))
