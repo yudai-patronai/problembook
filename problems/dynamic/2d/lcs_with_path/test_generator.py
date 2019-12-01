@@ -45,11 +45,7 @@ def write_manual_test(name, s1, s2):
 if __name__ == "__main__":
     test_folder = "tests"
     shutil.rmtree(test_folder, ignore_errors=True)
-    os.mkdir(test_folder)
-    """for test in range(1, 6):
-        test_name = os.path.join(test_folder, "%02d" % test)
-        print("generating %s..." % test_name)
-        generate_test(test_name)"""        
+    os.mkdir(test_folder)       
     write_manual_test(os.path.join(test_folder, "01"), [12], [12])
     write_manual_test(os.path.join(test_folder, "02"), [14, 5, 8, 11, 0, 9, 3], [1, 35, 87, 13])
     write_manual_test(os.path.join(test_folder, "03"), [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8])
