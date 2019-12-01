@@ -2,7 +2,6 @@
 
 import os
 import shutil
-#from lib import random
 import random
 
 random.seed(42)
@@ -38,11 +37,7 @@ def write_manual_test(name, s):
 if __name__ == "__main__":
     test_folder = "tests"
     shutil.rmtree(test_folder, ignore_errors=True)
-    os.mkdir(test_folder)
-    """for test in range(1, 6):
-        test_name = os.path.join(test_folder, "%02d" % test)
-        print("generating %s..." % test_name)
-        generate_test(test_name)"""        
+    os.mkdir(test_folder)       
     write_manual_test(os.path.join(test_folder, "01"), [12])
     write_manual_test(os.path.join(test_folder, "02"), [1, 5, 7, 8, 9, 13])
     write_manual_test(os.path.join(test_folder, "03"), [17, 15, 9, 6, 5, 3, 0])
