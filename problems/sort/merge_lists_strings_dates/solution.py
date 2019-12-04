@@ -15,7 +15,7 @@ def weight(M):
     return secs
 
 
-def merge_by_weight(L, R):
+def merge_by_duration(L, R):
     len_L, len_R = len(L), len(R)
     
     A = [0] * (len_L + len_R)
@@ -42,10 +42,3 @@ def merge_by_weight(L, R):
         ind_R += 1
     
     return A
-
-L = input().split()
-R = input().split()
-
-A = merge_by_weight(L, R)
-
-print(" ".join(A))
