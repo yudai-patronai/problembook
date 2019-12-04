@@ -22,7 +22,7 @@ def weight(M):
     return molweight
 
 
-def merge_by_weight(L, R):
+def merge_by_molweight(L, R):
     len_L, len_R = len(L), len(R)
     
     A = [0] * (len_L + len_R)
@@ -47,12 +47,4 @@ def merge_by_weight(L, R):
         A[ind_A] = R[ind_R]
         ind_A += 1
         ind_R += 1
-    
     return A
-
-L = input().split()
-R = input().split()
-
-A = merge_by_weight(L, R)
-
-print(" ".join(A))
