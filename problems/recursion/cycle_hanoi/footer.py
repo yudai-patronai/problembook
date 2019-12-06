@@ -1,3 +1,5 @@
+
+
 n = int(input())
 arr = chanoi(n, 1, 2, 3)
 if len(arr) > 200000:
