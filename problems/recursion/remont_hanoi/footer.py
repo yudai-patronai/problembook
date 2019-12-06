@@ -1,3 +1,5 @@
+
+
 n = int(input())
 arr = mov (n,1,3)
 if len(arr) > 200000:
