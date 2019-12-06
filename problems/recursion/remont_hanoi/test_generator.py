@@ -3,7 +3,7 @@
 import os
 from lib import random
 import shutil
-from solution import solve
+
 
 random.seed(42)
 MAX_N = 30
