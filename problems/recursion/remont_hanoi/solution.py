@@ -6,3 +6,5 @@ def mov (n, start, finish):
             return mov (n-1, start, 6-start-finish)+[[n, start, finish]]+ mov (n-1, 6-start-finish, finish)
     else:
         return []
+
+HANOI_PATH = mov (N,1,3)

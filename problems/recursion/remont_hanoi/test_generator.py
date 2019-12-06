@@ -13,7 +13,7 @@ def generate_test(name, n):
         f.write(str(n) + '\n')
     #answer
     with open("%s.a" % name, 'w') as f:
-        f.write('OK')
+        f.write('YES')
 
 if __name__ == "__main__":
     test_folder = "tests"
