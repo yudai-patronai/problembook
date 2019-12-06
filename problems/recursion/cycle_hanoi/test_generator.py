@@ -3,8 +3,6 @@
 import os
 from lib import random
 import shutil
-from solution import solve
-
 random.seed(42)
 MAX_N = 30
 
@@ -20,7 +18,7 @@ if __name__ == "__main__":
     shutil.rmtree(test_folder, ignore_errors=True)
     os.mkdir(test_folder)
 
-    for test, n in range(9):
+    for test in range(9):
         test_name = os.path.join(test_folder, "%02d" % (test+1))
         print("generating %s..." % test_name)
-        generate_test(test_name, n)
+        generate_test(test_name, test+1)

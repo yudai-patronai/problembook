@@ -1,15 +1,19 @@
 def chanoi(disc, start, other, finish):
-    if disc == 1:
-        if (3+start-finish) % 3 == 1:
+    if disc < 2:
+        if (3 + start - finish) % 3 == 1:
             return [[1, start, other], [1, other, finish]]
         else:
             return [[1, start, finish]]
-   
     else:
-        
-        if (3+start-finish) % 3 == 1:
-            return chanoi(disc-1, start, other, finish)+[[disc, start, other]]+chanoi(disc-1, finish, other, start)+[[disc, other, finish]]+chanoi(disc-1, start, other, finish)
+        if (3 + start - finish) % 3 == 1:
+            result = chanoi(disc - 1, start, other, finish)
+            result += [[disc, start, other]]
+            result += chanoi(disc - 1, finish, other, start)
+            result += [[disc, other, finish]]
+            result += chanoi(disc - 1, start, other, finish)
+            return result
         else:
-            return chanoi(disc-1, start, finish, other)+[[disc, start, finish]]+chanoi(disc-1, other, start, finish)
-            
-
+            result = chanoi(disc - 1, start, finish, other)
+            result += [[disc, start, finish]]
+            result += chanoi(disc - 1, other, start, finish)
+            return result
