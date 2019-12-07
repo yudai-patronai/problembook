@@ -5,5 +5,4 @@ for i in range(len(instring)):
         counters[ord(instring[i]) - ord('A')] += 1
 for i in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
     if counters[ord(i) - ord('A')] > 0:
-        print(i, counters[ord(i) - ord('A')]
-
+        print(i, counters[ord(i) - ord('A')])

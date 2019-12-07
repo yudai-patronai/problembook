@@ -8,9 +8,9 @@ def gen_test(txt):
             counters[ord(txt[i]) - ord('A')] += 1
     for i in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
         if counters[ord(i) - ord('A')] > 0:
-            res += i + ' ' + str(counters[ord[i] - ord('A')] + '\n'
+            res += i + ' ' + str(counters[ord(i) - ord('A')]) + '\n'
+    return res
 
-tests = TestSet()
 
 my_list = [
     'B AAA  AAA',
@@ -24,6 +24,6 @@ my_list = [
     'WHITESPACE REFERS TO ANY NONPRINTING CHARACTER',
     'NUMBERS ARE USED QUITE OFTEN IN PROGRAMMING'
     ]
-
+tests = TestSet()
 for text in my_list:
-    tests.add(text, gen_answer(text))
+    tests.add(text + '\n', gen_test(text))
