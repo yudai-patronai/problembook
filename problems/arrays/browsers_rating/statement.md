@@ -18,7 +18,7 @@ max_vm_size: 64M
 
 ### Формат выходных данных
 
-Программа должна вывести два списка браузеров с указанием места в рейтинге. Каждый список начинается с заголовка 'desktop browsers raiting' или 'mobile browsers raiting'. Если по платформе голосов не было, то и ее заголовок выводить не надо. Если браузеры получили одинаковое количество голосов, то необходимо указывать диапазон мест.
+Программа должна вывести два списка браузеров с указанием места в рейтинге. Каждый список начинается с заголовка 'desktop browsers rating' или 'mobile browsers rating'. Если по платформе голосов не было, то и ее заголовок выводить не надо. Если браузеры получили одинаковое количество голосов, то необходимо указывать диапазон мест.
 
 ### Примеры
 
@@ -31,11 +31,11 @@ max_vm_size: 64M
 -> desktop Google Chrome
 -> mobile Google Chrome
 --
-<- desktop browsers raiting
+<- desktop browsers rating
 <- 1 Google Chrome
 <- 2 - 3 Netscape Navigator
 <- 2 - 3 Opera
-<- mobile browsers raiting
+<- mobile browsers rating
 <- 1 - 2 Opera
 <- 1 - 2 Google Chrome
 ```

@@ -8,16 +8,16 @@ for i in range(cnt):
         dlist[bname] = dlist.get(bname, 0) + 1
     else:
         mlist[bname] = mlist.get(bname, 0) + 1
-dlist = sorted(dlist.items(), key = lambda x: x[1], reverse = True)
-mlist = sorted(mlist.items(), key = lambda x: x[1], reverse = True)
+dlist = sorted(dlist.items(), key=lambda x: x[1], reverse=True)
+mlist = sorted(mlist.items(), key=lambda x: x[1], reverse=True)
 if len(dlist) > 0:
-    print('desktop browsers raiting')
+    print('desktop browsers rating')
     i = 0
     snum = 0
     for x in dlist:
         i += 1
         if snum < i:
-            pcnt = 0;
+            pcnt = 0
             for y in dlist:
                 if y[1] == x[1]:
                     pcnt += 1
@@ -28,13 +28,13 @@ if len(dlist) > 0:
                 nsamp = str(i) + " - " + str(i + pcnt - 1)
         print(nsamp, x[0])
 if len(mlist) > 0:
-    print('mobile browsers raiting')
+    print('mobile browsers rating')
     i = 0
     snum = 0
     for x in mlist:
         i += 1
         if snum < i:
-            pcnt = 0;
+            pcnt = 0
             for y in mlist:
                 if y[1] == x[1]:
                     pcnt += 1
