@@ -3,7 +3,7 @@ fixme: true
 id: db074a70-a398-403a-b90b-e5ab63f23474
 longname: Подсчет количества четных цифр в строке
 tags: [for,strings,cycle,if]
-languages: [cpp, py]
+languages: [cpp, python]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1
