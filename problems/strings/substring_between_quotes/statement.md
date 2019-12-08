@@ -1,6 +1,6 @@
 ---
 id: 8cabfeca-651b-490f-8b00-49faf7d1723d
-longname: Прямая речь
+longname: Цитаты
 languages: [python]
 tags: [str,easy]
 checker: cmp_file
@@ -25,13 +25,7 @@ max_vm_size: 64M
 ### Примеры
 
 ```
--> 1 2
+-> "Kto tam?" — sprosil dyadya Fyodor.
 --
-<- 3
-```
-
-```
--> 1 -1
---
-<- 0
+<- Kto tam?
 ```
