@@ -1,0 +1,53 @@
+name: 2019_algo_s1_w11
+language: python
+problems:
+    
+    # Бинарный поиск в отсортированном массиве
+    - a6a04ea5-585c-47fa-ac53-22d0530148f9:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Рекурсивный бинарный поиск в отсортированном массиве
+    - a39ee093-d715-4949-bfa8-ba1e2b9c757d:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # FindRoot
+    - c44fd9a6-fd49-480b-8cfe-c7dbb562dbc0:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Казино
+    - 2c82c3b4-4c2f-413d-9801-43f3eaf55d86:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Сортировка пузырьком двумерного массива
+    - 8e1f8edf-d15f-456d-8643-228060ff4154:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Минимальное число
+    - d5bff3f1-00b4-4069-bd8e-15fd77759811:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # TopCoder
+    - f39bb64f-26ca-458a-b9dd-3c29b39374f5:
+        score: 180
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    

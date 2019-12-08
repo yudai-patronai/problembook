@@ -1,0 +1,74 @@
+name: 2019_algo_s1_exam1_4
+language: python
+problems:
+    
+    # Простая таблица
+    - 88d516cd-748f-47a1-8ccf-cb1a053c3990:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Ленивый преподаватель
+    - 47393356-c4b9-4737-b092-4eead08bddf3:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Вывод треугольника
+    - 15c3dc91-5b45-42c8-a596-e3c021d1dd33:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Обработка последовательности чисел
+    - 7b656eda-bdaa-4738-95ab-4a12ffe2b505:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Малая теорема Ферма
+    - 4d8542d5-1104-4901-b87d-24fb3ec3f79a:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Количество элементов, равных минимуму
+    - 702bad4f-6939-43cf-9ee6-47235fc41784:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Считывание числа в вавилонской системе счисления
+    - ef198727-2f8f-4a23-a3d4-ed8e8ec457db:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Циклический сдвиг на М позиций
+    - b1a4dbc2-1dab-498b-b38c-0940a9259a55:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Является ли квадрат волшебным?
+    - db119bd5-125e-4bbe-a82f-cbaf5b3c4184:
+        score: 130
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Голосование за лучший фильм
+    - d547698d-cc75-41a6-bdce-44fef6f232b8:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

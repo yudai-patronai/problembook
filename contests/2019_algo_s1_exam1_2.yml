@@ -1,0 +1,74 @@
+name: 2019_algo_s1_exam1_2
+language: python
+problems:
+    
+    # Простая арифметика
+    - 86313e32-d601-43d1-b91b-b31e8b328577:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Ход ферзя
+    - 1bd02933-e8c5-4bda-a04e-a9ff671392e3:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # След матрицы
+    - 3e93ee94-2a68-4098-a8ac-f196f8691a0b:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Обработка последовательности чисел
+    - 7b656eda-bdaa-4738-95ab-4a12ffe2b505:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Алгоритм RSA
+    - e4506a9f-8489-4f90-801a-752c28f213f3:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Количество элементов, равных минимуму
+    - 702bad4f-6939-43cf-9ee6-47235fc41784:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Считывание числа в вавилонской системе счисления
+    - ef198727-2f8f-4a23-a3d4-ed8e8ec457db:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Циклический сдвиг на М позиций
+    - b1a4dbc2-1dab-498b-b38c-0940a9259a55:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Транспонирование квадратной матрицы
+    - 63d96a00-3c47-487b-81af-be0eaaaec6a4:
+        score: 130
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Голосование за лучший фильм
+    - d547698d-cc75-41a6-bdce-44fef6f232b8:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

@@ -1,0 +1,46 @@
+name: 2019_algo_s1_w14
+language: python
+problems:
+    
+    # Шашку - в дамки
+    - 427f814e-8917-4cb2-a948-4568d8174c79:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Платный аттракцион
+    - aedeec91-922a-4a12-8df6-a94dd4cd5432:
+        score: 70
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Белая пешка
+    - b4297e1b-a396-4ef9-91d8-9363d338852c:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Алгоритм Левенштейна
+    - 163e83cc-f95f-4a0c-ba58-aaa1e9732714:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Наибольшая общая подпоследовательность
+    - b127e684-7c8a-4a13-8950-08d89f54ba25:
+        score: 150
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Наибольшая возрастающая подпоследовательность
+    - 6310c3e0-e26a-4f28-a4c7-bcce0c557848:
+        score: 150
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
