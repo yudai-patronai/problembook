@@ -37,4 +37,4 @@ def __is_correct(n, arr):
 
     return flag
 
-print('YES' if __is_correct(N, HANOI_PATH) else 'NO')
+print('YES' if __is_correct(__N, HANOI_PATH) else 'NO')
