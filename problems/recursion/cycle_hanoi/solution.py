@@ -17,3 +17,5 @@ def chanoi(disc, start, other, finish):
             result += [[disc, start, finish]]
             result += chanoi(disc - 1, other, start, finish)
             return result
+
+HANOI_PATH = chanoi(N, 1, 2, 3)

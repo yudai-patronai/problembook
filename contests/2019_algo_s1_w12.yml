@@ -1,0 +1,46 @@
+name: 2019_algo_s1_w12
+language: python
+problems:
+    
+    # Фибоначчи
+    - 412f2781-c52b-4753-b451-2638b8727cc1:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик - математик
+    - e4c4b882-2eb9-47d8-b55c-8320fa282f34:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик - художник
+    - acd0aa11-ccf3-4336-ae8d-6637905dc5c4:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Компьютерная игра
+    - 7991115d-b097-4d30-87e5-eddd554d87ec:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Взрывоопасность (A,B)
+    - f6dfdebd-3352-4ac1-b520-d4b997d0e02b:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Шоколадка
+    - 34cb6f38-1082-45b7-a9f8-eccd2c7df242:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

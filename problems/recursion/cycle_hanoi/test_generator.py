@@ -4,14 +4,13 @@ import os
 from lib import random
 import shutil
 random.seed(42)
-MAX_N = 30
 
 def generate_test(name, n):
     with open(name, "w") as f:
         f.write(str(n) + '\n')
     #answer
     with open("%s.a" % name, 'w') as f:
-        f.write('OK')
+        f.write('YES\n')
 
 if __name__ == "__main__":
     test_folder = "tests"

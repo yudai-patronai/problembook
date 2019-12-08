@@ -1,0 +1,53 @@
+name: 2019_algo_s1_w13
+language: python
+problems:
+    
+    # Удалить короткие слова
+    - 00ed44a8-0dd3-4a5a-b705-63b4df9a08e4:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сортировка слов по длине
+    - 462ef47d-bdc8-4a09-a4ef-8d8008832c5e:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Префикс функция
+    - f8158168-7725-4489-ae3a-0c278e0cf875:
+        score: 100
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 256M
+    
+    # Z-функция
+    - d725c1b9-62ac-4f62-8a0c-7e47042a377f:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 256M
+    
+    # Поиск подстроки в строке
+    - 5e36b7fd-7839-4f63-bbd4-86209619bcba:
+        score: 100
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 256M
+    
+    # А-функция
+    - 7879c456-6b2d-492f-929e-75895ad05ce8:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 256M
+    
+    # Циклический сдвиг
+    - c065553e-a163-4764-bb2a-72e2e422f9f4:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 256M
+    

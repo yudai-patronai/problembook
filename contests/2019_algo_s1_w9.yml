@@ -1,0 +1,60 @@
+name: 2019_algo_s1_w9
+language: python
+problems:
+    
+    # Анатомия матрёшки
+    - cd0bfd22-cfc4-4cd0-a28c-783717d148e6:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Женские и мужские последовательности Хофштадтера
+    - d7f8d30b-8d20-46b4-84e3-7e0bf7e38932:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подтягивания лесенкой
+    - 18839e41-dbd9-488e-b006-b733bd9999d1:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Размен денег
+    - b8b24d23-abfc-4251-8bbe-ef32aa9375e6:
+        score: 80
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Можно ли получить N из 1, прибавляя 5ки и 3ки?
+    - 2027f832-2bf0-4f5e-8487-7a02b4e2c72a:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Все подмассивы
+    - b878917b-8949-4bbb-a9f2-6c0d40fe0e4d:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Два хода конем
+    - 1003c2c0-2500-4968-9641-c19c38e3091e:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Детерминант матрицы
+    - 85ecfc89-9849-4cd0-ad5e-b203d0e5b156:
+        score: 150
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+    

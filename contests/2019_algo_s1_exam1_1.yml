@@ -1,0 +1,74 @@
+name: 2019_algo_s1_exam1_1
+language: python
+problems:
+    
+    # Что решал Вася?
+    - a3d7308c-e73c-4e19-8f3e-9c0890f19320:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Ход короля
+    - c535fcfd-f6e0-4a3d-bc04-9fff35b923d6:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # След матрицы
+    - 3e93ee94-2a68-4098-a8ac-f196f8691a0b:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сумма чисел, следующих за нечётным
+    - 19898eb6-43f0-4058-be03-dea311330188:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Алгоритм Евклида для целых чисел
+    - 98b9ddde-e88b-4def-9e53-e9145376afff:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Количество элементов, равных максимуму
+    - 4f36aeaf-e053-4563-9c25-3fc9af1b8fbf:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Считывание числа в вавилонской системе счисления
+    - ef198727-2f8f-4a23-a3d4-ed8e8ec457db:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Циклический сдвиг на М позиций
+    - b1a4dbc2-1dab-498b-b38c-0940a9259a55:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Транспонирование квадратной матрицы
+    - 63d96a00-3c47-487b-81af-be0eaaaec6a4:
+        score: 130
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Голосование за лучший фильм
+    - d547698d-cc75-41a6-bdce-44fef6f232b8:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

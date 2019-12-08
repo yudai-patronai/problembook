@@ -1,0 +1,74 @@
+name: 2019_algo_s1_exam1_7
+language: python
+problems:
+    
+    # Простая таблица
+    - 88d516cd-748f-47a1-8ccf-cb1a053c3990:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Ход короля
+    - c535fcfd-f6e0-4a3d-bc04-9fff35b923d6:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Таблица умножения
+    - ad3d90d5-3c35-48af-b474-183f94c9927a:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Где окажется робот?
+    - 4e8ee501-d0c7-4d60-9b85-987ee2b1ca91:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Расширенный алгоритм Евклида
+    - d4839b53-eb8e-4f4c-ab58-6d2d6408d2cd:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Количество элементов, равных минимуму
+    - 702bad4f-6939-43cf-9ee6-47235fc41784:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Считывание числа в вавилонской системе счисления
+    - ef198727-2f8f-4a23-a3d4-ed8e8ec457db:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Перестановка с К-ым элементом
+    - 6784ad27-b957-4b8d-a997-56ea59f7ea03:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Транспонирование квадратной матрицы
+    - 63d96a00-3c47-487b-81af-be0eaaaec6a4:
+        score: 130
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Голосование за партии
+    - d63dea3a-9b40-45ff-b4a4-03bf3ce10a0c:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

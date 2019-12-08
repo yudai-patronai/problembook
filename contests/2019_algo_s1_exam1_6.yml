@@ -1,0 +1,74 @@
+name: 2019_algo_s1_exam1_6
+language: python
+problems:
+    
+    # Что решал Вася?
+    - a3d7308c-e73c-4e19-8f3e-9c0890f19320:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Ход слона
+    - fb690335-ffe3-4425-880f-53ba74727ecb:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Таблица умножения
+    - ad3d90d5-3c35-48af-b474-183f94c9927a:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сумма чисел, следующих за нечётным
+    - 19898eb6-43f0-4058-be03-dea311330188:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Алгоритм RSA
+    - e4506a9f-8489-4f90-801a-752c28f213f3:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Количество элементов, равных максимуму
+    - 4f36aeaf-e053-4563-9c25-3fc9af1b8fbf:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Считывание числа в системе счисления майя
+    - 3973abcf-5bc6-4759-b542-9a5016250900:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Циклический сдвиг на М позиций
+    - b1a4dbc2-1dab-498b-b38c-0940a9259a55:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Является ли квадрат волшебным?
+    - db119bd5-125e-4bbe-a82f-cbaf5b3c4184:
+        score: 130
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Голосование за партии
+    - d63dea3a-9b40-45ff-b4a4-03bf3ce10a0c:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
