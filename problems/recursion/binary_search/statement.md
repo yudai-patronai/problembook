@@ -2,7 +2,7 @@
 id: a39ee093-d715-4949-bfa8-ba1e2b9c757d
 longname: Рекурсивный бинарный поиск в отсортированном массиве
 languages: [python]
-tags: [recursion]
+tags: [recursion,binsearch]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1
