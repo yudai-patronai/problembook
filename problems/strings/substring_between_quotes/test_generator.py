@@ -3,7 +3,7 @@ from lib.testgen import TestSet
 tests = TestSet()
 
 tests.add(
-    '"Kto tam?" — sprosil dyadya Fyodor.\n',
+    '"Kto tam?" - sprosil dyadya Fyodor.\n',
     'Kto tam?\n'
 )
 tests.add(
