@@ -42,23 +42,27 @@ def is_greater_by_time(e1, e2):
     return e1[0] > e2[0]
 
 
+def search(arr, x):
+    return binary_search(arr, (x,), is_greater_by_time)
+
+
 def find_types(logs, key):
     res = []
-    l, r = binary_search(logs, (key, ''), is_greater_by_time)
+    l, r = search(logs, key)
     for i in range(l + 1, r):
         res.append(logs[i][1])
     if l + 1 == r:
         # Not found
         if l >= 0:
             need_time = logs[l][0]
-            for i in range(l, -1, -1):
-                if logs[i][0] == need_time:
-                    res.append(logs[i][1])
+            l1, r1 = search(logs[ : l + 1], need_time)
+            for i in range(l1 + 1, r1):
+                res.append(logs[i][1])
         if r < len(logs):
             need_time = logs[r][0]
-            for i in range(r, len(logs)):
-                if logs[i][0] == need_time:
-                    res.append(logs[i][1])
+            l1, r1 = search(logs[r : ], need_time)
+            for i in range(l1 + 1, r1):
+                res.append(logs[i + r][1])
     return res
 
 
