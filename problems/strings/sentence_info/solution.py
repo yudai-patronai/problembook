@@ -7,6 +7,6 @@ for wrd in list:
         continue
     if wrd[-1].isalnum():
         continue
-    print(i, cnt);
+    print(i, cnt)
     i += 1
     cnt = 0
