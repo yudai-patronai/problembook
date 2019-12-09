@@ -18,4 +18,4 @@ id_after = id(A)
 
 assert id_before == id_after, 'Your function does not work INPLACE'
 
-print(';'.join(map(str, A)))
+print(';'.join(A))

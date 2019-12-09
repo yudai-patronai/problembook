@@ -29,4 +29,4 @@ qa = [
 tests = TestSet()
 
 for q, a in qa:
-    tests.add(question(a), answer(a))
+    tests.add(question(q), answer(a))
