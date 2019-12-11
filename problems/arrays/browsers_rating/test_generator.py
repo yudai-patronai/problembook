@@ -51,16 +51,19 @@ tests.add(q1, a1)
 
 l1 = []
 l2 = []
-q1 = '40\n'
-for cnt in range(40):
-    i1 = randint(1, 100) % 2
-    q1 += 'desktop ' if i1 == 0 else 'mobile '
-    i2 = randint(1, 100) % 5
-    q1 += brows[i2]
-    if i1 == 0:
-        l1.append(i2)
-    else:
-        l2.append(i2)
-tests.add(q1, gen_answer(l1, l2))
+for var in [40, 60, 70]:
+    l1.clear()
+    l2.clear()
+    q1 = str(var) + '\n'
+    for cnt in range(var):
+        i1 = randint(1, 100) % 2
+        q1 += 'desktop ' if i1 == 0 else 'mobile '
+        i2 = randint(1, 100) % 5
+        q1 += brows[i2]
+        if i1 == 0:
+            l1.append(i2)
+        else:
+            l2.append(i2)
+    tests.add(q1, gen_answer(l1, l2))
 
     
