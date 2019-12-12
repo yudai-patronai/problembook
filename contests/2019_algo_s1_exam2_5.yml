@@ -1,0 +1,74 @@
+name: 2019_algo_s1_exam2_5
+language: python
+problems:
+    
+    # Сколько в строке букв?
+    - 522b7447-7780-4664-94d0-8bc82e6306f4:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подсчет количества четных цифр в строке
+    - db074a70-a398-403a-b90b-e5ab63f23474:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Анализ предложений
+    - b1791a52-4c2a-4784-a33a-c71dd1c26107:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Разбинение барьеру на величинах скоростей
+    - 009e1c6c-8fa2-4d50-9004-cc320633afcb:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Циклические башни
+    - 7bb4b9ac-72ab-4de9-a159-e99074bef695:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заботливый фермер
+    - 4c5c3594-d71c-4bc5-b973-d95ee3944cba:
+        score: 110
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Длинное название задачи
+    - 7cb24aa1-9f28-4b71-8c4f-1bcd7d2fef05:
+        score: 110
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Белый король
+    - 982d3c81-9848-4d21-ae2e-6cb98ccb00c8:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Хорошо ли перемешаны карты?
+    - 206bcdf3-dd5b-4498-93e7-67ed3d75e2c8:
+        score: 130
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Калькулятор для векторов
+    - 358dc158-cfc5-4ee1-8f29-a492462d01ca:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

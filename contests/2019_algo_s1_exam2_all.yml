@@ -1,0 +1,172 @@
+name: 2019_algo_s1_exam2_all
+language: python
+problems:
+    
+    # Длины слов
+    - eb9cea10-7a39-4b88-915b-1b747054b6b4:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Цитаты
+    - 8cabfeca-651b-490f-8b00-49faf7d1723d:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сколько в строке букв?
+    - 522b7447-7780-4664-94d0-8bc82e6306f4:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подсчет количества четных цифр в строке
+    - db074a70-a398-403a-b90b-e5ab63f23474:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заборчик
+    - 3bbb963b-0a57-4d74-a279-501671c07c86:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Произведение чисел в строке
+    - bd15229f-780d-4a49-bc59-5b7e8b41e4d1:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подсчет количества букв в тексте
+    - 4d79e5cc-f5e2-42a2-b60e-4893004c7fd9:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Слияние массивов молекул по массе
+    - 2ce50848-7f19-471e-9f16-4d594b3e0b7e:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Слияние массивов по количеству времени
+    - a05a8016-d5c6-4bb9-bd6a-92d25270bf22:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Ремонт в Ханое
+    - 81b6717a-66c6-4fd0-81c4-17d29d564e61:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Циклические башни
+    - 7bb4b9ac-72ab-4de9-a159-e99074bef695:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заботливый фермер
+    - 4c5c3594-d71c-4bc5-b973-d95ee3944cba:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Гвоздики
+    - a8b0dd50-d38c-47f3-85d4-d95ff71f364b:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Белый король
+    - 982d3c81-9848-4d21-ae2e-6cb98ccb00c8:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Задача о рюкзаке
+    - f906faed-3478-4dc7-9eb8-02fde7ee2abc:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Побег
+    - d64b1f50-0304-4702-8e56-9c54d18e6c33:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Хорошо ли перемешаны карты?
+    - 206bcdf3-dd5b-4498-93e7-67ed3d75e2c8:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Редакционное расстояние
+    - 8617f38c-f6f4-45e4-bdff-40071f411ac5:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Калькулятор для векторов
+    - 358dc158-cfc5-4ee1-8f29-a492462d01ca:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Рейтинги браузеров
+    - e0514d4f-647c-4142-a15a-0749207de0dc:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Анализ предложений
+    - b1791a52-4c2a-4784-a33a-c71dd1c26107:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Разбинение барьеру на величинах скоростей
+    - 009e1c6c-8fa2-4d50-9004-cc320633afcb:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск частицы
+    - ba309449-13f2-44d6-a914-16ebec82df13:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Длинное название задачи
+    - 7cb24aa1-9f28-4b71-8c4f-1bcd7d2fef05:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

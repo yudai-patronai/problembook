@@ -1,0 +1,74 @@
+name: 2019_algo_s1_exam2_4
+language: python
+problems:
+    
+    # Сколько в строке букв?
+    - 522b7447-7780-4664-94d0-8bc82e6306f4:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Произведение чисел в строке
+    - bd15229f-780d-4a49-bc59-5b7e8b41e4d1:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подсчет количества букв в тексте
+    - 4d79e5cc-f5e2-42a2-b60e-4893004c7fd9:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Разбинение барьеру на величинах скоростей
+    - 009e1c6c-8fa2-4d50-9004-cc320633afcb:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Ремонт в Ханое
+    - 81b6717a-66c6-4fd0-81c4-17d29d564e61:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заботливый фермер
+    - 4c5c3594-d71c-4bc5-b973-d95ee3944cba:
+        score: 110
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Длинное название задачи
+    - 7cb24aa1-9f28-4b71-8c4f-1bcd7d2fef05:
+        score: 110
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Задача о рюкзаке
+    - f906faed-3478-4dc7-9eb8-02fde7ee2abc:
+        score: 120
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Редакционное расстояние
+    - 8617f38c-f6f4-45e4-bdff-40071f411ac5:
+        score: 130
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Калькулятор для векторов
+    - 358dc158-cfc5-4ee1-8f29-a492462d01ca:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

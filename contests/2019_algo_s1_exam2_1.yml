@@ -1,0 +1,74 @@
+name: 2019_algo_s1_exam2_1
+language: python
+problems:
+    
+    # Цитаты
+    - 8cabfeca-651b-490f-8b00-49faf7d1723d:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подсчет количества четных цифр в строке
+    - db074a70-a398-403a-b90b-e5ab63f23474:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подсчет количества букв в тексте
+    - 4d79e5cc-f5e2-42a2-b60e-4893004c7fd9:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Слияние массивов молекул по массе
+    - 2ce50848-7f19-471e-9f16-4d594b3e0b7e:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Ремонт в Ханое
+    - 81b6717a-66c6-4fd0-81c4-17d29d564e61:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заботливый фермер
+    - 4c5c3594-d71c-4bc5-b973-d95ee3944cba:
+        score: 110
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Гвоздики
+    - a8b0dd50-d38c-47f3-85d4-d95ff71f364b:
+        score: 110
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Белый король
+    - 982d3c81-9848-4d21-ae2e-6cb98ccb00c8:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Редакционное расстояние
+    - 8617f38c-f6f4-45e4-bdff-40071f411ac5:
+        score: 130
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Калькулятор для векторов
+    - 358dc158-cfc5-4ee1-8f29-a492462d01ca:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
