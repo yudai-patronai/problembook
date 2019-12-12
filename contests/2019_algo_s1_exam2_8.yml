@@ -1,0 +1,74 @@
+name: 2019_algo_s1_exam2_8
+language: python
+problems:
+    
+    # Сколько в строке букв?
+    - 522b7447-7780-4664-94d0-8bc82e6306f4:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Произведение чисел в строке
+    - bd15229f-780d-4a49-bc59-5b7e8b41e4d1:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Анализ предложений
+    - b1791a52-4c2a-4784-a33a-c71dd1c26107:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Разбинение барьеру на величинах скоростей
+    - 009e1c6c-8fa2-4d50-9004-cc320633afcb:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Ремонт в Ханое
+    - 81b6717a-66c6-4fd0-81c4-17d29d564e61:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск частицы
+    - ba309449-13f2-44d6-a914-16ebec82df13:
+        score: 110
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Гвоздики
+    - a8b0dd50-d38c-47f3-85d4-d95ff71f364b:
+        score: 110
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Побег
+    - d64b1f50-0304-4702-8e56-9c54d18e6c33:
+        score: 120
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Хорошо ли перемешаны карты?
+    - 206bcdf3-dd5b-4498-93e7-67ed3d75e2c8:
+        score: 130
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Калькулятор для векторов
+    - 358dc158-cfc5-4ee1-8f29-a492462d01ca:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
