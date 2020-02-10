@@ -1,5 +1,7 @@
 from lib.testgen import TestSet
-from lib.random import randint, shuffle
+from lib.random import randint, shuffle, seed
+
+seed(42)
 
 MONTHES = [
     ('January', 31),
