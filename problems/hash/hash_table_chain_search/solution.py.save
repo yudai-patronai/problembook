@@ -1,0 +1,28 @@
+def poly_hash(p, m, s):
+    # полиномиальный хеш справа-налево
+    # строка s = s_0 s_1 .. s_i .. s_{n-1}
+    # хеш =
+    #  (o_0 * p^{len(s)-1} + o_1 * p^{len(s)-2} + ... + o_i * p^(len(s)-i-1) + ... + o_{n-2} * p + o_{n-1}) mod m
+    #  где o_i = ord(s_i)
+
+   h = 0
+    for c in s:
+        h = ( (h * p) % m + ord(c)) % m  # % m внутренний для избежания переполнения (длинной арифметики)
+
+    return h
+
+
+def search(hash_table, element):
+
+    m = 10000
+    p = 11
+    hsh = poly_hash(p, m, element)
+    index = hsh % length
+    if len(hash_table[index]) == 0:
+        return False
+    lenchain = len(hash_table[index])
+    for i in range(lenchain):
+        if hsh == hash_table[index][i][0]:
+            return True
+    return False
+print(search(hash_table1, input()))

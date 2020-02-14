@@ -1,0 +1,82 @@
+---
+id: a8afc600-b11f-4ec3-801f-47f053188bb9
+longname: Наличие элемента в хеш-таблице
+languages: [python]
+tags: [hash,standart]
+checker: cmp_yesno
+time_limit: 1
+real_time_limit: 1
+max_vm_size: 64M
+---
+
+Задана хеш-таблица вида:
+
+```python
+hash_table = [
+    [], # это пустой элемент
+    [[full_hash0, key0, value0]], # хранится одно значение
+    [[full_hash1, key1, value_1], [full_hash2, key2, value2]], # цепочки реализованы так
+    ...
+]
+``` 
+которая хранится в переменной hash_table1 (ввод таблицы осуществлять не нужно). Размер таблицы 100, модуль хеша 10000, основание хеша 11. Определить, есть ли элемент (строка) в хеш-таблице с цепочками.
+
+### Формат входных данных
+
+Одна строка
+
+### Формат выходных данных
+
+Значение, соответствующее вводимой строке, или строка ValueNotFound
+
+### Примеры
+
+```
+-> [[]]*100
+-> a
+--
+<-#!/usr/bin/env python3
+
+
+import os
+from lib import random
+import shutil
+from string import ascii_lowercase
+from lib.testgen import TestSet
+
+
+NUM_RAND_TESTS = 10
+MAX_STR_LEN = 500
+random.seed(100)
+
+def find_distance(first, second):
+    matrix = [[0] * (len(second) + 1) for i in range(len(first) + 1)]
+    for i in range(len(first) + 1):
+        matrix[i][0] = i
+    for j in range(len(second) + 1):
+        matrix[0][j] = j
+
+    for i in range(1, len(first) + 1):
+        for j in range(1, len(second) + 1):
+            matrix[i][j] = min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1,
+                               matrix[i - 1][j - 1] + (0 if first[i - 1] == second[j - 1] else 1))
+    return matrix[-1][-1]
+
+
+def get_case(str1, str2):
+    return '{}\n{}'.format(str1, str2), str(find_distance(str1, str2))
+
+
+tests = TestSet()
+
+tests.add(*get_case("aaaaa", "aaaaa"))
+tests.add(*get_case("abcdef", "cdefab"))
+tests.add(*get_case("abcdea", "bcdeab"))
+
+for _ in range(NUM_RAND_TESTS):
+    # use random.choice instead of random.smaple cause MAX_STR_LEN > len(ascii_lowercase)
+    str1 = ''.join([random.choice(ascii_lowercase) for _ in range(random.randint(1, MAX_STR_LEN))])
+    str2 = ''.join([random.choice(ascii_lowercase) for _ in range(random.randint(1, MAX_STR_LEN))])
+
+    tests.add(*get_case(str1, str2)) 
+```

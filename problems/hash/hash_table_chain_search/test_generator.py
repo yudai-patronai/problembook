@@ -4,6 +4,14 @@ import random
 
 seed(42)
 
+def poly_hash(p, m, s):
+    h = 0
+    for c in s:
+        h = ( (h * p) % m + ord(c)) % m  # % m внутренний для избежания переполнения (длинной арифметики)
+
+    return h
+
+
 words = ["Alarm", "Arena", "Service", "Enemy", "Canvas",
              "Sort", "Experiment", "Mine", "General", "Winter",
              "Performance", "Control", "Cooking", "Creation",
@@ -31,11 +39,11 @@ def answer(bol):
     return '{}\n'.format(bol)
 
 #положительные тесты
-ranlist = random.choices(words, k=10)
+ranlist = random.sample(words, 10)
 
 tests = TestSet()
 for word in ranlist:
-    tests.add(question(word), answer(True))
+    tests.add(question(word), answer(str(poly_hash(11, 10000, word))))
 
 #случайные тесты
 for i in range(5):
@@ -45,4 +53,5 @@ for i in range(5):
     for j in range(s_len):
         char_ord = randint(ord('A'), ord('z'))
         s += chr(char_ord)  
-    tests.add(question(s), answer(s in set(words)))
+    if not s in set(words):
+        tests.add(question(s), answer('Value Not Found'))
