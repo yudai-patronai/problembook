@@ -1,0 +1,74 @@
+name: 2020_cpp_algo_s1_w2
+language: cpp
+problems:
+    
+    # Алгоритм Евклида
+    - 7d9a68d9-0113-4a88-9ebc-2829477602d3:
+        score: 20
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Високосный год
+    - a17a3e98-5a76-4279-8abf-5ff588b0b091:
+        score: 30
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Количество четных элементов
+    - e4b12144-6c32-4a59-ae94-48762c425814:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Точная степень двойки
+    - 453bacb4-181f-4bd4-884a-f7cdda8e32da:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск максильного четного числа в последовательности
+    - e8184571-6255-451e-9c8f-f71b4e1c90aa:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Количество элементов, равных максимуму
+    - 4f36aeaf-e053-4563-9c25-3fc9af1b8fbf:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Тест простоты числа
+    - e55a944d-1175-4ef5-b8a4-76236f7e73c1:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Факторизация числа
+    - 1901d2f8-2ef7-46b8-94e1-7cfdfe5f05d2:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Задача про гаишника
+    - 574594f5-7571-452f-9a13-27720288fd63:
+        score: 200
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 64M
+    
+    # Вавилонская система счисления
+    - 9953440f-c15b-4ac0-8ea6-2852f3fe5ea4:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
