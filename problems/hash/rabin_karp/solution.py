@@ -7,16 +7,16 @@ def poly_hash(s):
     p = 1
     for c in s:
         h.append(((h[-1] * B) % M + ord(c)) % M)
-        p.append((p * B) % M)
+        p = (p * B) % M
     return (h, p)
 
 
 if __name__ == "__main__":
     s = input()
     t = input()
-    s_hash, _ = poly_hash(s)
+    s_hash, p = poly_hash(s)
     s_hash = s_hash[-1]
-    h, p = poly_hash(t)
+    h, _ = poly_hash(t)
     pos = []
     for l in range(len(t) - len(s) + 1):
         r = l + len(s)

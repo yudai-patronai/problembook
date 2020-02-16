@@ -4,7 +4,7 @@ longname: Алгоритм Рабина-Карпа
 languages: [cpp, python]
 tags: [hash]
 checker: cmp_int_seq
-time_limit: 2
+time_limit: 1
 real_time_limit: 2
 max_vm_size: 64M
 ---

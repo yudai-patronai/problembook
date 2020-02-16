@@ -3,20 +3,22 @@
 #include <string>
 #include <cstdint>
 
+const uint64_t M = (1UL << 32) - 5UL;
+const uint64_t B = 239UL;
+
 void poly_hash(std::string const& s, std::vector<uint64_t> * h,
         std::vector<uint64_t> * p) {
-    uint64_t base = 257;
     for (char c : s) {
-        h->push_back(*h->rbegin() * base + static_cast<uint64_t>(c));
-        p->push_back(*p->rbegin() * base);
+        h->push_back(((*h->rbegin() * B) % M +
+                     static_cast<uint64_t>(c - 'a' + 1)) % M);
+        p->push_back((*p->rbegin() * B) % M);
     }
 }
 
 uint64_t poly_hash(std::string const& s) {
-    uint64_t base = 257;
     uint64_t h = 0;
     for (char c : s) {
-        h = h * base + static_cast<uint64_t>(c);
+        h = ((h * B) % M + static_cast<uint64_t>(c - 'a' + 1)) % M;
     }
     return h;
 }
@@ -33,7 +35,7 @@ int main() {
     bool flag = false;
     for (size_t l = 0; l < n; ++l) {
         size_t r = l + s.size();
-        if (s_hash == h[r] - h[l] * p[r - l]) {
+        if (s_hash == (h[r] + M - (h[l] * p[r - l]) % M) % M) {
             std::cout << l << ' ';
             flag = true;
         }

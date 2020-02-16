@@ -65,6 +65,21 @@ def generate_at_least_once_test(p, n, a, seed):
     return (x[a:b], x)
 
 
+def generate_thue_morse(n, m):
+    def rev(c):
+        if c == "a":
+            return "b"
+        else:
+            return "a"
+
+    s = "a"
+    x = 1
+    while x < n:
+        s += "".join([rev(c) for c in s])
+        x *= 2
+    return s[:m], s
+
+
 if __name__ == "__main__":
     tests = [
         ["aaa", "aaaaa"],
@@ -89,6 +104,9 @@ if __name__ == "__main__":
         generate_random_test(1, 10000, 3, "gf234d"),
         generate_random_test(5, 10000, 3, "gfsd"),
         generate_random_test(1, 10000, 1, "asdfgsdf"),
+        ("q" * 100000, "q" * 200000),
+        generate_thue_morse(2546 * 10, 2545),
+        generate_thue_morse(257 * 10, 256)
     ]
     for t in tests:
         add_test(t)
