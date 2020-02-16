@@ -17,5 +17,5 @@ def extreme_points(N, x):
 
     return ' '.join(map(str, buf))
 
-print(extreme_points(N, x))
 
+print(extreme_points(N, x))

@@ -12,7 +12,7 @@ def no_wall(maze, coord):
 
 def has_exit(maze):
     person_pos = find_person(maze)
-    
+
     maze_x, maze_y = len(maze)-1, len(maze[0])-1
     check_cell = [person_pos]
     while True:
@@ -22,7 +22,7 @@ def has_exit(maze):
                 return True
             elif y in (0, maze_y):
                 return True
-        
+
         #  совершаем шаги
         check_new = []
         for x, y in check_cell:
@@ -30,13 +30,14 @@ def has_exit(maze):
                 if no_wall(maze, coord):
                     check_new.append(coord)
             maze[x] = maze[x][:y] + '#' + maze[x][y+1:]
-        
+
         if len(check_new) == 0:
             break
         else:
             check_cell = check_new
-    
+
     return False
+
 
 height, width = map(int, input().split())
 maze = []

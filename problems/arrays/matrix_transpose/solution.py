@@ -1,5 +1,5 @@
 def transpose(arr):
-    tr = [ len(l) * [ None ] for l in arr ]  # copy 2d
+    tr = [len(l) * [None] for l in arr]  # copy 2d
     dim = len(arr)
     for i in range(dim):
         for j in range(dim):
