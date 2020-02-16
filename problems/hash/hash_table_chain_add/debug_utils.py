@@ -48,22 +48,21 @@ def print_table(table):
 
 hash_table = [[] for _ in range(HTABLE_SIZE)]
 
-# with open('collision_test.txt') as f:
-#     N = int(next(f))
-#     for row in f:
-#         k, val = row.split()
-#         insert(hash_table, k, val)
+with open('collision_test.txt') as f:
+    N = int(next(f))
+    for row in f:
+        k, val = row.split()
+        insert(hash_table, k, val)
 
-s = """3
-PHYSICS thermodynamics
-INFORMATICS network_architecture
-MATH number_theory
-"""
-
-for row in s.strip().split('\n')[1:]:
-    print(repr(row))
-    k, v = row.split()
-    insert(hash_table, k, v)
+# s = """3
+# PHYSICS thermodynamics
+# INFORMATICS network_architecture
+# MATH number_theory
+# """
+# for row in s.strip().split('\n')[1:]:
+#     print(repr(row))
+#     k, v = row.split()
+#     insert(hash_table, k, v)
 
 print_table(hash_table)
 # N = int(input())
