@@ -7,6 +7,7 @@ def bubble_sort(A):
             if A[i] > A[i + 1]:
                 A[i], A[i + 1] = A[i + 1], A[i]
 
+
 n = int(input())
 l = list(map(int, input().split()))
 bubble_sort(l)

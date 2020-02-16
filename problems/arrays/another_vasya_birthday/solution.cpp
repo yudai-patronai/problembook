@@ -5,7 +5,7 @@ int main() {
     unsigned n;
     std::cin >> n;
     unsigned array[200];
-    for (unsigned i = 0; i < array_size; ++i)
+    for (unsigned i = 0; i < n; ++i)
         array[i] = 0;
 
     for (unsigned i = 0; i < n; ++i)

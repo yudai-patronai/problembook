@@ -5,13 +5,13 @@ int main() {
     unsigned answer = 0;
     std::cin >> N;
     unsigned array[N];
-    for (unsigned i = 0; i < n; ++i) {
+    for (unsigned i = 0; i < N; ++i) {
         std::cin >> array[i];
     }
 
     // bubble sort
-    for (unsigned i = 0; i < n; ++i) {
-        for (unsigned j = 1; j < n; ++j) {
+    for (unsigned i = 0; i < N; ++i) {
+        for (unsigned j = 1; j < N; ++j) {
             if (array[j] < array[j - 1]) {
                 unsigned temp = array[j];
                 array[j] = array[j - 1];
@@ -20,7 +20,7 @@ int main() {
         }
     }
 
-    for (unsigned i = 0; i < n; ++i) {
+    for (unsigned i = 0; i < N; ++i) {
         if (array[i + 1] != (array[i] + 1))
             answer += statues[i + 1] - statues[i] - 1;
     }

@@ -3,7 +3,7 @@
 #include <inttypes.h>
 
 int* read_array(int size) {
-    int* arr = (int*)malloc(size * sizeof(int));
+    int* arr = reinterpret_cast<int*>(malloc(size * sizeof(int)));
     for (int i = 0; i < size; ++i) {
         scanf("%d", &arr[i]);
     }

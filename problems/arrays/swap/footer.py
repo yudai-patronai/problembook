@@ -14,7 +14,7 @@ if __name__ == "__main__":
     array_input_str_before = str(array_input)
 
     array_correct = list(array_input)  # copy
-    
+
     swap(array_input, k)  # student's answer
     correct_swap(array_correct, k)  # correct answer
 

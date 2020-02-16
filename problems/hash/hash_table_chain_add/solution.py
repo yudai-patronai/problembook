@@ -2,12 +2,13 @@
 Ассоциативный массив на хеш-таблице с цепочками.
 
 hash_table = [
-    [],  # пустой элемент 
+    [],  # пустой элемент
     # цепочка
-    [[full_hash1, key1, value1], [full_hash2, key2, value2]], 
+    [[full_hash1, key1, value1], [full_hash2, key2, value2]],
     ...
 ]
 """
+
 
 def poly_hash(p, m, s):
     """
@@ -15,8 +16,9 @@ def poly_hash(p, m, s):
     """
     h = 0
     for c in s:
-        h = ( (h * p) % m + ord(c)) % m
+        h = ((h * p) % m + ord(c)) % m
     return h
+
 
 def insert(table, key, value):
     key_hash = poly_hash(HASH_BASE, HASH_MODULE, key)
@@ -31,6 +33,7 @@ def insert(table, key, value):
 
     # ключа в таблице нет
     chain.append([key_hash, key, value])
+
 
 def print_table(table):
     for i, chain in enumerate(table):

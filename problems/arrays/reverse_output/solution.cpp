@@ -6,7 +6,7 @@ int main() {
   std::cin >> n;
 
   int a[2000];
-  for (int i = 0; i < array_size; ++i)
+  for (int i = 0; i < n; ++i)
     a[i] = 0;
 
   for (int i = 0; i < n; i++)
