@@ -1,30 +1,30 @@
-
 def count(string):
-	stack=[]
-	
-	for token in string.split():
+    stack = []
 
-		if token.isdigit():
-			stack.append(float(token))
-		elif token == '#':
-			if len(stack)>0:
-				res=sum(stack)
-				stack=[]
-				stack.append(res)
-			else:
-				return 0
-		elif token == '%':
-			if len(stack)<2:
-				return 0
-			else:
-				res=stack.pop()
-				stack.append(stack.pop()*res*0.01)
-	print(stack)
-	print(len(stack))	
-	if len(stack)>0:
-		return round(stack[-1])
-	else:
-		return 0
+    for token in string.split():
 
-if __name__=="__main__":
-	print(count(input()))
+        if token.isdigit():
+            stack.append(float(token))
+        elif token == '#':
+            if len(stack) > 0:
+                res = sum(stack)
+                stack = []
+                stack.append(res)
+            else:
+                return 0
+        elif token == '%':
+            if len(stack) < 2:
+                return 0
+            else:
+                res = stack.pop()
+                stack.append(stack.pop()*res*0.01)
+    print(stack)
+    print(len(stack))
+    if len(stack) > 0:
+        return round(stack[-1])
+    else:
+        return 0
+
+
+if __name__ == "__main__":
+    print(count(input()))

@@ -29,7 +29,8 @@ print_val = sys.stdout.getvalue()
 # Для нового запуска в процесе проверки на рекурсию нужны новые потоки.
 sys.stdout = StringIO()
 sys.stdin = StringIO(input_str)
-assert len(nums) <= 3 or num_exact in nums[len(nums) // 2 : len(nums) // 2 + 2] or test_recursion(lambda: exec(source_code))
+assert len(nums) <= 3 or num_exact in nums[len(nums) // 2: len(nums) // 2 + 2]\
+    or test_recursion(lambda: exec(source_code))
 
 # Возврат значений потокам ввода-вывода.
 sys.stdout, sys.stdin = old_stdout, old_stdin

@@ -1,6 +1,3 @@
-
-
-
 def __is_correct_path(n, arr):
     if len(arr) > 200000:
         print("Too long solution")
@@ -15,7 +12,8 @@ def __is_correct_path(n, arr):
                 print('Cannot move disc ', arr[i][0], 'from rod', arr[i][1])
                 flag = False
                 break
-            elif len(rods[new]) > 0 and arr[i][0] > rods[new][len(rods[new]) - 1]:
+            elif len(rods[new]) > 0 and arr[i][0] > \
+                    rods[new][len(rods[new]) - 1]:
                 print('Cannot move disc ', arr[i][0], 'to rod', arr[i][2])
                 flag = False
                 break
@@ -35,5 +33,6 @@ def __is_correct_path(n, arr):
         else:
             flag = False
     return flag
+
 
 print('YES' if __is_correct_path(__N, HANOI_PATH) else 'NO')

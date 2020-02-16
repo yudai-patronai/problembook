@@ -1,7 +1,7 @@
 N = int(input())
 line = input().split()
 max1 = max2 = 0
-min1 = min2 = 1000001	
+min1 = min2 = 1000001
 for word in line:
     x = int(word)
     if x > max2:

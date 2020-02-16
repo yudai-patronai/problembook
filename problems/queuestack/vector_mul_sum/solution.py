@@ -9,6 +9,7 @@
 ax,ay,az bx,by,bz + cx,cy,cz *
 """
 
+
 def vecmul(a, b):
     # c = [a, b]
     c = [None for _ in range(3)]
@@ -21,16 +22,16 @@ def vecmul(a, b):
 
 def vecsum(a, b):
     # c = a + b
-    return [ a[i] + b[i] for i in range(len(a)) ]
+    return [a[i] + b[i] for i in range(len(a))]
 
 
 postfix = input().split()
 
 stack = []
-for elem in postfix:    
-    if not elem in {'*', '+'}:  # операнд
-        l = list(map(int, elem.split(',')))
-        stack.append(l)
+for elem in postfix:
+    if elem not in {'*', '+'}:  # операнд
+        v = list(map(int, elem.split(',')))
+        stack.append(v)
         continue
     else:  # оператор
         operand2 = stack.pop()
@@ -43,4 +44,4 @@ for elem in postfix:
             raise ValueError(elem)
         stack.append(res)
 
-print( ','.join(map(str, stack.pop())) )
+print(','.join(map(str, stack.pop())))

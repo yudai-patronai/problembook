@@ -7,6 +7,7 @@ checker: cmp_file
 time_limit: 10
 real_time_limit: 10
 max_vm_size: 64M
+fixme: true
 ---
 
 
