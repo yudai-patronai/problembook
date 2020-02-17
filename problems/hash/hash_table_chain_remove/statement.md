@@ -49,9 +49,8 @@ fixme: true
 Если ключа нет, то функция должна вернуть строку `'KeyError'`.
 
 ### Примеры работы функции
-
-Таблица:
     
+    # исходное состояние таблицы
     example_table = [
         [], [],
         [
@@ -62,23 +61,9 @@ fixme: true
         ],
         [], [], [], [], [], [], [],
     ]
-
-
-```
--> remove(example_table, 'BEEN')
---
-<- 'lkawdk'
-```
-
-```
--> remove(example_table, 'PRODUCT')
---
-<- 'KeyError'
-```
-
-После вызовов функций из примеров таблица примет вид:
-
-```
+    v1 = remove(example_table, 'BEEN')      # v1 == 'lkawdk'
+    v2 = remove(example_table, 'PRODUCT')   # v2 == 'KeyError'
+    # таблица принимает вид (элемент с ключом 'BEEN' удалён)
     example_table = [
         [], [],
         [
@@ -88,4 +73,4 @@ fixme: true
         ],
         [], [], [], [], [], [], [],
     ]
-```
+
