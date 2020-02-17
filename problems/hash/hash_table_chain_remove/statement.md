@@ -51,8 +51,6 @@ fixme: true
 ### Примеры работы функции
 
 Таблица:
-
-```
     
     example_table = [
         [], [],
@@ -64,8 +62,7 @@ fixme: true
         ],
         [], [], [], [], [], [], [],
     ]
-    
-```
+
 
 ```
 -> remove(example_table, 'BEEN')
