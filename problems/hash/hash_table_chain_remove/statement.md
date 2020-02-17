@@ -3,7 +3,7 @@ id: c14ec2fd-290d-4c79-b6ec-4200ab6862f5
 longname: Хеш-таблица с цепочками - Удаление элемента
 languages: [python]
 tags: [hash,standart]
-checker: cmp_yesno
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -63,6 +63,22 @@ example_table = [
       [62, 'INDUSTRY', 'lfow'],
       [72, 'LETRASET', 'awdwad'],
       [32, 'BEEN', 'lkawdk']
+    ],
+    [], [], [], [], [], [], [],
+]
+
+```
+
+После вызовов функций из примеров таблица примет вид:
+
+```
+
+example_table = [
+    [], [],
+    [
+      [32, 'ONLY', 'pal;cw'],
+      [62, 'INDUSTRY', 'lfow'],
+      [72, 'LETRASET', 'awdwad']
     ],
     [], [], [], [], [], [], [],
 ]
