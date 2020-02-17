@@ -15,16 +15,13 @@ max_vm_size: 64M
 
 В тестах вашей программе будет **доступна** хеш-таблица следующего формата:
 
-```
+    hash_table = [
+        [], # это пустая цепочка
+        [[hash1, key1, value1]], # это цепочка с одним значением
+        [[hash2, key2, value2], [hash3, key3, value3]], # это цепочка с двумя значениями
+        ...
+    ]
 
-hash_table = [
-    [], # это пустая цепочка
-    [[hash1, key1, value1]], # это цепочка с одним значением
-    [[hash2, key2, value2], [hash3, key3, value3]], # это цепочка с двумя значениями
-    ...
-]
-
-```
 
 Она **хранится** в переменной `hash_table` (ввод таблицы осуществлять не нужно).
 Размер таблицы 10.
@@ -49,31 +46,15 @@ hash_table = [
 
 ### Примеры работы функции
 
-Таблица:
-
-```
-
-example_table = [
-    [], [],
-    [
-      [32, 'ONLY', 'pal;cw'],
-      [62, 'INDUSTRY', 'lfow'],
-      [72, 'LETRASET', 'awdwad'],
-      [32, 'BEEN', 'lkawdk']
-    ],
-    [], [], [], [], [], [], [],
-]
-
-```
-
-```
--> search(example_table, 'BEEN')
---
-<- 'lkawdk'
-```
-
-```
--> search(example_table, 'PRODUCT')
---
-<- 'KeyError'
-```
+    example_table = [
+        [], [],
+        [
+            [32, 'ONLY', 'pal;cw'],
+            [62, 'INDUSTRY', 'lfow'],
+            [72, 'LETRASET', 'awdwad'],
+            [32, 'BEEN', 'lkawdk']
+        ],
+        [], [], [], [], [], [], [],
+    ]
+    v1 = search(example_table, 'BEEN')      # v1 == 'lkawdk'
+    v2 = search(example_table, 'PRODUCT')   # v2 == 'KeyError'
