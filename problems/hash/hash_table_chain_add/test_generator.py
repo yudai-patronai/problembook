@@ -124,3 +124,19 @@ BOOK value
 49 BOOK value
 """
 )
+
+# скрытый тест на перезапись
+tests.add(
+"""4
+IVAN IVANOV 
+LINUS POLLING
+IVAN KRUZENSHTERN
+IVAN KRUTIKOV
+"""
+,
+"""2
+42 IVAN KRUTIKOV
+5
+55 LINUS POLLING
+"""
+)
