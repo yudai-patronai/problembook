@@ -1,5 +1,3 @@
-ERROR_MSG = 'KeyError'
-
 def poly_hash(p, m, s):
     h = 0
     for c in s:

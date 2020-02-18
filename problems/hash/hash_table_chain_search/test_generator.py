@@ -1,7 +1,5 @@
 from lib.testgen import TestSet
-from header import hash_table
-
-KEY_NOT_FOUND_MSG = 'KeyError'
+from header import hash_table, ERROR_MSG
 
 
 def table2dict(hash_table):
@@ -28,6 +26,6 @@ for k in keys:
     if k in dict_from_hashtable.keys():
         ans = dict_from_hashtable[k]
     else:
-        ans = KEY_NOT_FOUND_MSG
+        ans = ERROR_MSG
 
     tests.add(question(k), answer(ans))

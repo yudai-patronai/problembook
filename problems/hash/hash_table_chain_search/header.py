@@ -1,3 +1,5 @@
+ERROR_MSG = 'KeyError'
+
 # сгенерировано с параметрами хеша BASE = 91, MODULE = 100
 hash_table = [
      [],  # 0
