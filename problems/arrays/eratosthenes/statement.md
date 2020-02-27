@@ -2,7 +2,7 @@
 id: 3712a78d-d3e7-4295-9648-91d626525a7a
 longname: Решето Эратосфена
 tags: [arrays]
-languages: [python]
+languages: [cpp,python]
 checker: cmp_int_seq
 time_limit: 3
 real_time_limit: 5
