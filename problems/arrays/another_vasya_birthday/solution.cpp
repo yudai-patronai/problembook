@@ -1,10 +1,9 @@
 #include <iostream>
-#include <map>
 
 int main() {
     unsigned n;
     std::cin >> n;
-    unsigned array[200];
+    unsigned array[n];
     for (unsigned i = 0; i < n; ++i)
         array[i] = 0;
 
