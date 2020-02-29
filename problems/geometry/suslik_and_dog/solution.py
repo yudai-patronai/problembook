@@ -1,8 +1,12 @@
 def distance_sq(a, b):
     dis = (a[0]-b[0])**2 + (a[1]-b[1])**2
     return dis
-def dis_square_compare(a,b):
+
+
+def dis_square_compare(a, b):
     return 4*a <= b
+
+
 suslik = list(map(int, input().split()))
 sobaka = list(map(int, input().split()))
 n = int(input())
@@ -20,5 +24,4 @@ for i in range(n):
         flag = True
         break
 if not flag:
-    print("NO")
-
+    print(-1)
