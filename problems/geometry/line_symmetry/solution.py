@@ -9,7 +9,7 @@ elif delta_y == 0:
     y_ = 2*y1 - y
     x_ = x
 else:
-    k = delta_y / delta_y
+    k = delta_y / delta_x
     b = (y1 * x2 - y2 * x1) / delta_x
     k_perp = 1 / k
     b_perp = y- k_perp * x
