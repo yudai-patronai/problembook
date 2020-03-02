@@ -44,12 +44,12 @@ def generate_convex_polygon(max_size):
                   round(random.random() * 1500 - 1000, 5)),
             Point(round(random.random() * 500 + 500, 5),
                   round(random.random() * 500 + 500, 5))]
-    lower = math.radians(15)
+    lower = math.radians(3)
     while size < max_size:
-        sweep = max(math.pi/2, get_ang(poly[-2], poly[-1], poly[0])) - lower
-        if sweep < 0:
+        upper = min(math.radians(15), get_ang(poly[-2], poly[-1], poly[0]))
+        if upper - lower < 0:
             break
-        ang = random.random() * sweep + lower
+        ang = random.random() * (upper - lower) + lower
         v = rotate_and_normalize(poly[-2], poly[-1], ang)
         lim = 400
         p = None
@@ -85,7 +85,7 @@ def generate_test(name, testn):
     while poly:
         action = "add"
         if len(poly) > 1 and m > 0:
-            action = (["area"] + ["add"] * 8)[random.randint(0, 99) % 9]
+            action = (["area"] + ["add"] * 10)[random.randint(0, 99) % 11]
         if action == "add":
             j = random.randint(0, len(poly) - 1)
             queries.append("add {} {} {}".format(j, poly[j].x, poly[j].y))
