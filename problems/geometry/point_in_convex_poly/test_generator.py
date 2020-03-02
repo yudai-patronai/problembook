@@ -4,8 +4,9 @@ import shutil
 import math
 from collections import namedtuple
 
+
 EPS = 1e-5
-random.seed(42)
+random.seed(46)
 Point = namedtuple("Point", ["x", "y"])
 
 
@@ -15,7 +16,10 @@ def get_ang(p, q, r):
     dot = v.x*w.x + v.y*w.y
     l1 = (v.x*v.x + v.y*v.y) ** 0.5
     l2 = (w.x*w.x + w.y*w.y) ** 0.5
-    return math.acos(round(dot / l1 / l2, 5))
+    ang = math.acos(round(dot / l1 / l2, 5))
+    if ang < 0:
+        ang += math.pi * 2
+    return ang
 
 
 def check(p, q, r):
@@ -46,12 +50,12 @@ def generate_convex_polygon(max_size):
                   round(random.random() * 500 + 500, 5))]
     lower = math.radians(3)
     while size < max_size:
-        upper = min(math.radians(15), get_ang(poly[-2], poly[-1], poly[0]))
+        upper = min(math.radians(30), get_ang(poly[-2], poly[-1], poly[0]))
         if upper - lower < 0:
             break
         ang = random.random() * (upper - lower) + lower
         v = rotate_and_normalize(poly[-2], poly[-1], ang)
-        lim = 400
+        lim = 100
         p = None
         while p is None:
             d = random.random() * lim + 1
@@ -67,68 +71,47 @@ def generate_convex_polygon(max_size):
     return poly
 
 
-def get_area(poly):
-    ans = 0
+def check2(p, q, r):
+    v = Point(q.x - p.x, q.y - p.y)
+    w = Point(r.x - p.x, r.y - p.y)
+    cross = v.x*w.y - v.y*w.x
+    return cross > EPS
+
+
+def solve(poly, p):
     for i in range(-1, len(poly) - 1):
-        v = poly[i]
-        w = poly[i + 1]
-        ans += (v.x*w.y - v.y*w.x) / 2
-    return round(abs(ans), 5)
+        if not check2(poly[i], poly[i+1], p):
+            return "NO"
+    return "YES"
 
 
-def generate_test(name, testn):
-    n = random.randint(3, 90)
-    m = random.randint(1, 10)
+def generate_test(name, testn, inside=False):
+    n = random.randint(50, 1000)
     poly = generate_convex_polygon(n)
-    queries = ["end"]
-    answers = []
-    while poly:
-        action = "add"
-        if len(poly) > 1 and m > 0:
-            action = (["area"] + ["add"] * 10)[random.randint(0, 99) % 11]
-        if action == "add":
+    points = ["{:.5f} {:.5f}".format(p.x, p.y) for p in poly]
+    if inside:
+        j = i = random.randint(0, len(poly) - 1)
+        while j == i:
             j = random.randint(0, len(poly) - 1)
-            queries.append("add {} {} {}".format(j, poly[j].x, poly[j].y))
-            poly.pop(j)
-        else:
-            m -= 1
-            queries.append("area")
-            answers.append(str(get_area(poly)))
+        p = Point(round((poly[i].x + poly[j].x) / 2.0, 5),
+                  round((poly[i].y + poly[j].y) / 2.0, 5))
+    else:
+        p = Point(round(random.random() * 2000 - 1000, 5),
+                  round(random.random() * 2000 - 1000, 5))
+    ans = solve(poly, p)
     with open(name, "w") as f:
-        f.write("\n".join(reversed(queries)) + "\n")
+        f.write(str(len(points)) + "\n")
+        f.write("\n".join(points) + "\n")
+        f.write("{:.5f} {:.5f}\n".format(p.x, p.y))
     with open(name+".a", "w") as f:
-        f.write("\n".join(reversed(answers)))
+        f.write(ans)
 
 
-def generate_max_test(name, testn):
-    n = 90
-    m = 10
-    poly = generate_convex_polygon(n)
-    queries = ["end"]
-    answers = []
-    while poly:
-        action = "add"
-        if len(poly) > 1 and m > 0:
-            action = (["area"] + ["add"] * 8)[random.randint(0, 99) % 9]
-        if action == "add":
-            j = random.randint(0, len(poly) - 1)
-            queries.append("add {} {} {}".format(j, poly[j].x, poly[j].y))
-            poly.pop(j)
-        else:
-            m -= 1
-            queries.append("area")
-            answers.append(str(get_area(poly)))
-    with open(name, "w") as f:
-        f.write("\n".join(reversed(queries)) + "\n")
-    with open(name+".a", "w") as f:
-        f.write("\n".join(reversed(answers)))
-
-
-def mantest(name, queries, answers):
+def mantest(name, queries, answer):
     with open(name, "w") as f:
         f.write("\n".join(queries) + "\n")
     with open(name+".a", "w") as f:
-        f.write("\n".join(answers))
+        f.write(answer)
 
 
 if __name__ == "__main__":
@@ -142,18 +125,14 @@ if __name__ == "__main__":
     mantest(
         test_name,
         [
-            "add 0 1 1",
-            "add 1 0 1",
-            "add 2 0 0",
-            "area",
-            "add 3 1 0",
-            "area",
-            "end"
+            "4",
+            "1 1",
+            "0 1",
+            "0 0",
+            "1 0",
+            "0.5 0.5"
         ],
-        [
-            "0.5",
-            "1"
-        ]
+        "YES"
     )
 
     test = 2
@@ -162,15 +141,13 @@ if __name__ == "__main__":
     mantest(
         test_name,
         [
-            "add 0 0 1",
-            "add 1 -1 1",
-            "add 1 -1 -1",
-            "area",
-            "end"
+            "3",
+            "0 1",
+            "-1 1",
+            "-1 -1",
+            "0 0"
         ],
-        [
-            "1"
-        ]
+        "NO"
     )
 
     test = 3
@@ -179,24 +156,35 @@ if __name__ == "__main__":
     mantest(
         test_name,
         [
-            "add 0 -1 3",
-            "add 1 2 2",
-            "add 2 -1 -1",
-            "area",
-            "add 2 3 -2",
-            "area",
-            "add 4 -2 1",
-            "area",
-            "end"
+            "5",
+            "-1 3",
+            "-2 1",
+            "-1 -1",
+            "3 -2",
+            "2 2",
+            "-2 1"
         ],
-        [
-            "6",
-            "13.5",
-            "15.5"
-        ]
+        "YES"
     )
 
-    for test in range(4, 7):
+    test = 4
+    test_name = os.path.join(test_folder, "%02d" % test)
+    print("generating %s..." % test_name)
+    mantest(
+        test_name,
+        [
+            "5",
+            "-1 3",
+            "-2 1",
+            "-1 -1",
+            "3 -2",
+            "2 2",
+            "2.5 0"
+        ],
+        "YES"
+    )
+
+    for test in range(5, 7):
         test_name = os.path.join(test_folder, "%02d" % test)
         print("generating %s..." % test_name)
         generate_test(test_name, test)
@@ -204,4 +192,4 @@ if __name__ == "__main__":
     test = 7
     test_name = os.path.join(test_folder, "%02d" % test)
     print("generating %s..." % test_name)
-    generate_max_test(test_name, test)
+    generate_test(test_name, test, True)
