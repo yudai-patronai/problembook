@@ -9,12 +9,12 @@ class CheckerResult:
 
 
 # checker <input_file> <output_file> <answer_file>
-if len(sys.argv) < 3:
+if len(sys.argv) < 4:
     sys.exit(3)
 
 input_file = sys.argv[1]
 output_file = sys.argv[2]
-answer_file = sys.argv[2]
+answer_file = sys.argv[3]
 
 with open(answer_file) as f:
     data = f.readlines()
