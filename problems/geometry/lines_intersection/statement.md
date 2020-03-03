@@ -3,7 +3,7 @@ id: 0341dbff-0bcc-4f4f-93a2-7a5c2c5c2130
 longname: Пересечение двух прямых
 languages: [python]
 tags: [geometry]
-checker: cmp_int_seq
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -25,14 +25,14 @@ max_vm_size: 64M
 
 ```
 -> 1 -1 0
-   2 -1 1
+-> 2 -1 1
 --
 <- -1 -1
 ```
 
 ```
 -> 1 2 3
-   4 8 7
+-> 4 8 7
 --
 <- NO
 ```
