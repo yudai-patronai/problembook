@@ -11,7 +11,7 @@ elif delta_y == 0:
 else:
     k = delta_y / delta_x
     b = (y1 * x2 - y2 * x1) / delta_x
-    k_perp = 1 / k
+    k_perp = -1 / k
     b_perp = y - k_perp * x
     inter_x = (b_perp - b) / (k - k_perp)
     inter_y = k * inter_x + b
