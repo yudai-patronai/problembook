@@ -39,7 +39,7 @@ for i in range(2):
     b = oanswer[i]
     if abs(a - b) > 1e-5:
         print("expected ({:.5f}; {:.5f}), "
-              "but got ({:.5f}; {:.5f})".format(*a, *b))
+              "but got ({:.5f}; {:.5f})".format(*answer, *oanswer))
         sys.exit(CheckerResult.WA)
 
 print('OK')
