@@ -42,7 +42,7 @@ def get_area(head):
         w = cur["next"]["val"]
         ans += v.x*w.y - v.y*w.x
         cur = cur["next"]
-        if cur == head:
+        if id(cur) == id(head):
             break
     return abs(ans * 0.5)
 
