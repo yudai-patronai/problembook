@@ -55,7 +55,7 @@ LINT_MAP = {
     'python': ['pycodestyle']
 }
 
-CPP_COMPILER = 'clang++'
+CPP_COMPILER = 'g++'
 CPP_FLAGS = ['-std=c++11', '-Wall', '-Wextra', '-Wpedantic', '-Werror']
 
 MARK_UNKNOWN = "?"

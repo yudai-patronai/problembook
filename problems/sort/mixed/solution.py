@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+n = int(input())
 arr = list(map(int, input().split()))
 
 for j in range(len(arr)):

@@ -1,7 +1,7 @@
 ---
 id: 118148e1-6b08-4195-819a-9949463d59f8
 longname: Сортировка положительных и отрицательных чисел в разные стороны с сохранением знаковых позиций
-languages: [python]
+languages: [python, cpp]
 tags: [sort]
 checker: cmp_file
 time_limit: 1

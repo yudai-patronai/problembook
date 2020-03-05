@@ -7,7 +7,7 @@ def random_digits(size):
 
 
 def question(array):
-    return ' '.join(map(str, array)) + '\n'
+    return str(len(arr))+'\n'+' '.join(map(str, array)) + '\n'
 
 
 def answer(arr):
