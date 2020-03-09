@@ -1,7 +1,7 @@
 ---
 id: ba88c07e-930c-4e61-84ef-f283692ff893
 longname: Обратная польская запись
-languages: [cpp]
+languages: [python]
 tags: [containers]
 checker: cmp_int
 time_limit: 1
@@ -30,6 +30,7 @@ max_vm_size: 64M
 -> 7
 -> -
 -> *
+-> =
 --
 <- -102
 ```
