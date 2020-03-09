@@ -9,12 +9,11 @@ random.seed(42)
 
 
 def generate_test(name, testn):
-    n = random.randint(1, 1000000)
+    n = random.randint(1, 100000)
     a = [random.randint(-1000000, 1000000) for _ in range(n)]
     with open(name, "w") as f:
         f.write(str(n)+"\n")
-        for i in a:
-            f.write(str(i)+"\n")
+        f.write(" ".join(map(str, a)))
     with open(name+".a", "w") as f:
         heapq.heapify(a)
         f.write(" ".join(map(str, a)))
@@ -23,8 +22,7 @@ def generate_test(name, testn):
 def write_manual_test(name, n, a):
     with open(name, "w") as f:
         f.write(str(n)+"\n")
-        for i in a:
-            f.write(str(i)+"\n")
+        f.write(" ".join(map(str, a)))
     with open(name+".a", "w") as f:
         heapq.heapify(a)
         f.write(" ".join(map(str, a)))
@@ -44,9 +42,9 @@ if __name__ == "__main__":
         test_name = os.path.join(test_folder, "%02d" % test)
         print("generating %s..." % test_name)
         generate_test(test_name, test)
-    write_manual_test(os.path.join(test_folder, "11"), 1000000,
+    write_manual_test(os.path.join(test_folder, "11"), 100000,
                       [random.randint(-1000000, 1000000)
-                       for _ in range(1000000)])
-    write_manual_test(os.path.join(test_folder, "12"), 1000000,
+                       for _ in range(100000)])
+    write_manual_test(os.path.join(test_folder, "12"), 100000,
                       sorted([random.randint(-1000000, 1000000) for _
-                              in range(1000000)]))
+                              in range(100000)]))

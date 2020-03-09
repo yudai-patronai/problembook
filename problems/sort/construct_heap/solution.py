@@ -22,7 +22,10 @@ def build_heap(heap):
 
 
 if __name__ == "__main__":
-    n = int(intput())
+    import time
+    st = time.time()
+    n = int(input())
     a = list(map(int, input().split()))
     build_heap(a)
     print(" ".join(map(str, a)))
+    print(time.time() - st)

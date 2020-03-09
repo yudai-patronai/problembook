@@ -3,7 +3,6 @@ id: e2569154-4728-4446-8e67-2c8542c97c93
 longname: Построение кучи
 languages: [python]
 tags: [sort]
-checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -14,7 +13,7 @@ max_vm_size: 64M
 
 ### Формат входных данных
 
-Дано натуральное число N ≤ 10<sup>6</sup>. Далее идут N элементов |a<sub>i</sub>| ≤ 10<sup>6</sup>.
+Дано натуральное число N ≤ 10<sup>5</sup>. Далее идут N элементов |a<sub>i</sub>| ≤ 10<sup>6</sup>.
 
 ### Формат выходных данных
 
