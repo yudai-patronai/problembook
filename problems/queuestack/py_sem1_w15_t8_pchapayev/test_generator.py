@@ -11,7 +11,6 @@ a.append('a1 a2 a3 a4')
 a.append('a0 c1 b2 c5 d8 b4 c4')
 a.append('c2')
 a.append('a3 b3 c3 d3 a1')
-a.append('')
 a.append('b8 c9 a0 a1 b2 c3 c4 d5')
 
 for i in range(len(a)):
