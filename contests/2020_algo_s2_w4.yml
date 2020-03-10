@@ -1,0 +1,60 @@
+name: 2020_algo_s2_w4
+language: python
+problems:
+    
+    # Две окружности
+    - d4cacc58-664b-42a9-8d4d-bf005ed7ab81:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Суслик и собака
+    - eb167bc6-b6a5-42af-b729-9222fb542c4f:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Симметрия относительно точки
+    - 93c33546-53e3-4856-baa6-18d6273b37c6:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Симметрия относительно линии
+    - 1785191d-7e38-47fd-8e07-6d361e265288:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Пересечение двух прямых
+    - 0341dbff-0bcc-4f4f-93a2-7a5c2c5c2130:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Охотник
+    - 576fa30b-0e67-4f54-99ce-ce1d643d047d:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Точка в выпуклом многоугольнике
+    - 685e6977-2aaf-463a-ba4a-5573316fc3df:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Площадь изменяющегося многоугольника
+    - 27a215f4-827c-42ab-823d-bc5fb7123139:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
