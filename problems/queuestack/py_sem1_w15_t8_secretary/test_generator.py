@@ -11,7 +11,7 @@ a.append('% 1 2 3 # % #\n')
 a.append('1 -1 # 50 % #\n')
 a.append('1 2 3 # 25 %\n')
 a.append('1 2 3\n')
-a.append('%#\n')
+a.append('% #\n')
 a.append('1 2 3 200 %\n')
 
 for i in range(len(a)):
