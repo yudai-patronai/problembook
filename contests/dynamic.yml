@@ -1,0 +1,123 @@
+name: dynamic
+language: cpp
+problems:
+    
+    # Шоколадка
+    - 34cb6f38-1082-45b7-a9f8-eccd2c7df242:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Взрывоопасность (A,B)
+    - f6dfdebd-3352-4ac1-b520-d4b997d0e02b:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Взрывоопасность (A,B,C)
+    - 6f175d58-dd48-4033-8bca-62ff2e5a2176:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Энты
+    - 02124685-0829-4215-99ac-56a6a969eaf1:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик-брокер
+    - c7ae1da3-e9e7-423b-9139-9d3245369aae:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик - математик
+    - e4c4b882-2eb9-47d8-b55c-8320fa282f34:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик - художник
+    - acd0aa11-ccf3-4336-ae8d-6637905dc5c4:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Максимальная возрастающая подпоследовательность
+    - c07b984d-286d-493e-999f-5575cd704b1c:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Максимальная подпоследовательность
+    - 94a23596-ee69-4436-a02a-bd24ebfe115c:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Гвоздики
+    - a8b0dd50-d38c-47f3-85d4-d95ff71f364b:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Компьютерная игра
+    - 7991115d-b097-4d30-87e5-eddd554d87ec:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Побег
+    - d64b1f50-0304-4702-8e56-9c54d18e6c33:
+        score: 1
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Задача о рюкзаке
+    - f906faed-3478-4dc7-9eb8-02fde7ee2abc:
+        score: 1
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Наибольшая общая подпоследовательность
+    - b127e684-7c8a-4a13-8950-08d89f54ba25:
+        score: 1
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Наибольшая возрастающая подпоследовательность
+    - 6310c3e0-e26a-4f28-a4c7-bcce0c557848:
+        score: 1
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Платный аттракцион
+    - aedeec91-922a-4a12-8df6-a94dd4cd5432:
+        score: 1
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Белый король
+    - 982d3c81-9848-4d21-ae2e-6cb98ccb00c8:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

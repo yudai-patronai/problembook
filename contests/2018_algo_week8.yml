@@ -1,0 +1,60 @@
+name: 2018_algo_week8
+language: cpp
+problems:
+    
+    # Определение типа треугольника
+    - 79a4267d-9eeb-4c58-bfec-3f77ed2bc6ad:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Сумма цифр трехзначного числа
+    - 8171cdf9-c7a5-481c-8899-d3d9d3f7ebf3:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сумма элементов с определенными индексами
+    - 30c815a2-1aaa-4258-9416-ab0ae825c5c4:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск максильного четного числа в последовательности
+    - e8184571-6255-451e-9c8f-f71b4e1c90aa:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # По росту!
+    - ef8eaddb-07c7-4b43-9de4-47a0dafcd76d:
+        score: 100
+        time_limit: 10
+        real_time_limit: 10
+        max_vm_size: 40M
+    
+    # Циклический сдвиг
+    - a76fad54-cee5-40fb-b295-f4e36c5b7437:
+        score: 100
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Скалярное произведение
+    - 244af21b-5c97-43e9-bbb0-571063cf8cfa:
+        score: 200
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Заполнение поля сапера
+    - 7a811457-ab74-428c-b7e3-cf8ae472a3ed:
+        score: 200
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
