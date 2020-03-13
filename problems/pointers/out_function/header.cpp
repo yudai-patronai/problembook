@@ -1,5 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdlib>
+#include <cstdio>
+#include <iostream>
+
+using std::cout;
 
 void print_no_space(char* text);
 
