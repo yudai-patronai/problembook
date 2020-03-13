@@ -1,0 +1,32 @@
+name: 2020_cpp_algo_s1_w6
+language: cpp
+problems:
+    
+    # Указатели и адресная арифметика 000
+    - d61100c0-131a-4783-96cc-b5059f412b83:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Указатели и адресная арифметика 001
+    - cdfabbfe-4282-40da-9d73-ad6f1f0858b9:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Указатели и адресная арифметика 002
+    - 11e65f1e-3fdb-434d-822e-45d21b3644b7:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Написать функцию вывода
+    - b04c06de-39db-4e9a-87ca-35712244145a:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

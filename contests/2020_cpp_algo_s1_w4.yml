@@ -1,0 +1,39 @@
+name: 2020_cpp_algo_s1_w4
+language: cpp
+problems:
+    
+    # Два наименьших и два наибольших элемента
+    - e6107dbe-b113-4eee-99e5-d39ab0f83cd3:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 10M
+    
+    # Сумма элементов массива, больших среднего
+    - bea5c53c-78b7-4201-aaa9-9c60440f5358:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Решето Эратосфена
+    - 3712a78d-d3e7-4295-9648-91d626525a7a:
+        score: 150
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # День Рождения Васи
+    - bfc54875-8fd9-4f3b-9d87-847de0ddd0e9:
+        score: 250
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Еще один День Рождения Васи
+    - 21a29019-2c78-41a7-99e3-a16ebca4829e:
+        score: 300
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

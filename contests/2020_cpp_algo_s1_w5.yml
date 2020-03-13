@@ -1,0 +1,39 @@
+name: 2020_cpp_algo_s1_w5
+language: cpp
+problems:
+    
+    # Поворот массива
+    - f4157abd-219b-4a8c-9fae-b50743e81555:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Считать данные в массив и вывести в обратном порядке
+    - 4dbe8f5a-4181-40fe-9393-56017cf31785:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сглаживание массива
+    - 53335f08-504b-40eb-8a62-d28d81f7c44a:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 256M
+    
+    # Сортировка пузырьком
+    - 5f370c33-beb2-433b-8c53-01fdce4a0abe:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сортировка положительных и отрицательных чисел в разные стороны с сохранением знаковых позиций
+    - 118148e1-6b08-4195-819a-9949463d59f8:
+        score: 500
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

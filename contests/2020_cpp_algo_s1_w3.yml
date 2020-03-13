@@ -1,0 +1,39 @@
+name: 2020_cpp_algo_s1_w3
+language: cpp
+problems:
+    
+    # Через сколько прозвонит будильник
+    - 510ffc15-b139-4a46-9d2f-968b22f71170:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подсчет количества точек на плоскости
+    - afbf25b1-7945-445d-ac82-b4671236581a:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Два наименьших и два наибольших элемента
+    - e6107dbe-b113-4eee-99e5-d39ab0f83cd3:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 10M
+    
+    # Генерация n-го простого числа
+    - 6705223d-22f4-4421-8196-21c4a4b54a8f:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заботливый фермер
+    - 4c5c3594-d71c-4bc5-b973-d95ee3944cba:
+        score: 300
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
