@@ -14,6 +14,7 @@ max_vm_size: 64M
 
 Для проверки будет использоваться следующий код. Вы можете использовать его для отладки.
 
+```
 #include <iostream>
 using std::cin;
 using std::cout;
@@ -31,6 +32,7 @@ int main() {
     my_personal_swap(NULL, NULL);
     return 0;
 }
+```
 
 В проверяющую программу отправлять только функцию my_personal_swap. Функцию main и все прочее отправлять не нужно.
 
