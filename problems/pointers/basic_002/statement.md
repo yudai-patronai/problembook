@@ -3,7 +3,7 @@ id: 11e65f1e-3fdb-434d-822e-45d21b3644b7
 longname: Указатели и адресная арифметика 002
 languages: [cpp]
 tags: [pointers]
-checker: cmp_yesno
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
