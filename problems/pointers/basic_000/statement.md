@@ -13,24 +13,24 @@ max_vm_size: 64M
 
 Для проверки будет использоваться следующий код. Вы можете использовать его для отладки. 
 
-```
-#include <iostream>
-using std::cin;
-using std::cout;
-using std::endl;
+	#include <iostream>
+	using std::cin;
+	using std::cout;
+	using std::endl;
 
-void print_array(int* p);
+	void print_array(int* p);
 
-int main() {
-    int a[6];
-    for (int i = 0; i < 6; i++)
-        cin >> a[i];
-    print_array(a);
-    return 0;
-}
-```
+	int main() {
+	    int a[6];
+	    for (int i = 0; i < 6; i++)
+		cin >> a[i];
+	    print_array(a);
+	    return 0;
+	}
 
-В проверяющую программу отправлять только функцию print_array. Функцию main и все прочее отправлять не нужно.
+В проверяющую программу отправлять только функцию `print_array`.
+
+Функцию `main` и все прочее отправлять не нужно.
 
 ### Формат входных данных
 
