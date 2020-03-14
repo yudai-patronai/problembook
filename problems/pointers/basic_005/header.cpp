@@ -3,7 +3,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-void my_slightly_less_dumb_reallocation(int** source, unsigned int n_old, unsigned int n_new);
+void my_slightly_less_dumb_reallocation(int** source,
+        unsigned int n_old, unsigned int n_new);
 
 int main() {
     unsigned int n, i;

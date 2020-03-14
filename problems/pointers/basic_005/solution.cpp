@@ -1,4 +1,5 @@
-void my_slightly_less_dumb_reallocation(int** source, unsigned int n_old, unsigned int n_new) {
+void my_slightly_less_dumb_reallocation(int** source,
+        unsigned int n_old, unsigned int n_new) {
     if (!source)
         return;
     if (!*source || !n_old) {
@@ -11,7 +12,7 @@ void my_slightly_less_dumb_reallocation(int** source, unsigned int n_old, unsign
         return;
     }
     int *out = new int[n_new];
-    for (int i = 0; i < n_new && i < n_old; i++)
+    for (unsigned int i = 0; i < n_new && i < n_old; i++)
         out[i] = (*source)[i];
     delete[] *source;
     *source = out;

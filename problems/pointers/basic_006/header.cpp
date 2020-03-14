@@ -16,7 +16,7 @@ int main() {
     unsigned int n;
     cin >> n;
     Cat *a = new Cat[n];
-    for (int i = 0; i < n; i++) {
+    for (unsigned int i = 0; i < n; i++) {
         cin >> a[i].name >> a[i].weight >> a[i].length >> a[i].mice_caught;
         a[i].id = i;
     }

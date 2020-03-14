@@ -5,8 +5,8 @@ using std::endl;
 
 
 int main() {
-	int a, b;
-	cin >> a >> b;
-	cout << do_some_awesome_work(&a, &b) <<endl;
-	return 0;
+    int a, b;
+    cin >> a >> b;
+    cout << do_some_awesome_work(&a, &b) <<endl;
+    return 0;
 }
