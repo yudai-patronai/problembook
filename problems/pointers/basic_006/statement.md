@@ -3,7 +3,7 @@ id: fa5fb9bb-0a13-4a7c-b5ed-12c065677f6b
 longname: Подсчет мышей
 languages: [cpp]
 tags: [pointers]
-checker: cmp_int
+checker: cmp_unsigned_int
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
