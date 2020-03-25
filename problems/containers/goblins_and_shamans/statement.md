@@ -1,7 +1,7 @@
 ---
 id: 9a424146-84d5-45ca-8246-fd1c6afc8b13
 longname: Гоблины и шаманы
-languages: [cpp]
+languages: [cpp,python]
 tags: [containers]
 checker: cmp_int_seq
 time_limit: 1
