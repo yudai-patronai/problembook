@@ -36,20 +36,21 @@ def question(n, bul, arrnam, arliar, m):
     for i in range(n):
         string += arrnam[i] + ' ' + str(arliar[i]) + "\n"
     string+= str(m) + "\n"
-    return string 
-
+    return string
 
 def answer(n, bul, arrnam, arliar, m):
     s = ''
     i = 0
-    for j in range(1, m):
+    for j in range (m):
         if arliar[i] == 0:
             bul = (bul + 1) % 2
             if bul == 1:
                 arliar[i] = 1
+                i += 1
+                i = i % len(arrnam)
             else:
                 i += 1
-                i = i % len (arrnam)
+                i = i % len(arrnam)
         else:
             if bul == 0:
                 del arliar[i]
@@ -62,6 +63,8 @@ def answer(n, bul, arrnam, arliar, m):
     for _ in range(len (arliar)):
         s+= arrnam[_] + ' ' + str(arliar[_]) +"\n"
     return s
+
+
 tests = TestSet()
 for size  in [5, 10, 15, 20]:
     arrnam = random_names(allnames, size)
