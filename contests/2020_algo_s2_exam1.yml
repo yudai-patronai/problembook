@@ -1,0 +1,46 @@
+name: 2020_algo_s2_exam1
+language: python
+problems:
+    
+    # Корректная скобочная последовательность
+    - 6e5276ec-1385-4411-a0f3-5fac75a5844d:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Проверка выполнения свойств кучи в массиве
+    - 213e015f-324e-42ce-b29d-990bcdd73859:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Массив из списка
+    - 58ba969b-fe03-4f28-b46a-916b14222256:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Гоблины и шаманы
+    - 9a424146-84d5-45ca-8246-fd1c6afc8b13:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Остров рыцарей и лжецов
+    - aaf5baef-a100-4aa1-b800-6af24b1f1dae:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Калькулятор с переменными
+    - 02522df1-2a77-4818-b944-36bbd53a7ebd:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
