@@ -3,26 +3,26 @@ from lib.testgen import TestSet
 tests = TestSet()
 
 tests.add(
-    '()\n',
-    'YES\n'
+    '()',
+    'YES'
 )
 tests.add(
-    '{}[]\n',
-    'YES\n'
+    '{}[]',
+    'YES'
 )
 tests.add(
-    '{[}\n',
-    'NO\n',
+    '{[}',
+    'NO',
 )
 tests.add(
-    '()(((\n',
-    'NO\n'
+    '()(((',
+    'NO'
 )
 tests.add(
-    '([()][][{}(){}][]({([]())})[]\n',
-    'NO\n'
+    '([()][][{}(){}][]({([]())})[]',
+    'NO'
 )
 tests.add(
-    '([()][][{}(){}][]{([]())})[]\n',
-    'YES\n'
+    '([()][][{}(){}][]{([]())})[]',
+    'YES'
 )
