@@ -7,12 +7,20 @@ tests.add(
     'YES'
 )
 tests.add(
+    '{[}',
+    'NO',
+)
+tests.add(
+    '(]',
+    'NO'
+)
+tests.add(
     '{}[]',
     'YES'
 )
 tests.add(
-    '{[}',
-    'NO',
+    '{(){}]',
+    'NO'
 )
 tests.add(
     '()(((',
