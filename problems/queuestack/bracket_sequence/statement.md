@@ -1,4 +1,5 @@
 ---
+fixme: true
 id: 6e5276ec-1385-4411-a0f3-5fac75a5844d
 longname: Корректная скобочная последовательность
 languages: [python]
