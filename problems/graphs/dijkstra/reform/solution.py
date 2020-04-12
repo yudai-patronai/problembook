@@ -39,14 +39,13 @@ def dijkstra_mlogm_heap(graph, centers):
 
     while queue:
         vd, v = heapq.heappop(queue)
-        if vd >= dist[v]:
+        if vd > dist[v]:
             continue  # это фиктивный элемент очереди
 
         for v2, r in graph[v]:
             if dist[v2] > vd + r:
                 dist[v2] = vd + r
                 district[v2] = district[v]
-                queue.add(v2)
                 heapq.heappush(queue, (dist[v2], v2))
 
     return district
