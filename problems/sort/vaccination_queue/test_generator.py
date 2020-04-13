@@ -48,7 +48,7 @@ for test_id in range(15):
     tests.add(statement, answer)
     
 for test_id in range(5):
-    N = random.randrange(50000, 100000)
+    N = random.randrange(5000, 10000)
     ids = list(range(1, N+1))
     ages = [random.randrange(10, 50) for _ in range(N)]
 
