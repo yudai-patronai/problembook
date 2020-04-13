@@ -1,0 +1,39 @@
+name: 2020_algo_s2_w8
+language: python
+problems:
+    
+    # Поиск кратчайшего пути между двумя узлами невзвешенного графа
+    - b2380a9a-697f-4a43-914d-808be407ead0:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Построить остовное дерево обходом в ширину
+    - 8120e7d1-ddde-4996-b262-b5c9b3b55098:
+        score: 60
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Нахождение кратчайшего цикла в ориентированном невзвешенном графе
+    - c1a67a0b-5b80-4324-add6-76ceb5119474:
+        score: 70
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Таблица
+    - 54e4675a-8b90-44f7-9422-36f4b6ddb52b:
+        score: 80
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Два коня
+    - 170af7c9-c358-4400-988a-906e3106d9bd:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
