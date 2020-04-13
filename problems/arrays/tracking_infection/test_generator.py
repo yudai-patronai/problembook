@@ -37,7 +37,7 @@ def generate_answer(name, n, seq):
         f.write(str(haz) + '\n')
 
 def generate_test(name, testn):
-    maxn = 5 if testn < 5 else 10000000
+    maxn = 5 if testn < 5 else 10000
     n = random.randint(5, maxn)
     seqf = [[random.randint(0, 99), random.randint(99)] for _ in range(n)]
     with open(name, "w") as f:
