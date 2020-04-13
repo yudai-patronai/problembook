@@ -58,9 +58,8 @@ def gen_random_set(N):
     tests.add(strin, strout)
 
 gen_random_set(30)
+gen_random_set(500)
 gen_random_set(1000)
+gen_random_set(3000)
 gen_random_set(10000)
-gen_random_set(100000)
-gen_random_set(1000000)
-gen_random_set(1500000)
 
