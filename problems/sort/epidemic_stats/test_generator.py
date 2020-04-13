@@ -2,6 +2,7 @@
 
 from lib.testgen import TestSet
 from lib import random
+import math
 
 tests = TestSet()
 
@@ -35,6 +36,9 @@ tests.add(
 )
 
 # Some random tests
+def round1(num):
+    return math.floor(num + 0.5)
+
 def gen_random_set(N):
     d = [0] * 100
     r = [0] * 100
@@ -53,7 +57,7 @@ def gen_random_set(N):
 
     for i in range(100):
         if d[i]!=0 or r[i]!=0:
-            strout = strout + "{} {}\n".format(i, round(100.0 * r[i] / (d[i] + r[i])))
+            strout = strout + "{} {}\n".format(i, round1(100.0 * r[i] / (d[i] + r[i])))
 
     tests.add(strin, strout)
 
