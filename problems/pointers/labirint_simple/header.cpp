@@ -29,7 +29,6 @@ struct Level_t {
     * initializes all the fields of Level_t with ASCII image of the level got from std::cin
     */
     void load_level() {
-        int start_x, start_y, end_x, end_y;
         std::cin >> width >> height >> std::ws;
         for (int i = 0; i < height; ++i) {
             int format = 5;
