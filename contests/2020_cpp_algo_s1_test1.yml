@@ -1,0 +1,60 @@
+name: 2020_cpp_algo_s1_test1
+language: cpp
+problems:
+    
+    # Заражение
+    - c8df941c-2563-4c78-b7a3-ecf409216aad:
+        score: 100
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Статистика потока пациентов
+    - 24255517-2759-4c19-a5a7-5e6d7888d8a7:
+        score: 100
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Слежение за заражением
+    - 3473b736-4e26-4b75-8a2e-ffb605e6065c:
+        score: 150
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Выбор терапии
+    - 4dd60276-e5a2-4959-8f1e-9c0498c9511e:
+        score: 200
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Последствия эпидемии
+    - 4004a602-98ea-4509-bd9f-0ca65a815e15:
+        score: 200
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Рецепт вакцины
+    - 66e561c3-6b43-489d-a108-4655973c4907:
+        score: 200
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Очередь на вакцинирование
+    - 6eb3d9f6-01f5-4cfe-959a-1360dcab08b7:
+        score: 200
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Путешествие по лабиринту
+    - 23cc4981-b8bd-4f9a-8e63-8f5d292d80d7:
+        score: 300
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+    
