@@ -3,9 +3,9 @@ id: 27e19630-7333-4710-8cc7-837b5b7eea96
 longname: Рекурсивный анализ рекурсии
 languages: [cpp]
 tags: [recursion]
-checker: cmp_int
-time_limit: 2
-real_time_limit: 2
+checker: cmp_yesno
+time_limit: 5
+real_time_limit: 5
 max_vm_size: 64M
 ---
 

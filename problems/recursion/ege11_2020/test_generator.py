@@ -10,7 +10,7 @@ def sol(k):
         if n > 2:
             F(int(n))
             F(n - 1)
-        NumbersInRecursion.append()
+        NumbersInRecursion.append(n)
     F(k)
     res = sum(NumberInRecusion)
     return res
