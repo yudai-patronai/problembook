@@ -8,11 +8,11 @@ def sol(k):
     NumbersInRecursion = []
     def F(n):
         if n > 2:
-            F(int(n))
+            F(int(n) / 2)
             F(n - 1)
         NumbersInRecursion.append(n)
     F(k)
-    res = sum(NumberInRecusion)
+    res = sum(NumberInRecursion)
     return res
 
 
