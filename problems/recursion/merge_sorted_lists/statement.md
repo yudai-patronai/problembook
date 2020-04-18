@@ -4,7 +4,7 @@ id: 1541882b-c8eb-486f-83b5-7c0aeaf6fef9
 longname: Объединение упорядоченных списков
 languages: [cpp]
 tags: [recursion]
-checker: cmp_file
+checker: cmp_yesno
 time_limit: 5
 real_time_limit: 5
 max_vm_size: 64M
