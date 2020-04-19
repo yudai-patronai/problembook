@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 
-import os
-import shutil
 from lib import random
 from queue import Queue
+from lib.testgen import TestSet
 
+random.seed(265)
+NUM_RANDOM_TESTS = 7
+
+# доля единиц в таблице будет 1 / RARENESS_OF_ONES, остальное - единицы
+RARENESS_OF_ONES = 10
 
 def solver(n, m, a):
     q = Queue()
@@ -27,38 +31,61 @@ def solver(n, m, a):
 
     return d
 
-
-tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
-
-shutil.rmtree(tests_dir, ignore_errors=True)
-os.makedirs(tests_dir)
-
-with open(os.path.join(tests_dir, '{0:0>2}'.format(1)), 'w') as f:
-    f.write("{0} {1}\n".format(2, 3))
-    f.write("0 0 1\n")
-    f.write("1 0 0\n")
-with open(os.path.join(tests_dir, '{0:0>2}.a'.format(1)), 'w') as f:
-    f.write("1 1 0\n")
-    f.write("0 1 1\n")
-
-with open(os.path.join(tests_dir, '{0:0>2}'.format(2)), 'w') as f:
-    f.write("{0} {1}\n".format(1, 1))
-    f.write("1\n")
-with open(os.path.join(tests_dir, '{0:0>2}.a'.format(2)), 'w') as f:
-    f.write("0\n")
+def matrix_to_str(matrix:list):
+    s = ''
+    for row in matrix:
+        s += ' '.join(map(str, row)) + '\n'
+    return s
 
 
-for test in range(3, 11):
-    n = random.randint(1, 500)
-    m = random.randint(1, 500)
+tests = TestSet()
 
-    a = [[random.randint(0, 1) for _ in range(m)] for _ in range(n)]
+# manual tests
+tests.add(
+"""5 5
+0 0 1 0 0
+0 1 0 0 0
+0 0 0 1 0
+0 0 0 0 0
+1 0 0 0 1
+""",
+"""2 1 0 1 2
+1 0 1 1 2
+2 1 1 0 1
+1 2 2 1 1
+0 1 2 1 0
+"""
+)
+tests.add(
+"""4 4
+1 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 1
+""",
+"""0 1 2 3
+1 2 3 2
+2 3 2 1
+3 2 1 0
+"""
+)
+tests.add('1 1\n1\n', '0\n')
 
-    with open(os.path.join(tests_dir, '{0:0>2}'.format(test)), 'w') as f:
-        f.write("{0} {1}\n".format(n, m))
-        for i in range(n):
-            f.write(" ".join(map(str, a[i])) + "\n")
-    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(test)), 'w') as f:
-        d = solver(n, m, a)
-        for i in range(n):
-            f.write(" ".join(map(str, d[i])) + "\n")
+# размер входных данных = 2 * (rows * cols + len(str(rows)) + len(str(cols)))
+#   (с учётом пробелов и символов переноса, расстояния от 0 до 9)
+#
+# rows * cols <= 30000, иначе ежадж (апрель 2020) может упасть от размера входных данных
+#   наибольший тест, проходивший на ежадж, имел размер 30952
+#   68000 символов точно перебор, однако, тестов в интервале от 30000 до 68000 не было
+
+for _ in range(NUM_RANDOM_TESTS):
+    rows = random.randint(10, 300)
+    cols = random.randint(10, 100)
+
+    # количество единиц составляет 1 / RARENESS_OF_ONES от количества элементов в таблице
+    table = [[ 1 if random.randint(1, RARENESS_OF_ONES) == 1 else 0 for _ in range(cols)] for _ in range(rows)]
+
+    tests.add(
+        '{} {}\n'.format(rows, cols) + matrix_to_str(table),
+        matrix_to_str(solver(rows, cols, table))
+    )
