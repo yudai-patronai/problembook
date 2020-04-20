@@ -3,22 +3,21 @@ fixme: true
 id: 1541882b-c8eb-486f-83b5-7c0aeaf6fef9
 longname: Объединение упорядоченных списков
 languages: [cpp]
-tags: [recursion]
+tags: [while,mergesort,pointers]
 checker: cmp_yesno
-time_limit: 5
-real_time_limit: 5
+time_limit: 1
+real_time_limit: 1
 max_vm_size: 64M
 ---
 Даны два указателя на два динамических односвязных списка, каждое звено которых содержит в качестве данных целое натуральное число. Гарантируется, что числа в каждом из списков упорядочены строго по возрастанию. Требуется создать новый упорядоченный по возрастанию список, состоящий из всех исходных чисел. К этой задаче можно применять разные методы, предлагаем вам подумать, как воспользоваться рекурсией.
 Вам необхдимо реализовать функцию:
-```
-Node *mergeLists(Node *first_node, Node *second_node);
-```
+
+	Node *mergeLists(Node *first_node, Node *second_node);
+
 Список организован следующим образом:
-```
-struct Node {
-    int64_t value;
-    Node *next;
-};
-void push_back(Node *current_node, int64_t value);
-```
+	struct Node {
+	    int64_t value;
+	    Node *next;
+	};
+	void push_back(Node *current_node, int64_t value);
+
