@@ -1,4 +1,16 @@
 ---
+id: 3147a541-3ffc-4193-8c92-29a194d79386
+longname: Ремонт в Ханое
+languages: [cpp]
+tags: [recursion]
+checker: cmp_yesno
+time_limit: 1
+real_time_limit: 1
+max_vm_size: 64M
+---
+
+
+---
 id: 81b6717a-66c6-4fd0-81c4-17d29d564e61
 longname: Ремонт в Ханое
 languages: [python]
