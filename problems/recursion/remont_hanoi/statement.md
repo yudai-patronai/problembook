@@ -1,7 +1,7 @@
 ---
 id: 81b6717a-66c6-4fd0-81c4-17d29d564e61
 longname: Ремонт в Ханое
-languages: [python]
+languages: [cpp,python]
 tags: [recursion]
 checker: cmp_yesno
 time_limit: 1
