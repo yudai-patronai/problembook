@@ -38,8 +38,6 @@ tests.add('99', '447560')
 
 tests.add('400', '1058914824')
 tests.add('426', '1586220698')
-tests.add('444', '2074041907')
-tests.add('453', '2363558241')
 
 for k in range(100, 301, 20):
     ans = sol(int(k))
