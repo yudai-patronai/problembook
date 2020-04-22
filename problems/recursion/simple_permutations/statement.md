@@ -4,8 +4,8 @@ longname: Простые числа-перестановки
 languages: [cpp]
 tags: [recursion,permutations,primes]
 checker: cmp_int
-time_limit: 2
-real_time_limit: 2
+time_limit: 3
+real_time_limit: 3
 max_vm_size: 64M
 ---
 
