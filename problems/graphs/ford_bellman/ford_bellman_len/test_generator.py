@@ -5,21 +5,44 @@ import shutil
 from lib import random
 
 
+def dfs(a, d, u):
+    d[u] = "UDF"
+    for v, _ in a[u]:
+        if d[v] != "UDF":
+            dfs(a, d, v)
+
+
+def edges_to_aj_list(n, edges):
+    a = {i: [] for i in range(n)}
+    for u, v, w in edges:
+        a[u].append((v, w))
+    return a
+
+
 def solve(n, edges, s):
-    m = len(edges)
     d = [float("inf")] * n
     d[s] = 0
-    changed = [False] * n
+    p = [-1] * n
+    on_cycle = None
     for i in range(n):
         for u, v, w in edges:
             if d[v] > d[u] + w:
                 d[v] = d[u] + w
+                p[v] = u
                 if i == n-1:
-                    changed[v] = True
-    
+                    on_cycle = v
+                    break
+
+    if on_cycle is not None:
+        for _ in range(n):
+            on_cycle = p[on_cycle]
+        a = edges_to_aj_list(n, edges)
+        dfs(a, d, on_cycle)
+
     for i in range(n):
-        if changed[i] or d[i] == float("inf"):
-            d[i] = "UDF"    
+        if d[i] == float("inf"):
+            d[i] = "UDF"
+
     return d
 
 
