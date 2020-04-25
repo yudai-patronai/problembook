@@ -4,8 +4,8 @@ longname: Количество подмножеств попарно взаим�
 languages: [cpp]
 tags: [recursion]
 checker: cmp_int
-time_limit: 1.5
-real_time_limit: 1.5
+time_limit: 2
+real_time_limit: 2
 max_vm_size: 16M
 ---
 

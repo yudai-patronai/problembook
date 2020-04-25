@@ -3,22 +3,22 @@ id: 27e19630-7333-4710-8cc7-837b5b7eea96
 longname: Рекурсивный анализ рекурсии
 languages: [cpp]
 tags: [recursion]
-checker: cmp_yesno
+checker: cmp_int
 time_limit: 5
 real_time_limit: 5
 max_vm_size: 64M
 ---
 
 Дана рекурсия следующего вида:
-```
-void F(int n) {
-        std::cout << n;
-        if (n >= 3) {
-                F(n / 2);
-                F(n - 1);
-        }
-}
-```
+
+	void F(int n) {
+	        std::cout << n;
+	        if (n >= 3) {
+	                F(n / 2);
+	                F(n - 1);
+	        }
+	}
+
 
 Выведите на экран сумму всех чисел, которые выводятся данной рекурсией.
 
