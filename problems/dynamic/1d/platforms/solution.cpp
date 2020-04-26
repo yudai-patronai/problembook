@@ -12,7 +12,9 @@ int main() {
     }
     cost[0] = 0;
     if (n == 1) {
-        std::cout << 0 << '\n';
+        std::cout << 0 << std::endl;
+        delete[] h;
+        delete[] cost;
         return 0;
     }
     cost[1] = abs(h[1] - h[0]);
@@ -21,7 +23,7 @@ int main() {
         int from_s = 3 * abs(h[i] - h[i - 2]) + cost[i - 2];
         cost[i] = from_f < from_s ? from_f : from_s;
     }
-    std::cout << cost[n - 1] << '\n';
+    std::cout << cost[n - 1] << std::endl;
     delete[] h;
     delete[] cost;
     return 0;

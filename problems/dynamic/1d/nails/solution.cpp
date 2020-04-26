@@ -11,6 +11,10 @@ int main() {
     vector<int> coord;
     while (cin >> tmp)
         coord.push_back(tmp);
+    if (coord.size() == 2) {
+        cout << coord[1] - coord[0] << endl;
+        return 0;
+    }
     vector<int> dist(coord.size(), 0);
     std::sort(coord.begin(), coord.end());
     dist[1] = coord[1] - coord[0];
