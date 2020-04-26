@@ -2,7 +2,7 @@
 fixme: true
 id: f6dfdebd-3352-4ac1-b520-d4b997d0e02b
 longname: Взрывоопасность (A,B)
-languages: [python]
+languages: [python, cpp]
 tags: [dynamic,1d]
 checker: cmp_int
 time_limit: 1
