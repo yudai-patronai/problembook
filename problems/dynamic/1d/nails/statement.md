@@ -1,8 +1,8 @@
 ---
 id: a8b0dd50-d38c-47f3-85d4-d95ff71f364b
 longname: Гвоздики
-languages: [python]
-tags: [dynamic,2d]
+languages: [python, cpp]
+tags: [dynamic]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1
