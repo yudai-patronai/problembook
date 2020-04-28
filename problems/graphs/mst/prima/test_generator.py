@@ -19,12 +19,12 @@ def gen_tests_weight(tests_dir):
         task.gen_test_weight(tests_dir, t, n, i, add_xy=False)
         t += 1
 
-    for i in range(20):
+    for i in range(5):
         n = random.randrange(100, 1000)
         task.gen_test_weight(tests_dir, t, n, 5, add_xy=False)
         t += 1
 
-    for i in range(18):
+    for i in range(5):
         n = random.randrange(100, 1000)
         task.gen_test_weight(tests_dir, t, n, 100, add_xy=False)
         t += 1

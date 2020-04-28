@@ -44,12 +44,12 @@ def gen_tests(tests_dir):
         gen_test(tests_dir, t, n, gen_graph_edges(n, 0))
         t += 1
 
-    for i in range(20):
+    for i in range(5):
         n = random.randrange(100, 1000)
         gen_test(tests_dir, t, n, gen_graph_edges(n, 100))
         t += 1
 
-    for i in range(20):
+    for i in range(5):
         n = random.randrange(100, 1000)
         gen_test(tests_dir, t, n, gen_graph_edges(n, 10000))
         t += 1
