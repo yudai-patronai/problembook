@@ -1,6 +1,6 @@
 ---
 id: 8617f38c-f6f4-45e4-bdff-40071f411ac5
-longname: Редакционное расстояние
+longname: Расплата за редакционные ошибки
 languages: [python]
 tags: [str,classic]
 checker: cmp_file
