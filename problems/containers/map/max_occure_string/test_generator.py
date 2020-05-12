@@ -2,7 +2,7 @@ from lib.testgen import TestSet
 from lib.random import choice
 from string import ascii_letters
 
-NUM_RAND_TESTS = 20
+NUM_RAND_TESTS = 18
 MAX_TEST_SIZE = 1000
 
 
