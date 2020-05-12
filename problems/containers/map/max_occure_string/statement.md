@@ -1,7 +1,7 @@
 ---
 id: 290f937d-4055-452f-8257-f62479fe679f
 longname: Самoе популярое слово
-languages: [cpp]
+languages: [cpp,python]
 tags: [map,containers,easy]
 checker: cmp_int
 time_limit: 1
@@ -38,5 +38,5 @@ max_vm_size: 64M
 -> AAA
 -> AAa
 --
-<- aaa 3
+<- aaa 4
 ```
