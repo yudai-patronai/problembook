@@ -8,12 +8,11 @@ import shutil
 random.seed('friends')
 
 def random_q():
-    n = random.randint(1, 10)
+    n = random.randint(5, 100)
     s = random.randint(0, n-1)
     a = list()
     for i in range(n):
-        row = random.choices(range(62), k=n)
-        row = list(map(lambda x: round(x/100), row))
+        row = [round(random.randint(62) / 100 ) for _ in range(n)]
         a.append(row)
     for i in range(n):
         a[i][i] = 0
@@ -39,7 +38,7 @@ os.makedirs(tests_dir)
 
 for test in range(4, 21):
     N, S, A = random_q()
-    firstst = str(N)+' '+str(S)+'\n'
+    firstst = str(N)+' '+str(S)
     matstring = ""
     for el in A:
         matstring += '\n' + ' '.join(map(str, el))
