@@ -1,203 +1,115 @@
 #!/usr/bin/env python3
-import os
 from lib import random
-import shutil
-
-import solution
+from lib.testgen import TestSet
 
 random.seed(100)
-tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 
-# a - start
-# b - end
-# B - end on X
-# c - start and end in one empty cell
-tests = """
-XXXXXXX
-XbX   X
+INF_VAL = 'INF'
+
+Tests = TestSet()
+
+#####
+##### Ручные тесты
+#####
+
+manual_tests = [
+{
+    'field':
+"""XXXXXXX
+X X   X
 X X X X
-X   XaX
+X   X X
 XXXXXXX
-
-XXXXXXX
-XbX   X
+""", 'start': (3, 5), 'end': (1, 1), 'ans': 10
+},
+{
+    'field':
+"""XXXXXXX
+X X   X
 X XXX X
-X   XaX
+X   X X
 XXXXXXX
-
-XXXXXXX
-Xb    X
-X X X X
-X   XaX
-XXXXXXX
-
-XXXXXXX
-Xb    X
-XXX X X
-X    aX
-XXXXXXX
-
-XXXXXXX
-XB    X
+""", 'start': (3, 5), 'end': (1, 1), 'ans': INF_VAL
+},
+{
+    'field':
+"""XXXXXXX
 X     X
-X    aX
+X X X X
+X   X X
 XXXXXXX
-
-XXXXXXX
-XbX   X
+""", 'start': (3, 5), 'end': (1, 1), 'ans': 6
+},
+{
+    'field':
+"""XXXXXXX
+X     X
 XXX X X
-    XaX
+X     X
 XXXXXXX
-
+""", 'start': (3, 5), 'end': (1, 1), 'ans': 6
+},
+{  # конечная точка - стена
+    'field':
+"""XXXXXXX
+XX    X
+X     X
+X     X
 XXXXXXX
+""", 'start': (3, 5), 'end': (1, 1), 'ans': INF_VAL
+},
+{
+    'field':
+"""XXXXXXX
+X X   X
+XXX X X
+    X X
+XXXXXXX
+""", 'start': (3, 5), 'end': (1, 1), 'ans': INF_VAL
+},
+{
+    'field':
+"""XXXXXXX
 X     X
 X c   X
 X     X
 XXXXXXX
-"""
+""", 'start': (2, 2), 'end': (2, 2), 'ans': 0
+}
+]
 
+for t in manual_tests:
+    field_str = t['field']
 
-def draw_hline(field, i, j1, j2):
-    for j in range(j1, j2 + 1):
-        field[i][j] = -2
+    question = '{N} {M}\n{start_n} {start_m}\n{end_n} {end_m}\n{field}'.format(
+        N=field_str.count('\n'),
+        M=field_str.find('\n'),
+        start_n=t['start'][0],
+        start_m=t['start'][1],
+        end_n=t['end'][0],
+        end_m=t['end'][1],
+        field=field_str
+    )
 
+    if not question.endswith('\n'):  # для удобства, если в лабиринте забыли '\n' в конце
+        question += '\n'
 
-def draw_vline(field, i1, i2, j):
-    for i in range(i1, i2 + 1):
-        field[i][j] = -2
+    ans = str(t['ans']) + '\n'
+    Tests.add(question, ans)
 
+#####
+##### Случайные тесты: убраны, см. предыдущие коммиты по этой задаче, где был написан генератор
+#####
 
-def gen_field(n, m):
-    field = [[-1] * m for _ in range(n)]
+# большое поле без стенок - можно асимптотику проверять
+N, M = 50, 50
+start = 0, 0
+end = N-1, M-1
 
-    ia = 0.7
-    ib = 0.3
-    ja = 0.7
-    jb = 0.3
+field = (' ' * M + '\n') * N
+ans = abs(start[0] - end[0]) + abs(start[1] - end[1])
 
-    for _ in range(round(n * ia)):
-        c = random.randrange(1, round(n * ib))
-        i = random.randrange(n)
-        j = random.randrange(m - c)
-        draw_hline(field, i, j, j + c)
-
-    for _ in range(round(m * ja)):
-        c = random.randrange(1, round(m * jb))
-        i = random.randrange(n - c)
-        j = random.randrange(m)
-        draw_vline(field, i, i + c, j)
-
-    return field
-
-
-# Not sure that longest, but should be long enough =)
-def find_longest_way(field):
-    n = len(field)
-    m = len(field[0])
-
-    max_len = 0
-
-    for i in range(n):
-        for j in range(m):
-            if field[i][j] == -1:
-                i2, j2 = solution.wave(field, i, j)
-                if field[i2][j2] > max_len:
-                    max_way = (i, j, i2, j2)
-                    max_len = field[i2][j2]
-
-    return max_way
-
-
-shutil.rmtree(tests_dir, ignore_errors=True)
-os.makedirs(tests_dir)
-
-tests = [t.split('\n') for t in tests.strip().split('\n\n')]
-ind = 1
-for t in tests:
-    print(ind)
-    for i in range(len(t)):
-        for j in range(len(t[i])):
-            if t[i][j] == 'a':
-                i1 = i
-                j1 = j
-                tt = list(t[i])
-                tt[j] = ' '
-                t[i] = ''.join(tt)
-            elif t[i][j] == 'b':
-                i2 = i
-                j2 = j
-                tt = list(t[i])
-                tt[j] = ' '
-                t[i] = ''.join(tt)
-            elif t[i][j] == 'B':
-                i2 = i
-                j2 = j
-                tt = list(t[i])
-                tt[j] = 'X'
-                t[i] = ''.join(tt)
-            elif t[i][j] == 'c':
-                i1 = i
-                j1 = j
-                i2 = i
-                j2 = j
-                tt = list(t[i])
-                tt[j] = ' '
-                t[i] = ''.join(tt)
-
-    test = os.path.join(tests_dir, '%.2d' % ind)
-    ans = test + '.a'
-    ind += 1
-
-    with open(test, 'w') as f:
-        f.write('%d %d\n' % (len(t), len(t[0])))
-        f.write('%d %d\n' % (i1, j1))
-        f.write('%d %d\n' % (i2, j2))
-        f.write('\n'.join(t) + '\n')
-
-    with open(ans, 'w') as f:
-        f.write(solution.solve(i1, j1, i2, j2, solution.read_field_from_array(t)))
-
-for i in range(1, 40):
-    print(ind)
-
-    n = random.randrange(i * 12, (i + 1) * 12)
-    m = random.randrange(i * 12, (i + 1) * 12)
-    field = gen_field(n, m)
-    if i % 5 == 0:
-        i1 = random.randrange(n)
-        j1 = random.randrange(m)
-        i2 = random.randrange(n)
-        j2 = random.randrange(m)
-    else:
-        i1, j1, i2, j2 = find_longest_way(field)
-
-    test = os.path.join(tests_dir, '%.2d' % ind)
-    ans = test + '.a'
-    ind += 1
-
-    with open(test, 'w') as f:
-        f.write('%d %d\n' % (n, m))
-        f.write('%d %d\n' % (i1, j1))
-        f.write('%d %d\n' % (i2, j2))
-        f.write('\n'.join([''.join(['X' if x == -2 else ' ' for x in row]) for row in field]) + '\n')
-
-    with open(ans, 'w') as f:
-        f.write(solution.solve(i1, j1, i2, j2, field))
-
-# big empty field
-print(ind)
-test = os.path.join(tests_dir, '%.2d' % ind)
-ans = test + '.a'
-ind += 1
-n = 500
-
-with open(test, 'w') as f:
-    f.write('%d %d\n' % (n, n))
-    f.write('%d %d\n' % (0, 0))
-    f.write('%d %d\n' % (n - 1, n - 1))
-    row = ' ' * n + '\n'
-    for _ in range(n):
-        f.write(row)
-
-with open(ans, 'w') as f:
-    f.write('%d\n' % (n * 2 - 2))
+Tests.add(
+    '{} {}\n{} {}\n{} {}\n{}'.format(N, M, *start, *end, field),
+    str(ans) + '\n'
+)

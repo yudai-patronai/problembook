@@ -44,7 +44,7 @@ def read_field_from_array(arr):
 
 def solve(i1, j1, i2, j2, field):
     wave(field, i1, j1)
-    return ('INF' if field[i2][j2] < 0 else str(field[i2][j2])) + '\n'
+    return 'INF' if field[i2][j2] < 0 else str(field[i2][j2])
 
 
 if __name__ == "__main__":
@@ -52,4 +52,4 @@ if __name__ == "__main__":
     i1, j1 = map(int, input().split())
     i2, j2 = map(int, input().split())
     f = read_field(n)
-    print(solve(i1, j1, i2, j2, f), end='')
+    print(solve(i1, j1, i2, j2, f))
