@@ -12,7 +12,7 @@ def random_q():
     s = random.randint(0, n-1)
     a = list()
     for i in range(n):
-        row = [round(random.randint(62) / 100 ) for _ in range(n)]
+        row = [round(random.randint(59) / 100 ) for _ in range(n)]
         a.append(row)
     for i in range(n):
         a[i][i] = 0
