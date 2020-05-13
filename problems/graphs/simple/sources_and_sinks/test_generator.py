@@ -1,33 +1,9 @@
-import os
-import shutil
+from lib.testgen import TestSet
 from lib import random
-
+from solution import solution
 
 N = 8
 random.seed(1984)
-
-tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
-
-shutil.rmtree(tests_dir, ignore_errors=True)
-os.makedirs(tests_dir)
-
-
-def solution(n, A):
-    istok = []
-    stok = []
-
-    for i in range(n):
-        if sum(A[i]) == 0:
-            stok.append(i+1)
-    stok.sort()
-    
-    for i in range(n):
-        if sum([sub_list[i] for sub_list in A]) == 0:
-            istok.append(i+1)
-    istok.sort()
-    
-    return ' '.join(map(str, istok)), ' '.join(map(str, stok))
-
 
 def generate_array(n, istok, stok):
     A = [[random.randint(0, 1) for _ in range(n)] for _ in range(n)]
@@ -45,16 +21,22 @@ def generate_array(n, istok, stok):
     return A
 
 
-for num in range(1, N + 1):
-    if num == 1:
-        n = 5
-        A = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 1], [1, 1, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+tests = TestSet()
 
-    elif num == 2:
+for test_i in range(1, N + 1):
+    if test_i == 1:
+        n = 5
+        A = [[0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 1],
+             [1, 1, 0, 0, 0],
+             [0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0]]
+
+    elif test_i == 2:
         n = 5
         A = generate_array(n, 0, 0)
 
-    elif num == 3:
+    elif test_i == 3:
         n = 7
         A = generate_array(n, 2, 5)
     
@@ -62,11 +44,12 @@ for num in range(1, N + 1):
         n = random.randint(7, 30)
         A = generate_array(n, random.randint(1, n), random.randint(1, n))
     
+    question = str(n) + '\n'
+    question += '\n'.join( [' '.join(map(str, row)) for row in A] )
+    question += '\n'
     
-    with open(os.path.join(tests_dir, '{0:0>2}'.format(num)), 'w') as f:
-        f.write(str(n) + '\n')
-        f.write('\n'.join([' '.join(map(str, sub_list)) for sub_list in A]))
+    stok, istok = solution(n, A)
+    answer = ' '.join(map(str, istok)) + '\n'
+    answer += ' '.join(map(str, stok)) + '\n'
 
-    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(num)), 'w') as f:
-        answer = solution(n, A)
-        f.write('\n'.join(answer))
+    tests.add(question, answer)
