@@ -8,7 +8,7 @@ def dfs(u, comp):
 
 if __name__ == "__main__":
     n, m = map(int, input().split())
-    a = {{} for i in range(n)}
+    a = {i: set() for i in range(n)}
     for _ in range(m):
         u, v, w = map(int, input().split())
         a[u].add((v, w))
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     for i in range(n):
         if not used[i]:
             comp = []
-            dfs(u, comp)
+            dfs(i, comp)
             total = 0
             for u in comp:
                 for v, w in a[u]:
