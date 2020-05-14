@@ -34,11 +34,27 @@ def gen_test_weight_pairs(tests_dir, ind, n, m, pairs):
         f.write(solution.solve(task.edges_to_graph(n, edges), pairs))
 
 
+def gen_manual_test(tests_dir, ind, question_str, answer_str):
+    print('test (manual) %d' % (ind))
+    test = os.path.join(tests_dir, '%.2d' % (ind))
+    ans = test + '.a'
+
+    with open(test, 'w') as f:
+        f.write(question_str)
+
+    with open(ans, 'w') as f:
+        f.write(answer_str)
+
+
+
 def gen_tests_weight_pairs(tests_dir):
     shutil.rmtree(tests_dir, ignore_errors=True)
     os.makedirs(tests_dir)
 
     t = 1
+    gen_manual_test(tests_dir, 1, '2 1\n0 1 81\n1\n0 1\n', '0 1\n')
+    gen_manual_test(tests_dir, 2, '4 3\n3 2 73\n2 0 31\n0 1 89\n2\n0 1\n0 3\n', '0 1\n0 2 0 2 3\n')
+    t += 2
     for i in range(5):
         n = 2 + i * 2
         gen_test_weight_pairs(tests_dir, t, n, i, [(0, 1)])
@@ -49,7 +65,7 @@ def gen_tests_weight_pairs(tests_dir):
         gen_test_weight_pairs(tests_dir, t, n, 0, [(0, 1), (0, 3)])
         t += 1
 
-    for i in range(20):
+    for i in range(5):
         n = random.randrange(100, 1000)
         pairs = []
         for i in range(random.randrange(1, 10)):
@@ -57,7 +73,7 @@ def gen_tests_weight_pairs(tests_dir):
         gen_test_weight_pairs(tests_dir, t, n, 5, pairs)
         t += 1
 
-    for i in range(20):
+    for i in range(4):
         n = random.randrange(100, 1000)
         pairs = []
         for i in range(random.randrange(1, 10)):
