@@ -1,11 +1,25 @@
 #!/usr/bin/env python3
 
-import os
 from lib import random
-#import random
-import shutil
+from lib.testgen import TestSet
 
 random.seed('friends')
+
+
+def array2d_to_str(A):
+    s = ''
+    for row in A:
+        s += ' '.join(map(str, row)) + '\n'
+    return s
+
+def str_question(A:list, S:int):  # A - матрица дружбы, S - человек из условия
+    q = '{} {}\n{}'.format(len(A), S, array2d_to_str(A))
+    if not q.endswith('\n'):
+        q += '\n'
+    return q
+
+def str_answer(ans:int):
+    return str(ans) + '\n'
 
 def random_q():
     n = random.randint(5, 100)
@@ -18,13 +32,11 @@ def random_q():
         a[i][i] = 0
     return n, s, a
 
-
 def dfs(start, graph, visited):
     visited[start] = True
     for i in range(len(graph)):
         if (graph[start][i] == 1 or graph[i][start] == 1) and not visited[i]:
             dfs(i, graph, visited)
-
 
 def solve(n, s, a):
     used = [False] * n
@@ -32,33 +44,30 @@ def solve(n, s, a):
     return (sum(used) - 1)
 
 
-tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
-shutil.rmtree(tests_dir, ignore_errors=True)
-os.makedirs(tests_dir)
+Tests = TestSet()
 
-for test in range(4, 21):
+manual_tests = [
+    ([  # матрица дружбы, номер человека, ответ
+        [0, 1, 1],
+        [0, 0, 1],
+        [0, 0, 0],
+    ], 1, 2),  
+    ([
+        [0, 1],
+        [0, 0],
+    ], 1, 1),
+    ([
+        [0, 0, 0, 0],
+        [0, 0, 1, 1],
+        [0, 0, 0, 1],
+        [0, 0, 0, 0],
+    ], 1, 2),
+]
+
+for A, S, ans in manual_tests:
+    Tests.add(str_question(A, S), str_answer(ans))
+
+for _ in range(4, 21):
     N, S, A = random_q()
-    firstst = str(N)+' '+str(S)
-    matstring = ""
-    for el in A:
-        matstring += '\n' + ' '.join(map(str, el))
     ans = solve(N, S, A)
-    with open(os.path.join(tests_dir, '{0:0>2}'.format(test)), 'w') as f:
-        f.write(firstst + matstring)
-    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(test)), 'w') as f:
-        f.write(str(ans))
-with open(os.path.join(tests_dir, '01'), 'w') as f:
-    f.write('3 1\n')
-    f.write('0 1 1\n0 0 1\n0 0 0')
-with open(os.path.join(tests_dir, '01.a'), 'w') as f:
-    f.write('2')
-with open(os.path.join(tests_dir, '02'), 'w') as f:
-    f.write('2 1\n')
-    f.write('0 1\n0 0')
-with open(os.path.join(tests_dir, '02.a'), 'w') as f:
-    f.write('1')
-with open(os.path.join(tests_dir, '03'), 'w') as f:
-    f.write('4 1\n')
-    f.write('0 0 0 0\n0 0 1 1\n0 0 0 1\n0 0 0 0')
-with open(os.path.join(tests_dir, '03.a'), 'w') as f:
-    f.write('2')
+    Tests.add(str_question(A, S), str_answer(ans))

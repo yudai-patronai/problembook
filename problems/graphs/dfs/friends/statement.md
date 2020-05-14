@@ -2,7 +2,7 @@
 id: 30605713-dea3-4943-acb4-b98fe9aee8ae
 longname: Друзья
 languages: [python]
-tags: [easy, graph]
+tags: [graphs,connectivity,easy]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1
