@@ -4,7 +4,7 @@ id: 9500b664-18ac-48c3-992b-d60a31785832
 longname: Стек
 languages: [cpp, python]
 tags: [easy, containers]
-checker: cmp_int
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
