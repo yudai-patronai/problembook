@@ -12,6 +12,9 @@ class GraphComponent(set):
         super().__init__(*args, **kwargs)
         self.free_edges = set()
 
+    def no_edges(self):
+        return len(self.free_edges) == 0
+
 
 class GraphGen:
     def __init__(self):
@@ -39,7 +42,7 @@ class GraphGen:
                 x, y = y, x
             self.dsu[y]["parent"] = x
             self.dsu[x]["rank"] += self.dsu[y]["rank"]
-            self.sets[x] += self.sets[y]
+            self.sets[x] |= self.sets[y]
             del self.sets[y]
 
     @staticmethod
@@ -50,9 +53,9 @@ class GraphGen:
         self.dsu = [self.make_set(i) for i in range(n)]
         self.sets = {i: GraphComponent({i}) for i in range(n)}
         edges = []
-        adj_list = {{} for i in range(n)}
-        while len(self.sets > comp_cnt):
-            u, v = random.sample(self.sets.keys(), 2)
+        adj_list = {i: set() for i in range(n)}
+        while len(self.sets) > comp_cnt:
+            u, v = random.sample(list(self.sets.keys()), 2)
             w = self.random_weight()
             self.union_sets(u, v)
             if random.random() < 0.5:
@@ -62,23 +65,27 @@ class GraphGen:
             edges.append((u, v, w))
         m_max = 0
         m_cur = 0
-        for _, j in self.sets.items():
-            set_len = len(j)
+        for _, comp in self.sets.items():
+            set_len = len(comp)
             m_cur += set_len
             m_max += set_len * (set_len - 1) / 2
-            verticies = sorted(list(j))
+            verticies = sorted(list(comp))
             for i in range(len(verticies)):
                 for j in range(i+1, len(verticies)):
                     u, v = verticies[i], verticies[j]
                     if v not in adj_list[u]:
-                        j.free_edges.add((u, v))
+                        comp.free_edges.add((u, v))
+        for i in list(self.sets.keys()):
+            if self.sets[i].no_edges():
+                del self.sets[i]
+
         m = random.randint(m_cur, m_max)
         while m_cur < m:
-            i = random.choice(self.sets.keys())
-            j = self.sets[i]
-            edge = random.choice(j.free_edges)
-            j.free_edges.remove(edge)
-            if len(j.free_edges) == 0:
+            i = random.choice(list(self.sets.keys()))
+            comp = self.sets[i]
+            edge = random.choice(list(comp.free_edges))
+            comp.free_edges.remove(edge)
+            if comp.no_edges():
                 del self.sets[i]
             if random.random() < 0.5:
                 u, v = edge[::-1]
@@ -87,7 +94,9 @@ class GraphGen:
             w = self.random_weight()
             edges.append((u, v, w))
             m_cur += 1
-        return random.shuffle(edges)
+
+        random.shuffle(edges)
+        return edges
 
 
 class Solver:
@@ -96,7 +105,7 @@ class Solver:
         self.used = None
 
     def __call__(self, n, edges):
-        self.adj_list = {{} for i in range(n)}
+        self.adj_list = {i: set() for i in range(n)}
         for u, v, w in edges:
             self.adj_list[u].add((v, w))
             self.adj_list[v].add((u, w))
@@ -162,7 +171,7 @@ manual_tests = [
         [
             (2, 4, 2),
             (5, 2, 9),
-            (7, 0, 6),
+            (3, 0, 6),
             (1, 6, 1)
         ],
         [1, 6, 11]
@@ -179,15 +188,15 @@ manual_tests = [
     ),
 ]
 
-for A, S, ans in manual_tests:
-    tests.add(str_question(A, S), str_answer(ans))
+for n, m, edges, ans in manual_tests:
+    tests.add(str_question(n, m, edges), str_answer(ans))
 
 generator = GraphGen()
 solver = Solver()
 
 for _ in range(5, 16):
     n = random.randint(10, 40)
-    comp_cnt = random.randint(1, n)
+    comp_cnt = random.randint(1, n-1)
     edges = generator(n, comp_cnt)
     m = len(edges)
     ans = solver(n, edges)
@@ -195,7 +204,7 @@ for _ in range(5, 16):
 
 for _ in range(16, 20):
     n = random.randint(40, 250)
-    comp_cnt = random.randint(1, n)
+    comp_cnt = random.randint(1, n-1)
     edges = generator(n, comp_cnt)
     m = len(edges)
     ans = solver(n, edges)
