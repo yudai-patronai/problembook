@@ -1,0 +1,39 @@
+name: 2020_algo_s2_exam2_3
+language: python
+problems:
+    
+    # Стек
+    - 9500b664-18ac-48c3-992b-d60a31785832:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Истоки и стоки
+    - afd284ed-a800-497e-a4a3-de35e2cb3e16:
+        score: 60
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Поиск расстояний от заданной вершины до всех остальных
+    - 3caf5ad6-a884-4f5b-8e84-1273ff0ea8fc:
+        score: 80
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Подсчёт весов компонент связности неориентированного графа
+    - d38fee10-9406-4c82-a56b-fadcf42ce627:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск расстояния на прямоугольном поле
+    - 0f2d0de1-1bad-4d4b-a5db-b016df216d28:
+        score: 150
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    

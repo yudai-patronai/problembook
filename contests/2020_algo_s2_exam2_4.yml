@@ -1,0 +1,39 @@
+name: 2020_algo_s2_exam2_4
+language: python
+problems:
+    
+    # Самoе популярое слово
+    - 290f937d-4055-452f-8257-f62479fe679f:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Истоки и стоки
+    - afd284ed-a800-497e-a4a3-de35e2cb3e16:
+        score: 60
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Поиск расстояний от заданной вершины до всех остальных
+    - 3caf5ad6-a884-4f5b-8e84-1273ff0ea8fc:
+        score: 80
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Подсчёт весов компонент связности неориентированного графа
+    - d38fee10-9406-4c82-a56b-fadcf42ce627:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Путь минимального веса из 3k+1 ребер
+    - e8e9354e-7ba9-403e-9a65-5e3f8bd7467f:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
