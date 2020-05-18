@@ -1,4 +1,4 @@
-bool check_move(int num, int from, int to, int N, int* mass)
+bool check_move(int num, int from, int to, int* mass)
 {
     int i;
     for (i = 0; i < num - 1; i++) //проверяем, что нет более лёгких там "куда"
@@ -37,7 +37,7 @@ int correct_check(int N, Move* arr)
         return flag;
     }
     for (i = 0; i < k; i++){
-        if (check_move(arr[i].num, arr[i].from, arr[i].to, N, mass)){
+        if (check_move(arr[i].num, arr[i].from, arr[i].to, mass)){
             mass[arr[i].num- 1] = arr[i].to;
         }
         else {
@@ -57,7 +57,6 @@ int correct_check(int N, Move* arr)
 int main()
 {
     Move* arr_;
-    int i = 0;
     int N_;
     std::cin >> N_;
     arr_ = hanoi_repair(N_); //функция студентов

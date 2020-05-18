@@ -1,4 +1,5 @@
-Move* counterwise_repair(Move* arr_, int N_){
+Move* counterwise_repair(Move* arr_, int N_)
+{
     long int kol = 1;
     long int i;
     for (i = 1; i < N_; i++){
@@ -11,7 +12,7 @@ Move* counterwise_repair(Move* arr_, int N_){
         counterarr[i].to = arr_[kol-i-1].from;
     }
     return counterarr;
-};
+}
 
 Move* repair(Move* arr_, int N_) {
     long int kol = 1;
@@ -88,4 +89,5 @@ Move* hanoi_repair(int N)
     arr[kol].from = 5;
     arr[kol].to = 5;
     return arr;
-}; 
+}
+
