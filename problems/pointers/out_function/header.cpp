@@ -12,6 +12,7 @@ int main()
 	size_t i = 1;
 	getline(&text, &i, stdin);
 	print_no_space(text);
+	free(text);
 	return 0;
 }
 
