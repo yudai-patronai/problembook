@@ -4,7 +4,7 @@ id: a9ee0d56-953e-4435-ae33-4407bcce9a36
 longname: Сетевой Маркетинг
 languages: [cpp, python]
 tags: [recursion]
-checker: cmp_int
+checker: cmp_long_long
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
