@@ -5,7 +5,7 @@ MAX_TESTS = 80
 
 class TestSet():
     def __init__(self, tests=None):
-        self._test_num = 0
+        self._test_num = 1
 
         self._tests_path = os.path.join(os.getcwd(), 'tests')
         shutil.rmtree(self._tests_path, ignore_errors=True)
