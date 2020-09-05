@@ -9,3 +9,10 @@ problems:
         real_time_limit: 1
         max_vm_size: 64M
     
+    # Ассоциативный массив на хеш-таблице с цепочками - Поиск элемента
+    - a8afc600-b11f-4ec3-801f-47f053188bb9:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

@@ -1,7 +1,8 @@
 ---
 id: fe9c52c8-7361-4d33-af3a-fea400992db2
 longname: Системы счисления
-languages: []
+type: text-answer
+languages: [python]
 tags: [easy,numeral_system]
 checker: cmp_yesno
 time_limit: 1
