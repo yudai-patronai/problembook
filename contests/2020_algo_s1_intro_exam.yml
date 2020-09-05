@@ -51,3 +51,31 @@ problems:
         real_time_limit: 1
         max_vm_size: 64M
     
+    # Странные часы
+    - 7b75b661-eb27-435f-a4fe-f0aa54c167d7:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сортировка трёх чисел
+    - 0d8df7cf-7d21-4fde-b36e-f13361f88f7f:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Найди максимум
+    - 7855031f-a4e1-4e4a-a489-54350bf0da67:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # В обратном порядке
+    - 14f445ba-4d5f-4204-a9b4-4e80c0229462:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
