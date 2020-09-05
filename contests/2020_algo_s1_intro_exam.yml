@@ -1,0 +1,11 @@
+name: 2020_algo_s1_intro_exam
+language: python
+problems:
+    
+    # Системы счисления
+    - fe9c52c8-7361-4d33-af3a-fea400992db2:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
