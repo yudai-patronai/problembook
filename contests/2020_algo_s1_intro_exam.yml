@@ -4,42 +4,49 @@ problems:
     
     # Системы счисления
     - fe9c52c8-7361-4d33-af3a-fea400992db2:
-        score: 20
+        score: 100
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
     
     # Ладьи на шахматной доске
     - 5e1403ef-caea-4789-b5dd-0038fa7a32e2:
-        score: 20
+        score: 100
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
     
     # Шары в урне
     - 6180e74d-52d4-426a-afad-15ac821236d5:
-        score: 20
+        score: 100
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
     
     # Хранение автомобильных номеров
     - 2cc5040e-9f5a-4d62-9947-14df1670c382:
-        score: 20
+        score: 100
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
     
     # Спички
     - 6acb65ed-b111-4259-9ae5-30c34eab1cc3:
-        score: 20
+        score: 100
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
     
     # Алгебра логики
     - 625a36f5-5e8d-4c38-bf65-561eee96f5f0:
-        score: 20
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Привет, Ejudge!
+    - 9eced9cf-0bcb-421a-982b-fbb3b2a6cec5:
+        score: 100
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
