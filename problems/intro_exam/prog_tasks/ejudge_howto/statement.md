@@ -3,7 +3,7 @@ id: 9eced9cf-0bcb-421a-982b-fbb3b2a6cec5
 longname: Привет, Ejudge!
 languages: [python]
 tags: [easy,io]
-checker: cmp_str
+checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
