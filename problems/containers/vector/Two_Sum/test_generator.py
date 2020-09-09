@@ -2,8 +2,8 @@ from lib.testgen import TestSet
 from lib.random import sample
 
 tests = TestSet()
-tests.add('6\n1 2 3 4 5 6\n', 'NO\n')
-tests.add('1\n34612\n', 'YES\n')
-tests.add('5\n5 3 6 3 1\n', 'YES\n')
-tests.add('2\n1 1\n', 'YES\n')
-tests.add('1\n5\n', 'NO\n')
+tests.add('4\n2 7 11 15\n9', '0 1\n') #[2, 7, 11, 15] 9
+tests.add('3\n3 2 4\n6', '1 2\n') #[3, 2, 4] 6
+tests.add('5\n-1 -2 -3 -4 -5\n-8', '2 4\n') # [-1,-2,-3,-4,-5] -8
+tests.add('4\n-3 4 3 90\n0', '0 2\n') # [-3,4,3,90] 0
+tests.add('2\n3 3\n6', '01\n') #[3, 3] 6
