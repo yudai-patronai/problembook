@@ -10,7 +10,7 @@ max_vm_size: 64M
 
 Дан массив чисел( vector<int>) и заданное число.
 вернуть индексы двух элементов, таких что nums[i] + nums[j] == target. 
-+ c++: `void twoSum(vector<int> &nums, int N)`,
++ c++: `void cycle_shift(vector<int> &nums, int N)`,
 
 где `nums` -- исходный массив, `N` -- заданное чисо.
 
