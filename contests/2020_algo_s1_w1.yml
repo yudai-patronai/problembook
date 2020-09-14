@@ -1,0 +1,39 @@
+name: 2020_algo_s1_w1.yml
+language: python
+problems:
+    
+    # Вычисление суммы двух чисел
+    - 914412b5-c0f0-4897-aa16-2ebb3ee72805:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Больше-меньше
+    - 54070647-c031-4cc4-8a23-345d6fd7e8ec:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Определение типа треугольника
+    - 79a4267d-9eeb-4c58-bfec-3f77ed2bc6ad:
+        score: 150
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Сумма N чисел
+    - d6766c08-07cb-436a-8b69-c547fed2a423:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Длина удава
+    - 4d49e107-f822-4ff5-b802-28bf839b1e6b:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
