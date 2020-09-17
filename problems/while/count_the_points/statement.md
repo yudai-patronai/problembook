@@ -2,7 +2,7 @@
 id: afbf25b1-7945-445d-ac82-b4671236581a
 longname: Подсчет количества точек на плоскости
 tags: [if,cycle]
-languages: [cpp]
+languages: [cpp, python]
 checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1

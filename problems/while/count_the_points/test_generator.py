@@ -33,7 +33,7 @@ def solution(dots):
     return "{} {}".format(max_count_quarter, max_count)
 
 
-N = 50
+N = 10
 random.seed(10000)
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
