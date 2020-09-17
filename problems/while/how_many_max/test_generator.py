@@ -3,7 +3,7 @@ import shutil
 import random
 
 
-N = 50
+N = 10
 random.seed(1984)
 
 tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
