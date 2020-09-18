@@ -1,9 +1,9 @@
 ---
 id: 6a19c4d4-2612-47da-8ace-6c85901abc64
 longname: Объединение пересекающихся отрезков
-languages: [cpp,py]
+languages: [cpp]
 tags: [easy, arrays]
-checker: cmp_yesno
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
