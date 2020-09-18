@@ -1,3 +1,3 @@
 num = int(input())
-sum = num // 100 + (num % 100) // 10 + num % 10
-print(sum)
+s = num // 100 + (num % 100) // 10 + num % 10
+print(s)
