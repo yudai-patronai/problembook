@@ -54,7 +54,7 @@ public:
 private:
     enum class NucleobaseSymbol {A, C, G, T};
     DNANucleobase(NucleobaseSymbol s): s(s) { }
-    NucleobaseSymbol const s;
+    NucleobaseSymbol s;
 };
 ```
 
