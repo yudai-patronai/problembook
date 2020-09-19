@@ -12,7 +12,7 @@ public:
 
     std::string as_string() const {
         std::string dna_string;
-        dna_string.reserve(_dna.size()+2);
+        dna_string.reserve(_dna.size()+3);
         dna_string.push_back('[');
         std::transform(_dna.begin(),_dna.end(),std::back_inserter(dna_string),[](DNANucleobase base){ return base.as_symbol(); });
         dna_string.push_back(']');
