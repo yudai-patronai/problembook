@@ -40,8 +40,6 @@ public:
     }
 
     DNA& operator+=(DNA const &rha) {
-        _dna.reserve(_dna.size() + rha._dna.size());
-
         auto lha_it = _dna.rbegin();
         auto lha_end = _dna.rend();
         auto rha_it = rha._dna.begin();
