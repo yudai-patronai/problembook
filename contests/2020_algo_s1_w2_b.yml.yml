@@ -1,0 +1,52 @@
+name: 2020_algo_s1_w2_b.yml
+language: python
+problems:
+
+    # Високосный год
+    - a17a3e98-5a76-4279-8abf-5ff588b0b091:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Сумма цифр трехзначного числа
+    - 8171cdf9-c7a5-481c-8899-d3d9d3f7ebf3:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Среднее значение последовательности, заканчивающейся нулем
+    - b7fb7ca3-4fff-4f8f-8dc8-ca35c02cec7c:
+        score: 100
+        time_limit: 3
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Максимум последовательности
+    - 56875bc8-2456-4e70-a5d7-907d95821e49:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Точная степень двойки
+    - 453bacb4-181f-4bd4-884a-f7cdda8e32da:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Количество элементов, равных максимуму
+    - 4f36aeaf-e053-4563-9c25-3fc9af1b8fbf:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Подсчет количества точек на плоскости
+    - afbf25b1-7945-445d-ac82-b4671236581a:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
