@@ -6,7 +6,7 @@ import shutil
 import subprocess
 import sys
 
-NUM_TEST = 50
+NUM_TEST = 15
 
 random.seed(42)
 
@@ -14,7 +14,7 @@ tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
 shutil.rmtree(tests_dir, ignore_errors=True)
 os.makedirs(tests_dir)
 
-for i in range(1, 9):
+for i in range(1, 7):
     with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as fin:
         fin.write('{}'.format(2 ** random.randint(0, 14)))
 
@@ -27,7 +27,7 @@ for i in range(1, 9):
     with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as fout:
         fout.write('{}'.format(__output_data))
 
-for i in range(8, NUM_TEST + 1):
+for i in range(7, NUM_TEST):
     with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as fin:
         fin.write('{}'.format(random.randint(1, 10000)))
 
@@ -39,3 +39,8 @@ for i in range(8, NUM_TEST + 1):
 
     with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as fout:
         fout.write('{}'.format(__output_data))
+
+with open(os.path.join(tests_dir, '{0:0>2}'.format(15)), 'w') as fin:
+        fin.write('1')
+with open(os.path.join(tests_dir, '{0:0>2}.a'.format(15)), 'w') as fout:
+        fout.write('YES')
