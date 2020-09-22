@@ -3,7 +3,7 @@ id: 3973abcf-5bc6-4759-b542-9a5016250900
 longname: Считывание числа в системе счисления майя
 languages: [python]
 tags: [while,numeral_system]
-checker: cmp_file
+checker: cmp_int
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
