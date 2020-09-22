@@ -1,0 +1,74 @@
+name: 2020_cpp_algo_s1_w13
+language: cpp
+problems:
+    
+    # Задача о рюкзаке
+    - f906faed-3478-4dc7-9eb8-02fde7ee2abc:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Шашку - в дамки
+    - 427f814e-8917-4cb2-a948-4568d8174c79:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Побег
+    - d64b1f50-0304-4702-8e56-9c54d18e6c33:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Платный аттракцион
+    - aedeec91-922a-4a12-8df6-a94dd4cd5432:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Алгоритм Левенштейна
+    - 163e83cc-f95f-4a0c-ba58-aaa1e9732714:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Z-функция
+    - d725c1b9-62ac-4f62-8a0c-7e47042a377f:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 256M
+    
+    # Префикс функция
+    - f8158168-7725-4489-ae3a-0c278e0cf875:
+        score: 100
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 256M
+    
+    # Гвоздики
+    - a8b0dd50-d38c-47f3-85d4-d95ff71f364b:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Период строки
+    - 3efbe0c4-e141-4fbb-81f0-bcc806e6006f:
+        score: 100
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Расплата за редакционные ошибки
+    - 8617f38c-f6f4-45e4-bdff-40071f411ac5:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

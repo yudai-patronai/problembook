@@ -1,0 +1,46 @@
+name: 2020_cpp_algo_s1_w11
+language: cpp
+problems:
+    
+    # Взрывоопасность (A,B)
+    - f6dfdebd-3352-4ac1-b520-d4b997d0e02b:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Взрывоопасность (A,B,C)
+    - 6f175d58-dd48-4033-8bca-62ff2e5a2176:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Максимальная возрастающая подпоследовательность
+    - c07b984d-286d-493e-999f-5575cd704b1c:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Компьютерная игра
+    - 7991115d-b097-4d30-87e5-eddd554d87ec:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Гвоздики
+    - a8b0dd50-d38c-47f3-85d4-d95ff71f364b:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик - математик
+    - e4c4b882-2eb9-47d8-b55c-8320fa282f34:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

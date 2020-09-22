@@ -1,0 +1,32 @@
+name: 2020_cpp_algo_s1_w10
+language: cpp
+problems:
+    
+    # Рекурсивный анализ рекурсии
+    - 27e19630-7333-4710-8cc7-837b5b7eea96:
+        score: 200
+        time_limit: 2
+        real_time_limit: 2
+        max_vm_size: 64M
+    
+    # Простые числа-перестановки
+    - 74e4d829-bc76-45a1-a2b2-b4c39f13929f:
+        score: 200
+        time_limit: 2
+        real_time_limit: 2
+        max_vm_size: 64M
+    
+    # Количество подмножеств попарно взаимно простых чисел
+    - 1938c19b-8eb0-4c59-8e8f-59bfc1a25c0c:
+        score: 200
+        time_limit: 2
+        real_time_limit: 2
+        max_vm_size: 16M
+    
+    # Объединение упорядоченных списков
+    - 1541882b-c8eb-486f-83b5-7c0aeaf6fef9:
+        score: 200
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
