@@ -4,9 +4,9 @@ longname: StackWithMin
 languages: [cpp, class]
 tags: [medium, io]
 checker: cmp_yesno
-time_limit: 10
-real_time_limit: 30
-max_vm_size: 700M
+time_limit: 3
+real_time_limit: 3
+max_vm_size: 128M
 ---
 
 Реализовать класс stack, который поддреживат следующие операции:
@@ -23,7 +23,8 @@ max_vm_size: 700M
 - где и как будут хранится элементы - ваш выбор.
 - гарантируется что не будет операций над пустым стеком.
 Ваше решение должно иметь вид:
-```
+
+<pre>
 class MinStack {
     //ваш код
     public:
@@ -51,7 +52,7 @@ class MinStack {
         return value;
     };
 }
-```
+</pre>
 
 Примеры использования:
 `MinStack *mstack = new MinStack;`
