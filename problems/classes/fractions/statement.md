@@ -23,7 +23,7 @@ private:
     uint64_t denominator;
 
     // Do NOT delete
-    template<class T>
+    template < class T >
     friend bool operator==(const Fraction& lhs, const T& rhs);
 
 public:
