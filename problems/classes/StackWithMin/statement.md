@@ -28,7 +28,7 @@ max_vm_size: 128M
 
 Ваше решение должно иметь вид:
 
-<pre>
+```
 class MinStack {
     //ваш код
     public:
@@ -56,7 +56,7 @@ class MinStack {
         return value;
     };
 }
-</pre>
+```
 
 Примеры использования:
 `MinStack *mstack = new MinStack;`

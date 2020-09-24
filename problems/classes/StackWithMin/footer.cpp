@@ -1,6 +1,6 @@
 
 int main(int argc, char *argv[]){
-    int n = 300000;
+    int n = 1000;
     map<int, int> nums;
     int start, finish, total = 0;
     int *test_sequence = new int[n];
