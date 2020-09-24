@@ -1,0 +1,60 @@
+name: 2020_cpp_algo_s2_w1
+language: cpp
+problems:
+    
+    # Суеверный Петя
+    - 51a10767-0d01-415c-b469-8162503dec52:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Преобразование формата
+    - c50fa501-1d17-468c-935b-1cdc6c89372c:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сортировка слов в лексикографическом порядке
+    - ac001e1c-bda6-4bc7-8e66-af7783b66844:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Все подмассивы
+    - b878917b-8949-4bbb-a9f2-6c0d40fe0e4d:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Черепахи
+    - 9af9c2b0-cafd-46d6-a467-d1d4824f649c:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик - художник
+    - acd0aa11-ccf3-4336-ae8d-6637905dc5c4:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Реаллокация по-домашнему
+    - 2c1d078f-9dbe-4d41-8379-87b7c20dede1:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Объединение упорядоченных списков
+    - 1541882b-c8eb-486f-83b5-7c0aeaf6fef9:
+        score: 180
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

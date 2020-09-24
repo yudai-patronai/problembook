@@ -3,7 +3,7 @@ id: acd0aa11-ccf3-4336-ae8d-6637905dc5c4
 longname: Кузнечик - художник
 languages: [python]
 tags: [easy, io, dynamic]
-checker: cmp_file
+checker: cmp_long_long
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

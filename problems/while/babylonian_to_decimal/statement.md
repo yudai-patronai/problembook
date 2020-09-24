@@ -3,7 +3,7 @@ id: ef198727-2f8f-4a23-a3d4-ed8e8ec457db
 longname: Считывание числа в вавилонской системе счисления
 languages: [python]
 tags: [while,numeral_system]
-checker: cmp_file
+checker: cmp_int
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M

@@ -1,41 +1,29 @@
 #!/usr/bin/python3
 
-import os
 from lib import random
-import shutil
-import subprocess
-import sys
+from lib.testgen import TestSet
 
-NUM_TEST = 50
+
+tests = TestSet()
+NUM_TEST = 9
+
+YES = 'YES\n'
+NO = 'NO\n'
 
 random.seed(42)
 
-tests_dir = os.path.join(os.path.dirname(__file__), 'tests')
-shutil.rmtree(tests_dir, ignore_errors=True)
-os.makedirs(tests_dir)
+def sol(N):
+    count = 0
+    while N > 0:
+        count += N % 2
+        N //= 2
+    return not count
 
-for i in range(1, 9):
-    with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as fin:
-        fin.write('{}'.format(2 ** random.randint(0, 14)))
+for i in range(6):
+    tests.add('{}\n'.format(2 ** random.randint(0, 14)), YES)
 
-    with open(os.path.join(tests_dir, '{0:0>2}'.format(i))) as fin:
-        output = subprocess.check_output([sys.executable,
-                                          os.path.join(os.path.dirname(__file__),
-                                                       'solution.py')], stdin=fin).decode('utf-8')
-        __output_data = output.strip()
+for i in range(6, NUM_TEST - 1):
+    test_num = random.randint(1, 10000)
+    tests.add('{}\n'.format(test_num), YES if sol(test_num) else NO)
 
-    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as fout:
-        fout.write('{}'.format(__output_data))
-
-for i in range(8, NUM_TEST + 1):
-    with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as fin:
-        fin.write('{}'.format(random.randint(1, 10000)))
-
-    with open(os.path.join(tests_dir, '{0:0>2}'.format(i))) as fin:
-        output = subprocess.check_output([sys.executable,
-                                          os.path.join(os.path.dirname(__file__),
-                                                       'solution.py')], stdin=fin).decode('utf-8')
-        __output_data = output.strip()
-
-    with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as fout:
-        fout.write('{}'.format(__output_data))
+tests.add('1\n', YES)

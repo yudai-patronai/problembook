@@ -1,0 +1,95 @@
+name: 2020_cpp_algo_s1_test2
+language: cpp
+problems:
+    
+    # Считывание числа в системе счисления майя
+    - 3973abcf-5bc6-4759-b542-9a5016250900:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Дома и магазины
+    - 41864651-6af3-4232-bdff-b7aa53bf2a20:
+        score: 100
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+    
+    # Является ли квадрат волшебным?
+    - db119bd5-125e-4bbe-a82f-cbaf5b3c4184:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Голосование за лучший фильм
+    - d547698d-cc75-41a6-bdce-44fef6f232b8:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Написать функцию вывода
+    - b04c06de-39db-4e9a-87ca-35712244145a:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сетевой Маркетинг
+    - a9ee0d56-953e-4435-ae33-4407bcce9a36:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик - художник
+    - acd0aa11-ccf3-4336-ae8d-6637905dc5c4:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Белый король
+    - 982d3c81-9848-4d21-ae2e-6cb98ccb00c8:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подпалиндромы
+    - 81fededd-9c0c-4841-b296-976428c1e230:
+        score: 100
+        time_limit: 3
+        real_time_limit: 3
+        max_vm_size: 256M
+    
+    # Ремонт в Ханое
+    - 3147a541-3ffc-4193-8c92-29a194d79386:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Считывание числа в вавилонской системе счисления
+    - ef198727-2f8f-4a23-a3d4-ed8e8ec457db:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Голосование за партии
+    - d63dea3a-9b40-45ff-b4a4-03bf3ce10a0c:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Белая пешка
+    - b4297e1b-a396-4ef9-91d8-9363d338852c:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
