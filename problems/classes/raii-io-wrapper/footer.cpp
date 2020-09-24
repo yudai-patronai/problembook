@@ -1,8 +1,3 @@
-#include <vector>
-#include <unordered_set>
-#include <stdexcept>
-#include <iostream>
-#include <type_traits>
 
 struct Call {
     handle_t handle;

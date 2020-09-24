@@ -13,9 +13,10 @@ max_vm_size: 64M
 
 
 Напишите класс, который будет представлять рациональное число в виде дроби. Реализуйте в нем операторы сложения, вычитания, умножения и унарный минус. Используйте заготовку, приведенную ниже.
+
 **Важно**: думать о входных или выходных данных не нужно, отправьте только реализацию класса.
 
-```
+<pre>
 class Fraction {
 private:
     // Do NOT rename
@@ -23,7 +24,7 @@ private:
     uint64_t denominator;
 
     // Do NOT delete
-    template<class T>
+    template < class T >
     friend bool operator==(const Fraction& lhs, const T& rhs);
 
 public:
@@ -33,5 +34,4 @@ public:
     Fraction(int64_t numerator, uint64_t denominator);
     //  Add operator overloads below
 };
-
-```
+</pre>

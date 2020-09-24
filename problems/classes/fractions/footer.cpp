@@ -1,3 +1,4 @@
+
 template <class T>
 bool operator==(const Fraction& lhs, const T& rhs);
 
