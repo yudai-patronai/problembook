@@ -3,7 +3,7 @@ id: 359f7a16-fe13-4473-b372-81cf68c5399e
 longname: Считывание числа в нега-позиционной системе счисления
 languages: [python]
 checker: cmp_int
-tags: [easy, io]
+tags: [easy, io, numeral_system]
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
