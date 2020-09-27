@@ -1,0 +1,46 @@
+name: 2020_algo_s1_w3_a
+language: python
+problems:
+    
+    # Произведение чисел в строке
+    - bd15229f-780d-4a49-bc59-5b7e8b41e4d1:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Статистика потока пациентов
+    - 24255517-2759-4c19-a5a7-5e6d7888d8a7:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Разложение десятичного числа по степеням
+    - 5d0bdf52-4aa5-4b71-8af5-5bea9daab617:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Считывание числа в нега-позиционной системе счисления
+    - 359f7a16-fe13-4473-b372-81cf68c5399e:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Считывание числа в системе счисления майя
+    - 3973abcf-5bc6-4759-b542-9a5016250900:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Считывание числа в вавилонской системе счисления
+    - ef198727-2f8f-4a23-a3d4-ed8e8ec457db:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
