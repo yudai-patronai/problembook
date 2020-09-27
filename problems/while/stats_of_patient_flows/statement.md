@@ -1,7 +1,7 @@
 ---
 id: 24255517-2759-4c19-a5a7-5e6d7888d8a7
 longname: Статистика потока пациентов
-languages: [cpp]
+languages: [cpp,python]
 tags: [while,float]
 checker: cmp_double
 time_limit: 1
