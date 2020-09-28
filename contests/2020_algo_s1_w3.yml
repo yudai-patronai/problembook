@@ -1,4 +1,4 @@
-name: 2020_algo_s1_w3_a
+name: 2020_algo_s1_w3
 language: python
 problems:
     
@@ -40,6 +40,13 @@ problems:
     # Считывание числа в вавилонской системе счисления
     - ef198727-2f8f-4a23-a3d4-ed8e8ec457db:
         score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Вавилонская система счисления
+    - 9953440f-c15b-4ac0-8ea6-2852f3fe5ea4:
+        score: 200
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
