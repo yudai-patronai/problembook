@@ -167,7 +167,7 @@ int main() {
             curr_partitions[equivalence_table[i][kIndexColumn]] = temp_partition;
         }   
     } while (!vectors_prefix_equal(prev_partitions, curr_partitions, state_num));
-    auto answer = std::unordered_set(curr_partitions.begin(), curr_partitions.end()).size();
+    auto answer = std::unordered_set<int32_t>(curr_partitions.begin(), curr_partitions.end()).size();
     std::cout << answer<< std::endl;
     return 0;
 }
