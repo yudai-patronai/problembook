@@ -54,68 +54,57 @@ max_vm_size: 64M
 ### Примеры
 
 ```
-1
-
-1 A 1 A
-1 C 1 C
-1 G 1 G
-1 T 1 T
-
-GATTACA
+-> 1
+-> 1 A 1 A
+-> 1 C 1 C
+-> 1 G 1 G
+-> 1 T 1 T
+-> GATTACA
 --
-GATTACA
+<- GATTACA
 ```
 
 ```
-1
-
-1 A 1 C
-1 C 1 G
-1 G 1 T
-1 T 1 A
-
-TCAACGC
+-> 1
+-> 1 A 1 C
+-> 1 C 1 G
+-> 1 G 1 T
+-> 1 T 1 A
+-> TCAACGC
 --
-GATTACA
+<- GATTACA
 ```
 
 ```
-2
-
-1 A 2 C
-1 C 2 G
-1 G 2 T
-1 T 2 A
-
-2 A 1 T
-2 C 1 G
-2 G 1 C
-2 T 1 A
-
-TTAACGC
+-> 2
+-> 1 A 2 C
+-> 1 C 2 G
+-> 1 G 2 T
+-> 1 T 2 A
+-> 2 A 1 T
+-> 2 C 1 G
+-> 2 G 1 C
+-> 2 T 1 A
+-> TTAACGC
 --
-GATTACA
+<- GATTACA
 ```
 
 ```
-3
-
-1 A 2 C
-1 C 3 G
-1 G 2 T
-1 T 3 A
-
-2 A 1 T
-2 C 3 G
-2 G 1 C
-2 T 3 A
-
-3 A 2 C
-3 C 1 A
-3 G 2 T
-3 T 1 G
-
-TTAGCGC
+-> 3
+-> 1 A 2 C
+-> 1 C 3 G
+-> 1 G 2 T
+-> 1 T 3 A
+-> 2 A 1 T
+-> 2 C 3 G
+-> 2 G 1 C
+-> 2 T 3 A
+-> 3 A 2 C
+-> 3 C 1 A
+-> 3 G 2 T
+-> 3 T 1 G
+-> TTAGCGC
 --
-GATTACA
+<- GATTACA
 ```
