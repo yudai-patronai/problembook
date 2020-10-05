@@ -26,4 +26,4 @@ g, xg, yg = ext_euclid(a, b)
 if c % g:
     print("No solution")
     exit()
-print(xg + c//g, yg + c//g)
+print(xg * c//g, yg * c//g)

@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import bisect
 import sys
 
 
