@@ -1,0 +1,73 @@
+name: 2020_algo_s1_w4_c.yml
+language: python
+problems:
+
+    # Алгоритм Евклида
+    - 7d9a68d9-0113-4a88-9ebc-2829477602d3:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Тест простоты числа
+    - e55a944d-1175-4ef5-b8a4-76236f7e73c1:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Факторизация числа
+    - 1901d2f8-2ef7-46b8-94e1-7cfdfe5f05d2:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Генерация n-го простого числа
+    - 6705223d-22f4-4421-8196-21c4a4b54a8f:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Сумма двух кубов
+    - 62a4d584-b0e3-4cbe-aa8e-0a3cbc0aa1f9:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Число конечных нулей факториала
+    - e2df33f2-c5f9-4df9-8db6-b9a52f986e7e:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Минимальное по сумме и количеству цифр
+    - 8db8dd53-04a5-4851-9a77-b3727bb5c99d:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Расширенный алгоритм Евклида
+    - d4839b53-eb8e-4f4c-ab58-6d2d6408d2cd:
+        score: 180
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Линейные диофантовы уравнения с двумя неизвестными
+    - 288d67a8-c12b-41cc-94b8-6d9359ed0181:
+        score: 180
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Обратный элемент в кольце по модулю
+    - cf5df9a9-e388-46eb-b372-ab492e9a5a85:
+        score: 180
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
