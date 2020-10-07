@@ -6,7 +6,7 @@ tags: [hash, hash_table]
 checker: cmp_int_seq
 time_limit: 3
 real_time_limit: 3
-max_vm_size: 64M
+max_vm_size: 256M
 ---
 
 
