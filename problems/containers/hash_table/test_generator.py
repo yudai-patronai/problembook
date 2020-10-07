@@ -3,7 +3,6 @@ from random import randrange, choice
 
 from lib.testgen import TestSet
 
-
 tests = TestSet()
 
 # statement tests, basic functionality
@@ -32,7 +31,7 @@ tests.add(
 )
 
 # indicator of slow input/output
-tests.add('1 3000000\n0 + 0 1' + '\n'.join(['0 ? 0 0'] * 2999999), '1\n' * 2999999)
+tests.add('1 1000000\n0 + 0 1\n' + '\n'.join(['0 ? 0 0'] * 999999), '1\n' * 999999)
 
 # stress tests
 def generate_test_fill_and_clear(tables_num, queries_num, elements_max):
@@ -49,7 +48,7 @@ def generate_test_fill_and_clear(tables_num, queries_num, elements_max):
         if randrange(2):
             key = randrange(elements_max)
             value = tables[table].get(key, 0)
-        inp.append(' '.join((str(table, '?', str(key), '0'))))
+        inp.append(' '.join((str(table), '?', str(key), '0')))
         outp.append(value)
     
     # check
@@ -57,7 +56,7 @@ def generate_test_fill_and_clear(tables_num, queries_num, elements_max):
     for _ in range(partition):
         table = randrange(tables_num)
         if len(table_keys[table]) and randrange(2):
-            key = choice(tables_keys[table])
+            key = choice(table_keys[table])
         else:
             key = randrange(elements_max)
         inp.append(' '.join((str(table), '?', str(key), '0')))
@@ -67,13 +66,13 @@ def generate_test_fill_and_clear(tables_num, queries_num, elements_max):
     for _ in range(partition):
         table = randrange(tables_num)
         if len(table_keys[table]):
-            key = choice(tables_keys[table])
+            key = choice(table_keys[table])
         else:
             key = randrange(elements_max)
-        inp.append(' '.join(str(table), '-', str(key), '0'))
+        inp.append(' '.join((str(table), '-', str(key), '0')))
         tables[table].pop(key, None)
         if randrange(2):
-            key = ranrange(elements_max)
+            key = randrange(elements_max)
         value = tables[table].get(key, 0)
         inp.append(' '.join((str(table), '?', str(key), '0')))
         outp.append(value)
@@ -124,9 +123,10 @@ tests.add(*generate_test_random(100, 100000, 10000000))
 
 # asymptotic test: aggressive write
 def aggressive_write():
-    for n in range(2999999):
+    inp = []
+    for n in range(999999):
         inp.append('0 + ' + str(n) + ' 0')
-    test_input = '\n'.join(('1 3000000', '\n'.join(inp), '0 ? 0 1'))
+    test_input = '\n'.join(('1 1000000', '\n'.join(inp), '0 ? 0 1'))
     test_output = '0\n'
     return test_input, test_output
-tests.add(*aggressive_write)
+tests.add(*aggressive_write())
