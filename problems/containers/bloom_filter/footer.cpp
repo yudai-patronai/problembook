@@ -2,7 +2,7 @@
 int main() {
     Checker c;
     const size_t kNumTests = 2000000;
-    const size_t kMaxErrorPercent = 3;
+    const size_t kMaxErrorPercent = 2;
     
     size_t interval, resok, res1, res2;
     std::cin >> interval >> resok >> res1 >> res2;
@@ -28,11 +28,11 @@ int main() {
         }
     }
     
-    if ((fp + fn) * 100 > kMaxErrorPercent * kNumTests) {
-        std::cerr << "Error rate: " << (static_cast<double>(fp + fn) * 100 / kNumTests) << "%\n";
+    if ((fp + fn) * 100 > kMaxErrorPercent * kNumTests * 3) {
+        std::cerr << "Error rate: " << (static_cast<double>(fp + fn) * 100 / (kNumTests * 3)) << "%\n";
         std::cout << "NO\n";
     } else {
-        std::cerr << "Error rate: " << (static_cast<double>(fp + fn) * 100 / kNumTests) << "%\n";
+        std::cerr << "Error rate: " << (static_cast<double>(fp + fn) * 100 / (kNumTests * 3)) << "%\n";
         std::cout << "YES\n";
     }
 }
