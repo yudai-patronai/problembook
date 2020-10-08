@@ -126,7 +126,7 @@ def aggressive_write():
     inp = []
     for n in range(999999):
         inp.append('0 + ' + str(n) + ' 0')
-    test_input = '\n'.join(('1 1000000', '\n'.join(inp), '0 ? 0 1'))
+    test_input = '\n'.join(('1000 1000000', '\n'.join(inp), '0 ? 0 1'))
     test_output = '0\n'
     return test_input, test_output
 tests.add(*aggressive_write())
