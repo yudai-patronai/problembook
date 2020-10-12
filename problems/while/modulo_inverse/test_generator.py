@@ -39,7 +39,7 @@ tests = TestSet()
 tests.add(*get_case(5, 3))
 tests.add(*get_case(4, 6))
 tests.add(*get_case(3, 5))
-tests.add(*get_case(4, 1))
+tests.add(*get_case(4, 2))
 tests.add(*get_case(0, 3))
 
 for _ in range(RAND_TESTS_NUM):
