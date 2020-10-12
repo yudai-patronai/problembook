@@ -1,3 +1,5 @@
+
+
 def solution(arr, N, M):
     M = M % N
     return arr[M:] + arr[:M]
