@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 
-import os
-import shutil
-import random
+from lib.testgen import TestSet
+from lib.random import randint, seed
 
-random.seed(42)
 
-def solve(n, seq):
-    res = [int((seq[i - 1] + seq[i] + seq[(i + 1) % n]) / 3) for i in range(len(seq))]
-    return ' '.join(map(str, res))
+NUM_BYTE_COUNT = 4
+MAX_NUMBER = 2 ** (NUM_BYTE_COUNT * 8 - 1) - 1
+MIN_NUMBER = -MAX_NUMBER - 1
+
+seed(42)
+
+tests = TestSet()
 
 def solve(matrix):
     n = len(matrix)
@@ -18,43 +20,20 @@ def solve(matrix):
             solution[j][n-i-1] = matrix[i][j]
     return solution
 
-def write_matrix(f, matrix):
-    for row in matrix:
-        f.write(' '.join([str(elem) for elem in row]))
-        f.write('\n')
+def print_m(m):
+    return '\n'.join(' '.join(map(str, r)) for r in m)
 
-def generate_answer(name, matrix):
-    with open("%s.a" % name, 'w') as f:
-        solution = solve(matrix)
-        write_matrix(f, solution)
+def add(m):
+    tests.add('{}\n{}'.format(len(m), print_m(m)), print_m(solve(m)))
 
-def write_test(name, matrix):
-    with open(name, "w") as f:
-        n = len(matrix)
-        f.write('{}\n'.format(n))
-        write_matrix(f, matrix)
-    generate_answer(name, matrix)
+def gen_m(size, min_n=MIN_NUMBER, max_n=MAX_NUMBER):
+    return [[randint(min_n, max_n) for i in range(size)] for j in range(size)]
 
-def generate_test(name, minn=100, maxn=1000):
-    n = random.randint(minn, maxn)
-    matrix = [[random.randint(1, 1000) for _ in range(n)] for _ in range(n)]
-    write_test(name, matrix)
 
-if __name__ == "__main__":
-    test_folder = "tests"
-    shutil.rmtree(test_folder, ignore_errors=True)
-    os.mkdir(test_folder)
-
-    test_name = os.path.join(test_folder, "%02d" % 1)
-    print("generating %s..." % test_name)
-    generate_test(test_name, minn=2, maxn=2)
-
-    test_name = os.path.join(test_folder, "%02d" % 2)
-    print("generating %s..." % test_name)
-    generate_test(test_name, minn=3, maxn=3)
-
-    for test_idx in range(3, 5):
-        test_name = os.path.join(test_folder, "%02d" % test_idx)
-        print("generating %s..." % test_name)
-        generate_test(test_name)
-
+gen_m(1)
+gen_m(15)
+gen_m(15)
+gen_m(randint(100, 1000), -1000, 1000)
+gen_m(randint(100, 1000), -1000, 1000)
+gen_m(20)
+gen_m(1024, -1000, 1000)
