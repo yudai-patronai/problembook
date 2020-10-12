@@ -1,7 +1,7 @@
 ---
 id: ec91be43-b3f6-4f2e-9f2d-12c4f069b5a0
 longname: Поворот 2d массива
-languages: [cpp]
+languages: [cpp,python]
 tags: [arrays]
 checker: cmp_file
 time_limit: 5
@@ -24,6 +24,7 @@ max_vm_size: 64M
 ### Примеры
 
 ```
+ -> 2
  -> 1 2
  -> 3 4
  --
@@ -32,6 +33,7 @@ max_vm_size: 64M
  ```
 
  ```
+ -> 3
  -> 1 2 3
  -> 4 5 6
  -> 7 8 9
