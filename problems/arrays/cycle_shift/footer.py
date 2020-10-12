@@ -1,3 +1,6 @@
+
+
+
 def solution(arr):
     return arr[1:]+arr[:1]
 
