@@ -30,10 +30,13 @@ def gen_m(size, min_n=MIN_NUMBER, max_n=MAX_NUMBER):
     return [[randint(min_n, max_n) for i in range(size)] for j in range(size)]
 
 
-gen_m(1)
-gen_m(15)
-gen_m(15)
-gen_m(randint(100, 1000), -1000, 1000)
-gen_m(randint(100, 1000), -1000, 1000)
-gen_m(20)
-gen_m(1024, -1000, 1000)
+add([[1, 2], [3, 4]])
+add([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+add([[0, 0], [0, 0]])
+add(gen_m(1))
+add(gen_m(15))
+add(gen_m(15))
+add(gen_m(randint(100, 1000), -1000, 1000))
+add(gen_m(randint(100, 1000), -1000, 1000))
+add(gen_m(20))
+add(gen_m(1024, -1000, 1000))
