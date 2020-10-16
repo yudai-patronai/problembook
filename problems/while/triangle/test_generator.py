@@ -1,33 +1,31 @@
-import os
-import shutil
-
 from lib.testgen import TestSet
-
-N = 50
 
 
 def get_triangle(N):
-    triangle = ""
     counter = 1
+    triangle = ''
     for i in range(1, N+1):
-        for _ in range(i):
-            triangle += str(counter) + " "
+        row = ''
+        for j in range(i):
+            if j != i-1:
+                row += str(counter) + ' '
+            else:
+                row += str(counter)
             counter += 1
-        triangle += "\n"
-
+        triangle += row + '\n'
     return triangle
 
 
-def main():
-    tests = TestSet()
+tests = TestSet()
 
-    for i in range(1, N):
-        triangle = get_triangle(i)
-        tests.add(
-            str(i) + "\n",
-            triangle
-        )
+for i in range(1, 10):
+    triangle = get_triangle(i)
+    tests.add(
+        str(i) + '\n',
+        triangle
+    )
 
-
-if __name__ == "__main__":
-    main()
+tests.add(
+    str(23) + '\n',
+    get_triangle(23)
+)
