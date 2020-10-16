@@ -6,9 +6,9 @@ seed(42)
 
 second_names = ["Pupkin", "Ivanov", "Petrov", "Solovyova", "Grigorieva", "Shabanov", "Erokhin", "Kraznopuzova"]
 
-name = lambda x: choice(second_names)
-hour = lambda x: round(randrange(10, 200) + randrange(0, 9) / 10, 1)
-score = lambda x: randrange(0, 10)
+name = lambda: choice(second_names)
+hour = lambda: round(randrange(10, 200) + randrange(0, 9) / 10, 1)
+score = lambda: randrange(0, 10)
 
 
 def question(sname, hour_scores):
@@ -34,4 +34,4 @@ for _ in range(9):
     n, hour_scores = gen_question()
     n, h, s = gen_answer(n, hour_scores)
 
-    tests.add(question(n, hour_scores), answer(name, h, s))
+    tests.add(question(n, hour_scores), answer(n, h, s))
