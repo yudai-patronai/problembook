@@ -7,6 +7,10 @@ def rem2maya(x):  # строит разряд
 def dec2maya(x):
     power = 1
     maya = ''
+
+    if x == 0:
+        return rem2maya(0)
+
     while x != 0:
         rem = (x // power) % 20
         x -= rem * power
