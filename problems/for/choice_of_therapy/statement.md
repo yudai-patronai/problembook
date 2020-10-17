@@ -1,7 +1,7 @@
 ---
 id: 4dd60276-e5a2-4959-8f1e-9c0498c9511e
 longname: Выбор терапии
-languages: [cpp]
+languages: [cpp,python]
 tags: [for,array,bruteforce,primes]
 checker: cmp_int
 time_limit: 1
@@ -31,14 +31,14 @@ max_vm_size: 64M
 
 ```
 -> 6
-3 8 6 4 7 5
+-> 3 8 6 4 7 5
 --
 <- 13
 ```
 
 ```
 -> 4
-10 2 22 4
+-> 10 2 22 4
 --
 <- 0
 ```
