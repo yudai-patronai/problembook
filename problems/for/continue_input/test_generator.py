@@ -40,7 +40,7 @@ def generate_test_pair():
 def generate_test(i, original, answer):
 
     with open(os.path.join(tests_dir, '{0:0>2}'.format(i)), 'w') as fin:
-        fin.write(original)
+        fin.write(original + "\n")
 
     with open(os.path.join(tests_dir, '{0:0>2}.a'.format(i)), 'w') as fout:
         fout.write(answer)
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     os.makedirs(tests_dir)
 
     tests = [
-        ['Who is a good boy?\nmipt\n777\niddqd idkfa idclip\n- Good\n', 
+        ['Who is a good boy?\nmipt\n777\niddqd idkfa idclip\n- Good\n',
         'mt77ip-d'],
         ['a\nphystech2\nphystech2',
         'aap2']
