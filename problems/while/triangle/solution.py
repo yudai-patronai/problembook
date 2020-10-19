@@ -1,11 +1,12 @@
-def solution():
-    N = int(input())
-    counter = 1
-    for i in range(1, N+1):
-        for _ in range(i):
-            print(counter, end=" ")
-            counter += 1
-        print()
+N = int(input())
 
-if __name__ == "__main__":
-    solution()
+counter = 1
+for i in range(1, N+1):
+    s = ''
+    for j in range(i):
+        if j != i-1:
+            s += str(counter) + ' '
+        else:
+            s += str(counter)
+        counter += 1
+    print(s)

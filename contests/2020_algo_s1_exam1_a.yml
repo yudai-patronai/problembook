@@ -1,0 +1,74 @@
+name: 2020_algo_s1_exam1_a
+language: python
+problems:
+    
+    # Статистика занятий
+    - dae94af0-3eb9-4c5f-b7f5-e6f78e6c38e2:
+        score: 20
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Ход ферзя
+    - 1bd02933-e8c5-4bda-a04e-a9ff671392e3:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Где окажется робот?
+    - 4e8ee501-d0c7-4d60-9b85-987ee2b1ca91:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Наименьшее общее кратное
+    - e02bbbfe-f78e-4d01-8aac-978c7df08a8f:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Массив из сумм арифметической прогрессии
+    - b1dde64b-bd81-439b-a160-ea833fb843bc:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Максимальное произведение двух целых чисел
+    - c99cf78f-6aed-4225-b4ac-839b627efe50:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Перестановка с К-ым элементом
+    - 6784ad27-b957-4b8d-a997-56ea59f7ea03:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Выбор терапии
+    - 4dd60276-e5a2-4959-8f1e-9c0498c9511e:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Является ли квадрат волшебным?
+    - db119bd5-125e-4bbe-a82f-cbaf5b3c4184:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Перевод в систему счисления майя
+    - 6043b7d6-50fc-4f90-a5c1-ebebc81098b7:
+        score: 140
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
