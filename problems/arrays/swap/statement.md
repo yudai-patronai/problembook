@@ -22,18 +22,12 @@ max_vm_size: 64M
 
 ### Примеры преобразований списка
 
-```
--> arr = [0, 1, 2, 3]
--> swap(arr, 1)
---
-<- print(arr)
-<- [1, 0, 3, 2]
-```
+    >>> arr = [0, 1, 2, 3]
+    >>> swap(arr, 1)
+    >>> print(arr)
+    >>> [1, 0, 3, 2]
 
-```
--> arr = ['ru', 'mipt', 'cs']
--> swap(arr, 2)
---
-<- print(arr)
-<- ['cs', 'mipt', 'ru']
-```
+    >>> arr = ['ru', 'mipt', 'cs']
+    >>> swap(arr, 2)
+    >>> print(arr)
+    >>> ['cs', 'mipt', 'ru']
