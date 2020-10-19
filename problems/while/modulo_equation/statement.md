@@ -3,7 +3,7 @@ id: 060e2375-f1a0-4c3b-8412-9a2b50606b2d
 longname: Уравнение ax=b (mod m)
 languages: [python]
 tags: [cycles,modulo]
-checker: cmp_yesno
+checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 16M
