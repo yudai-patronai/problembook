@@ -32,9 +32,9 @@ if c % g:
 x0 = xg * c//g
 y0 = yg * c//g
 
-kx_min = (x_min - x0) * g // b
+kx_min = (x_min - x0) * g // b + (1 if (x_min - x0) * g % b else 0)
 kx_max = (x_max - x0) * g // b
-ky_min = (y0 - y_max) * g // a
+ky_min = (y0 - y_max) * g // a + (1 if (y0 - y_max) * g % a else 0)
 ky_max = (y0 - y_min) * g // a
 
 if kx_min > ky_max or kx_max < ky_min:
