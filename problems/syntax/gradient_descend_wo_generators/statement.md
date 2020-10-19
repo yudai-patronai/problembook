@@ -29,7 +29,7 @@ max_vm_size: 64M
 ### Примеры
 
 ```
--> gradient_descent(x*x, 2*x, 1)
+-> gradient_descent(`x*x`, `2*x`, 1)
 --
 <- 0.011529 0.00013292
 ```
