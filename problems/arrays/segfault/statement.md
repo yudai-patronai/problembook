@@ -1,12 +1,11 @@
 ---
-fixme: true
 id: b940159e-784d-45ee-8706-b10c2175ec8a
 longname: Проход по массиву со смещением
 tags: [arrays]
 languages: [python]
 checker: cmp_int
-time_limit: 2
-real_time_limit: 5
+time_limit: 1
+real_time_limit: 1
 max_vm_size: 64M
 ---
 
@@ -22,7 +21,7 @@ max_vm_size: 64M
 ### Формат входных данных
 
 На первой строке - число N (0 < N <= 200).
-На следующих N строках - элементы массива. 
+На следующих N строках - элементы массива.
 
 ### Формат выходных данных
 
