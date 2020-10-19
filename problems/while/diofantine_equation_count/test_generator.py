@@ -36,15 +36,15 @@ def solve(a, b, c, x_min, x_max, y_min, y_max):
 
     kx_min = (x_min - x0) * g // b
     kx_max = (x_max - x0) * g // b
-    ky_min = (y0 - y_min) * g // b
-    ky_max = (y0 - y_max) * g // b
+    ky_min = (y0 - y_max) * g // a
+    ky_max = (y0 - y_min) * g // a
 
     if kx_min > ky_max or kx_max < ky_min:
-        return 0
+        return "0"
     if ky_min <= kx_min <= ky_max:
-        return str(max(ky_max, kx_max) - kx_min + 1)
+        return str(min(ky_max, kx_max) - kx_min + 1)
     else:
-        return str(max(ky_max, kx_max) - ky_min + 1)
+        return str(min(ky_max, kx_max) - ky_min + 1)
 
 
 def get_case(a, b, c, d, e, f, g):
