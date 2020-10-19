@@ -7,19 +7,18 @@ from lib import random
 random.seed(42)
 
 
-def count(s1, s2, d=None):
-    if d is None:
-        d = [[-1]*(len(s2)+1) for _ in range(len(s1)+1)]
-    if d[len(s1)][len(s2)] != -1:
-        return d[len(s1)][len(s2)]
-    if not s1 or not s2:
-        d[len(s1)][len(s2)] = 0
-        return 0
-    if s1[-1] == s2[-1]:
-        d[len(s1)][len(s2)] = count(s1[:-1], s2[:-1], d) + 1
-    else:
-        d[len(s1)][len(s2)] = max(count(s1[:-1], s2, d), count(s1, s2[:-1], d))
-    if d[len(s1)][len(s2)] == len(s1):
+def lcs(A, B):
+    N, M = len(A), len(B)
+    F = [[0]*(M+1) for _ in range(N+1)]
+
+    for i in range(N):
+        for j in range(M):
+            if A[i] == B[j]:
+                F[i+1][j+1] = F[i][j] + 1
+            else:
+                F[i+1][j+1] = max(F[i][j+1], F[i+1][j])
+
+    if F[N][M] == N:
         return "YES"
     else:
         return "NO"
@@ -31,10 +30,10 @@ def generate_test(name, possible=True):
     s1 = [random.choice("ACGT") for _ in range(n)]
     s2 = [random.choice("ACGT") for _ in range(m)]
     with open(name, "w") as f:
-        f.write(' '.join(s1)+"\n")
-        f.write(' '.join(s2)+"\n")
+        f.write(''.join(s1)+"\n")
+        f.write(''.join(s2)+"\n")
     with open(name+".a", "w") as f:
-        f.write(count(s1, s2)+"\n")
+        f.write(lcs(s1, s2)+"\n")
 
 
 def write_manual_test(name, s1, s2):
@@ -42,7 +41,7 @@ def write_manual_test(name, s1, s2):
         f.write(s1+"\n")
         f.write(s2+"\n")
     with open(name+".a", "w") as f:
-        f.write(str(count(s1, s2))+"\n")
+        f.write(lcs(s1, s2)+"\n")
 
 
 if __name__ == "__main__":
@@ -56,3 +55,10 @@ if __name__ == "__main__":
     write_manual_test(os.path.join(test_folder, "05"), "ACAC", "ACAC")
     for i in range(6, 11):
         generate_test(os.path.join(test_folder, "{:02}".format(i)))
+    a = [random.choice("ACGT") for _ in range(9000)]
+    b = a.copy()
+    for _ in range(500):
+        c = random.choice("ACGT")
+        p = random.randint(0, len(a) - 1)
+        a.insert(p, c)
+    write_manual_test(os.path.join(test_folder, "11"), "".join(a), "".join(b))
