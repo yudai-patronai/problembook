@@ -1,0 +1,73 @@
+name: 2020_algo_s1_exam1_c
+language: python
+problems:
+
+    # Через сколько прозвонит будильник
+    - 510ffc15-b139-4a46-9d2f-968b22f71170:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Непрерывный (CONTINUOUS) ввод
+    - b1826419-c4aa-4199-8971-5c8854cfdce7:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Считывание числа в вавилонской системе счисления
+    - ef198727-2f8f-4a23-a3d4-ed8e8ec457db:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Вычислительная биология
+    - a7a14fab-fe72-4c17-ab4a-e02b49513a51:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Где окажется робот?
+    - 4e8ee501-d0c7-4d60-9b85-987ee2b1ca91:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Градиентный спуск
+    - b277ac00-35ee-4bad-8e82-8ecd320c108d:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Проход по массиву со смещением
+    - b940159e-784d-45ee-8706-b10c2175ec8a:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Кто выиграл в крестики-нолики?
+    - 628f76c5-6a6c-4106-877b-f246a3791775:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Уравнение ax=b (mod m)
+    - 060e2375-f1a0-4c3b-8412-9a2b50606b2d:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 16M
+
+    # Кол-во решений линейных диофантовых уравнений с двумя неизвестными
+    - f61c4dae-d616-46b7-9569-d507750573ea:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
