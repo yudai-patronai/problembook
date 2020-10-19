@@ -41,14 +41,14 @@ def add(m, a, b):
     if not sol:
         answer = '-1\n'
     else:
-        answer = ' '.join(sol) + '\n'
+        answer = ' '.join(map(str, sol)) + '\n'
     tests.add(question, answer)
 
 
 add(3, 2, 1)
 add(26, 8, 7)
-add(1, 2, 33)
-add(1, 2, 34)
+add(3, 2, 33)
+add(3, 2, 34)
 add(18, 12, 6)
 
 for _ in range(RAND_TESTS_NUM // 2):
