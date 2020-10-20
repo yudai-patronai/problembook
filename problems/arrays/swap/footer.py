@@ -1,3 +1,4 @@
+
 def correct_swap(arr, k):
     edge = len(arr) - len(arr) % k
     for i in range(0, edge, 2*k):
