@@ -16,7 +16,7 @@ max_vm_size: 64M
 Ожидаемый класс представляет из себя шаблон с тремя параметрами, один из которых имеет значение по умолчанию. Класс предоставляет конструктор по умолчанию для создания пустого массива. Класс предоставляет методы вставки и удаления. Метод вставки должен возвращать итератор обхода на добавленный элемент, а метод удаления - итератор обхода на элемент следующий за удалённым. Метод поиска должен возвращаеть итератор на существующий элемент, либо ``past-the-end`` итератор. Также итератор должен быть совместим со стандартной библиотекой алгоритмов, но не более чем ``forward_iterator``. Евангелина отметила, что данные очень тяжёлые для копирования и класс должен поддерживать хранение ``noncopyable``: данные не копируются, но гарантируется, что данные будут ``move-constructable`` и ``move-assignable``. Для ключей гарантировано и ``copy-constructable``, и ``copy-assignable``.
 Евангелина набросала для Вас заготовку класса:
 
-```
+<pre>
 #include <functional>
 
 template <typename K, typename V, typename H = std::hash<K>>
@@ -45,7 +45,7 @@ public:
 private:
     /* ??? */ //расположите необходимые внутренние данные
 };
-```
+</pre>
 
 ### Формат входных данных
 
@@ -58,38 +58,38 @@ private:
 ### Примеры
 Примеры кода, к которому может быть присоединён ваш класс:
 
-```
+<pre>
 void list_all(AssociativeArray<KeyType, DataType> const &marked_data) {
     std::for_each(marked_data.begin(), marked_data.end(), [] (DataType const &d) { std::cout << d << ' ';});
 }
-```
+</pre>
 
-```
+<pre>
 void insert_all(AssociativeArray<KeyType,DataType> &marked_data, std::vector<std::pair<KeyType,DataType>> &vec) {
     for (auto &p : vec)
         marked_data.insert(p.first, std::move(p.second));
 }
-```
+</pre>
 
-```
+<pre>
 void list_n_from(AssotiativeArray<KeyType,DataType> const &marked_data, size_t size, KeyType const &first_key) {
     auto it = marked_data.find(first_key);
     for (size_t cnt = 0; cnt != size and marked_data.end() != it; ++cnt, ++it)
        std::cout << it->first << ' ' << it->second << std::endl; 
 }
-```
+</pre>
 
-```
+<pre>
 AssociativeArray<KeyType,DataType>::iterator remove_key(AssotiativeArray<KeyType,DataType> &marked_data, KeyType const &key) {
     return marked_data.erase(key);
 }
-```
+</pre>
 
-```
+<pre>
 AssociativeArray<KeyType,DataType>::iterator remove_n_from(AssociativeArray<KeyType,DataType> &marked_data, size_t size, KeyType const &first_key) {
     auto it = marked_data.find(first_key);
     for (size_t cnt = 0; cnt != size and marked_data.end() != it; ++cnt)
         it = marked_data.erase(it);
     return it;
 }
-```
+</pre>
