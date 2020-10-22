@@ -17,16 +17,16 @@ max_vm_size: 64M
 Евангелина набросала для Вас заготовку класса:
 
 <pre>
-#include <functional>
+#include &lt;functional&gt;
 
-template <typename K, typename V, typename H = std::hash<K>>
+template &lt;typename K, typename V, typename H = std::hash&lt;K&gt;&gt;
 class AssociativeArray {
 public:
     /* необходимо для стандартных алгоритмов */
-    using value_type = std::pair<K const, V>; 
-    using reference = std::pair<K const, V>&;
-    using const_reference = std::pair<K const, V> const &;
-    using pointer = std::pair<K const, V>*;
+    using value_type = std::pair&lt;K const, V&gt;; 
+    using reference = std::pair&lt;K const, V&gt;&;
+    using const_reference = std::pair&lt;K const, V&gt; const &;
+    using pointer = std::pair&lt;K const, V&gt;*;
     using iterator = /* ??? */; //укажите необходимый тип итератора
     using const_iterator = /* ??? */ //укажите необходимый тип итератора на неизменяемый элемент
 
@@ -59,20 +59,20 @@ private:
 Примеры кода, к которому может быть присоединён ваш класс:
 
 <pre>
-void list_all(AssociativeArray<KeyType, DataType> const &marked_data) {
+void list_all(AssociativeArray&lt;KeyType, DataType&gt; const &marked_data) {
     std::for_each(marked_data.begin(), marked_data.end(), [] (DataType const &d) { std::cout << d << ' ';});
 }
 </pre>
 
 <pre>
-void insert_all(AssociativeArray<KeyType,DataType> &marked_data, std::vector<std::pair<KeyType,DataType>> &vec) {
+void insert_all(AssociativeArray&lt;KeyType,DataType&gt; &marked_data, std::vector&lt;std::pair&lt;KeyType,DataType&gt;&gt; &vec) {
     for (auto &p : vec)
         marked_data.insert(p.first, std::move(p.second));
 }
 </pre>
 
 <pre>
-void list_n_from(AssotiativeArray<KeyType,DataType> const &marked_data, size_t size, KeyType const &first_key) {
+void list_n_from(AssotiativeArray&lt;KeyType,DataType&gt; const &marked_data, size_t size, KeyType const &first_key) {
     auto it = marked_data.find(first_key);
     for (size_t cnt = 0; cnt != size and marked_data.end() != it; ++cnt, ++it)
        std::cout << it->first << ' ' << it->second << std::endl; 
@@ -80,13 +80,13 @@ void list_n_from(AssotiativeArray<KeyType,DataType> const &marked_data, size_t s
 </pre>
 
 <pre>
-AssociativeArray<KeyType,DataType>::iterator remove_key(AssotiativeArray<KeyType,DataType> &marked_data, KeyType const &key) {
+AssociativeArray&lt;KeyType,DataType&gt;::iterator remove_key(AssotiativeArray&lt;KeyType,DataType&gt; &marked_data, KeyType const &key) {
     return marked_data.erase(key);
 }
 </pre>
 
 <pre>
-AssociativeArray<KeyType,DataType>::iterator remove_n_from(AssociativeArray<KeyType,DataType> &marked_data, size_t size, KeyType const &first_key) {
+AssociativeArray&lt;KeyType,DataType&gt;::iterator remove_n_from(AssociativeArray&lt;KeyType,DataType&gt; &marked_data, size_t size, KeyType const &first_key) {
     auto it = marked_data.find(first_key);
     for (size_t cnt = 0; cnt != size and marked_data.end() != it; ++cnt)
         it = marked_data.erase(it);
