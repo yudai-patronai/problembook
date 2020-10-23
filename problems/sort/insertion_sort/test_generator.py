@@ -1,27 +1,33 @@
-#!/usr/bin/python3
-
-import os
-import shutil
 from lib import random
+from lib.testgen import TestSet
+
+
+def insertion_sort_ans(A):
+    ans = ' '.join(map(str, A)) + '\n'
+    for i in range(1, len(A)):
+        for j in range(i, 0, -1): 
+            if A[j-1] > A[j]:
+                A[j-1], A[j] = A[j], A[j-1]
+                ans += ' '.join(map(str, A)) + '\n'
+    return ans
+
 
 NUM_TEST = 10
 random.seed(10000)
 
-test_dir = os.path.join(os.path.dirname(__file__), 'tests')
-shutil.rmtree(test_dir, ignore_errors=True)
-os.makedirs(test_dir)
+tests = TestSet()
 
-for i in range(1, NUM_TEST + 1):
-    n = random.randint(1, 10)
-    array = [random.randint(-1000, 1000) for _ in range(n)]
+manual = [
+    [-5, 3, 1, 7, 10, -4],
+    [9, 2, 4, 2, 9, 5, -1, -8],
+]
 
-    with open(os.path.join(test_dir, '{0:0>2}'.format(i)), 'w') as f:
-        f.write('{0}\n'.format(' '.join(str(val) for val in array)))
+for A in manual:
+    question = ' '.join(map(str, A)) + '\n'
+    tests.add(question, insertion_sort_ans(A))
 
-    with open(os.path.join(test_dir, '{0:0>2}.a'.format(i)), 'w') as f:
-        for mi in range(1, len(array)):
-            mj = mi
-            while mj > 0 and array[mj-1] > array[mj]:
-                array[mj-1], array[mj] = array[mj], array[mj-1]
-                f.write('{0}\n'.format(' '.join(map(str, array))))
-                mj = mj - 1
+for i in range(NUM_TEST - len(manual)):
+    A = [random.randint(-100, 100) for _ in range(random.randint(10, 20))]
+
+    question = ' '.join(map(str, A)) + '\n'
+    tests.add(question, insertion_sort_ans(A))
