@@ -1,52 +1,64 @@
-//
-// Created by Olga on 09/09/2020.
-//
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <set>
 
-using namespace std;
-
-vector<int> findArrayQuadruplet(vector<int> &num, int s)
-{
-    sort(arr.begin(), arr.end());
-
-    if (arr.size() < 4)
+std::vector <std::vector<int>> quadr(std::vector<int> &nums, int target) {
+    std::set<std::vector<int>> result;
+    if (nums.size() < 4)
         return {};
-    cout <<"rr"<<endl;
-    for (int i = 0; i < arr.size() - 3; i++) {
-        for (int j = i + 1; j < arr.size() - 2; j++) {
-            int rest = s - (arr[i] + arr[j]);
-            int left = j+1;
-            int rigth = arr.size() - 1;
-            while(left < rigth) {
-                cout << rest << endl;
-                if (arr[left] + arr[rigth] < rest) {
-                    left++;
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < static_cast<int>(nums.size()) - 3; i++) {
+        if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+        for (int j = i + 1; j < static_cast<int>(nums.size()) - 2; j++) {
+            if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+            int start = nums[i] + nums[j];
+            int res = target - start;
+
+            int k = j + 1;
+            int p = static_cast<int>(nums.size()) - 1;
+
+            while (k < p) {
+                int check = nums[k] + nums[p];
+                if (check > res) {
+                    p--;
                 }
-                else if (arr[left] + arr[rigth] > rest) {
-                    rigth--;
+                if (check < res) {
+                    k++;
                 }
-                else if (rest == arr[left] + arr[rigth]){
-                    //cout <<arr[i] <<endl;
-                    return {arr[i], arr[j], arr[left], arr[rigth]};
+                if (check == res) {
+                    std::vector<int> quad{nums[i], nums[j], nums[k], nums[p]};
+                    result.insert(quad);
+                    do { k++; } while (k < p && nums[k] == nums[k - 1]);
+                    do { p--; } while (k < p && nums[p] == nums[p + 1]);
                 }
             }
         }
     }
-    return {};
+    std::vector<std::vector<int>> a(result.begin(), result.end());
+    return a;
+}
+
+void print(std::vector <std::vector<int>> vect) {
+    for (int i = 0; i < static_cast<int>(vect.size()); i++) {
+        for (int j = 0; j < 4; j++) {
+            std::cout << vect[i][j] << " ";
+        }
+    }
+    std::cout << std::endl;
 }
 
 int main() {
     int n = 0;
     std::cin >> n;
-    vector<int> input(n);
-    for(int i = 0; i < n; ++i){
+    std::vector<int> input(n);
+    for (int i = 0; i < n; ++i) {
         std::cin >> input[i];
     }
     int N;
     std::cin >> N;
-    vector<int> result = findArrayQuadruplet(input, N);
+    std::vector <std::vector<int>> result = quadr(input, N);
     print(result);
     return 0;
 }
