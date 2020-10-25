@@ -1,54 +1,54 @@
-#!/usr/bin/env python3
-
-import os
-from lib import random
-import shutil
-
-random.seed(42)
-
-max_int = 1000000
-
-def generate_test(name, testn):
-    n = random.randint(1, 1000)
-    a = [random.randint(-max_int, max_int) for _ in range(n)]
-    b = [i for i in a if i % 2 == 0]
-    b.sort()
-    with open(name, "w") as f:
-        f.write(str(n)+"\n")
-        for i in a:
-            f.write(str(i)+"\n")
-    for i in range(n):
-        if a[i] % 2 == 0:
-            a[i] = b.pop(0)
-    with open(name+".a", "w") as f:   
-        for i in a:
-            f.write(str(i)+" ")          
+from lib.testgen import TestSet
+from lib.random import seed, randint
 
 
-def write_manual_test(name, a):
-    n = len(a)
-    b = [i for i in a if i % 2 == 0]
-    b.sort()
-    with open(name, "w") as f:
-        f.write(str(n)+"\n")
-        for i in a:
-            f.write(str(i)+"\n")
-    for i in range(n):
-        if a[i] % 2 == 0:
-            a[i] = b.pop(0)
-    with open(name+".a", "w") as f:   
-        for i in a:
-            f.write(str(i)+" ")
+seed(42)
+MAX_INT = 1_000_000
 
 
-if __name__ == "__main__":
-    test_folder = "tests"
-    shutil.rmtree(test_folder, ignore_errors=True)
-    os.mkdir(test_folder)
-    for test in range(1, 6):
-        test_name = os.path.join(test_folder, "%02d" % test)
-        print("generating %s..." % test_name)
-        generate_test(test_name, test)
-        
-    write_manual_test(os.path.join(test_folder, "06"), [random.randint(-max_int, max_int) for _ in range(1000)])
-    write_manual_test(os.path.join(test_folder, "07"), [random.randint(-10000, 10000)*2+1 for _ in range(random.randint(1, 1000))])
+def array2str(A, end='\n'):
+    return ' '.join(map(str, A)) + end
+
+
+def sort_evens(A:list):
+    evens = sorted(filter(lambda x: x % 2 == 0, A))
+    ei = 0
+    for i in range(len(A)):
+        if A[i] % 2 == 0:
+            A[i] = evens[ei]
+            ei += 1
+
+
+tests = TestSet()
+manual_qa = [
+    (
+        [8, 1, 6, 7, 1],    # question
+        [6, 1, 8, 7, 1],    # answer
+    ),
+    (
+        [1, 7, 8, 2, 6, 7, 9, 10, 4, 3],
+        [1, 7, 2, 4, 6, 7, 9, 8, 10, 3],
+    ),
+    (
+        [2, -1, 6, -5, 8, 3, 0],
+        [0, -1, 2, -5, 6, 3, 8]
+    )
+]   
+
+for qA, aA in manual_qa:
+    tests.add(array2str(qA), array2str(aA))
+
+for _ in range(5):
+    A = [randint(-MAX_INT, MAX_INT) for _ in range(randint(10, 50))]
+    q = array2str(A)
+    sort_evens(A)
+    a = array2str(A)
+    tests.add(q, a)
+
+# все нечётные
+A = [ (2*randint(0, MAX_INT)+1) % MAX_INT for _ in range(20)]
+tests.add(array2str(A), array2str(A))
+
+# все чётные
+A = [ (2*randint(0, MAX_INT)) % MAX_INT for _ in range(20)]
+tests.add(array2str(A), array2str(sorted(A)))
