@@ -1,27 +1,35 @@
 #!/usr/bin/python3
-
-import os
-import shutil
 from lib import random
+from lib.testgen import TestSet
+
+
+def solve(a):
+    n = len(a)
+    ans = ' '.join(map(str, a)) + '\n'
+    for i in range(n):
+        for j in range(n-i-1):
+            if a[j] > a[j+1]:
+                a[j], a[j+1] = a[j+1], a[j]
+                ans += ' '.join(map(str, a)) + '\n'
+    return ans
+
 
 NUM_TEST = 10
 random.seed(10000)
 
-test_dir = os.path.join(os.path.dirname(__file__), 'tests')
-shutil.rmtree(test_dir, ignore_errors=True)
-os.makedirs(test_dir)
+tests = TestSet()
 
-for i in range(1, NUM_TEST + 1):
-    n = random.randint(1, 10)
-    arrayToSort = [random.randint(-1000, 1000) for _ in range(n)]
+manual = [
+    [-5, 3, 1, 7, 10, -4],
+    [9, 2, 4, 2, 9, 5, -1, -8],
+]
 
-    with open(os.path.join(test_dir, '{0:0>2}'.format(i)), 'w') as f:
-        f.write('{0}\n'.format(' '.join(str(val) for val in arrayToSort)))
+for A in manual:
+    question = ' '.join(map(str, A)) + '\n'
+    tests.add(question, solve(A))
 
-    with open(os.path.join(test_dir, '{0:0>2}.a'.format(i)), 'w') as f:
-        n = len(arrayToSort)
-        for mi in range(n):
-            for mj in range(0, n - mi - 1):
-                if arrayToSort[mj] > arrayToSort[mj + 1] :
-                    arrayToSort[mj], arrayToSort[mj + 1] = arrayToSort[mj + 1], arrayToSort[mj]
-                    f.write('{0}\n'.format(' '.join(map(str, arrayToSort))))
+for i in range(NUM_TEST - len(manual)):
+    A = [random.randint(-100, 100) for _ in range(random.randint(10, 20))]
+
+    question = ' '.join(map(str, A)) + '\n'
+    tests.add(question, solve(A))
