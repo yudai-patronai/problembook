@@ -1,0 +1,60 @@
+name: 2020_algo_s1_w7_a
+language: python
+problems:
+    
+    # InsertionSort
+    - 999cb38b-3530-4c24-b61a-086f6ccfba8a:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сортировка по сумме цифр
+    - e1d21bb0-f27a-4b8d-a401-5dc89d10195a:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # BubbleSort
+    - c777aa82-2b1a-40dc-8ed7-275d37d074f6:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сортировка выбором
+    - 2e49a33f-6363-4068-81c3-bf7c8c101b9d:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сортировка подсчётом
+    - 6793cbb9-48bb-4b83-8ec8-2483aca5d34c:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поразрядная сортировка
+    - 842911bc-0705-4b2e-bfb8-149f84527613:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сортировка только чётных элементов
+    - 8d9c0d00-698d-4b16-be6f-1163e25a207f:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Сортировка дат
+    - c653672b-1dd5-4cde-8bf7-de9f5294ee7e:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
