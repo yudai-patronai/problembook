@@ -3,7 +3,7 @@ id: 1d431103-7bd1-445b-a640-b7c58d77fb70
 longname: Регулярное выражение для проверки кратности
 languages: [cpp]
 tags: [strings, regex]
-checker: cmp_yesno
+checker: cmp_file
 source_header: header.cpp
 source_footer: footer.cpp
 time_limit: 1
