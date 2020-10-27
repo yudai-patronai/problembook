@@ -36,7 +36,7 @@ def make_test(low, high):
 
     N = random.randint(5*low, 5*high)
     result = map(lambda l: " ".join(map(str, l)), fourSum('', randomlist, N))
-    k = " ".join(map(str, randomlist)), '\n'.join(map(str, result))
+    k = str(len(randomlist)) + "\n" + " ".join(map(str, randomlist)) +"\n" +str(N), '\n'.join(map(str, result))
     return k
 
 tests.add('0\n\n-5','')
