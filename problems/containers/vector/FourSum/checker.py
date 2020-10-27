@@ -21,13 +21,16 @@ answer_file = sys.argv[3]
 #    m = int(f.readline()[:-1])
 
 with open(answer_file) as f:
-    answer = f.readlines()
+    answer = " ".join(f.readlines())
+    answer = answer.split()
+    answer = list(answer[i:i+4] for i in range(0,len(answer), 4))
     answer.sort()
-
 
 try:
     with open(output_file) as f:
-        output = f.readlines()
+        output = " ".join(f.readlines())
+        output = output.split()
+        output = list(output[i:i+4] for i in range(0,len(output), 4))
         output.sort()
 
 except (IOError, ValueError):
