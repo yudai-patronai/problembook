@@ -1,6 +1,43 @@
 from lib.testgen import TestSet
-
+from lib import random
 tests = TestSet()
+
+def fourSum(self, nums, target):
+    def findNsum(nums, target, N, result, results):
+        if len(nums) < N or N < 2 or target < nums[0]*N or target > nums[-1]*N:  # early termination
+            return
+        if N == 2: # two pointers solve sorted 2-sum problem
+            l,r = 0,len(nums)-1
+            while l < r:
+                s = nums[l] + nums[r]
+                if s == target:
+                    results.append(result + [nums[l], nums[r]])
+                    l += 1
+                    while l < r and nums[l] == nums[l-1]:
+                        l += 1
+                elif s < target:
+                    l += 1
+                else:
+                    r -= 1
+        else: # recursively reduce N
+            for i in range(len(nums)-N+1):
+                if i == 0 or (i > 0 and nums[i-1] != nums[i]):
+                    findNsum(nums[i+1:], target-nums[i], N-1, result+[nums[i]], results)
+
+    results = []
+    findNsum(sorted(nums), target, 4, [], results)
+    return results
+
+def make_test(low, high):
+    randomlist = []
+    for i in range(300, 500):
+        n = random.randint(low, high)
+        randomlist.append(n)
+
+    N = random.randint(5*low, 5*high)
+    result = map(lambda l: " ".join(map(str, l)), fourSum('', randomlist, N))
+    k = " ".join(map(str, randomlist)), '\n'.join(map(str, result))
+    return k
 
 tests.add('0\n\n-5','')
 tests.add('3\n-1 3 1\-5','')
@@ -17,5 +54,11 @@ tests.add('8\n97 -31 4 -25 28 -23 -20 -15\n80','-25 -20 28 97')
 tests.add('14\n97 -31 4 -25 28 -23 -20 -15 97 -31 -25 28 -23 -20\n80', '-25 -20 28 97')
 tests.add('18\n6 6 6 6 6 6 0 0 0 0 0 0 -6 -6 -6 -6 -6 -6\n0', '-6 -6 6 6\n-6 0 0 6\n0 0 0 0')
 tests.add('19\n-31 -80 -13 -23 -11 -56 72 62 -64 -46 71 3 43 22 22 10 -27 -28 -30\n25', '-80 -28 62 71\n-56 -13 22 72\n-46 -23 22 72\n-46 -13 22 62\n-46 -11 10 72\n -31 -28 22 62\n-31 3 10 43\n-30 -27 10 72\n-27 -23 3 72\n-27 -13 3 62\n-27 -13 22 43\n-23 -13 -11 72')
-
+tests.add(*make_test(-110, 110))
+tests.add(*make_test(-200, 200))
+tests.add(*make_test(-300, 300))
+tests.add(*make_test(-1000, 1000))
+tests.add(*make_test(-700, 700))
+tests.add(*make_test(-50, 50))
+tests.add(*make_test(-2000, 2000))
 
