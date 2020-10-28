@@ -1,7 +1,7 @@
 ---
 id: 1e25c63f-b728-4d83-9a03-7f145570ba29
 longname: Проверка корректности xml
-languages: [cpp, python]
+languages: [cpp]
 tags: [easy, xml, string]
 checker: cmp_yesno
 time_limit: 1
