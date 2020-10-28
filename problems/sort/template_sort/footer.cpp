@@ -41,6 +41,10 @@ void Require(bool val, const std::string& what, const std::string& fn, const int
 
 class Int {
 public:
+    Int() = default;
+    Int(const Int&) = default;
+    Int& operator=(const Int&) = default;
+    
     Int(int i) : value(i) {}
 
     bool IsLess(const Int& rhs) const {
@@ -66,6 +70,10 @@ private:
 
 class FriendlyInt {
 public:
+    FriendlyInt() = default;
+    FriendlyInt(const FriendlyInt&) = default;
+    FriendlyInt& operator=(const FriendlyInt&) = default;
+    
     FriendlyInt(int i) : value(i) {}
 private:
     friend class std::less<FriendlyInt>;
