@@ -83,7 +83,7 @@ size_t height(const TN* n) {
 }
 
 int main() {
-    int32_t n = 0, t;
+    int32_t t;
     
     std::cin >> t;
     TN* root = new TN(t);

@@ -2,7 +2,7 @@
 id: 9c37c4a9-5ec5-4c96-8567-19a8984ee87e
 longname: Дерево - обход в ширину
 tags: [graphs,binary,tree,btree]
-languages: [python]
+languages: [python, cpp]
 checker: cmp_long_long_seq
 time_limit: 1
 real_time_limit: 1
