@@ -97,7 +97,7 @@ int main() {
         
         TN* cur = root;
         while (1) {
-            if (cur->v < t) {
+            if (cur->v >= t) {
                 if (cur->l != nullptr) {
                     cur = cur->l;
                     continue;
