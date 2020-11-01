@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: b8b24d23-abfc-4251-8bbe-ef32aa9375e6
 longname: Размен денег
 languages: [python]

@@ -11,6 +11,8 @@ def answer(n):
 
 
 tests = TestSet()
+
+
 def add(i):
     tests.add(question(i), answer(i))
 
@@ -19,6 +21,6 @@ list(map(add, [12, 8, 1]))  # visible tests
 list(map(add, range(2, 8)))
 list(map(add, [0, 9, 10, 11, 13, 14, 15]))
 list(map(add, [
-    randint(16, 99), randint(100, 999), randint(1000, 9999), \
-    randint(10000, 29989), randint(29990, 29994), \
+    randint(16, 99), randint(100, 999), randint(1000, 9999),
+    randint(10000, 29989), randint(29990, 29994),
     randint(29995, 29999), 30000]))

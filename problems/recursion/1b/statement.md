@@ -1,5 +1,4 @@
 ---
-fixme: true
 id: 59baa314-79f8-4b22-97bd-35ac1fe61e60
 longname: Функция Аккермана
 languages: [python]

@@ -13,6 +13,7 @@ def make_test(test_file, m, n, ans):
     with open(test_file + '.a', 'w') as f:
         f.write(str(ans) + '\n')
 
+
 if __name__ == '__main__':
 
     test_folder = 'tests'
@@ -27,7 +28,6 @@ if __name__ == '__main__':
         '05': (1, 0, 2),
         '06': (3, 0, 5),
         '07': (2, 2, 7),
-
     }
 
     for key, value in boards_ans.items():
