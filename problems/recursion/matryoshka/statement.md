@@ -32,12 +32,9 @@ max_vm_size: 64M
 
 ### Примеры вызова функции
 
-```
--> matryoshka(3)
---
-<- verh matryoshki 3
-<- verh matryoshki 2
-<- matryoshechka
-<- niz matryoshki 2
-<- niz matryoshki 3
-```
+    >>> matryoshka(3)
+    >>> verh matryoshki 3
+    >>> verh matryoshki 2
+    >>> matryoshechka
+    >>> niz matryoshki 2
+    >>> niz matryoshki 3
