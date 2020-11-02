@@ -28,6 +28,6 @@ max_vm_size: 64M
 ### Примеры
 
     >>> is_add_35(12)
-    >>> True
+    True
     >>> is_add_35(8)
-    >>> False
+    False
