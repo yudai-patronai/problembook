@@ -1,7 +1,7 @@
 ---
 id: e0b4f55c-56f5-4bb0-a5e5-e0485933cc52
 longname: Вычисление математического выражения
-languages: [cpp, python]
+languages: [python]
 tags: [recursion]
 checker: cmp_int
 time_limit: 1
