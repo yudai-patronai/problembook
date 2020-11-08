@@ -66,7 +66,8 @@ if __name__ == '__main__':
     write_test(os.path.join(test_folder, "01"), [[(125.00, "vasya")]])
     write_test(os.path.join(test_folder, "02"), [[(7.70, "abc")], [(-7.70, "abd")]])
     write_test(os.path.join(test_folder, "03"), [[(-335.08, "vasya"), (-754.45, "petya"), (-41.05, "borya")]])
-    write_test(os.path.join(test_folder, "04"), [[(random.randint(-500000, 1000000)/100, get_name()) for _ in range(20)] for _ in range(RANDOM_TEST_LEN)])
+    write_test(os.path.join(test_folder, "04"), [[(909.94, 'Savior'), (909.94, 'vasya')], [(909.93, 'Savior'), (909.94, 'anya')]])
+    write_test(os.path.join(test_folder, "05"), [[(random.randint(-500000, 1000000)/100, get_name()) for _ in range(20)] for _ in range(RANDOM_TEST_LEN)])
 
-    for test in range(5, 8):
+    for test in range(6, 8):
         generate_test(os.path.join(test_folder, "0{}".format(test)))

@@ -28,7 +28,7 @@ def merge(a1, a2, comp: (lambda x, y: x <= y)):
 
 
 def non_less(x1, x2):
-    return False if x1[0] < x2[0] else x1[0] > x2[0] or x1[1] >= x2[1]
+    return False if x1[0] < x2[0] else x1[0] > x2[0] or x1[1] <= x2[1]
 
 
 def merge_rooms(a1, a2):
