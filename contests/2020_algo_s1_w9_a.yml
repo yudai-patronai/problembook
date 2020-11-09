@@ -1,0 +1,59 @@
+name: 2020_algo_s1_w9_a
+language: python
+problems:
+
+    # Сортирующее действие - слияние отсортированных списков
+    - 5b8c5134-194c-43c6-bdcd-66933106c115:
+        score: 50
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Сортировка слиянием
+    - d262123e-30ef-4a79-a14d-3ff1be3d2607:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Сортирующее действие - разбиение массива по барьеру
+    - b34e19a4-71fd-4081-8224-4502922803d8:
+        score: 50
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Быстрые сортировки - сортировка Тони Хоара
+    - 358147ae-3db1-41d2-bbae-78943ed44bcd:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Сортировка выбором — рекурсивный вариант
+    - 61a9faff-b621-40ca-853f-49dfad2a8d67:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Выборы
+    - a4d20867-b9c4-45f3-b24f-1e9d373891a8:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Сортировка положительных и отрицательных чисел в разные стороны с сохранением знаковых позиций
+    - 118148e1-6b08-4195-819a-9949463d59f8:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Результаты работы студентов в семестре
+    - 8b506c3b-42ec-4aac-9743-20cfe85d4bbf:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
