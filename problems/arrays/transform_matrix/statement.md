@@ -1,7 +1,7 @@
 ---
 id: b3f8a0ae-f49a-42ab-bbf1-95000422b56c
 longname: Преобразование матрицы
-languages: [cpp]
+languages: [cpp,python]
 tags: [arrays]
 checker: cmp_int_seq
 time_limit: 1
