@@ -2,7 +2,7 @@
 id: 39aeaf6c-8d3e-4f49-8280-e348f4fcf09c
 longname: Дипломы
 languages: [python]
-tags: [recursion,binsearch]
+tags: [binsearch]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1

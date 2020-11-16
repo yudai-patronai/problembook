@@ -1,7 +1,7 @@
 id: c380477d-cac4-4a45-9ff5-7b0f7d60c0f6
 longname: Лифт
 languages: [python]
-tags: [recursion,binsearch]
+tags: [binsearch]
 checker: cmp_int
 time_limit: 1
 real_time_limit: 1
