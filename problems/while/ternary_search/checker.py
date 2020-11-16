@@ -17,11 +17,11 @@ output_file = sys.argv[2]
 answer_file = sys.argv[3]
 
 with open(answer_file) as f:
-    xa, fxa = map(float, input().split())
+    xa, fxa = map(float, f.readline().split())
 
 try:
     with open(output_file) as f:
-        xo, fxo = map(float, input().split())
+        xo, fxo = map(float, f.readline().split())
 except (IOError, ValueError):
     print('Wrong formating')
     sys.exit(CheckerResult.PE)
