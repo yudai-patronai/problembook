@@ -8,14 +8,18 @@ def bin_search(n, x, greater_or_equal):
             l, r = m+1, r
     return l
 
+
 def is_correct_square_side(side, whn):
-    if side == 0:
-        return whn[2] == 0
-    n1 = float('inf') if whn[0] == 0 else side // whn[0]
-    n2 = float('inf') if whn[1] == 0 else side // whn[1]
-    return n1 * n2 >= whn[2]
+    return (side // whn[0]) * (side // whn[1]) >= whn[2]
+
 
 def calc_min_square_side(w, h, n):
+    if n == 0:
+        return 0
+    if w == 0:
+        return h
+    if h == 0:
+        return w
     max_side = max(w, h) * n
     return bin_search(max_side + 1, (w, h, n), is_correct_square_side)
 
