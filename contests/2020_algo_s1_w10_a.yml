@@ -1,0 +1,53 @@
+name: 2020_algo_s1_w10_a
+language: python
+problems:
+    
+    # Бинарный поиск в отсортированном массиве
+    - a6a04ea5-585c-47fa-ac53-22d0530148f9:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Рекурсивный бинарный поиск в отсортированном массиве
+    - a39ee093-d715-4949-bfa8-ba1e2b9c757d:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Двоичный поиск корня уравнения
+    - c44fd9a6-fd49-480b-8cfe-c7dbb562dbc0:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заботливый фермер
+    - 4c5c3594-d71c-4bc5-b973-d95ee3944cba:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Является ли квадрат волшебным?
+    - db119bd5-125e-4bbe-a82f-cbaf5b3c4184:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заполнение поля игры сапёр
+    - 7a811457-ab74-428c-b7e3-cf8ae472a3ed:
+        score: 70
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Преобразование матрицы
+    - b3f8a0ae-f49a-42ab-bbf1-95000422b56c:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
