@@ -1,0 +1,46 @@
+name: 2020_algo_s1_w10_c
+language: python
+problems:
+    
+    # Бинарный поиск в отсортированном массиве
+    - a6a04ea5-585c-47fa-ac53-22d0530148f9:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Рекурсивный бинарный поиск в отсортированном массиве
+    - a39ee093-d715-4949-bfa8-ba1e2b9c757d:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Двоичный поиск корня уравнения
+    - c44fd9a6-fd49-480b-8cfe-c7dbb562dbc0:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Заботливый фермер
+    - 4c5c3594-d71c-4bc5-b973-d95ee3944cba:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1a6a04ea5-585c-47fa-ac53-22d0530148f9 a39ee093-d715-4949-bfa8-ba1e2b9c757d c44fd9a6-fd49-480b-8cfe-c7dbb562dbc0 4c5c3594-d71c-4bc5-b973-d95ee3944cba 39aeaf6c-8d3e-4f49-8280-e348f4fcf09c 64bd14d6-40f5-49da-9f31-3cd7430af582
+        max_vm_size: 64M
+    
+    # Дипломы
+    - 39aeaf6c-8d3e-4f49-8280-e348f4fcf09c:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Тернарный поиск
+    - 64bd14d6-40f5-49da-9f31-3cd7430af582:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
