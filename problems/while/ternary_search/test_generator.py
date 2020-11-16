@@ -13,7 +13,7 @@ os.makedirs(tests_dir)
 tests = [
     ["-x*x", -10, 13],
     ["-2*x", 0, 2],
-    ["math.log2(x)", 2, 8]
+    ["math.log2(x)", 2, 8],
     ["math.sin(x*x)", 0, 2],
     ["x**3-6*x**2+4*x+12", -10, 1],
     ["x**4+5", 3, 8]
@@ -30,13 +30,13 @@ def ternary_search(f, left, right):
     return (left+right)/2, f((left+right)/2)
 
 for j, (a, b, c) in enumerate(tests):
-    fx = eval("lambda x: {}".format(a))
+    func = eval("lambda x: {}".format(a))
     left = float(b)
     right = float(c)
 
     with open(os.path.join(tests_dir, "{:02}".format(j+1)), "w") as f:
         f.write("\n".join(map(str, (a, b, c))))
     with open(os.path.join(tests_dir, "{:02}.a".format(j+1)), "w") as f:
-        x, fx = ternary_search(f, left, right)
-        f.write("{:10.5}{:10.5}".format(x, fx))
+        x, fx = ternary_search(func, left, right)
+        f.write("{:.5} {:.5}".format(x, fx))
 

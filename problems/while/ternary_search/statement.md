@@ -3,7 +3,6 @@ id: 64bd14d6-40f5-49da-9f31-3cd7430af582
 longname: Тернарный поиск
 languages: [python]
 tags: [easy, io]
-checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -27,13 +26,7 @@ max_vm_size: 64M
 ### Примеры
 
 ```
--> 1 2
+-> -x*x -10 13
 --
-<- 3
-```
-
-```
--> 1 -1
---
-<- 0
+<- 0 0
 ```
