@@ -1,4 +1,4 @@
-name: 2020_algo_s1_w10_c
+name: 2020_algo_s1_w10_a
 language: python
 problems:
     
@@ -30,16 +30,23 @@ problems:
         real_time_limit: 1
         max_vm_size: 64M
     
-    # Дипломы
-    - 39aeaf6c-8d3e-4f49-8280-e348f4fcf09c:
-        score: 90
+    # Является ли квадрат волшебным?
+    - db119bd5-125e-4bbe-a82f-cbaf5b3c4184:
+        score: 50
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
     
-    # Тернарный поиск
-    - 64bd14d6-40f5-49da-9f31-3cd7430af582:
-        score: 90
+    # Заполнение поля игры сапёр
+    - 7a811457-ab74-428c-b7e3-cf8ae472a3ed:
+        score: 70
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Преобразование матрицы
+    - b3f8a0ae-f49a-42ab-bbf1-95000422b56c:
+        score: 70
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
