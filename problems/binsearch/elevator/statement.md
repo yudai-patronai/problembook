@@ -1,3 +1,4 @@
+---
 id: c380477d-cac4-4a45-9ff5-7b0f7d60c0f6
 longname: Лифт
 languages: [python]
