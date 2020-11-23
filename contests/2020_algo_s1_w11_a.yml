@@ -1,0 +1,46 @@
+name: 2020_algo_s1_w11_a
+language: python
+problems:
+    
+    # Фибоначчи
+    - 412f2781-c52b-4753-b451-2638b8727cc1:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Компьютерная игра
+    - 7991115d-b097-4d30-87e5-eddd554d87ec:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик
+    - 595db940-9bc4-4261-a282-fc6721421b8b:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Кузнечик - математик
+    - e4c4b882-2eb9-47d8-b55c-8320fa282f34:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Калькулятор
+    - 76f910cf-4024-4755-888f-b3efaa63715d:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Взрывоопасность (A,B)
+    - f6dfdebd-3352-4ac1-b520-d4b997d0e02b:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
