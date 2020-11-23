@@ -21,10 +21,12 @@ def solution(N, costs):
     path = []
     while i > -1:
         path.append(i)
-        if min_sum[i-1] < min_sum[i-2]:
+        if min_sum[i] == min_sum[i-1] + costs[i]:
             i -= 1
-        else:
+        elif min_sum[i] == min_sum[i-2] + costs[i]:
             i -= 2
+        else:
+            break
 
     return min_sum[N-1], path[::-1]
 
