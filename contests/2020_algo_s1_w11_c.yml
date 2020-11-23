@@ -1,0 +1,59 @@
+name: 2020_algo_s1_w11_c
+language: python
+problems:
+
+    # Кузнечик - математик
+    - e4c4b882-2eb9-47d8-b55c-8320fa282f34:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Компьютерная игра
+    - 7991115d-b097-4d30-87e5-eddd554d87ec:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Кузнечик
+    - 595db940-9bc4-4261-a282-fc6721421b8b:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Калькулятор
+    - 76f910cf-4024-4755-888f-b3efaa63715d:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Взрывоопасность (A,B)
+    - f6dfdebd-3352-4ac1-b520-d4b997d0e02b:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Кузнечик - художник
+    - acd0aa11-ccf3-4336-ae8d-6637905dc5c4:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Шоколадка
+    - 34cb6f38-1082-45b7-a9f8-eccd2c7df242:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Гвоздики
+    - a8b0dd50-d38c-47f3-85d4-d95ff71f364b:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
