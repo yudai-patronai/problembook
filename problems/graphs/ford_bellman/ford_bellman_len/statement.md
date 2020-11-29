@@ -1,7 +1,7 @@
 ---
 id: f675123f-66e3-4873-80ca-95fd3e190ad5
 longname: Алгоритм Форда-Беллмана
-languages: [python]
+languages: [python,cpp]
 tags: [graphs,ford_bellman]
 checker: cmp_file
 time_limit: 1
