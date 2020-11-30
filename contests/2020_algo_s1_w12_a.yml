@@ -1,0 +1,53 @@
+name: 2020_algo_s1_w12_a
+language: python
+problems:
+    
+    # Цитаты
+    - 8cabfeca-651b-490f-8b00-49faf7d1723d:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сколько в строке букв?
+    - 522b7447-7780-4664-94d0-8bc82e6306f4:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подсчет количества слов в файле
+    - a5d2199e-366b-4fee-9135-ef33b1f6f479:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Длина наибольшей подстроки с равными символами
+    - a1fac1f0-d7b1-4142-a47b-426d306f2eb9:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сортировка слов по длине
+    - 462ef47d-bdc8-4a09-a4ef-8d8008832c5e:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Префикс функция
+    - f8158168-7725-4489-ae3a-0c278e0cf875:
+        score: 150
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 256M
+    
+    # Поиск подстроки в строке
+    - 5e36b7fd-7839-4f63-bbd4-86209619bcba:
+        score: 200
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 256M
+    
