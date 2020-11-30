@@ -1,0 +1,38 @@
+name: 2020_algo_s1_w12_c
+language: python
+problems:
+
+    # Подсчет количества слов в файле
+    - a5d2199e-366b-4fee-9135-ef33b1f6f479:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Анализ предложений
+    - b1791a52-4c2a-4784-a33a-c71dd1c26107:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Префикс функция
+    - f8158168-7725-4489-ae3a-0c278e0cf875:
+        score: 100
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 256M
+
+    # Z-функция
+    - d725c1b9-62ac-4f62-8a0c-7e47042a377f:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 256M
+
+    # А-функция
+    - 7879c456-6b2d-492f-929e-75895ad05ce8:
+        score: 120
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 256M
