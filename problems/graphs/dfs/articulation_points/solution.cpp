@@ -129,12 +129,11 @@ struct APFinder {
 };
 
 int main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
     size_t n, m;
     std::cin >> n >> m;
     Graph g(n);
-
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(NULL);
 
     {
         size_t f, t;
