@@ -24,7 +24,7 @@ int top_sort(const std::vector<std::vector<int>>& graph, int vertex, std::vector
     visited[vertex] = DfsState::kVisited;
     result.push_back(vertex);
     return 0;
-};
+}
 
 int main() {
     int V, E;
