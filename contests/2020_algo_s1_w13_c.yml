@@ -1,0 +1,38 @@
+name: 2020_algo_s1_w13_c.yml
+language: python
+problems:
+
+    # Белая пешка
+    - b4297e1b-a396-4ef9-91d8-9363d338852c:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Платный аттракцион
+    - aedeec91-922a-4a12-8df6-a94dd4cd5432:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Наибольшая возрастающая подпоследовательность
+    - 6310c3e0-e26a-4f28-a4c7-bcce0c557848:
+        score: 80
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Наибольшая общая подпоследовательность
+    - b127e684-7c8a-4a13-8950-08d89f54ba25:
+        score: 80
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Расплата за редакционные ошибки
+    - 8617f38c-f6f4-45e4-bdff-40071f411ac5:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
