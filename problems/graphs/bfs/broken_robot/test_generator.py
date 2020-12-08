@@ -257,8 +257,7 @@ tests.add(
 '1998')
 
 # asymptotic: no way
-no_way_field = 
-'''
+no_way_field = '''
 ....
 ###.
 #.#.
