@@ -60,6 +60,7 @@ tests.add(
     answer([
         [1]
     ])
+)
 tests.add(
     question([
         ['abc', 'cde'],
@@ -77,6 +78,7 @@ tests.add(
     answer([
         [5]
     ])
+)
 
 #
 # автоматические тесты
@@ -84,7 +86,7 @@ tests.add(
 for N in (10, 10, 10):
     A = random_square_matrix(N)
     q = question(A)
-    solution(A)
+    transpose(A)
     a = answer(A)
     tests.add(q, a)
 
