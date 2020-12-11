@@ -1,9 +1,9 @@
 from lib.testgen import TestSet
-from test_collection import __manual_tests
+from header import __manual_tests
 
 
-# q: test_index
-# a: sum
+# qusettion: test_index of __manual_tests
+# answer: correct sum
 
 tests = TestSet()
 for i, t in enumerate(__manual_tests):
