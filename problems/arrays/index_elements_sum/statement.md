@@ -2,7 +2,7 @@
 id: 30c815a2-1aaa-4258-9416-ab0ae825c5c4
 longname: Сумма элементов с определенными индексами
 tags: [array, for]
-languages: [cpp]
+languages: [cpp, python]
 checker: cmp_int_seq
 time_limit: 1
 real_time_limit: 1
