@@ -16,7 +16,7 @@ input_file = sys.argv[1]
 output_file = sys.argv[2]
 answer_file = sys.argv[3]
 
-with open(input_file) as f:
+with open(answer_file) as f:
     ans = float(f.read().strip())
 
 try:
@@ -26,8 +26,7 @@ except (IOError, ValueError):
     print('Output does not contain a float number')
     sys.exit(CheckerResult.PE)
 
-c = x * x + x ** 0.5
-if abs(ans - outp) > 1e-6:
+if abs(ans - x) > 1e-6:
     print('Incorrect answer')
     sys.exit(CheckerResult.WA)
 

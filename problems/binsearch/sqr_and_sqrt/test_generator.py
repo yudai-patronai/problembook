@@ -29,8 +29,8 @@ USUAL_TESTS_COUNT =5
 for _ in range(USUAL_TESTS_COUNT):
     c = rand.random() * 1000000
     x = solve(c)
-    tests.add('{:f}\n'.format(c), '{:.06f}\n'.format(x)
+    tests.add('{:f}\n'.format(c), '{:.06f}\n'.format(x))
 
 c = 10 ** 10
 x = solve(c)
-tests.add('{:f}\n'.format(c), '{:.06f}\n'.format(x)
+tests.add('{:f}\n'.format(c), '{:.06f}\n'.format(x))
