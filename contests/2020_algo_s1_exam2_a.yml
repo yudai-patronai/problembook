@@ -1,0 +1,60 @@
+name: 2020_algo_s1_exam2_a
+language: python
+problems:
+    
+    # Количество букв разного регистра
+    - b3ea8b6c-e45a-470b-9d8f-c007bfd0665c:
+        score: 20
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сумма элементов с определенными индексами
+    - 30c815a2-1aaa-4258-9416-ab0ae825c5c4:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Книжный шифр
+    - 05202903-2be4-4d8d-9669-0fc7889894da:
+        score: 60
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Анализ предложений
+    - b1791a52-4c2a-4784-a33a-c71dd1c26107:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Функция, транспонирующая матрицу
+    - b9ee74ce-c179-4eaf-b96d-533c3ec6638a:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сумма элементов в массиве произвольного размера
+    - e71cbcf2-fd50-45d8-b90b-ca0314ef3f4d:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Слияние массивов молекул по массе
+    - 2ce50848-7f19-471e-9f16-4d594b3e0b7e:
+        score: 140
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Маршрут
+    - 2d622c4d-ac51-44ab-969e-5f729fb73c0b:
+        score: 160
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
