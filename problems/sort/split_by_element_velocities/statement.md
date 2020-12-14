@@ -1,6 +1,6 @@
 ---
 id: 009e1c6c-8fa2-4d50-9004-cc320633afcb
-longname: Разбинение барьеру на величинах скоростей
+longname: Разбинение по барьеру на величинах скоростей
 languages: [python]
 tags: [sort,hoar]
 checker: cmp_file
@@ -40,7 +40,7 @@ max_vm_size: 64M
 
 ### Примеры вызова функции и преобразование массива
 
-``` 
+```
 -> >>> A = ['1 m/s', '2 m/s', '1 mm/s', '1 m/h', '1 cm/h', '1 m/min', '1 km/s']
 -> >>> split_barrier(A)
 --

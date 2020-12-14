@@ -1,11 +1,12 @@
 
-#''' #  ЭТО не комментарий, а конец переменной source_code из header
+#'''  # ЭТО не комментарий, а конец переменной source_code из header
 
-#  валидация на содержание запрещённых инструкций
+# валидация на содержание запрещённых инструкций
 exclude_patterns = [r'\.\s*sort\s*\(', r'sorted\s*\(']
 
 for reobj in exclude_patterns:
-    assert not re.findall(reobj, source_code), 'list.sort() and sorted() are restricted'
+    assert not re.findall(reobj, source_code), \
+        'list.sort() and sorted() are restricted'
 
 
 exec(source_code)
