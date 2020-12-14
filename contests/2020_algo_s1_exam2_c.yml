@@ -1,0 +1,52 @@
+name: 2020_algo_s1_exam2_c
+language: python
+problems:
+
+    # Степень строки
+    - 8a13b8f6-b127-44ca-a723-ebadc1f40139:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # B-функция
+    - 96891199-815a-49be-8823-0574396e7681:
+        score: 150
+        time_limit: 4
+        real_time_limit: 4
+        max_vm_size: 256M
+
+    # Взрывоопасность (A,B,C)
+    - 6f175d58-dd48-4033-8bca-62ff2e5a2176:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Хорошо ли перемешаны карты?
+    - 206bcdf3-dd5b-4498-93e7-67ed3d75e2c8:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Разбинение по барьеру на величинах скоростей
+    - 009e1c6c-8fa2-4d50-9004-cc320633afcb:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Сетевой Маркетинг
+    - a9ee0d56-953e-4435-ae33-4407bcce9a36:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Квадратный корень и квадратный квадрат
+    - dabc04eb-ff3d-47d7-9f0c-26c1321ffc1d:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
