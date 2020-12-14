@@ -35,4 +35,4 @@ while True:
 res = [["." for _ in range(N)] for _ in range(N)]
 for i, j in path:
     res[i][j] = "#"
-print(*[" ".join(x) for x in res], sep="\n")
+print(*[''.join(x) for x in res], sep="\n")
