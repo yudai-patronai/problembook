@@ -2,13 +2,23 @@
 
 import os
 import shutil
-import solution
+
+
+def solve(n):
+    d = [0] * n
+    d[0] = 40
+    for i in range(1, n):
+        f = (d[i-1] - 10) / 0.3 * 0.7
+        d[i] = (2 * f + 100) * 0.3 + 10
+    return d[-1]
+
 
 def make_test(test_file, n, answer):
     with open(test_file, 'w') as f:
         f.write(str(n) + '\n')
     with open(test_file + '.a', 'w') as f:
         f.write(str(int(answer)) + '\n')
+
 
 if __name__ == '__main__':
     test_folder = 'tests'
@@ -25,6 +35,6 @@ if __name__ == '__main__':
     ]
     ans = {}
     for i, n in enumerate(ns):
-        ans['{0:02}'.format(i)] = (n, solution.mlm(n))
+        ans['{0:02}'.format(i)] = (n, solve(n))
     for key, value in ans.items():
         make_test(os.path.join(test_folder, key), value[0], value[1])
