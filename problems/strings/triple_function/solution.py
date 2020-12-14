@@ -17,12 +17,12 @@ def compute_b_function(s):
     p = compute_prefix_function(s)
     b = []
     m = 0
-    for l in p:
-        if m >= l:
-            b.append(l)
+    for i in p:
+        if m >= i:
+            b.append(i)
         else:
-            b.append(p[l - 1])
-        m = max(l, m)
+            b.append(p[i - 1])
+        m = max(i, m)
     return b
 
 
