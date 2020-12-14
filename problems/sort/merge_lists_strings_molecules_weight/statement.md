@@ -40,8 +40,5 @@ max_vm_size: 64M
 
 ### Примеры вызова функции
 
-```
--> >>> merge_by_molweight(['H2', 'CH4', 'C2H5OH'], ['O2', 'NO2'])
---
-<- ['H2', 'CH4', 'O2', 'C2H5OH', 'NO2']
-```
+    >>> merge_by_molweight(['H2', 'CH4', 'C2H5OH'], ['O2', 'NO2'])
+    ['H2', 'CH4', 'O2', 'C2H5OH', 'NO2']
