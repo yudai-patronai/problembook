@@ -1,0 +1,60 @@
+name: 2020_algo_s2_w15
+language: python
+problems:
+    
+    # Сумма цифр трехзначного числа
+    - 8171cdf9-c7a5-481c-8899-d3d9d3f7ebf3:
+        score: 10
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сколько в строке букв?
+    - 522b7447-7780-4664-94d0-8bc82e6306f4:
+        score: 15
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Разложение десятичного числа по степеням
+    - 5d0bdf52-4aa5-4b71-8af5-5bea9daab617:
+        score: 20
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Факторизация числа
+    - 1901d2f8-2ef7-46b8-94e1-7cfdfe5f05d2:
+        score: 30
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Скалярное произведение
+    - 244af21b-5c97-43e9-bbb0-571063cf8cfa:
+        score: 30
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # BubbleSort
+    - c777aa82-2b1a-40dc-8ed7-275d37d074f6:
+        score: 35
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подтягивания лесенкой
+    - 18839e41-dbd9-488e-b006-b733bd9999d1:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Компьютерная игра
+    - 7991115d-b097-4d30-87e5-eddd554d87ec:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
