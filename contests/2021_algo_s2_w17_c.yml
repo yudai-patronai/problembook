@@ -1,0 +1,39 @@
+name: 2021_algo_s2_w17_c
+language: python
+problems:
+
+    # Полиномиальная хеш-функция
+    - e6999d04-5666-4aaf-835d-71705adbd320:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Алгоритм Рабина-Карпа
+    - e59ce472-730a-4df0-be36-d25cb5663662:
+        score: 80
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 64M
+
+    # Ассоциативный массив на хеш-таблице с цепочками - Добавление элемента
+    - a2beb804-920d-4da8-9576-af917234cdcc:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Ассоциативный массив на хеш-таблице с цепочками - Поиск элемента
+    - a8afc600-b11f-4ec3-801f-47f053188bb9:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Хеш-таблица с цепочками - Удаление элемента
+    - c14ec2fd-290d-4c79-b6ec-4200ab6862f5:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
