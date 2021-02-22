@@ -25,5 +25,6 @@ def siblings(tree, name):
     sibs = set()
     for p in parents(tree, name):
         sibs.update(children(tree, p))
-    sibs.remove(name)
+    if sibs:  # если цикл запустился, нужно удалить name
+        sibs.remove(name)
     return sibs
