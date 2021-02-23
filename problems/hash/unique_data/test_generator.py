@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from lib.testgen import TestSet
 from lib.random import randint
 
