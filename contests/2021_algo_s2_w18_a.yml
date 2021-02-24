@@ -1,0 +1,39 @@
+name: 2021_algo_s2_w18_a
+language: python
+problems:
+    
+    # Пловцы-пианисты, не изучающие французский
+    - ac205ab0-e963-4cde-ac25-d7c170d2faff:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Уникальные данные
+    - 927b67ff-8cf9-4736-8490-805a686b933c:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Голосование за лучший фильм
+    - d547698d-cc75-41a6-bdce-44fef6f232b8:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Подсчет количества букв в тексте
+    - 4d79e5cc-f5e2-42a2-b60e-4893004c7fd9:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Генеалогическое дерево
+    - f494ca09-f55b-489b-8890-571933da9475:
+        score: 120
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
