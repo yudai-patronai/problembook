@@ -7,7 +7,7 @@ tests = TestSet()
 def solve(a, b):
     a = set(a)
     b = set(b)
-    return "{} {} {}\n".format(len(a), len(b), len(a&b))
+    return "{} {} {}\n".format(len(a), len(b), len(a | b))
 
 
 def to_str(n, m, a, b):
