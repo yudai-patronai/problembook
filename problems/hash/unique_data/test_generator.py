@@ -19,15 +19,15 @@ tests.add(to_str(2, 3, [4, 5], [0, 7, 6]), solve([4, 5], [0, 7, 6]))
 for i in range(3):
     n = randint(20, 100)
     m = randint(20, 100)
-    a = [randint(-100, 100) for _ in range(a)]
-    b = [randint(-100, 100) for _ in range(b)]
+    a = [randint(-100, 100) for _ in range(n)]
+    b = [randint(-100, 100) for _ in range(m)]
 
     tests.add(to_str(n, m, a, b), solve(a, b))
 for i in range(2):
     n = randint(100, 500)
     m = randint(100, 500)
-    a = [randint(-100, 100) for _ in range(a)]
-    b = [randint(-100, 100) for _ in range(b)]
+    a = [randint(-100, 100) for _ in range(n)]
+    b = [randint(-100, 100) for _ in range(m)]
     tests.add(to_str(n, m, a, b), solve(a, b))
 
 a = [randint(-100000, 100000) for _ in range(1000)]
