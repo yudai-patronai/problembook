@@ -1,0 +1,73 @@
+name: 2021_algo_s2_w18_c
+language: python
+problems:
+
+    # Пловцы-пианисты, не изучающие французский
+    - ac205ab0-e963-4cde-ac25-d7c170d2faff:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Уникальные данные
+    - 927b67ff-8cf9-4736-8490-805a686b933c:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Голосование за лучший фильм
+    - d547698d-cc75-41a6-bdce-44fef6f232b8:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Подсчет количества букв в тексте
+    - 4d79e5cc-f5e2-42a2-b60e-4893004c7fd9:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Генеалогическое дерево
+    - f494ca09-f55b-489b-8890-571933da9475:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Покер Чапаева
+    - 3decf097-2ee7-419a-8987-f0d9698fb47b:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Бедная секретарша
+    - 0e5c2dfe-7eaf-4432-b168-dca31b3f0a29:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Обратная польская запись
+    - ba88c07e-930c-4e61-84ef-f283692ff893:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Построение кучи
+    - e2569154-4728-4446-8e67-2c8542c97c93:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Сортировка кучей
+    - f8cebdfd-15ea-4db1-88da-7464c0a52f38:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
