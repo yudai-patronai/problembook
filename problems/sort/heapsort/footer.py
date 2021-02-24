@@ -1,6 +1,5 @@
-
 N = input()
-A = list( map(int, input().split()) )
+A = list(map(int, input().split()))
 
 prev_id_A = id(A)
 heapsort(A)

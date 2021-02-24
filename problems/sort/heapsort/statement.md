@@ -1,10 +1,8 @@
 ---
-fixme: true
 id: f8cebdfd-15ea-4db1-88da-7464c0a52f38
 longname: Сортировка кучей
 languages: [python]
 tags: [sort,heap]
-checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
@@ -37,6 +35,6 @@ max_vm_size: 64M
     >>> heapsort([3,2,5,0,-1])
     5 2 3 0 -1  # начальное состояние - куча (max-heap)
     3 2 -1 0 5  # далее печать после каждой итерации (всего прошло 4 итерации)
-    2 0 -1 3 5 
+    2 0 -1 3 5
     0 -1 2 3 5
-    -1 0 2 3 5 
+    -1 0 2 3 5

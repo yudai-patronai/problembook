@@ -1,22 +1,24 @@
 def max_heapify(A, heap_size, i):
-    l = 2*i + 1
-    r = 2*i + 2
+    left = 2*i + 1
+    right = 2*i + 2
 
-    if l < heap_size and A[l] > A[i]:
-        largest = l
+    if left < heap_size and A[left] > A[i]:
+        largest = left
     else:
         largest = i
 
-    if r < heap_size and A[r] > A[largest]:
-        largest = r
+    if right < heap_size and A[right] > A[largest]:
+        largest = right
 
     if largest != i:
         A[largest], A[i] = A[i], A[largest]
         max_heapify(A, heap_size, largest)
 
+
 def build_max_heap(A):
     for i in range(len(A)//2, -1, -1):
         max_heapify(A, len(A), i)
+
 
 def heapsort(A):
     build_max_heap(A)
