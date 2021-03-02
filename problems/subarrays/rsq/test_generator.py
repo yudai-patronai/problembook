@@ -3,7 +3,7 @@ from lib.random import randint
 
 
 def question(n, m, a, b):
-    res = "{}\n{}\n\{}\n{}\n".format(
+    res = "{}\n{}\n{}\n{}\n".format(
         n, " ".join(map(str, a)),
         m, "\n".join(map(lambda x: " ".join(map(str, x)), b))
     )
