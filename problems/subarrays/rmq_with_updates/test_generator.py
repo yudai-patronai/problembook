@@ -81,8 +81,8 @@ for _ in range(5):
 
     tests.add(q, ans)
 
-n = 100000
-m = 30000
+n = 10000
+m = 3000
 a = [randint(-1000, 1000) for _ in range(n)]
 flag = False
 b = []
