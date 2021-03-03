@@ -15,12 +15,12 @@ def solve(n, m, a, b):
     a = a[:]
     for cmd, x, y in b:
         if cmd == "upd":
-            a[x] k= y
+            a[x] = y
         else:
             cur = float("-inf")
             for i in range(x, y+1):
                 cur = max(cur, a[i])
-        ans.append(str(cur))
+            ans.append(str(cur))
     return " ".join(ans)
 
 
