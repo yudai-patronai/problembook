@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, v, segm):
+    def __init__(self, value, segm):
         self.value = value
         self.segm = segm
         self.left = self.right = None
@@ -12,6 +12,8 @@ def build_tree(a, f, t):
     x = build_tree(a, f, (f+t)//2)
     y = build_tree(a, (f+t)//2+1, t)
     node = Node(max(x.value, y.value), (f, t))
+    node.left = x
+    node.right = y
     return node
 
 
