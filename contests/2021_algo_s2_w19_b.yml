@@ -1,0 +1,46 @@
+name: 2021_algo_s2_w19_b
+language: python
+problems:
+    
+    # Односвязный список
+    - af87942d-89df-423f-82b1-1fede5df0588:
+        score: 10
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Две окружности
+    - d4cacc58-664b-42a9-8d4d-bf005ed7ab81:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Суслик и собака
+    - eb167bc6-b6a5-42af-b729-9222fb542c4f:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Симметрия относительно точки
+    - 93c33546-53e3-4856-baa6-18d6273b37c6:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Симметрия относительно линии
+    - 1785191d-7e38-47fd-8e07-6d361e265288:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Охотник
+    - 576fa30b-0e67-4f54-99ce-ce1d643d047d:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
