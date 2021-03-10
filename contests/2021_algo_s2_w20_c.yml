@@ -4,35 +4,35 @@ problems:
 
     # Проверка матрицы смежности
     - f2188554-2b3b-4ee9-8940-c5aebdf031b8:
-        score: 100
+        score: 50
         time_limit: 1
         real_time_limit: 5
         max_vm_size: 64M
 
     # Матрица смежности в список ребер
     - 9ce1b6ca-c82a-489e-a783-ecf78fa3c8f8:
-        score: 100
+        score: 50
         time_limit: 4
         real_time_limit: 10
         max_vm_size: 256M
 
-    # Сильно связный ли орграф?
-    - f47e0efe-913c-4f1c-acc2-7c4ca0297acf:
-        score: 100
-        time_limit: 1
-        real_time_limit: 4
-        max_vm_size: 64M
-
-    # Проверка ацикличности графа
-    - ba1622db-a5ff-4054-b365-20ee63b81788:
-        score: 100
+    # Подсчет количества ребер неориентированного графа
+    - 57c05b56-564f-409f-bf3d-a4e3cd1c4bfb:
+        score: 50
         time_limit: 1
         real_time_limit: 5
         max_vm_size: 64M
 
-    # Топологическая сортировка
-    - a00b40bc-b6cb-4c8b-9dcb-c28f0eb76cc8:
-        score: 100
+    # Полуполный граф
+    - 9abe9d66-2552-469e-8111-397583c6380e:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Истоки и стоки
+    - afd284ed-a800-497e-a4a3-de35e2cb3e16:
+        score: 50
         time_limit: 1
         real_time_limit: 5
         max_vm_size: 64M
