@@ -12,32 +12,47 @@ def build_tree(a, f, t):
         return node
     x = build_tree(a, f, (f+t)//2)
     y = build_tree(a, (f+t)//2+1, t)
-    node = Node(max(x.value, y.value), (f, t))
+    node = Node(x.value + y.value, (f, t))
     node.left = x
     node.right = y
     return node
 
 
+def total(node):
+    return node.value + node.mod * (node.segm[1]-node.segm[0]+1)
+
+
 def update(node, f, t, value):
     if t < node.segm[0] or node.segm[1] < f:
-        return node.value + node.mod
+        return total(node)
     if f <= node.segm[0] and node.segm[1] <= t:
         node.mod += value
-        return node.value + node.mod
+        return total(node)
+    if node.mod != 0:
+        node.left.mod += node.mod
+        node.right.mod += node.mod
+        node.mod = 0
     x = update(node.left, f, t, value)
     y = update(node.right, f, t, value)
-    node.value = max(x, y)
-    return node.value + node.mod
+    node.value = x + y
+    return node.value
 
 
 def calc(node, f, t):
     if f <= node.segm[0] and node.segm[1] <= t:
-        return node.value + node.mod
+        return total(node)
     if t < node.segm[0] or node.segm[1] < f:
-        return float("-inf")
+        return 0
+    if node.mod != 0:
+        node.left.mod += node.mod
+        node.right.mod += node.mod
+        node.mod = 0
+        x = total(node.left)
+        y = total(node.right)
+        node.value = x + y
     x = calc(node.left, f, t)
     y = calc(node.right, f, t)
-    return max(x, y) + node.mod
+    return x + y
 
 
 if __name__ == "__main__":
@@ -52,5 +67,7 @@ if __name__ == "__main__":
         if cmd == "add":
             update(root, *args)
         else:
-            ans.append(str(calc(root, *args)))
+            f, t = args
+            res = calc(root, f, t) / (t - f + 1)
+            ans.append("{:.3g}".format(res))
     print(" ".join(ans))

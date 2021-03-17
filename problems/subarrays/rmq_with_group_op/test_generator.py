@@ -19,11 +19,11 @@ def solve(n, m, a, b):
             for i in range(f, t+1):
                 a[i] += v
         else:
-            cur = float("-inf")
+            s = 0
             f, t = args
             for i in range(f, t+1):
-                cur = max(cur, a[i])
-            ans.append(str(cur))
+                s += a[i]
+            ans.append("{:.3g}".format(s / (t-f+1)))
     return " ".join(ans)
 
 
@@ -32,28 +32,28 @@ tests = TestSet()
 n = 5
 a = [2, 2, 2, 1, 5]
 m = 3
-b = [("max", 1, 2), ("add", 1, 3, -1), ("max", 1, 4)]
+b = [("mean", 1, 2), ("add", 1, 3, -1), ("mean", 1, 4)]
 ans = solve(n, m, a, b)
 tests.add(question(n, m, a, b), ans)
 
 n = 3
 a = [-4, 2, 6]
 m = 3
-b = [("max", 0, 1), ("max", 0, 2), ("max", 1, 2)]
+b = [("mean", 0, 1), ("mean", 0, 2), ("mean", 1, 2)]
 ans = solve(n, m, a, b)
 tests.add(question(n, m, a, b), ans)
 
 n = 12
 a = [-23, 4, 2, 90, 0, 4, 34, 2, 6, 1, 0, 8]
 m = 2
-b = [("add", 5, 9, 6), ("max", 2, 6)]
+b = [("add", 5, 9, 6), ("mean", 2, 6)]
 ans = solve(n, m, a, b)
 tests.add(question(n, m, a, b), ans)
 
 n = 1
 a = [44]
 m = 2
-b = [("add", 0, 0, 0), ("max", 0, 0)]
+b = [("add", 0, 0, 0), ("mean", 0, 0)]
 ans = solve(n, m, a, b)
 tests.add(question(n, m, a, b), ans)
 
@@ -65,7 +65,7 @@ for _ in range(5):
     b = []
     for _ in range(m):
         cmd = randint(0, 19)
-        cmd = "add" if cmd > 14 else "max"
+        cmd = "add" if cmd > 14 else "mean"
         if cmd == "add":
             f = randint(0, n-1)
             t = randint(f, n-1)
@@ -79,7 +79,7 @@ for _ in range(5):
     if not flag:
         f = randint(0, n-1)
         t = randint(f, n-1)
-        b[-1] = ("max", f, t)
+        b[-1] = ("mean", f, t)
 
     q = question(n, m, a, b)
     ans = solve(n, m, a, b)
@@ -93,7 +93,7 @@ flag = False
 b = []
 for _ in range(m):
     cmd = randint(0, 19)
-    cmd = "add" if cmd > 14 else "max"
+    cmd = "add" if cmd > 14 else "mean"
     if cmd == "add":
         f = randint(0, n-1)
         t = randint(f, n-1)
@@ -106,7 +106,7 @@ for _ in range(m):
 if not flag:
     f = randint(0, n-1)
     t = randint(f, n-1)
-    b[-1] = ("max", f, t)
+    b[-1] = ("mean", f, t)
 q = question(n, m, a, b)
 ans = solve(n, m, a, b)
 tests.add(q, ans)
