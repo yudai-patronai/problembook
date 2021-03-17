@@ -1,0 +1,60 @@
+name: 2021_algo_s2_exam1_b
+language: python
+problems:
+    
+    # Друзья и поклонники
+    - 4a39b95c-cb6e-4011-97c2-ae6a1762b8d6:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Обратная польская запись
+    - ba88c07e-930c-4e61-84ef-f283692ff893:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Массив из списка
+    - 58ba969b-fe03-4f28-b46a-916b14222256:
+        score: 30
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Пересечение двух прямых
+    - 0341dbff-0bcc-4f4f-93a2-7a5c2c5c2130:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Проверка выполнения свойств кучи в массиве
+    - 213e015f-324e-42ce-b29d-990bcdd73859:
+        score: 30
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Бедная секретарша
+    - 0e5c2dfe-7eaf-4432-b168-dca31b3f0a29:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Калькулятор для векторов
+    - 358dc158-cfc5-4ee1-8f29-a492462d01ca:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Рейтинги браузеров
+    - e0514d4f-647c-4142-a15a-0749207de0dc:
+        score: 130
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
