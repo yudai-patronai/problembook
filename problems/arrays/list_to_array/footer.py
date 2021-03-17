@@ -1,3 +1,4 @@
+
 if __name__ == "__main__":
     linked_list = []
     for pairs in input().split('\t'):
