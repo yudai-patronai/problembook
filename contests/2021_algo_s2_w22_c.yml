@@ -1,0 +1,73 @@
+name: 2021_algo_s2_w22_c
+language: python
+problems:
+
+    # Проверить связность графа
+    - 1f149524-be56-4cfb-82f1-acdae2be34aa:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Подсчёт весов компонент связности неориентированного графа
+    - d38fee10-9406-4c82-a56b-fadcf42ce627:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Проверка ацикличности графа
+    - ba1622db-a5ff-4054-b365-20ee63b81788:
+        score: 80
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Топологическая сортировка
+    - a00b40bc-b6cb-4c8b-9dcb-c28f0eb76cc8:
+        score: 80
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Слабое звено
+    - 36d63321-617b-41b2-9428-3c6d056d1d1d:
+        score: 100
+        time_limit: 2
+        real_time_limit: 2
+        max_vm_size: 256M
+
+    # Поиск расстояний от заданной вершины до всех остальных
+    - 3caf5ad6-a884-4f5b-8e84-1273ff0ea8fc:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Поиск расстояния на прямоугольном поле
+    - 0f2d0de1-1bad-4d4b-a5db-b016df216d28:
+        score: 70
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Нахождение кратчайшего цикла в ориентированном невзвешенном графе
+    - c1a67a0b-5b80-4324-add6-76ceb5119474:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Два коня
+    - 170af7c9-c358-4400-988a-906e3106d9bd:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Таблица
+    - 54e4675a-8b90-44f7-9422-36f4b6ddb52b:
+        score: 80
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
