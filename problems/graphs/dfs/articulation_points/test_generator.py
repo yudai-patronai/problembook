@@ -106,10 +106,11 @@ tests = TestSet()
 # Public tests - no fun
 tests.add("""3 2
 1 2
-2 3""", "2")
+2 3
+""", "2\n")
 
-tests.add("""2 1 1 2""", "-1")
-tests.add("""3 3 1 2 2 3 3 1""", "-1")
+tests.add("2 1\n1 2\n", "-1")
+tests.add("3 3\n1 2\n2 3\n3 1\n", "-1")
 
 
 # Private tests
@@ -118,29 +119,29 @@ tests.add("""3 3 1 2 2 3 3 1""", "-1")
 tests.add("1 0", "-1")
 
 # Simple - short line
-tests.add("5 4 1 2 2 3 3 4 4 5", "2 3 4")
+tests.add("5 4\n1 2\n2 3\n3 4\n4 5\n", "2 3 4")
 
 # Simple - two cycles with one link
-tests.add("6 7 1 2 2 3 1 3 4 5 5 6 4 6 3 5", "3 5")
+tests.add("6 7\n1 2\n2 3\n1 3\n4 5\n5 6\n4 6\n3 5\n", "3 5")
 
 # Cycle of cycles
 tests.add("""9 12
-1 2   2 3   1 3
-4 5   5 6   4 6
-7 8   7 9   8 9
-2 8   3 5   6 9""", "-1")
+1 2\n2 3\n1 3
+4 5\n5 6\n4 6
+7 8\n7 9\n8 9
+2 8\n3 5\n6 9\n""", "-1")
 
 # Cycle of cycles - 2
 tests.add("""9 12
-1 2   2 3   1 3
-4 5   5 6   4 6
-7 8   7 9   8 9
-3 5   5 7   3 7""", "3 5 7")
+1 2\n2 3\n1 3
+4 5\n5 6\n4 6
+7 8\n7 9\n8 9
+3 5\n5 7\n3 7\n""", "3 5 7")
 
 # Contacting cycles
 tests.add("""9 10
-1 2   2 3   3 4   4 5   5 1
-3 9   9 8   8 7   7 6   6 3""", "3")
+1 2\n2 3\n3 4\n4 5\n5 1
+3 9\n9 8\n8 7\n7 6\n6 3\n""", "3")
 
 # Long line
 N = 1000000
