@@ -1,0 +1,39 @@
+name: 2021_algo_s2_w23_a
+language: python
+problems:
+    
+    # Посчитать количество компонент связности
+    - 3c590278-22ba-4856-9374-55d083d6d247:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Подсчёт весов компонент связности неориентированного графа
+    - d38fee10-9406-4c82-a56b-fadcf42ce627:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Проверка ацикличности графа
+    - ba1622db-a5ff-4054-b365-20ee63b81788:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Топологическая сортировка
+    - a00b40bc-b6cb-4c8b-9dcb-c28f0eb76cc8:
+        score: 80
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Слабое звено
+    - 36d63321-617b-41b2-9428-3c6d056d1d1d:
+        score: 100
+        time_limit: 2
+        real_time_limit: 2
+        max_vm_size: 256M
+    
