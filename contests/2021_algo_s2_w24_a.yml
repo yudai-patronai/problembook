@@ -1,0 +1,39 @@
+name: 2021_algo_s2_w24_a
+language: python
+problems:
+    
+    # Поиск расстояний от заданной вершины до всех остальных
+    - 3caf5ad6-a884-4f5b-8e84-1273ff0ea8fc:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Нахождение кратчайшего цикла в ориентированном невзвешенном графе
+    - c1a67a0b-5b80-4324-add6-76ceb5119474:
+        score: 60
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Поиск расстояния на прямоугольном поле
+    - 0f2d0de1-1bad-4d4b-a5db-b016df216d28:
+        score: 60
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Путь коня
+    - b21e2723-9f72-e858-c7ef-5743497aa005:
+        score: 80
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Игрушечный лабиринт
+    - 4f0d6ecc-44eb-4471-8378-9b5aa98a631a:
+        score: 100
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
