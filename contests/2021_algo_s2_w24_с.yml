@@ -1,0 +1,39 @@
+name: 2021_algo_s2_w24_с
+language: python
+problems:
+
+    # Восстановление кратчайшего пути при помощи алгоритма Дейкстры
+    - 08e5d404-e27c-48b1-90f5-e8a4c037fa77:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Алгоритм Форда-Беллмана
+    - f675123f-66e3-4873-80ca-95fd3e190ad5:
+        score: 50
+        time_limit: 1
+        real_time_limit: 2
+        max_vm_size: 64M
+
+    # Нахождение вершины-"столицы"
+    - ab46d419-f4bf-461b-8403-421a45fa6605:
+        score: 80
+        time_limit: 2
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Путь минимального веса c чётным количеством ребер
+    - e1ccc378-c21d-4b9c-98e8-7a5a3c4c595b:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Реформа округов
+    - c830c75e-bbbe-492d-a43c-08d6216c1a06:
+        score: 120
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
