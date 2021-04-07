@@ -47,7 +47,7 @@ struct APFinder {
 
         size_t i, to, node, parent;
 
-        while (! stack.empty()) {
+        while (!stack.empty()) {
             i = stack.back().i;
             to = stack.back().to;
             node = stack.back().node;
