@@ -1,6 +1,3 @@
-import sys
-sys.setrecursionlimit(10010)
-
 
 def dfs(u, p=-1):
     global t
