@@ -1,0 +1,38 @@
+# grey
+mendeleevskaya tsvetnoy_bulvar 4
+tsvetnoy_bulvar chekhovskaya 3
+chekhovskaya borovitskaya 4
+borovitskaya polyanka 3
+polyanka serpukhovskaya 3
+# violet
+barrikadnaya pushkinskaya 4
+pushkinskaya kuznetsky_most 3
+kuznetsky_most kitay_gorod 3
+kitay_gorod taganskaya_violet 4
+# red
+komsomolskaya_red krasniye_vorota 3
+krasniye_vorota chistye_prudy 3
+chistye_prudy lubyanka 3
+lubyanka okhotny_ryad 3
+okhotny_ryad bilioteka_imeni_lenina 3
+bilioteka_imeni_lenina kropotkinskaya 3
+kropotkinskaya park_kultury_red 3
+# circle
+novoslobodskaya komsomolskaya_circle 6
+komsomolskaya_circle taganskaya_circle 7
+taganskaya_circle dobryninskaya 5
+dobryninskaya park_kultury_circle 5
+park_kultury_circle krasnopresnenskaya 7
+krasnopresnenskaya novoslobodskaya 6
+# transfer
+# circle to other
+mendeleevskaya novoslobodskaya 3
+komsomolskaya_circle komsomolskaya_red 6
+taganskaya_circle taganskaya_violet 3
+serpukhovskaya dobryninskaya 3
+park_kultury_circle park_kultury_red 5
+barrikadnaya krasnopresnenskaya 3
+# lines
+chekhovskaya pushkinskaya 4
+borovitskaya bilioteka_imeni_lenina 6
+lubyanka kuznetsky_most 3
