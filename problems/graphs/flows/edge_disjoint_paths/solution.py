@@ -1,3 +1,6 @@
+from queue import SimpleQueue
+
+
 class Edge:
     def __init__(self, i, v, c):
         self.i = i

@@ -3,6 +3,7 @@ id: eee74da0-10f7-48c4-8bad-2e0fe175583e
 longname: Реберно-непересекающиеся пути
 languages: [python]
 tags: [graphs, flows]
+checker: cmp_yesno
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
