@@ -2,8 +2,9 @@ from queue import SimpleQueue
 
 
 class Edge:
-    def __init__(self, i, v, c):
+    def __init__(self, i, u, v, c):
         self.i = i
+        self.u = u
         self.v = v
         self.c = c
         self.f = 0
@@ -21,7 +22,7 @@ def bfs():
             if d[v] > d[u] + 1 and e.c-e.f > 0:
                 d[v] = d[u] + 1
                 q.put(v)
-                p[v] = u
+                p[v] = e.i
                 if v == t:
                     return True
     return False
@@ -33,10 +34,10 @@ if __name__ == "__main__":
     edges = []
     for i in range(m):
         u, v = map(int, input().split())
-        e = Edge(2 * i, v, 1)
+        e = Edge(2 * i, u, v, 1)
         adj_list[u].add(e)
         edges.append(e)
-        e = Edge(2 * i + 1, u, 0)
+        e = Edge(2 * i + 1, v, u, 0)
         adj_list[v].add(e)
         edges.append(e)
     s = 0
@@ -48,16 +49,16 @@ if __name__ == "__main__":
             break
         path = []
         cur = t
-        while cur != -1:
-            path.append(cur)
-            cur = p[cur]
-        for i in range(1, len(path)):
-            u = path[i]
-            v = path[i-1]
-            for e in adj_list[u]:
-                if e.v == v:
-                    e.f += 1
-                    edges[e.i ^ 1].f -= 1
+        while cur != 0:
+            e = edges[p[cur]]
+            path.append(e)
+            cur = e.u
+        path.reverse()
+        for e in path:
+            u = v
+            v = e.v
+            e.f += 1
+            edges[e.i ^ 1].f -= 1
         k -= 1
 
     if k:

@@ -64,7 +64,7 @@ def dfs(u, adj_list, used, p, t):
     for e in adj_list[u]:
         v = e.v
         if not used[v] and e.c-e.f > 0:
-            p[v] = u
+            p.append(e)
             if (dfs(v, adj_list, used, p, t)):
                 return True
     return False
@@ -86,22 +86,15 @@ def solve(n, input):
 
     max_flow = 0
     while True:
-        p = [-1] * n
-        used = [False] * n
-        if not dfs(0, adj_list, used, p, t):
-            break
         path = []
-        cur = t
-        while cur != -1:
-            path.append(cur)
-            cur = p[cur]
-        for i in range(1, len(path)):
-            u = path[i]
-            v = path[i-1]
-            for e in adj_list[u]:
-                if e.v == v:
-                    e.f += 1
-                    edges[e.i ^ 1].f -= 1
+        used = [False] * n
+        if not dfs(0, adj_list, used, path, t):
+            break
+        for e in path:
+            u = v
+            v = e.v
+            e.f += 1
+            edges[e.i ^ 1].f -= 1
         max_flow += 1
     return max_flow
 
