@@ -1,0 +1,17 @@
+name: 2021_algo_s2_w25_c
+language: python
+problems:
+
+    # Реберно-непересекающиеся пути
+    - eee74da0-10f7-48c4-8bad-2e0fe175583e:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Максимальный поток
+    - 216ee57b-95b4-45e1-a69e-accfef6774cd:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
