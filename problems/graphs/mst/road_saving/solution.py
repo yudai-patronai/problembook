@@ -26,7 +26,7 @@ def mst_prim_naive(G):
     V_bound = set([v for v, w in G[start]])
     V_unproc = set(G) - V_mst - V_bound
 
-    while len(G) - 1 != len(mst_edges):
+    while len(G) != len(V_mst):
         # u in mst, v in bound
         u_min, v_min, w_min = find_min_edge(G, V_mst, V_bound)
 
