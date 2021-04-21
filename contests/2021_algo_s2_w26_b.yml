@@ -1,4 +1,4 @@
-name: 2021_algo_s2_w26_c
+name: 2021_algo_s2_w26_b
 language: python
 problems:
 
@@ -15,3 +15,11 @@ problems:
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
+
+    # Экономия на тротуарах
+    - aae45dd9-0c5f-4109-822a-901f87582707:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
