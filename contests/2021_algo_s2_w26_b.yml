@@ -1,0 +1,25 @@
+name: 2021_algo_s2_w26_b
+language: python
+problems:
+    
+    # Построить остовное дерево обходом в ширину
+    - 8120e7d1-ddde-4996-b262-b5c9b3b55098:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Минимальное остовное дерево (Алгоритм Прима)
+    - fbd7fd6f-17da-4aed-b37f-a0146d242b6d:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Экономия на тротуарах
+    - aae45dd9-0c5f-4109-822a-901f87582707:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
