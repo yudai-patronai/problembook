@@ -24,9 +24,9 @@ with open(answer_file) as f:
 
 try:
     with open(output_file) as f:
-        out = list(map(int, f.readlines()))
+        out = f.readlines()
     for i in range(len(out)):
-        out[i] = list(map(int, out[i].split()))
+        out[i] = list(map(int, out[i].strip().split()))
 
 except (IOError, ValueError):
     print('Wrong formating')
@@ -50,7 +50,7 @@ for m in range(len(out)):
             print("Incorrect sort result")
             sys.exit(CheckerResult.WA)
 
-if (line[-1] != sorted(arr)):
+if (out[-1] != sorted(arr)):
     print("Incorrect output array")
     sys.exit(CheckerResult.WA)
 

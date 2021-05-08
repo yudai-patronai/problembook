@@ -1,0 +1,38 @@
+name: 2021_algo_s2_w20_c
+language: python
+problems:
+
+    # Проверка матрицы смежности
+    - f2188554-2b3b-4ee9-8940-c5aebdf031b8:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Матрица смежности в список ребер
+    - 9ce1b6ca-c82a-489e-a783-ecf78fa3c8f8:
+        score: 50
+        time_limit: 4
+        real_time_limit: 10
+        max_vm_size: 256M
+
+    # Подсчет количества ребер неориентированного графа
+    - 57c05b56-564f-409f-bf3d-a4e3cd1c4bfb:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Полуполный граф
+    - 9abe9d66-2552-469e-8111-397583c6380e:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Истоки и стоки
+    - afd284ed-a800-497e-a4a3-de35e2cb3e16:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M

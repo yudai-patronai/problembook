@@ -1,0 +1,39 @@
+name: 2021_algo_s2_w20_a
+language: python
+problems:
+    
+    # Корректная скобочная последовательность
+    - 6e5276ec-1385-4411-a0f3-5fac75a5844d:
+        score: 30
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Очередь процессов
+    - df2f613d-c9e3-41bc-9033-0fd2a444f255:
+        score: 30
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Построение кучи
+    - e2569154-4728-4446-8e67-2c8542c97c93:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сортировка кучей
+    - f8cebdfd-15ea-4db1-88da-7464c0a52f38:
+        score: 80
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Калькулятор с переменными
+    - 02522df1-2a77-4818-b944-36bbd53a7ebd:
+        score: 100
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    

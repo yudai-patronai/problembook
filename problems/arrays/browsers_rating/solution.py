@@ -1,3 +1,6 @@
+from collections import OrderedDict
+
+
 def report_one(lst):
     i = 0
     snum = 0
@@ -25,8 +28,8 @@ def report_all(l1, l2):
         report_one(l2)
 
 
-dlist = {}
-mlist = {}
+dlist = OrderedDict()
+mlist = OrderedDict()
 cnt = int(input())
 for i in range(cnt):
     mst = input()
