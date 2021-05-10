@@ -1,4 +1,3 @@
-
 def dfs(u, p=-1):
     global t
     tin[u] = t
@@ -21,6 +20,7 @@ if __name__ == "__main__":
     adj_list = [set() for _ in range(n)]
     for _ in range(m):
         u, v, w = map(lambda x: int(x)-1, input().split())
+        w += 1
         adj_list[u].add((v, w))
         adj_list[v].add((u, w))
 

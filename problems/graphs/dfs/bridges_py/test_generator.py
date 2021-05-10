@@ -95,8 +95,12 @@ tests.add("""3 2
 1 2 1
 2 3 2""", "2")
 
-tests.add("2 1 1 2 1""", "1")
-tests.add("3 3 1 2 1 2 3 1 3 1 1""", "-1")
+tests.add("""2 1
+1 2 1""", "1")
+tests.add("""3 3
+1 2 1
+2 3 1
+3 1 1""", "-1")
 
 # Private tests
 
@@ -104,22 +108,22 @@ tests.add("3 3 1 2 1 2 3 1 3 1 1""", "-1")
 tests.add("1 0", "-1")
 
 # Simple - short line
-tests.add("5 4 1 2 1 2 3 2 3 4 3 4 5 4", "4")
+tests.add("5 4\n1 2 1\n2 3 2\n3 4 3\n4 5 4", "4")
 
 # Simple - two cycles with one link
-tests.add("6 7 1 2 1 2 3 2 1 3 3 4 5 4 5 6 5 4 6 6 3 5 4", "4")
+tests.add("6 7\n1 2 1\n2 3 2\n1 3 3\n4 5 4\n5 6 5\n4 6 6\n3 5 4", "4")
 
 # Cycle of cycles
 tests.add("""9 12
-1 2 1   2 3 2   1 3 3
-4 5 4   5 6 5   4 6 6
-7 8 7   7 9 8   8 9 9
-3 5 1   5 7 2   3 7 3""", "-1")
+1 2 1\n2 3 2\n1 3 3
+4 5 4\n5 6 5\n4 6 6
+7 8 7\n7 9 8\n8 9 9
+3 5 1\n5 7 2\n3 7 3""", "-1")
 
 # Contacting cycles
 tests.add("""9 10
-1 2 1   2 3 2   3 4 3   4 5 4   5 1 5
-3 9 2   9 8 3   8 7 4   7 6 5   6 3 6""", "-1")
+1 2 1\n2 3 2\n3 4 3\n4 5 4\n5 1 5
+3 9 2\n9 8 3\n8 7 4\n7 6 5\n6 3 6""", "-1")
 
 # Long line
 N = 10000
@@ -135,7 +139,7 @@ tests.add(c0.to_string(), str(max(ans)))
 N = 300
 g = make_full_graph(N)
 g.add_node()
-g.add_edge(0, N)
-g.add_edge(N, 0)
+g.add_edge(0, N, 42)
+g.add_edge(N, 0, 42)
 new_order = g.shuffle()
 tests.add(g.to_string(), "42")
