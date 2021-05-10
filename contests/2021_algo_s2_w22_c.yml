@@ -31,10 +31,10 @@ problems:
         max_vm_size: 64M
 
     # Слабое звено
-    - 36d63321-617b-41b2-9428-3c6d056d1d1d:
+    - 816cc805-86c2-45af-ac45-538dd729e7ca:
         score: 100
-        time_limit: 2
-        real_time_limit: 2
+        time_limit: 1
+        real_time_limit: 1
         max_vm_size: 256M
 
     # Поиск расстояний от заданной вершины до всех остальных

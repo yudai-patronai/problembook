@@ -144,17 +144,17 @@ tests.add("""9 10
 3 9\n9 8\n8 7\n7 6\n6 3\n""", "3")
 
 # Long line
-N = 1000000
+N = 10000
 tests.add(f"{N} {N-1}\n" + "\n".join(f"{i} {i+1}" for i in range(1, N)), " ".join(map(str, range(2, N))))
 
 # Just many cycles
-cs = [make_loop(1000) for _ in range(1000)]
-c0 = make_loop(1000)
+cs = [make_loop(100) for _ in range(50)]
+c0 = make_loop(100)
 ans = merge_and_bridge_many(c0, *cs)
 tests.add(c0.to_string(), " ".join(map(lambda one: str(one + 1), ans)))
 
 # Many edges
-N = 3000
+N = 300
 g = make_full_graph(N)
 g.add_node()
 g.add_edge(0, N)
