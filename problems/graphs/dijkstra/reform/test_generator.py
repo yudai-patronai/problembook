@@ -24,7 +24,7 @@ def gen_tests_weight_centers(tests_dir):
         task.gen_test_weight_centers(tests_dir, t, n, 0, [0, 1, 2])
         t += 1
 
-    for i in range(20):
+    for i in range(7):
         n = random.randrange(100, 1000)
         centers = random.sample(range(n), random.randrange(n // 5) + 1)
         task.gen_test_weight_centers(tests_dir, t, n, 5, centers)
@@ -36,7 +36,7 @@ def gen_tests_weight_centers(tests_dir):
         task.gen_test_weight_centers(tests_dir, t, n, 10, centers)
         t += 1
 
-    for i in range(18):
+    for i in range(6):
         n = random.randrange(100, 1000)
         centers = random.sample(range(n), random.randrange(n // 2) + 1)
         task.gen_test_weight_centers(tests_dir, t, n, 100, centers)
