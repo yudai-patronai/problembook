@@ -25,7 +25,7 @@ def gen_tests(tests_dir):
                       random.randrange(n), random.randrange(n))
         t += 1
 
-    for i in range(20):
+    for i in range(5):
         n = random.randrange(100, 1000)
         task.gen_test(tests_dir, t, n, task.gen_graph_edges(n, 5),
                       random.randrange(n), random.randrange(n))
@@ -36,7 +36,7 @@ def gen_tests(tests_dir):
         task.gen_test(tests_dir, t, n, task.gen_graph_edges(n, 10), 5, 5)
         t += 1
 
-    for i in range(18):
+    for i in range(8):
         n = random.randrange(100, 1000)
         task.gen_test(tests_dir, t, n, task.gen_graph_edges(n, 100),
                       random.randrange(n), random.randrange(n))
