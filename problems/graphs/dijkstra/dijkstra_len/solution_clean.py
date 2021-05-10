@@ -24,10 +24,7 @@ def dijkstra_distance(G, start, end):
     return distance[end]
 
 
-V, E, start, end = input().split()
-start, end = map(int, (start, end))
-
-V, E = map(int, (V, E))
+V, E, start, end = map(int, input().split())
 G = {u: set() for u in range(V)}
 for _ in range(E):
     u, v, w = map(int, input().split())
