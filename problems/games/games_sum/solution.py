@@ -1,13 +1,14 @@
 def solve(i):
     if d[i] is not None:
-        return d
+        return d[i]
     used = [False] * (k + 1)
     for j in range(1, k+1):
         if i - j >= 0:
             used[solve(i - j)] = True
-    for j in range(1, k+1):
+    for j in range(k+1):
         if not used[j]:
             d[i] = j
+            break
     return d[i]
 
 
