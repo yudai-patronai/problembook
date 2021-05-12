@@ -1,0 +1,52 @@
+name: 2021_algo_s2_exam2_c
+language: python
+problems:
+
+    # Друзья
+    - 30605713-dea3-4943-acb4-b98fe9aee8ae:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Существование цикла Эйлера
+    - 66f6680a-f14f-4229-862a-638aec33c804:
+        score: 50
+        time_limit: 1
+        real_time_limit: 4
+        max_vm_size: 64M
+
+    # Построение
+    - 9f01132b-74bc-4dec-bd91-10702c2ec0a1:
+        score: 50
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Кабеля и ковши
+    - d5e161ed-a95b-4410-987a-be4620a0a7f0:
+        score: 125
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Вершинно-непересекающиеся пути
+    - b6865edf-21bd-4bce-ba08-d0fef339dc31:
+        score: 180
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Конь на шахматном поле
+    - 78809766-18fd-490f-8655-d7f426579241:
+        score: 125
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Сумма игр
+    - 261526ec-8343-4b67-aee4-bbbbbdeba5e4:
+        score: 150
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
