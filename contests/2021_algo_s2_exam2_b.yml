@@ -1,0 +1,74 @@
+name: 2021_algo_s2_exam2_b
+language: python
+problems:
+    
+    # Регулярный граф
+    - 97e98da3-9eff-48f3-b98c-bb19e8ba9840:
+        score: 20
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Разноцветные холмы
+    - d7e1160f-59dd-457c-9b55-d013bd0a2bbe:
+        score: 25
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Пересечение двух прямых
+    - 0341dbff-0bcc-4f4f-93a2-7a5c2c5c2130:
+        score: 25
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Проверить связность графа
+    - 1f149524-be56-4cfb-82f1-acdae2be34aa:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Поиск кратчайшего пути между двумя вершинами невзвешенного графа
+    - b2380a9a-697f-4a43-914d-808be407ead0:
+        score: 40
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Поиск длины кратчайшего пути при помощи алгоритма Дейкстры
+    - ce63db20-7666-466c-9084-b3cdae761b5b:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Друзья
+    - 30605713-dea3-4943-acb4-b98fe9aee8ae:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Точка в выпуклом многоугольнике
+    - 685e6977-2aaf-463a-ba4a-5573316fc3df:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Реформа округов
+    - c830c75e-bbbe-492d-a43c-08d6216c1a06:
+        score: 70
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
+    # Числовая метаграмма
+    - 31db3cd6-8371-43b4-a9c7-6ae9bc3628ed:
+        score: 70
+        time_limit: 1
+        real_time_limit: 5
+        max_vm_size: 64M
+    
