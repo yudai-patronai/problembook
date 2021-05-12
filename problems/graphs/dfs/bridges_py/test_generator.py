@@ -127,7 +127,7 @@ tests.add("""9 10
 
 # Long line
 N = 10000
-tests.add(f"{N} {N-1}\n" + "\n".join(f"{i} {i+1} {i}" for i in range(1, N)), " ".join(map(str, range(2, N))))
+tests.add(f"{N} {N-1}\n" + "\n".join(f"{i} {i+1} {i}" for i in range(1, N)), "{}\n".format(N-1))
 
 # Just many cycles
 cs = [make_loop(100) for _ in range(50)]
