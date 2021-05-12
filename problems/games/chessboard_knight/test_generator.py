@@ -22,7 +22,7 @@ tests = TestSet()
 tests.add("4 4\n", "NO\n")
 tests.add("5 1\n", "NO\n")
 tests.add("2 3\n", "YES\n")
-tests.add("3 3\n", "NO\n")
+tests.add("3 3\n", "YES\n")
 for i in range(5):
     n = random.randint(10, 100)
     m = random.randint(10, 100)
