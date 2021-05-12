@@ -26,7 +26,7 @@ def solve(k, a):
 
 random.seed(42)
 tests = TestSet()
-tests.add("4 2\n5 3 6\n", solve(2, [3, 5, 6]))
+tests.add("3 2\n5 3 6\n", solve(2, [5, 3, 6]))
 tests.add("1 6\n14\n", solve(6, [14]))
 tests.add("2 2\n4 2\n", solve(2, [4, 2]))
 for i in range(5):
