@@ -3,6 +3,7 @@ id: 66f6680a-f14f-4229-862a-638aec33c804
 longname: Существование цикла Эйлера
 tags: [graphs, dfs]
 languages: [python]
+checker: cmp_yesno
 time_limit: 1
 real_time_limit: 4
 max_vm_size: 64M
