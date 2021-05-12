@@ -67,11 +67,12 @@ def dfs(u, adj_list, used, p, t):
             p.append(e)
             if (dfs(v, adj_list, used, p, t)):
                 return True
+            p.pop()
     return False
 
 
 def solve(n, input):
-    adj_list = [set() for _ in range(n)]
+    adj_list = [set() for i in range(2*n)]
     edges = []
     for i, u in enumerate(input):
         u, v = u
@@ -100,15 +101,17 @@ def solve(n, input):
     max_flow = 0
     while True:
         path = []
-        used = [False] * n
+        used = [False] * (n * 2)
         if not dfs(0, adj_list, used, path, t):
             break
+        f = float("inf")
         for e in path:
-            u = v
-            v = e.v
-            e.f += 1
-            edges[e.i ^ 1].f -= 1
-        max_flow += 1
+            if f > e.c - e.f:
+                f = e.c - e.f
+        for e in path:
+            e.f += f
+            edges[e.i ^ 1].f -= f
+        max_flow += f
     return max_flow
 
 
@@ -116,7 +119,11 @@ def gen_test(ind, n, m):
     edges = gen_network(n, m)
     m = len(edges)
     max_flow = solve(n, edges)
-    if random.random() > 0.6:
+    is_inf = False
+    if max_flow == float("inf"):
+        max_flow = 10**6
+        is_inf = True
+    if not is_inf and random.random() > 0.6:
         k = max_flow + random.randint(1, 100)
     else:
         k = random.randint(1, max_flow)
