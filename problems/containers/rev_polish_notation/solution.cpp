@@ -26,9 +26,16 @@ int pop(Stack *s) {
     return x;
 }
 
+void print(Stack* s) {
+    auto p = s->p;
+    while (p) { std::cerr << p->v << " "; p = p->next; }
+    std::cerr << "\n";
+}
+
 int main() {
     Stack stack;
     while (true) {
+        print(&stack);
         std::string s;
         std::cin >> s;
         if (s[0] == '=') {
@@ -37,7 +44,8 @@ int main() {
         if (s[0] == '+') {
             push(&stack, pop(&stack) + pop(&stack));
         } else if (s[0] == '-' && s.length() == 1) {
-            push(&stack, -pop(&stack) + pop(&stack));
+            auto t = -pop(&stack);
+            push(&stack, t + pop(&stack));
         } else if (s[0] == '*') {
             push(&stack, pop(&stack) * pop(&stack));
         } else {
