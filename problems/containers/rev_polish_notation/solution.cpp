@@ -26,16 +26,9 @@ int pop(Stack *s) {
     return x;
 }
 
-void print(Stack* s) {
-    auto p = s->p;
-    while (p) { std::cerr << p->v << " "; p = p->next; }
-    std::cerr << "\n";
-}
-
 int main() {
     Stack stack;
     while (true) {
-        print(&stack);
         std::string s;
         std::cin >> s;
         if (s[0] == '=') {
