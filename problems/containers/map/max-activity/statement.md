@@ -4,7 +4,7 @@ longname: Наибольшая активность
 languages: [cpp]
 tags: [cpp,map]
 checker: cmp_unsigned_int_seq
-time_limit: 0.5
+time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
 ---
