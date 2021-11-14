@@ -1,3 +1,4 @@
+
 #include <functional>
 #include <list>
 #include <unordered_map>
@@ -50,7 +51,7 @@ public:
     const_iterator begin() const { return order.begin(); }
     const_iterator end() const { return order.end(); }
 
-public:
+private:
     std::list<value_pair> order;
-    std::unordered_map<std::string, iterator, H> map;
+    std::unordered_map<K, iterator, H> map;
 };
