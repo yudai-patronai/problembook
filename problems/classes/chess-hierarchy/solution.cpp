@@ -1,4 +1,4 @@
-#include "header.cpp"
+
 #include <algorithm>
 
 class Piece {
@@ -45,10 +45,8 @@ public:
 
 class Queen : public Bishop, public Rook {
 public:
-    Queen(Cell c): Bishop(c), Rook(c) { }
+    Queen(Cell c): Bishop(c), Rook(c), Piece(c) { }
     virtual bool available(const Cell& q) const {
         return Bishop::available(q) || Rook::available(q);
     }
 };
-
-#include "footer.cpp"
