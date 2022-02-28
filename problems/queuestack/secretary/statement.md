@@ -3,7 +3,6 @@ id: 0e5c2dfe-7eaf-4432-b168-dca31b3f0a29
 longname: Бедная секретарша
 languages: [python]
 tags: [queue,stack]
-checker: cmp_file
 time_limit: 1
 real_time_limit: 1
 max_vm_size: 64M
