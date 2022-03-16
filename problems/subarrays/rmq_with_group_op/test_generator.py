@@ -86,27 +86,29 @@ for _ in range(5):
 
     tests.add(q, ans)
 
-n = 30000
-m = 5000
-a = [randint(-1000, 1000) for _ in range(n)]
-flag = False
-b = []
-for _ in range(m):
-    cmd = randint(0, 19)
-    cmd = "add" if cmd > 14 else "mean"
-    if cmd == "add":
+# some max tests
+for _ in range(11):
+    n = 30000
+    m = 5000
+    a = [randint(-1000, 1000) for _ in range(n)]
+    flag = False
+    b = []
+    for _ in range(m):
+        cmd = randint(0, 19)
+        cmd = "add" if cmd > 14 else "mean"
+        if cmd == "add":
+            f = randint(0, n-1)
+            t = randint(f, n-1)
+            v = randint(-1000, 1000)
+            b.append((cmd, f, t, v))
+        else:
+            f = randint(0, n-1)
+            t = randint(f, n-1)
+            b.append((cmd, f, t))
+    if not flag:
         f = randint(0, n-1)
         t = randint(f, n-1)
-        v = randint(-1000, 1000)
-        b.append((cmd, f, t, v))
-    else:
-        f = randint(0, n-1)
-        t = randint(f, n-1)
-        b.append((cmd, f, t))
-if not flag:
-    f = randint(0, n-1)
-    t = randint(f, n-1)
-    b[-1] = ("mean", f, t)
-q = question(n, m, a, b)
-ans = solve(n, m, a, b)
-tests.add(q, ans)
+        b[-1] = ("mean", f, t)
+    q = question(n, m, a, b)
+    ans = solve(n, m, a, b)
+    tests.add(q, ans)

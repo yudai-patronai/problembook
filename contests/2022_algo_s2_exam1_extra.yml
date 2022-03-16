@@ -1,0 +1,45 @@
+name: 2022_algo_s2_exam1_extra
+language: python
+problems:
+
+    # Сглаживание массива
+    - 6d876eef-965a-4a6a-ad59-79ce4a7988e5:
+        score: 20
+        time_limit: 5
+        real_time_limit: 20
+        max_vm_size: 256M
+
+    # Функция Аккермана
+    - 59baa314-79f8-4b22-97bd-35ac1fe61e60:
+        score: 20
+        time_limit: 5
+        real_time_limit: 5
+        max_vm_size: 64M
+
+    # Бинарный поиск в отсортированном массиве
+    - a6a04ea5-585c-47fa-ac53-22d0530148f9:
+        score: 20
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Цитаты
+    - 8cabfeca-651b-490f-8b00-49faf7d1723d:
+        score: 20
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Кузнечик - математик
+    - e4c4b882-2eb9-47d8-b55c-8320fa282f34:
+        score: 40
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Самoе популярое слово
+    - 290f937d-4055-452f-8257-f62479fe679f:
+        score: 60
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M

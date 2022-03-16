@@ -18,7 +18,7 @@ problems:
 
     # Калькулятор с переменными
     - 02522df1-2a77-4818-b944-36bbd53a7ebd:
-        score: 80
+        score: 100
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 64M
@@ -32,7 +32,7 @@ problems:
 
     # Дерево отрезков с групповыми операциями
     - 0fd5f5f3-9f03-4b33-a95f-576fa15f1c9d:
-        score: 120
+        score: 160
         time_limit: 1
         real_time_limit: 1
         max_vm_size: 256M
