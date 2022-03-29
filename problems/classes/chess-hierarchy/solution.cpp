@@ -45,7 +45,7 @@ public:
 
 class Queen : public Bishop, public Rook {
 public:
-    Queen(Cell c): Bishop(c), Rook(c), Piece(c) { }
+  Queen(Cell c):  Piece(c), Bishop(c), Rook(c) { }
     virtual bool available(const Cell& q) const {
         return Bishop::available(q) || Rook::available(q);
     }
