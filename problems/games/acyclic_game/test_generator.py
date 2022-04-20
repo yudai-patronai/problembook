@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import os
+import shutil
 import os.path as osp
 import random
 from collections import deque
@@ -9,8 +11,8 @@ class Graph:
     def __init__(self, n, m):
         self.n = n
         self.m = m
-        self._reachable = [set() for _ in n]
-        self._parents = [set() for _ in n]
+        self._reachable = [set() for _ in range(n)]
+        self._parents = [set() for _ in range(n)]
         self.edges = []
 
     def gen(self):
@@ -22,12 +24,18 @@ class Graph:
                 continue
             self.edges.append((u, v))
             self._parents[v].add(u)
-            queue = deque((u))
+            queue = deque([u])
             self._add_to_reachable(queue, v)
 
-    def _add_to_reachable(self, queue:deque, v):
-        for u in queue:
+    def _add_to_reachable(self, queue, v):
+        used = [False] * self.n
+        while queue:
+            u = queue.popleft()
+            if used[u]:
+                continue
+            used[u] = True
             self._reachable[u].add(v)
+            self._reachable[u] |= self._reachable[v]
             queue.extend(self._parents[u])
 
     def dfs(self, u, state):
@@ -41,7 +49,6 @@ class Graph:
         if state[u] is None:
             state[u] = False
 
-
 def solve(g, k):
     n = g.n
     state = [None] * n
@@ -51,6 +58,8 @@ def solve(g, k):
 
 random.seed(42)
 tests_dir = osp.join(osp.dirname(__file__), 'tests')
+shutil.rmtree(tests_dir, ignore_errors=True)
+os.makedirs(tests_dir)
 test_num = 0
 
 def add_test(in_data, out_data):
@@ -59,7 +68,7 @@ def add_test(in_data, out_data):
     with open(osp.join(tests_dir, "{:02}".format(test_num)), "w") as f:
         f.write(in_data)
     with open(osp.join(tests_dir, "{:02}.a".format(test_num)), "w") as f:
-        f.write(out_data)
+        f.write(out_data + "\n")
 
 
 def gen_test(n, m):
@@ -75,15 +84,15 @@ def gen_test(n, m):
 
 for i in range(5):
     n = 2 + i * 2
-    m = random.randint(0, i)
+    m = random.randint(1, n)
     gen_test(n, m)
 
 for i in range(5):
     n = 4 + i * 2
-    m = random.randint(0, 2*i)
+    m = random.randint(0, 2*n)
     gen_test(n, m)
 
 for i in range(20):
-    n = random.randrange(100, 1000)
-    m = random.randint(0, i*i / 4)
+    n = random.randrange(50, 100)
+    m = random.randint(0, round(n*n / n**0.5))
     gen_test(n, m)
