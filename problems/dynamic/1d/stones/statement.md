@@ -1,6 +1,6 @@
 ---
 id: 7cb24aa1-9f28-4b71-8c4f-1bcd7d2fef05
-longname: Длинное название задачи
+longname: Игра "Делимость"
 languages: [python]
 tags: [dynamic,1d]
 checker: cmp_int
