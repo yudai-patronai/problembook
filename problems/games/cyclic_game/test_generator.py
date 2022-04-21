@@ -22,7 +22,7 @@ def dfs(u, used, state, edges):
             continue
         deg += 1
         if not used[v]:
-            dfs(v)
+            dfs(v, used, state, edges)
         if state[v] is None:
             pass
         elif not state[v]:
@@ -60,7 +60,7 @@ def gen_test(n, m):
     k = random.randint(0, n-1)
     edges = task.gen_graph_edges(n, m, False)
     out_data = solve(n, edges, k)
-    in_data = "{} {} {}\n".format(n, m, k)
+    in_data = "{} {} {}\n".format(n, len(edges), k)
     for edge in edges:
         in_data += "{} {}\n".format(*edge)
     add_test(in_data, out_data)

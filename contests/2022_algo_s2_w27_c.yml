@@ -1,0 +1,24 @@
+name: 2022_algo_s2_w27_c
+language: python
+problems:
+
+    # Игра "Делимость"
+    - 7cb24aa1-9f28-4b71-8c4f-1bcd7d2fef05:
+        score: 50
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Сумма игр
+    - 261526ec-8343-4b67-aee4-bbbbbdeba5e4:
+        score: 70
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+
+    # Игра на произвольном графе
+    - 0e500c43-c092-45ad-8998-eb46745b7969:
+        score: 90
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M

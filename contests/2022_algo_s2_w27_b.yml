@@ -1,0 +1,25 @@
+name: 2022_algo_s2_w27_b
+language: python
+problems:
+    
+    # Длинное название задачи
+    - 7cb24aa1-9f28-4b71-8c4f-1bcd7d2fef05:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Конь на шахматном поле
+    - 78809766-18fd-490f-8655-d7f426579241:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
+    # Сумма игр
+    - 261526ec-8343-4b67-aee4-bbbbbdeba5e4:
+        score: 1
+        time_limit: 1
+        real_time_limit: 1
+        max_vm_size: 64M
+    
