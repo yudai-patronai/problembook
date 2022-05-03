@@ -13,32 +13,32 @@ os.makedirs(tests_dir)
 test_num = 0
 
 
-def dfs(u, used, state, edges):
+def dfs(u, used, state, edges, deg_in):
     used[u] = True
-    to_win = 0
-    deg = 0
-    for x, v in edges:
+    for v, x in edges:
         if x != u:
             continue
-        deg += 1
         if not used[v]:
-            dfs(v, used, state, edges)
-        if state[v] is None:
-            pass
-        elif not state[v]:
-            state[u] = True
-            break
-        else:
-            to_win += 1
-    else:
-        if to_win == deg:
-            state[u] = False
+            deg_in[v] -= 1
+            if state[u] == False:
+                state[v] = True
+            elif deg_in[v] == 0:
+                state[v] = False
+            else:
+                continue
+            dfs(v, used, state, edges, deg_in)
 
 
 def solve(n, edges, k):
+    deg_in = [0] * n
+    for u, _ in edges:
+        deg_in[u] += 1
     used = [False] * n
     state = [None] * n
-    dfs(k, used, state, edges)
+    for i in range(n):
+        if not used[i] and deg_in[i] == 0:
+            state[i] = False
+            dfs(i, used, state, edges, deg_in)
     if state[k] is None:
         return "Draw"
     elif not state[k]:
