@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys
-
+sys.setrecursionlimit(10010)
 
 class Node:
     def __init__(self, data):

@@ -5,6 +5,7 @@ class Node:
         self.height = 1
         self.left = self.right = None
 
+
 class FreqTree:
     def __init__(self):
         self.root = None
@@ -26,15 +27,21 @@ class FreqTree:
             return node
         elif node.key < key:
             node.right = FreqTree._add(node.right, key)
-            node.height = max(FreqTree._height(node.left), FreqTree._height(node.right)) + 1
+            node.height = (
+                max(FreqTree._height(node.left), FreqTree._height(node.right))
+                + 1
+            )
             return FreqTree._rotate(node)
         else:
             node.left = FreqTree._add(node.left, key)
-            node.height = max(FreqTree._height(node.left), FreqTree._height(node.right)) + 1
+            node.height = (
+                max(FreqTree._height(node.left), FreqTree._height(node.right))
+                + 1
+            )
             return FreqTree._rotate(node)
 
     @staticmethod
-    def height(node):
+    def _height(node):
         if node:
             return node.height
         else:
@@ -45,9 +52,13 @@ class FreqTree:
         left = node.left
         c = left.right
         node.left = c
-        node.height = max(FreqTree._height(node.right), FreqTree._height(c)) + 1
+        node.height = (
+            max(FreqTree._height(node.right), FreqTree._height(c)) + 1
+        )
         left.right = node
-        left.height = max(FreqTree._height(left.left), FreqTree._height(node)) + 1
+        left.height = (
+            max(FreqTree._height(left.left), FreqTree._height(node)) + 1
+        )
         return left
 
     @staticmethod
@@ -57,7 +68,9 @@ class FreqTree:
         node.right = c
         node.height = max(FreqTree._height(node.left), FreqTree._height(c)) + 1
         right.left = node
-        right.height = max(FreqTree._height(right.right), FreqTree._height(node)) + 1
+        right.height = (
+            max(FreqTree._height(right.right), FreqTree._height(node)) + 1
+        )
         return right
 
     @staticmethod
